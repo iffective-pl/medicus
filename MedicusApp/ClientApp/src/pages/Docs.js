@@ -11,21 +11,23 @@ export default function Docs() {
         <Text h2>Nasi Lekarze</Text>
       </Card.Header>
       <Card.Body className="card-b">
-        <div className="director">
-            <Person person={docs.director}/>
-        </div>
-        <Spacer y={1}/>
-        <Collapse.Group splitted>
+        <Grid.Container>
+            <Grid justify="center" xs={12}>
+                <Person person={docs.director} />
+            </Grid>
+        </Grid.Container>
+        <Spacer y={1} />
+        <Collapse.Group splitted className="no-padding">
         {docs.units.map((item, index) => (
-          <Collapse title={item.index + " " + item.name} key={index}>
+            <Collapse title={item.index + " " + item.name} key={index} className="no-padding">
             <Grid.Container gap={2}>
-              {item.doctors.map((item, key) => (
+                {item.doctors.map((item, key) => (
                 <Grid key={key}>
-                  <Person person={item}/>
+                    <Person person={item}/>
                 </Grid>
-              ))}
+                ))}
             </Grid.Container>
-          </Collapse>
+            </Collapse>
         ))}
         </Collapse.Group>
       </Card.Body>

@@ -4,32 +4,32 @@ import "./Person.css";
 
 export default function Person(props) {
   let showHours = (person) => {
-   if(person.hours) {
-     return (
-       <Grid xs={4}>
-         <Popover>
-           <Popover.Trigger>
-             <Button auto flat icon={<FaRegClock/>}>Godziny przyjęć</Button>
-           </Popover.Trigger>
-           <Popover.Content>
-             <Table>
-               <Table.Header>
-                 <Table.Column>Dzień</Table.Column>
-                 <Table.Column>Godziny</Table.Column>
-               </Table.Header>
-               <Table.Body>
-                 {person.hours.map((item, index) => (
-                   <Table.Row key={index}>
-                     <Table.Cell>{keyToString(item.day)}</Table.Cell>
-                     <Table.Cell>{item.hours}</Table.Cell>
-                   </Table.Row>
-                 ))}
-               </Table.Body>
-             </Table>
-           </Popover.Content>
-         </Popover>
-       </Grid>
-     );
+    if(person.hours) {
+        return (
+            <Grid xs={4} justify="flex-end">
+                <Popover placement="top">
+                    <Popover.Trigger>
+                        <Button auto flat icon={<FaRegClock/>}></Button>
+                    </Popover.Trigger>
+                    <Popover.Content>
+                        <Table>
+                        <Table.Header>
+                            <Table.Column>Dzień</Table.Column>
+                            <Table.Column>Godziny</Table.Column>
+                        </Table.Header>
+                        <Table.Body>
+                            {person.hours.map((item, index) => (
+                            <Table.Row key={index}>
+                                <Table.Cell>{keyToString(item.day)}</Table.Cell>
+                                <Table.Cell>{item.hours}</Table.Cell>
+                            </Table.Row>
+                            ))}
+                        </Table.Body>
+                        </Table>
+                    </Popover.Content>
+                </Popover>
+            </Grid>
+        );
    } else {
      return <></>;
    }
@@ -56,18 +56,18 @@ export default function Person(props) {
   }
 
   return (
-    <Card css={{ "max-width": "33rem", "text-align": "left" }}>
+    <Card css={{ "max-width": "33rem", "text-align": "left" }} className="no-padding">
       <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
         <Col>
           <Text size={15} weight="bold" transform="uppercase" color="#f2f2f2">
             {props.person.unit.name}
           </Text>
-          <Text h3 color="white">
+          <Text size={17} b color="white">
             {props.person.unit.title}
           </Text>
         </Col>
       </Card.Header>
-      <Card.Body css={{ p: 0 }}>
+          <Card.Body css={{ p: 0 }} className="no-padding">
         <Card.Image
           src={props.person.img}
           objectFit="cover"
@@ -88,8 +88,7 @@ export default function Person(props) {
       >
         <Grid.Container>
           <Grid xs={8}>
-            <Text h4 color="white" className="doctor-title">{props.person.title}</Text>
-            <Text h3 color="white">{props.person.name}</Text>
+            <Text size={20} b color="white">{props.person.title} {props.person.name}</Text>
           </Grid>
           {showHours(props.person)}
         </Grid.Container>
