@@ -1,0 +1,15 @@
+.logo {
+    max-width: 30rem;
+}
+
+.address {
+    margin-right: 1.5rem;
+}
+
+.phone {
+    margin-right: .5rem;
+}
+
+.phone-content {
+    color: inherit;
+}
