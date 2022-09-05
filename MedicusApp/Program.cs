@@ -9,6 +9,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
+    options.KnownProxies.Add(IPAddress.Parse("0.0.0.0"));
     options.ForwardedHeaders =
         ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
 });
