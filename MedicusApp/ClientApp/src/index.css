@@ -1,1 +1,7 @@
+body {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
 
+.nav-link {
+    font-size: 1.2rem !important;
+}

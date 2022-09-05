@@ -1,8 +1,5 @@
-.card-h {
-    padding-top: 1rem;
-    padding-left: 1rem;
-}
-
-.card-b {
-    padding: 2%;
+.body {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
 }

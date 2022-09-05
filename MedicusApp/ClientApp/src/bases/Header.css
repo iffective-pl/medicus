@@ -1,8 +1,36 @@
-.cross {
-    height: 3rem;
-    margin: 1rem;
+.logo {
+    width: 25rem;
 }
 
-.medicus {
-    height: 2rem;
+.btn-dismissed {
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0.5rem 0.5rem !important;
+    color: rgba(0,0,0,.55) !important;
+    display: block !important;
+    line-height: 1.6 !important;
+    text-transform: none !important;
+    font-size: 1.2rem !important;
+    font-weight: normal !important;
 }
+
+.btn-dismissed.active {
+    color: rgba(0,0,0,.9) !important;
+}
+
+@media (max-width: 991px) {
+    .logo {
+        width: 18rem;
+    }
+
+    .btn-dismissed {
+        padding: 0.5rem 0 !important;
+    }
+}
+
+.btn-list {
+    padding: 0.75rem 2rem !important;
+    background: white !important;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 20%), 0 2px 10px 0 rgb(0 0 0 / 10%) !important;
+}
+
