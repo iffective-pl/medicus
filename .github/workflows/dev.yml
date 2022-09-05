@@ -1,0 +1,17 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ['self-hosted', 'dev']
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Build image
+        run: docker compose build --no-cache
+
+      - name: Deploy container
+        run: docker compose up -d --remove-orphans
