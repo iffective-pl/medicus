@@ -1,0 +1,7 @@
+services:
+  medicus:
+    build:
+      context: .
+networks:
+  default:
+    name: application
