@@ -1,15 +1,19 @@
+.col.advantages {
+    padding: 0;
+}
+
 .square {
-    height: 75vh;
+    height: 45vh;
     margin: 0 auto;
     aspect-ratio: 1 / 1;
     position: relative;
 }
 
-.col.square-small {
-    flex: none;
+.square-small {
     width: 50%;
-    margin: 0 auto;
+    float: left;
     aspect-ratio: 1/1;
+    display: inline-block;
 }
 
 img.icon {
@@ -20,6 +24,7 @@ img.icon {
 .very-center {
     top: 50%;
     left: 50%;
+    width: 100%;
     position: absolute;
     transform: translate(-50%, -50%);
 }
