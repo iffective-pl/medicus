@@ -12,23 +12,23 @@ export default function HomeAdvantages() {
           </div>
         </Col>
         <Col className="advantages right text-center">
-          <div className="square">
-            <Row>
-              <Col className="square-small p-3">
-                <img src="icons/outpatient.svg" alt="doctor" className="icon mt-5" />
-                <div className="h3 p-3">Wysokiej klasy specjaliści</div>
-              </Col>
-              <Col className="square-small p-3 align-middle">
-                <img src="icons/heart.svg" alt="cardiology" className="icon mt-5" />
-                <div className="h3 p-2">Nowoczesny sprzęt do ultrasonografii i echokardiografii</div>
-              </Col>
-            </Row>
-            <Row>
-              <Col className="square-small p-3">
-                <img src="icons/calm.svg" alt="comfort" className="icon" />
-                <div className="h3 p-2">Komfortowe wnętrzna i wysoka jakość obsługi</div>
-              </Col>
-            </Row>
+          <div className="square pt-5">
+            <div className="square-small mr-1">
+                <img src="icons/outpatient.svg" alt="doctor" className="icon" />
+                <div className="h5 p-1">Wysokiej klasy specjaliści</div>
+            </div>
+            <div className="square-small mr-1">
+              <img src="icons/heart.svg" alt="cardiology" className="icon" />
+              <div className="h5 p-1">Nowoczesny sprzęt do ultrasonografii i echokardiografii</div>
+            </div>
+            <div className="square-small mr-1">
+              <img src="icons/calm.svg" alt="comfort" className="icon" />
+              <div className="h5 p-1">Wysoka jakość obsługi</div>
+            </div>
+            <div className="square-small mr-1">
+              <img src="icons/rural_post_alt.svg" alt="comfort" className="icon" />
+              <div className="h5 p-1">Komfortowe nowe wnętrza</div>
+            </div>
           </div>
         </Col>
       </Row>
