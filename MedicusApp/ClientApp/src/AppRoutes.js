@@ -33,18 +33,15 @@ const AppRoutes = [
     element: <Docs />
   },
   {
-    path: "usg/adults/?type",
-    href: "usg/adults",
-    name: "USG Dorosłych",
-    options: [],
+    path: "usg/?sex/?type",
+    href: "usg",
+    name: "USG",
+    options: [
+      {href: "/kids", name: "USG Dzieci"},
+      {href: "/pregnancy", name: "USG Ciąży"},
+      {href: "/adults", name: "USG Dorosłych"}
+    ],
     element: <USG />
-  },
-  {
-    path: "usg/pregnancy/?type",
-    href: "usg/pregnancy",
-    name: "USG Ciąży",
-    options: [],
-    element: <USGP />
   },
   {
     path: "echo/?type",

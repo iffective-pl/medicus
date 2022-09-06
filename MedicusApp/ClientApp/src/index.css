@@ -1,5 +1,6 @@
 .nav-link {
     color: #241474;
+    font-size: 1.25rem;
 }
 
 .nav-link:hover {
@@ -8,6 +9,7 @@
 
 .dropdown-item {
     color: #241474;
+    font-size: 1.25rem;
 }
 
 .dropdown-item:hover {
