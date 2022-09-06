@@ -1,0 +1,25 @@
+.square {
+    height: 75vh;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+    position: relative;
+}
+
+.col.square-small {
+    flex: none;
+    width: 50%;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+}
+
+img.icon {
+    height: 45%;
+    aspect-ratio: 1 / 1;
+}
+
+.very-center {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}

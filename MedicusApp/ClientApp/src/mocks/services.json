@@ -2,10 +2,12 @@
   "services": [
     {
       "name": "USG Dorosłych",
+      "description": "",
       "image": "mocks/usg-male.jpg"
     },
     {
       "name": "USG Ciąży",
+      "description": "",
       "image": "mocks/usg-female.jpg"
     }
   ]

@@ -1,9 +1,9 @@
 import {useState} from "react";
 import {Button, Offcanvas, OffcanvasBody, OffcanvasHeader} from "reactstrap";
 
-import './Activity.css';
+import './HomeActivity.css';
 
-export default function Activity() {
+export default function HomeActivity() {
   let [open, setOpen] = useState(false);
 
   let toggle = () => setOpen(!open);
