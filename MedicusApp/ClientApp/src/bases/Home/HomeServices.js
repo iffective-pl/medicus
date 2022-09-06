@@ -1,34 +1,28 @@
-import {Button, Card, CardBody, CardSubtitle, CardText, CardTitle, Container} from "reactstrap";
+import {Card, CardBody, CardSubtitle, CardTitle, Container} from "reactstrap";
 
 import Services from '../../mocks/services.json';
+import './HomeServices.css';
 
 export default function HomeServices() {
   let services = Services.services;
   return (
     <Container>
       {services.map((item, index) => (
-        <Card
-        >
+        <Card key={index} className="services shadow">
           <img
             alt={item.name}
             src={item.image}
           />
-          <CardBody>
+          <CardBody className="services">
             <CardTitle tag="h5">
-              Card title
+              {item.name}
             </CardTitle>
             <CardSubtitle
               className="mb-2 text-muted"
               tag="h6"
             >
-              Card subtitle
+              {item.name}
             </CardSubtitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the bulk of the card‘s content.
-            </CardText>
-            <Button>
-              Button
-            </Button>
           </CardBody>
         </Card>
       ))}

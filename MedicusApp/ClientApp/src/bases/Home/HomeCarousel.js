@@ -39,7 +39,7 @@ export default function HomeCarousel() {
           <span className="description">
             <span className="description-text">
               <h1 className="title">{item.captionHeader}</h1>
-              <h3 className="sub-title">{item.captionText}</h3>
+              <h3 className="sub-title text-muted">{item.captionText}</h3>
               <Button
                 size="lg"
                 className="title-button mt-3"
@@ -61,7 +61,7 @@ export default function HomeCarousel() {
           <span className="description">
             <span className="description-text">
               <p className="fs-1 fw-bold mb-2 title">Tytuł główny</p>
-              <p className="fs-3 fw-bold mb-2 sub-title">Tytuł podrzędny</p>
+              <p className="fs-3 fw-bold mb-2 sub-title text-muted">Tytuł podrzędny</p>
             </span>
           </span>
         </CarouselItem>

@@ -1,6 +1,6 @@
 .nav-link {
     color: #241474;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .nav-link:hover {
@@ -9,11 +9,11 @@
 
 .dropdown-item {
     color: #241474;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 
 .dropdown-item:hover {
-    font-weight: bold;
+    /*font-weight: bold;*/
     background-color: #DCC7D4;
 }
 
@@ -60,10 +60,14 @@ h6 {
 }
 
 .sub-title {
-    color: #7266A695;
+    color: #7266A6;
 }
 
 .title-button {
     color: white;
     background-color: #7266A6;
+}
+
+.card-body.service {
+    color: white;
 }
