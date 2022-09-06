@@ -1,7 +1,6 @@
-import './Header.css'
+import './Base.css'
 
 import Header from "./Header";
-import "./Base.css";
 import Footer from "./Footer";
 
 export default function Base(props) {

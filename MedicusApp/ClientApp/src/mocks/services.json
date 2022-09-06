@@ -1,0 +1,12 @@
+{
+  "services": [
+    {
+      "name": "USG Dorosłych",
+      "image": "mocks/usg-male.jpg"
+    },
+    {
+      "name": "USG Ciąży",
+      "image": "usg-female.jpg"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "src": "mocks/main-1.jpg",
+      "captionHeader": "Przychodnia specjalistyczna MEDICUS",
+      "captionText": "Leczymy naszych pacjentów od 1990 roku",
+      "key": 1,
+      "main": true
+    },
+    {
+      "src": "mocks/main-2.jpg",
+      "captionHeader": "Text główny",
+      "captionText": "Text podrzędny",
+      "key": 2
+    }
+  ]
+}
