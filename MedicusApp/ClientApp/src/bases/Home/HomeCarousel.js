@@ -2,7 +2,7 @@ import {useState} from "react";
 import {Button, Carousel, CarouselControl, CarouselIndicators, CarouselItem} from "reactstrap";
 
 import './HomeCarousel.css';
-import Items from '../../mocks/carousel.json';
+import Items from '../../data/carousel.json';
 
 export default function HomeCarousel() {
   let [activeIndex, setActiveIndex] = useState(0);
@@ -27,7 +27,7 @@ export default function HomeCarousel() {
   };
 
   const slides = items.map((item, index) => {
-    if(item.main) {
+    if(item.brand) {
       return (
         <CarouselItem
           onExiting={() => setAnimating(true)}
@@ -38,8 +38,9 @@ export default function HomeCarousel() {
           <img src={item.src} alt={item.altText} className="description-img" />
           <span className="description">
             <span className="description-text">
-              <h1 className="title">{item.captionHeader}</h1>
-              <h3 className="sub-title text-muted">{item.captionText}</h3>
+              <h2 className="title">{item.captionHeader}</h2>
+              <h1 className="title">{item.brand}</h1>
+              <h3 className="sub-title">{item.captionText}</h3>
               <Button
                 size="lg"
                 className="title-button mt-3"
@@ -61,7 +62,7 @@ export default function HomeCarousel() {
           <span className="description">
             <span className="description-text">
               <p className="fs-1 fw-bold mb-2 title">Tytuł główny</p>
-              <p className="fs-3 fw-bold mb-2 sub-title text-muted">Tytuł podrzędny</p>
+              <p className="fs-3 fw-bold mb-2 sub-title">Tytuł podrzędny</p>
             </span>
           </span>
         </CarouselItem>

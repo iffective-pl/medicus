@@ -4,7 +4,6 @@ import Docs from "./pages/Docs";
 import Contact from "./pages/Contact";
 import Register from "./pages/Register";
 import USG from "./pages/USG";
-import USGP from "./pages/USGP";
 
 const AppRoutes = [
   {

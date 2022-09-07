@@ -1,12 +1,12 @@
 import {Card, CardBody, CardImg, CardImgOverlay, CardSubtitle, CardTitle, Container} from "reactstrap";
 
-import Services from '../../mocks/services.json';
+import Services from '../../data/services.json';
 import './HomeServices.css';
 
 export default function HomeServices() {
   let services = Services.services;
   return (
-    <Container className="p-5">
+    <Container className="p-4">
       <span className="h2 text-center d-block pb-4">Nasze usługi</span>
       <div className="text-center">
         {services.map((item, index) => (

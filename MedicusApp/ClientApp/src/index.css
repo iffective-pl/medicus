@@ -1,23 +1,23 @@
-.nav-link {
+.nav-link.header {
     color: #241474;
     font-size: 1.25rem;
 }
 
-.nav-link:hover {
-    color: #7266A6;
+.nav-link.header:hover {
+    color: #8c6ea4;
 }
 
-.dropdown-item {
+.dropdown-item.header {
     color: #241474;
     font-size: 1.25rem;
 }
 
-.dropdown-item:hover {
+.dropdown-item.header:hover {
     background-color: #DCC7D4;
 }
 
-.dropdown-item::selection {
-    background: #bf98b0;
+.dropdown-item.header::selection {
+    background: #ddabb1;
 }
 
 .nav-link.footer {
@@ -27,27 +27,26 @@
 }
 
 .nav-link.footer:hover {
-    color: #bf98b0;
+    color: #ddabb1;
     font-weight: normal;
 }
 
 .footer {
     color: #DCC7D4;
     border-color: #DCC7D4;
-    background-color: #7266A6;
+    background-color: #8c6ea4;
 }
 
 .footer-secondary {
-    color: #CC241C;
     background-color: #241474;
 }
 
 .nav-link.footer-secondary {
-    color: #D94343;
+    color: #ddabb1;
 }
 
 .nav-link.footer-secondary:hover {
-    color: #CC241C;
+    color: #8c6ea4;
 }
 
 h6 {
@@ -55,16 +54,16 @@ h6 {
 }
 
 .title {
-    color: #7266A6;
+    color: #241474;
 }
 
 .sub-title {
-    color: #7266A6;
+    color: #8c6ea4;
 }
 
 .title-button {
     color: white;
-    background-color: #7266A6;
+    background-color: #8c6ea4;
 }
 
 .card-body.services {
@@ -78,4 +77,8 @@ h6 {
 
 .col.advantages.right {
     background-color: #C9D9E5;
+}
+
+.container-fluid.reminder {
+    background-color: #8b1c3c;
 }

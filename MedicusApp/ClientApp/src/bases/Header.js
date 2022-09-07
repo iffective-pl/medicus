@@ -21,19 +21,19 @@ export default function Header() {
     if(item.options) {
       return (
         <UncontrolledDropdown nav inNavbar>
-          <DropdownToggle nav caret>
+          <DropdownToggle className="header" nav caret>
             {item.name}
           </DropdownToggle>
           <DropdownMenu>
             {item.options.map((option, index) => (
-              <DropdownItem key={index} tag="a" href={item.href + option.href}>{option.name}</DropdownItem>
+              <DropdownItem className="header" key={index} tag="a" href={item.href + option.href}>{option.name}</DropdownItem>
             ))}
           </DropdownMenu>
         </UncontrolledDropdown>
       )
     } else {
       return (
-        <NavLink active={document.location.href.endsWith(item.href)} href={item.href}>
+        <NavLink className="header" active={document.location.href.endsWith(item.href)} href={item.href}>
           {item.name}
         </NavLink>
       )

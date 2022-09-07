@@ -1,5 +1,7 @@
 import {Col, Container, Nav, NavItem, NavLink, Row} from "reactstrap";
-import {BsEnvelope, BsPinMap, BsPrinter, BsTelephone} from "react-icons/bs";
+import {BsEnvelope, BsPinMap, BsTelephone} from "react-icons/bs";
+
+import AppRoutes from "../AppRoutes";
 
 export default function Footer() {
   return (
@@ -12,37 +14,23 @@ export default function Footer() {
           <Row>
             <Col md="3" lg="4" xl="3" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
-                Company name
+                Poradnia Specjalistyczna MEDICUS
               </h6>
               <p>
-                Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit.
+                Opis
               </p>
             </Col>
 
             <Col md="2" lg="2" xl="2" className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-3'>Products</h6>
+              <h6 className='text-uppercase fw-bold mb-3'>Mapa strony</h6>
               <Nav vertical>
-                <NavItem>
-                  <NavLink className="footer" href="#">
-                    Angular
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="footer" href="#">
-                    React
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="footer" href="#">
-                    Vue
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="footer" href="#">
-                    Laravel
-                  </NavLink>
-                </NavItem>
+                {AppRoutes.map((item, index) => (
+                  <NavItem key={index}>
+                    <NavLink className="footer" href={item.href}>
+                      {item.name}
+                    </NavLink>
+                  </NavItem>
+                ))}
               </Nav>
             </Col>
 
@@ -73,12 +61,17 @@ export default function Footer() {
             </Col>
 
             <Col md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
-              <h6 className='text-uppercase fw-bold mb-3'>Contact</h6>
+              <h6 className='text-uppercase fw-bold mb-3'>Kontakt</h6>
               <Nav vertical>
                 <NavItem>
-                  <NavLink className="footer" href="#">
-                    <BsPinMap className="me-2"/>
-                    New York, NY 10012, US
+                  <NavLink className="footer position-relative" href="#">
+                    <div className="d-inline-block">
+                      <BsPinMap className="me-3"/>
+                    </div>
+                    <div className="d-inline-block">
+                      <div>Plac Wolności 15</div>
+                      <div>87-800 Włocławek</div>
+                    </div>
                   </NavLink>
                 </NavItem>
                 <NavItem>
@@ -89,12 +82,14 @@ export default function Footer() {
                 </NavItem>
                 <NavItem>
                   <NavLink className="footer" href="#">
-                    <BsTelephone className="me-3" /> + 01 234 567 88
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="footer" href="#">
-                    <BsPrinter className="me-3" /> + 01 234 567 89
+                    <div className="me-3 d-inline-block">
+                      <BsTelephone />
+                    </div>
+                    <div className="d-inline-block">
+                      54 2313141<br/>
+                      54 2313741<br/>
+                      692 184 214
+                    </div>
                   </NavLink>
                 </NavItem>
               </Nav>
