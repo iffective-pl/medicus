@@ -1,3 +1,5 @@
+using MedicusApp.Models;
+using MedicusApp.Services.Impl;
 using Microsoft.AspNetCore.HttpOverrides;
 using System.Net;
 
@@ -5,6 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
+
+builder.Services.Configure<MedicusDatabaseSettings>(
+    builder.Configuration.GetSection("MedicusDatabase"));
+
+builder.Services.AddSingleton<SpecService>();
 
 var app = builder.Build();
 
@@ -25,6 +32,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html"); ;
+app.MapFallbackToFile("index.html");
 
 app.Run();
