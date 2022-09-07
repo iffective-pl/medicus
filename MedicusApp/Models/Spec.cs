@@ -1,19 +1,13 @@
-﻿using MongoDB.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace MedicusApp.Model
+namespace MedicusApp.Models
 {
-    public class Spec : Entity
+    public class Spec
     {
+        [Key]
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Href { get; set; }
-        [OwnerSide]
-        public Many<Doctor> Doctors { get; set; }
-        [OwnerSide]
-        public Many<WorkingHours> WorkHours { get; set; }
-
-        public Spec()
-        {
-            this.InitManyToMany(() => Doctors, doctors => doctors.Specs);
-        }
+        public List<Doctor> Doctors { get; set; }
     }
 }

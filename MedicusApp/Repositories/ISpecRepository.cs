@@ -1,8 +1,8 @@
 ﻿using MedicusApp.Models;
 
-namespace MedicusApp.Services
+namespace MedicusApp.Repositories
 {
-    public interface ISpecService
+    public interface ISpecRepository
     {
         public List<Spec> GetSpecs();
     }

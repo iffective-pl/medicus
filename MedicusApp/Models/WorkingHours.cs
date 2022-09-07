@@ -1,18 +1,18 @@
-﻿using MongoDB.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace MedicusApp.Model
+namespace MedicusApp.Models
 {
-    public class WorkingHours : Entity
+    public class WorkingHours
     {
+        [Key]
+        public int Id { get; set; }
         public string? Monday { get; set; }
         public string? Tuesday { get; set; }
         public string? Wednesday { get; set; }
         public string? Thursday { get; set; }
         public string? Friday { get; set; }
 
-        [InverseSide]
         public Doctor Doctor { get; set; }
-        [InverseSide]
-        public Spec Spec { get; set; }
+        public Spec Specialization { get; set; }
     }
 }

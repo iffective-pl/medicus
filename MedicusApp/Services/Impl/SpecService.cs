@@ -1,22 +1,20 @@
-﻿using MedicusApp.Model;
-using MedicusApp.Models;
-using Microsoft.Extensions.Options;
-using MongoDB.Entities;
+﻿using MedicusApp.Models;
+using MedicusApp.Repositories;
 
 namespace MedicusApp.Services.Impl
 {
     public class SpecService : ISpecService
     {
-        private readonly DBContext db;
+        private readonly ISpecRepository specRepository;
 
-        public SpecService(IOptions<MedicusDatabaseSettings> options)
+        public SpecService(ISpecRepository specRepository)
         {
-            this.db = new DBContext(options.Value.DatabaseName, options.Value.ConnectionString);
+            this.specRepository = specRepository;
         }
 
-        public Task<List<Spec>> GetSpecs()
+        public List<Spec> GetSpecs()
         {
-            return db.Find<Spec>().ExecuteAsync();
+            return specRepository.GetSpecs();
         }
     }
 }

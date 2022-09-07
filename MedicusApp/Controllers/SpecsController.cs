@@ -1,20 +1,26 @@
-﻿using MedicusApp.Services;
+﻿using MedicusApp.Models;
+using MedicusApp.Services;
+using MedicusApp.Services.Impl;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicusApp.Controllers
 {
-    public class SpecsController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SpecsController : ControllerBase
     {
-        private readonly ISpecService specService;
+        private readonly ISpecService specServices;
 
-        public SpecsController(ISpecService specService)
+        public SpecsController(ISpecService specServices)
         {
-            this.specService = specService;
+            this.specServices = specServices;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public List<Spec> GetSpecs()
         {
-            return View();
+            return specServices.GetSpecs();
         }
     }
 }

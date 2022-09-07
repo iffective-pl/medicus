@@ -1,18 +1,21 @@
 using MedicusApp.Models;
+using MedicusApp.Repositories;
+using MedicusApp.Repositories.Impl;
+using MedicusApp.Services;
 using MedicusApp.Services.Impl;
-using Microsoft.AspNetCore.HttpOverrides;
-using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.Configure<MedicusDatabaseSettings>(
-    builder.Configuration.GetSection("MedicusDatabase"));
+builder.Services.AddDbContext<DatabaseContext>();
 
-builder.Services.AddSingleton<SpecService>();
+builder.Services.AddTransient<ISpecRepository, SpecRepository>();
 
+builder.Services.AddTransient<ISpecService, SpecService>();
+
+builder.Services.AddControllers();
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
