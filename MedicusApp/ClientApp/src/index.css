@@ -1,7 +1,99 @@
-body {
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+.nav-link.header {
+    color: #241474;
+    font-size: 1.25rem;
 }
 
-.nav-link {
-    font-size: 1.2rem !important;
+.nav-link.header:hover {
+    color: #cc241c;
+}
+
+.dropdown-item.header {
+    color: #241474;
+    font-size: 1.25rem;
+}
+
+.dropdown-item.header:hover {
+    background-color: #DCC7D4;
+}
+
+.dropdown-item.header::selection {
+    background: #ddabb1;
+}
+
+.nav-link.footer {
+    color: #DCC7D4;
+    font-weight: normal;
+}
+
+.nav-link.footer:hover {
+    color: #cc241c;
+    font-weight: normal;
+}
+
+.footer {
+    color: #DCC7D4;
+    background-color: #0f2147;
+}
+
+.main {
+    background-color: #0f2147;
+}
+
+.footer-secondary {
+    background-color: #0f2147;
+}
+
+section.footer-secondary {
+    border-color: #cc241c !important;
+}
+
+.nav-link.footer-secondary {
+    color: #cc241c;
+    font-weight: bold;
+}
+
+.nav-link.footer-secondary:hover {
+    color: #DCC7D4;
+}
+
+h6 {
+    color: #DCC7D4;
+}
+
+.title {
+    color: #241474;
+}
+
+.sub-title {
+    color: #cc241c;
+}
+
+.title-button {
+    color: white;
+    background-color: #cc241c;
+}
+
+.btn-info {
+    color: white;
+}
+
+.card-body.services {
+    color: white;
+}
+
+.col.advantages.left {
+    color: white;
+    background-color: #53ACE1;
+}
+
+.col.advantages.right {
+    background-color: #C9D9E5;
+}
+
+.container-fluid.reminder {
+    background-color: #cc241c;
+}
+
+div.icon {
+    background-color: #241474;
 }

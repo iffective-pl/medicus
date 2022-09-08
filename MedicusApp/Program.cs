@@ -1,11 +1,21 @@
-using Microsoft.AspNetCore.HttpOverrides;
-using System.Net;
+using MedicusApp.Models;
+using MedicusApp.Repositories;
+using MedicusApp.Repositories.Impl;
+using MedicusApp.Services;
+using MedicusApp.Services.Impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<DatabaseContext>();
+
+builder.Services.AddTransient<ISpecRepository, SpecRepository>();
+
+builder.Services.AddTransient<ISpecService, SpecService>();
+
+builder.Services.AddControllers();
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -25,6 +35,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html"); ;
+app.MapFallbackToFile("index.html");
 
 app.Run();

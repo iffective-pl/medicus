@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "key": 1,
+      "src": "images/mocks/main-1.jpg",
+      "captionHeader": "Przychodnia Specjalistyczna",
+      "captionText": "Leczymy naszych pacjentów od 1990 roku.",
+      "brand": "MEDICUS we Włocławku"
+    },
+    {
+      "key": 2,
+      "src": "images/mocks/main-2.jpg",
+      "captionHeader": "Text główny",
+      "captionText": "Text podrzędny"
+    }
+  ]
+}
