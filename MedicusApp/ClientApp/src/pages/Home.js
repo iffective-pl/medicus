@@ -1,7 +1,7 @@
-import HomeCarousel from "../bases/Home/HomeCarousel";
-import HomeServices from "../bases/Home/HomeServices";
-import HomeAdvantages from "../bases/Home/HomeAdvantages";
-import Reminder from "../bases/Reminder";
+import HomeCarousel from "../components/Home/HomeCarousel";
+import HomeServices from "../components/Home/HomeServices";
+import HomeAdvantages from "../components/Home/HomeAdvantages";
+import Reminder from "../components/Reminder";
 
 export default function Home() {
   return (

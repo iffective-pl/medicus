@@ -1,14 +1,25 @@
 {
   "services": [
     {
+      "name": "Konsultacje",
+      "description": "",
+      "image": "images/used/consult.jpg"
+    },
+    {
+      "name": "ECHO Serca",
+      "description": "",
+      "image": "images/used/heartecho.jpg"
+    },
+    {
       "name": "USG Dorosłych",
       "description": "",
-      "image": "mocks/usg-male.jpg"
+      "image": "images/mocks/usg-male.jpg"
     },
     {
       "name": "USG Ciąży",
       "description": "",
-      "image": "mocks/usg-female.jpg"
+      "image": "images/used/usg-female.jpg"
     }
+
   ]
 }
