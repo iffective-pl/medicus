@@ -57,18 +57,21 @@
     "Id": 10,
     "Name": "ECHO",
     "Href": "echo",
+    "IsHeader": true,
     "ClassName": "echo"
   },
   {
     "Id": 11,
     "Name": "USG",
     "Href": "usg",
+    "IsHeader": true,
     "ClassName": "xray"
   },
   {
     "Id": 12,
     "Name": "Holter",
     "Href": "holter",
+    "IsHeader": true,
     "ClassName": "blood_pressure"
   }
 ]

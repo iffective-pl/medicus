@@ -1,6 +1,4 @@
-﻿using MedicusApp.Model.People;
-
-namespace MedicusApp.Models
+﻿namespace MedicusApp.Models
 {
     public class Spec
     {
@@ -8,6 +6,7 @@ namespace MedicusApp.Models
         public string Name { get; set; }
         public string Href { get; set; }
         public string ClassName { get; set; }
+        public bool IsHeader { get; set; }
         public List<Doctor> Doctors { get; set; }
         public List<WorkingHours> WorkingHours { get; set; }
     }
