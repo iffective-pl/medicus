@@ -33,7 +33,7 @@ namespace MedicusApp.Migrations
 
                     b.HasIndex("SpecializationsId");
 
-                    b.ToTable("DoctorSpec");
+                    b.ToTable("DoctorSpec", (string)null);
                 });
 
             modelBuilder.Entity("MedicusApp.Models.Doctor", b =>
@@ -62,7 +62,7 @@ namespace MedicusApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
                 });
 
             modelBuilder.Entity("MedicusApp.Models.Spec", b =>
@@ -83,7 +83,7 @@ namespace MedicusApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Specializations");
+                    b.ToTable("Specializations", (string)null);
                 });
 
             modelBuilder.Entity("MedicusApp.Models.WorkingHours", b =>
@@ -121,7 +121,7 @@ namespace MedicusApp.Migrations
 
                     b.HasIndex("SpecializationId");
 
-                    b.ToTable("WorkHours");
+                    b.ToTable("WorkHours", (string)null);
                 });
 
             modelBuilder.Entity("DoctorSpec", b =>

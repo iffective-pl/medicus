@@ -1,9 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace MedicusApp.Models
+﻿namespace MedicusApp.Models.Seeding
 {
-    public class WorkingHours
+    public class WorkingHoursSeed
     {
         public int Id { get; set; }
         public string? Monday { get; set; }
@@ -12,7 +9,7 @@ namespace MedicusApp.Models
         public string? Thursday { get; set; }
         public string? Friday { get; set; }
 
-        public Doctor Doctor { get; set; }
-        public Spec Specialization { get; set; }
+        public int DoctorId { get; set; }
+        public int SpecializationId {get; set;}
     }
 }

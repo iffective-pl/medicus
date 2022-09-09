@@ -1,0 +1,11 @@
+[
+  {
+    "Id": 1,
+    "Tuesday": "15:30 - 17.00",
+    "Wednesday": "15:30 - 17.00",
+    "Thursday": "15:30 - 17.00",
+    "Friday": "15:30 - 17.00",
+    "SpecializationId": 1,
+    "DoctorId": 1
+  }
+]
