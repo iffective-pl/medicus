@@ -4,7 +4,15 @@ on:
   workflow_dispatch:
     inputs:
       run_migration:
-        description: 'Should Migration be run?'
+        description: 'Drop Database?'
+        required: true
+        default: 'No' 
+        type: choice
+        options:
+        - 'No'
+        - 'Yes'
+      run_migration:
+        description: 'Run Migration?'
         required: true
         default: 'Yes' 
         type: choice
@@ -21,6 +29,10 @@ jobs:
       
       - name: Restart containers
         run: docker compose up -d --remove-orphans
+
+      - if: ${{inputs.run_migration}} == 'Yes'
+        name: Drop database
+        run: ~/.dotnet/tools/dotnet-ef database drop
 
       - if: ${{inputs.run_migration}} == 'Yes'
         name: Update database
