@@ -19,7 +19,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - if: inputs.run_migration == 'true'
+      - name: Restart containers
+        run: docker compose up -d --remove-orphans
+      
+      - if: ${{inputs.run_migration}} == 'true'
         name: Update database
         run: |
             dotnet tool install --global dotnet-ef
