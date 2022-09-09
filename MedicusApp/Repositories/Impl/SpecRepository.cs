@@ -22,8 +22,19 @@ namespace MedicusApp.Repositories.Impl
                 Name = s.Name,
                 Href = s.Href,
                 ClassName = s.ClassName,
+                Order = s.Order
+            });
+        }
+
+        public IEnumerable<SpecDto> GetFullSpecs()
+        {
+            return context.Specializations.Select(s => new SpecDto()
+            {
+                Id = s.Id,
+                Name = s.Name,
+                Href = s.Href,
+                ClassName = s.ClassName,
                 Order = s.Order,
-                IsHeader = s.IsHeader,
                 Doctors = s.Doctors.Select(d => new DoctorDto()
                 {
                     Id = d.Id,

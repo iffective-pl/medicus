@@ -1,4 +1,5 @@
-﻿using MedicusApp.Models.Seeding;
+﻿using MedicusApp.Model.Links;
+using MedicusApp.Models.Seeding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
@@ -40,14 +41,20 @@ namespace MedicusApp.Models
                 )
                 .HasIndex(p => new { p.Name })
                 .IsUnique(true);
-
             modelBuilder.Entity<Spec>()
                 .Property(s => s.Order)
                 .ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Spec>()
-                .Property(s => s.IsHeader)
+            modelBuilder.Entity<Link>()
+                .Property(s => s.IsIndex)
                 .HasDefaultValue(false);
+            modelBuilder.Entity<Link>()
+                .Property(s => s.Order)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Option>()
+                .Property(s => s.Order)
+                .ValueGeneratedOnAdd();
 
 
             modelBuilder.Entity<Spec>().HasData(seeds.SpecSeeds);
@@ -55,10 +62,17 @@ namespace MedicusApp.Models
             modelBuilder.Entity<Doctor>().HasData(seeds.DoctorSeeds);
 
             modelBuilder.Entity<WorkingHours>().HasData(seeds.WorkingHoursSeeds);
+
+            modelBuilder.Entity<Link>().HasData(seeds.LinkSeeds);
+
+            modelBuilder.Entity<Option>().HasData(seeds.OptionSeeds);
         }
 
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<WorkingHours> WorkHours { get; set; }
         public DbSet<Spec> Specializations { get; set; }
+
+        public DbSet<Link> Links { get; set; }
+        public DbSet<Option> Options { get; set; }
     }
 }

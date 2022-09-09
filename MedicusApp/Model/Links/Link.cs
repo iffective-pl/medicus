@@ -1,12 +1,12 @@
-﻿namespace MedicusApp.Models.Dto
+﻿namespace MedicusApp.Model.Links
 {
-    public class SpecDto
+    public class Link
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Href { get; set; }
-        public string ClassName { get; set; }
         public int Order { get; set; }
-        public IEnumerable<DoctorDto> Doctors { get; set; }
+        public bool IsIndex { get; set; }
+        public List<Option> Options { get; set; }
     }
 }

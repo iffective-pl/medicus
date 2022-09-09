@@ -1,0 +1,86 @@
+[
+  {
+    "Id": 1,
+    "LinkId": 4,
+    "Name": "Kardiologia",
+    "Href": "/cardiology",
+    "Order": 1
+  },
+  {
+    "Id": 2,
+    "LinkId": 4,
+    "Name": "Urologia",
+    "Href": "/urology",
+    "Order": 2
+  },
+  {
+    "Id": 3,
+    "LinkId": 4,
+    "Name": "Ortopedia",
+    "Href": "/orthopedy",
+    "Order": 3
+  },
+  {
+    "Id": 4,
+    "LinkId": 4,
+    "Name": "Ginekologia",
+    "Href": "/ginecology",
+    "Order": 4
+  },
+  {
+    "Id": 5,
+    "LinkId": 4,
+    "Name": "Internista",
+    "Href": "/ginecology",
+    "Order": 5
+  },
+  {
+    "Id": 6,
+    "LinkId": 4,
+    "Name": "Pediatria",
+    "Href": "/pediatri",
+    "Order": 6
+  },
+  {
+    "Id": 7,
+    "LinkId": 4,
+    "Name": "Endokrynologia",
+    "Href": "/endokrynology",
+    "Order": 7
+  },
+  {
+    "Id": 8,
+    "LinkId": 5,
+    "Name": "USG Dzieci",
+    "Href": "/kids",
+    "Order": 1
+  },
+  {
+    "Id": 9,
+    "LinkId": 5,
+    "Name": "USG Dorosłych",
+    "Href": "/adults",
+    "Order": 2
+  },
+  {
+    "Id": 10,
+    "LinkId": 5,
+    "Name": "USG Ciąży",
+    "Href": "/pregnancy",
+    "Order": 3
+  },
+  {
+    "Id": 11,
+    "LinkId": 6,
+    "Name": "ECHO Dzieci",
+    "Href": "/kids",
+    "Order": 1
+  },
+  {
+    "Id": 12,
+    "LinkId": 6,
+    "Name": "ECHO Dorosłych",
+    "Href": "/adults",
+    "Order": 2
+  }
+]
