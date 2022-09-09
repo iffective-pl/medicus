@@ -3,7 +3,7 @@ name: Deploy
 on:
   workflow_dispatch:
     inputs:
-      run_migration:
+      drop_database:
         description: 'Drop Database?'
         required: true
         default: 'No' 
@@ -30,7 +30,7 @@ jobs:
       - name: Restart containers
         run: docker compose up -d --remove-orphans
 
-      - if: ${{inputs.run_migration}} == 'Yes'
+      - if: ${{inputs.drop_database}} == 'Yes'
         name: Drop database
         run: ~/.dotnet/tools/dotnet-ef database drop
 
