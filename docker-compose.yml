@@ -4,7 +4,7 @@ services:
     restart: always
     hostname: postgres
     environment:
-     - POSTGRES_PASSWORD: example
+      POSTGRES_PASSWORD: "postgrespw"
   app:
     build:
       context: .
