@@ -6,7 +6,11 @@ on:
       run_migration:
         description: 'Should Migration be run?'
         required: true
-        default: 'true'
+        default: 'Yes' 
+        type: choice
+        options:
+        - Yes
+        - No
 
 jobs:
   deploy:
