@@ -23,14 +23,36 @@ const AppRoutes = [
   },
   {
     path: "docs",
+    optional: [
+      {
+        path: ":type",
+        element: <Docs />
+      },
+      {
+        path: "",
+        element: <Docs />
+      }
+    ],
     element: <Docs />
   },
   {
-    path: "usg/?type",
+    path: "usg",
+    optional: [
+      {
+        path: ":type",
+        element: <Docs />
+      }
+    ],
     element: <USG />
   },
   {
-    path: "echo/?type",
+    path: "echo",
+    optional: [
+      {
+        path: ":type",
+        element: <Docs />
+      }
+    ],
     element: <ECHO />
   },
   {

@@ -1,17 +1,15 @@
 import {useEffect, useState} from "react";
 import {
-  Collapse, DropdownItem, DropdownMenu,
-  DropdownToggle,
+  Collapse,
   Nav,
   Navbar,
   NavbarBrand,
   NavbarToggler,
-  NavItem, NavLink,
-  UncontrolledDropdown
+  NavItem, NavLink
 } from "reactstrap";
 
 import "./Header.css";
-import AppRoutes from "../AppRoutes";
+import HeaderDropdown from "../components/HeaderDropdown";
 
 export default function Header() {
   let [collapse, setCollapse] = useState(false);
@@ -26,16 +24,7 @@ export default function Header() {
   let headers = (item, index) => {
     if(item.options.length > 0) {
       return (
-        <UncontrolledDropdown nav inNavbar key={index}>
-          <DropdownToggle className="header" nav caret>
-            {item.name}
-          </DropdownToggle>
-          <DropdownMenu>
-            {item.options.map((option, index) => (
-              <DropdownItem className="header" key={index} tag="a" href={item.href + option.href}>{option.name}</DropdownItem>
-            ))}
-          </DropdownMenu>
-        </UncontrolledDropdown>
+        <HeaderDropdown item={item} key={index} />
       )
     } else {
       return (

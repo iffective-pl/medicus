@@ -1,11 +1,19 @@
 import {Col, Container, Nav, NavItem, NavLink, Row} from "reactstrap";
 
-import AppRoutes from "../AppRoutes";
+import {useEffect, useState} from "react";
 
 export default function Footer() {
+  let [links, setLinks] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/Links")
+      .then(r => r.json())
+      .then(j => setLinks(j))
+  }, []);
+
   return (
     <span className="footer">
-      <section className='footer pt-5'>
+      <section className='footer p-5'>
         <Container className='text-center text-md-start'>
           <Row>
             <Col md="3" lg="4" xl="3" className='mx-auto mb-4'>
@@ -20,7 +28,7 @@ export default function Footer() {
             <Col md="2" lg="2" xl="2" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-3'>Mapa strony</h6>
               <Nav vertical>
-                {AppRoutes.map((item, index) => (
+                {links.map((item, index) => (
                   <NavItem key={index}>
                     <NavLink className="footer" href={item.href}>
                       {item.name}

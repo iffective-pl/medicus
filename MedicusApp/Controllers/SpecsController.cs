@@ -23,5 +23,11 @@ namespace MedicusApp.Controllers
         {
             return specServices.GetSpecs();
         }
+
+        [HttpGet("full")]
+        public IEnumerable<SpecDto> GetFullSpecs()
+        {
+            return specServices.GetFullSpecs();
+        }
     }
 }

@@ -38,3 +38,8 @@ div.icon {
     position: absolute;
     transform: translate(-50%, -50%);
 }
+
+a {
+    color: inherit !important;
+    text-decoration: inherit !important;
+}

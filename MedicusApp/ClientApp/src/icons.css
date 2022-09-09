@@ -75,7 +75,7 @@
     mask-image: url(icons/leg.svg);
 }
 
-.leg {
+.neurology {
     -webkit-mask-size: cover;
     -webkit-mask-image: url(icons/neurology.svg);
     mask-size: cover;

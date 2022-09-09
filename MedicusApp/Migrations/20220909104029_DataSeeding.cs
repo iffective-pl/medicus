@@ -82,7 +82,7 @@ namespace MedicusApp.Migrations
                     { 7, "stethoscope", "endocrinology", "Endokrynologia" },
                     { 8, "neurology", "neurology", "Neurologia" },
                     { 9, "allergies", "dermatology", "Dermatologia" },
-                    { 10, "echo", "echo", "ECHO" },
+                    { 10, "echo", "echo", "ECHO Serca" },
                     { 11, "xray", "usg", "USG" },
                     { 12, "blood_pressure", "holter", "Holter" }
                 });
