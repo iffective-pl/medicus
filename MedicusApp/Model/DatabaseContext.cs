@@ -1,5 +1,4 @@
-﻿using MedicusApp.Model.People;
-using MedicusApp.Models.Seeding;
+﻿using MedicusApp.Models.Seeding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
@@ -41,6 +40,14 @@ namespace MedicusApp.Models
                 )
                 .HasIndex(p => new { p.Name })
                 .IsUnique(true);
+
+            modelBuilder.Entity<Spec>()
+                .Property(s => s.Order)
+                .ValueGeneratedOnAdd();
+
+            modelBuilder.Entity<Spec>()
+                .Property(s => s.IsHeader)
+                .HasDefaultValue(false);
 
 
             modelBuilder.Entity<Spec>().HasData(seeds.SpecSeeds);

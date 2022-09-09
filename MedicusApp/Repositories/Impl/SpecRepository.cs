@@ -22,6 +22,7 @@ namespace MedicusApp.Repositories.Impl
                 Name = s.Name,
                 Href = s.Href,
                 ClassName = s.ClassName,
+                Order = s.Order,
                 IsHeader = s.IsHeader,
                 Doctors = s.Doctors.Select(d => new DoctorDto()
                 {

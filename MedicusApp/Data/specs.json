@@ -3,75 +3,96 @@
     "Id": 1,
     "Name": "Kardiologia",
     "Href": "cardiology",
-    "ClassName": "heart"
+    "ClassName": "heart",
+    "Order": 1,
+    "IsHeader": false
   },
   {
     "Id": 2,
     "Name": "Urologia",
     "Href": "urology",
-    "ClassName": "kidneys"
+    "ClassName": "kidneys",
+    "Order": 2,
+    "IsHeader": false
   },
   {
     "Id": 3,
     "Name": "Ortopedia",
     "Href": "ortopedy",
-    "ClassName": "leg"
+    "ClassName": "leg",
+    "Order": 3,
+    "IsHeader": false
   },
   {
     "Id": 4,
     "Name": "Ginekologia",
     "Href": "ginecology",
-    "ClassName": "pregnant"
+    "ClassName": "pregnant",
+    "Order": 4,
+    "IsHeader": false
   },
   {
     "Id": 5,
     "Name": "Internista",
     "Href": "internist",
-    "ClassName": "coughing"
+    "ClassName": "coughing",
+    "Order": 5,
+    "IsHeader": false
   },
   {
     "Id": 6,
     "Name": "Pediatria",
     "Href": "pediatrics",
-    "ClassName": "lactation"
+    "ClassName": "lactation",
+    "Order": 6,
+    "IsHeader": false
   },
   {
     "Id": 7,
     "Name": "Endokrynologia",
     "Href": "endocrinology",
-    "ClassName": "stethoscope"
+    "ClassName": "stethoscope",
+    "Order": 7,
+    "IsHeader": false
   },
   {
     "Id": 8,
     "Name": "Neurologia",
     "Href": "neurology",
-    "ClassName": "neurology"
+    "ClassName": "neurology",
+    "Order": 8,
+    "IsHeader": false
   },
   {
     "Id": 9,
     "Name": "Dermatologia",
     "Href": "dermatology",
-    "ClassName": "allergies"
+    "ClassName": "allergies",
+    "Order": 9,
+    "IsHeader": false
   },
   {
     "Id": 10,
     "Name": "ECHO",
     "Href": "echo",
-    "IsHeader": true,
-    "ClassName": "echo"
+    "ClassName": "echo",
+    "Order": 10,
+    "IsHeader": true
   },
   {
     "Id": 11,
     "Name": "USG",
     "Href": "usg",
-    "IsHeader": true,
-    "ClassName": "xray"
+    "ClassName": "xray",
+    "Order": 11,
+    "IsHeader": true
   },
   {
     "Id": 12,
     "Name": "Holter",
     "Href": "holter",
-    "IsHeader": true,
-    "ClassName": "blood_pressure"
+    "ClassName": "blood_pressure",
+    "Order": 12,
+    "IsHeader": true
   }
 ]
