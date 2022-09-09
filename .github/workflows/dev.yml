@@ -22,12 +22,12 @@ jobs:
       - name: Restart containers
         run: docker compose up -d --remove-orphans
       
-      - if: ${{inputs.run_migration}} == 'true'
+      - if: ${{inputs.run_migration}} == 'Yes'
         name: Update database
         run: |
             dotnet tool install --global dotnet-ef
             dotnet tool restore
-            dotnet ef database update
+            dotnet ef database update -p MedicusApp/MedicusApp.csproj
         env:
             ASPNETCORE_ENVIRONMENT: Production
       
