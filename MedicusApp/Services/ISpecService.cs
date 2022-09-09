@@ -1,9 +1,10 @@
 ﻿using MedicusApp.Models;
+using MedicusApp.Models.Dto;
 
 namespace MedicusApp.Services
 {
     public interface ISpecService
     {
-        public List<Spec> GetSpecs();
+        public IEnumerable<SpecDto> GetSpecs();
     }
 }

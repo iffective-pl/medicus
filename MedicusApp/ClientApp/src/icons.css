@@ -1,3 +1,17 @@
+.allergies {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/allergies.svg);
+    mask-size: cover;
+    mask-image: url(icons/allergies.svg);
+}
+
+.blood_pressure {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/blood_pressure.svg);
+    mask-size: cover;
+    mask-image: url(icons/blood_pressure.svg);
+}
+
 .cervical_cancer {
     -webkit-mask-size: cover;
     -webkit-mask-image: url(icons/cervical_cancer.svg);
@@ -33,6 +47,13 @@
     mask-image: url(icons/heart.svg);
 }
 
+.echo {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/heart_cardiogram.svg);
+    mask-size: cover;
+    mask-image: url(icons/heart_cardiogram.svg);
+}
+
 .kidneys {
     -webkit-mask-size: cover;
     -webkit-mask-image: url(icons/kidneys.svg);
@@ -52,6 +73,13 @@
     -webkit-mask-image: url(icons/leg.svg);
     mask-size: cover;
     mask-image: url(icons/leg.svg);
+}
+
+.leg {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/neurology.svg);
+    mask-size: cover;
+    mask-image: url(icons/neurology.svg);
 }
 
 .pregnant {
@@ -80,4 +108,11 @@
     -webkit-mask-image: url(icons/wheelchair_alt.svg);
     mask-size: cover;
     mask-image: url(icons/wheelchair_alt.svg);
+}
+
+.xray {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/xray.svg);
+    mask-size: cover;
+    mask-image: url(icons/xray.svg);
 }

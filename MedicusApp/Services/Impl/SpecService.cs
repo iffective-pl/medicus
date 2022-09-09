@@ -1,4 +1,5 @@
 ﻿using MedicusApp.Models;
+using MedicusApp.Models.Dto;
 using MedicusApp.Repositories;
 
 namespace MedicusApp.Services.Impl
@@ -12,7 +13,7 @@ namespace MedicusApp.Services.Impl
             this.specRepository = specRepository;
         }
 
-        public List<Spec> GetSpecs()
+        public IEnumerable<SpecDto> GetSpecs()
         {
             return specRepository.GetSpecs();
         }

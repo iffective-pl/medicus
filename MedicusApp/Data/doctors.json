@@ -1,0 +1,79 @@
+[
+  {
+    "Id": 1,
+    "Title": "Dr n. med.",
+    "FirstName": "Wiesław",
+    "LastName": "Nowakowski",
+    "City": "Włocławek"
+  },
+  {
+    "Id": 2,
+    "Title": "Dr n. med.",
+    "FirstName": "Irena",
+    "LastName": "Nowakowska",
+    "City": "Włocławek"
+  },
+  {
+    "Id": 3,
+    "Title": "Prof. dr hab. med.",
+    "FirstName": "Dorota",
+    "LastName": "Nowakowska",
+    "City": "Łódź"
+  },
+  {
+    "Id": 4,
+    "Title": "Lek. med.",
+    "FirstName": "Zbigniew",
+    "LastName": "Placek",
+    "City": "Włocławek"
+  },
+  {
+    "Id": 5,
+    "Title": "Prof. dr hab. med.",
+    "FirstName": "Ewa",
+    "LastName": "Sewerynek",
+    "City": "Łódź"
+  },
+  {
+    "Id": 6,
+    "Title": "Dr n. med.",
+    "FirstName": "Tomasz",
+    "LastName": "Kmieć",
+    "City": "Warszawa"
+  },
+  {
+    "Id": 7,
+    "Title": "Dr n. med.",
+    "FirstName": "Marek",
+    "LastName": "Wrona",
+    "City": "Łódź"
+  },
+  {
+    "Id": 8,
+    "Title": "Lek. med.",
+    "FirstName": "Janina",
+    "LastName": "Wielicka",
+    "City": "Włocławek"
+  },
+  {
+    "Id": 9,
+    "Title": "Lek. med.",
+    "FirstName": "Bogdan",
+    "LastName": "Wojtecki",
+    "City": "Włocławek"
+  },
+  {
+    "Id": 10,
+    "Title": "Lek. med.",
+    "FirstName": "Leszek",
+    "LastName": "Dura",
+    "City": "Włocławek"
+  },
+  {
+    "Id": 11,
+    "Title": "Lek. med.",
+    "FirstName": "Zbyszek",
+    "LastName": "Ruszkowski",
+    "City": "Włocławek"
+  }
+]

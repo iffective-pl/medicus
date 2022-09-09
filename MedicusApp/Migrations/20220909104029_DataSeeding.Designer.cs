@@ -2,6 +2,7 @@
 using MedicusApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MedicusApp.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220909104029_DataSeeding")]
+    partial class DataSeeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -258,20 +260,9 @@ namespace MedicusApp.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsHeader")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false);
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int>("Order")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Order"));
 
                     b.HasKey("Id");
 
@@ -286,108 +277,84 @@ namespace MedicusApp.Migrations
                             Id = 1,
                             ClassName = "heart",
                             Href = "cardiology",
-                            IsHeader = false,
-                            Name = "Kardiologia",
-                            Order = 1
+                            Name = "Kardiologia"
                         },
                         new
                         {
                             Id = 2,
                             ClassName = "kidneys",
                             Href = "urology",
-                            IsHeader = false,
-                            Name = "Urologia",
-                            Order = 2
+                            Name = "Urologia"
                         },
                         new
                         {
                             Id = 3,
                             ClassName = "leg",
                             Href = "ortopedy",
-                            IsHeader = false,
-                            Name = "Ortopedia",
-                            Order = 3
+                            Name = "Ortopedia"
                         },
                         new
                         {
                             Id = 4,
                             ClassName = "pregnant",
                             Href = "ginecology",
-                            IsHeader = false,
-                            Name = "Ginekologia",
-                            Order = 4
+                            Name = "Ginekologia"
                         },
                         new
                         {
                             Id = 5,
                             ClassName = "coughing",
                             Href = "internist",
-                            IsHeader = false,
-                            Name = "Internista",
-                            Order = 5
+                            Name = "Internista"
                         },
                         new
                         {
                             Id = 6,
                             ClassName = "lactation",
                             Href = "pediatrics",
-                            IsHeader = false,
-                            Name = "Pediatria",
-                            Order = 6
+                            Name = "Pediatria"
                         },
                         new
                         {
                             Id = 7,
                             ClassName = "stethoscope",
                             Href = "endocrinology",
-                            IsHeader = false,
-                            Name = "Endokrynologia",
-                            Order = 7
+                            Name = "Endokrynologia"
                         },
                         new
                         {
                             Id = 8,
                             ClassName = "neurology",
                             Href = "neurology",
-                            IsHeader = false,
-                            Name = "Neurologia",
-                            Order = 8
+                            Name = "Neurologia"
                         },
                         new
                         {
                             Id = 9,
                             ClassName = "allergies",
                             Href = "dermatology",
-                            IsHeader = false,
-                            Name = "Dermatologia",
-                            Order = 9
+                            Name = "Dermatologia"
                         },
                         new
                         {
                             Id = 10,
                             ClassName = "echo",
                             Href = "echo",
-                            IsHeader = true,
-                            Name = "ECHO",
-                            Order = 10
+                            Name = "ECHO"
                         },
                         new
                         {
                             Id = 11,
                             ClassName = "xray",
                             Href = "usg",
-                            IsHeader = true,
-                            Name = "USG",
-                            Order = 11
+                            Name = "USG"
                         },
                         new
                         {
                             Id = 12,
                             ClassName = "blood_pressure",
                             Href = "holter",
-                            IsHeader = true,
-                            Name = "Holter",
-                            Order = 12
+                            Name = "Holter"
                         });
                 });
 
