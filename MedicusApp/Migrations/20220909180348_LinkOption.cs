@@ -76,18 +76,18 @@ namespace MedicusApp.Migrations
                 columns: new[] { "Id", "Href", "LinkId", "Name", "Order" },
                 values: new object[,]
                 {
-                    { 1, "/cardiology", null, "Kardiologia", 1 },
-                    { 2, "/urology", null, "Urologia", 2 },
-                    { 3, "/orthopedy", null, "Ortopedia", 3 },
-                    { 4, "/ginecology", null, "Ginekologia", 4 },
-                    { 5, "/ginecology", null, "Internista", 5 },
-                    { 6, "/pediatri", null, "Pediatria", 6 },
-                    { 7, "/endokrynology", null, "Endokrynologia", 7 },
-                    { 8, "/kids", null, "USG Dzieci", 1 },
-                    { 9, "/adults", null, "USG Dorosłych", 2 },
-                    { 10, "/pregnancy", null, "USG Ciąży", 3 },
-                    { 11, "/kids", null, "ECHO Dzieci", 1 },
-                    { 12, "/adults", null, "ECHO Dorosłych", 2 }
+                    { 1, "/cardiology", 4, "Kardiologia", 1 },
+                    { 2, "/urology", 4, "Urologia", 2 },
+                    { 3, "/orthopedy", 4, "Ortopedia", 3 },
+                    { 4, "/ginecology", 4, "Ginekologia", 4 },
+                    { 5, "/ginecology", 4, "Internista", 5 },
+                    { 6, "/pediatri", 4, "Pediatria", 6 },
+                    { 7, "/endokrynology", 4, "Endokrynologia", 7 },
+                    { 8, "/kids", 5, "USG Dzieci", 1 },
+                    { 9, "/adults", 5, "USG Dorosłych", 2 },
+                    { 10, "/pregnancy", 5, "USG Ciąży", 3 },
+                    { 11, "/kids", 6, "ECHO Dzieci", 1 },
+                    { 12, "/adults", 6, "ECHO Dorosłych", 2 }
                 });
 
             migrationBuilder.CreateIndex(

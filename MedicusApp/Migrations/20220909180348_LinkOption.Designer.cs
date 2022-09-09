@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MedicusApp.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220909175453_LinkOption")]
+    [Migration("20220909180348_LinkOption")]
     partial class LinkOption
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -260,6 +260,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 1,
                             Href = "/cardiology",
+                            LinkId = 4,
                             Name = "Kardiologia",
                             Order = 1
                         },
@@ -267,6 +268,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 2,
                             Href = "/urology",
+                            LinkId = 4,
                             Name = "Urologia",
                             Order = 2
                         },
@@ -274,6 +276,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 3,
                             Href = "/orthopedy",
+                            LinkId = 4,
                             Name = "Ortopedia",
                             Order = 3
                         },
@@ -281,6 +284,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 4,
                             Href = "/ginecology",
+                            LinkId = 4,
                             Name = "Ginekologia",
                             Order = 4
                         },
@@ -288,6 +292,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 5,
                             Href = "/ginecology",
+                            LinkId = 4,
                             Name = "Internista",
                             Order = 5
                         },
@@ -295,6 +300,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 6,
                             Href = "/pediatri",
+                            LinkId = 4,
                             Name = "Pediatria",
                             Order = 6
                         },
@@ -302,6 +308,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 7,
                             Href = "/endokrynology",
+                            LinkId = 4,
                             Name = "Endokrynologia",
                             Order = 7
                         },
@@ -309,6 +316,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 8,
                             Href = "/kids",
+                            LinkId = 5,
                             Name = "USG Dzieci",
                             Order = 1
                         },
@@ -316,6 +324,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 9,
                             Href = "/adults",
+                            LinkId = 5,
                             Name = "USG Dorosłych",
                             Order = 2
                         },
@@ -323,6 +332,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 10,
                             Href = "/pregnancy",
+                            LinkId = 5,
                             Name = "USG Ciąży",
                             Order = 3
                         },
@@ -330,6 +340,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 11,
                             Href = "/kids",
+                            LinkId = 6,
                             Name = "ECHO Dzieci",
                             Order = 1
                         },
@@ -337,6 +348,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 12,
                             Href = "/adults",
+                            LinkId = 6,
                             Name = "ECHO Dorosłych",
                             Order = 2
                         });

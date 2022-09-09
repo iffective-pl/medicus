@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {
   Collapse, DropdownItem, DropdownMenu,
   DropdownToggle,
@@ -15,9 +15,16 @@ import AppRoutes from "../AppRoutes";
 
 export default function Header() {
   let [collapse, setCollapse] = useState(false);
+  let [links, setLinks] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/Links")
+      .then(r => r.json())
+      .then(j => setLinks(j))
+  }, []);
 
   let headers = (item, index) => {
-    if(item.options) {
+    if(item.options.length > 0) {
       return (
         <UncontrolledDropdown nav inNavbar key={index}>
           <DropdownToggle className="header" nav caret>
@@ -49,7 +56,7 @@ export default function Header() {
       <NavbarToggler onClick={() => setCollapse(!collapse)} />
       <Collapse isOpen={collapse} navbar>
         <Nav className="me-auto" navbar>
-          {AppRoutes.filter(q => !q.index).map(headers)}
+          {links.filter(q => !q.isIndex).map(headers)}
         </Nav>
       </Collapse>
     </Navbar>

@@ -20,6 +20,7 @@ namespace MedicusApp.Repositories.Impl
                 Id = l.Id,
                 Name = l.Name,
                 Href = l.Href,
+                IsIndex = l.IsIndex,
                 Options = l.Options.Select(o => new OptionDto()
                 {
                     Id = o.Id,
