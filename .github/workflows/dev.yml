@@ -32,7 +32,7 @@ jobs:
 
       - if: ${{inputs.drop_database}} == 'Yes'
         name: Drop database
-        run: ~/.dotnet/tools/dotnet-ef database drop -p MedicusApp
+        run: ~/.dotnet/tools/dotnet-ef database drop -f -p MedicusApp
 
       - if: ${{inputs.run_migration}} == 'Yes'
         name: Update database
