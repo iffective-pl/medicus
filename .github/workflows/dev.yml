@@ -5,7 +5,7 @@ on:
     inputs:
       run_migration:
         description: 'Should Migration be run?'
-        required: true,
+        required: true
         default: 'true'
 
 jobs:
