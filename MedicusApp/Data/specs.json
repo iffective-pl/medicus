@@ -2,6 +2,73 @@
   {
     "Id": 1,
     "Name": "Kardiologia",
-    "Href": "cardio"
+    "Href": "cardiology",
+    "ClassName": "heart"
+  },
+  {
+    "Id": 2,
+    "Name": "Urologia",
+    "Href": "urology",
+    "ClassName": "kidneys"
+  },
+  {
+    "Id": 3,
+    "Name": "Ortopedia",
+    "Href": "ortopedy",
+    "ClassName": "leg"
+  },
+  {
+    "Id": 4,
+    "Name": "Ginekologia",
+    "Href": "ginecology",
+    "ClassName": "pregnant"
+  },
+  {
+    "Id": 5,
+    "Name": "Internista",
+    "Href": "internist",
+    "ClassName": "coughing"
+  },
+  {
+    "Id": 6,
+    "Name": "Pediatria",
+    "Href": "pediatrics",
+    "ClassName": "lactation"
+  },
+  {
+    "Id": 7,
+    "Name": "Endokrynologia",
+    "Href": "endocrinology",
+    "ClassName": "stethoscope"
+  },
+  {
+    "Id": 8,
+    "Name": "Neurologia",
+    "Href": "neurology",
+    "ClassName": "neurology"
+  },
+  {
+    "Id": 9,
+    "Name": "Dermatologia",
+    "Href": "dermatology",
+    "ClassName": "allergies"
+  },
+  {
+    "Id": 10,
+    "Name": "ECHO",
+    "Href": "echo",
+    "ClassName": "echo"
+  },
+  {
+    "Id": 11,
+    "Name": "USG",
+    "Href": "usg",
+    "ClassName": "xray"
+  },
+  {
+    "Id": 12,
+    "Name": "Holter",
+    "Href": "holter",
+    "ClassName": "blood_pressure"
   }
 ]

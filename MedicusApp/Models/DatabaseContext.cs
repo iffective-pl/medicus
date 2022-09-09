@@ -18,7 +18,10 @@ namespace MedicusApp.Models
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql(configuration.GetConnectionString("MedicusDatabase"));
+        {
+            optionsBuilder.UseNpgsql(configuration.GetConnectionString("MedicusDatabase"));
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

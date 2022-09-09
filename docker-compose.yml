@@ -1,7 +1,14 @@
 services:
+  sql:
+    image: postgres
+    restart: always
+    hostname: postgres
+    environment:
+     - POSTGRES_PASSWORD: example
   app:
     build:
       context: .
+    restart: always
     hostname: medicus
 networks:
   default:

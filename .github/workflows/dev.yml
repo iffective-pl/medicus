@@ -2,6 +2,11 @@ name: Deploy
 
 on:
   workflow_dispatch:
+    inputs:
+      run_migration:
+        description: 'Should Migration be run?'
+        required: true,
+        default: 'true'
 
 jobs:
   deploy:
@@ -9,6 +14,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      
+      - name: Update database
+        if: github.event.inputs.run_migration == 'true'
+        run: |
+            dotnet tool install --global dotnet-ef
+            dotnet tool restore
+            dotnet ef database update
+        env:
+            ASPNETCORE_ENVIRONMENT: Production
       
       - name: Build image
         run: docker compose build --no-cache

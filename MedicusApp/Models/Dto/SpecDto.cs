@@ -1,11 +1,11 @@
-﻿namespace MedicusApp.Models.Seeding
+﻿namespace MedicusApp.Models.Dto
 {
-    public class SpecSeeding
+    public class SpecDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Href { get; set; }
         public string ClassName { get; set; }
-        public List<Doctor> Doctors { get; set; }
+        public IEnumerable<DoctorDto> Doctors { get; set; }
     }
 }

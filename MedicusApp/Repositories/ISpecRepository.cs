@@ -1,9 +1,9 @@
-﻿using MedicusApp.Models;
+﻿using MedicusApp.Models.Dto;
 
 namespace MedicusApp.Repositories
 {
     public interface ISpecRepository
     {
-        public List<Spec> GetSpecs();
+        public IEnumerable<SpecDto> GetSpecs();
     }
 }

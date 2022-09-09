@@ -1,4 +1,5 @@
 ﻿using MedicusApp.Models;
+using MedicusApp.Models.Dto;
 using MedicusApp.Services;
 using MedicusApp.Services.Impl;
 using Microsoft.AspNetCore.Http;
@@ -18,7 +19,7 @@ namespace MedicusApp.Controllers
         }
 
         [HttpGet]
-        public List<Spec> GetSpecs()
+        public IEnumerable<SpecDto> GetSpecs()
         {
             return specServices.GetSpecs();
         }

@@ -1,11 +1,128 @@
 [
   {
     "Id": 1,
+    "DoctorId": 1,
     "Tuesday": "15:30 - 17.00",
     "Wednesday": "15:30 - 17.00",
     "Thursday": "15:30 - 17.00",
     "Friday": "15:30 - 17.00",
+    "SpecializationId": 1
+  },
+  {
+    "Id": 2,
+    "DoctorId": 2,
     "SpecializationId": 1,
-    "DoctorId": 1
+    "Monday": "15:00 - 17.00",
+    "Tuesday": "15:00 - 17.00",
+    "Wednesday": "15:00 - 17.00",
+    "Thursday": "15:00 - 17.00"
+  },
+  {
+    "Id": 3,
+    "DoctorId": 2,
+    "SpecializationId": 6,
+    "Monday": "15:00 - 17.00",
+    "Tuesday": "15:00 - 17.00",
+    "Wednesday": "15:00 - 17.00",
+    "Thursday": "15:00 - 17.00"
+  },
+  {
+    "Id": 4,
+    "DoctorId": 3,
+    "SpecializationId": 4,
+    "Friday": "15:00 - 17.00",
+    "Saturday": "15:00 - 17.00"
+  },
+  {
+    "Id": 5,
+    "DoctorId": 4,
+    "SpecializationId": 4,
+    "Tuesday": "14:00 - 17.00",
+    "Wednesday": "14:00 - 17.00",
+    "Thursday": "14:00 - 17.00"
+  },
+  {
+    "Id": 6,
+    "DoctorId": 5,
+    "SpecializationId": 7,
+    "Saturday": "od 9:00 (raz w miesiącu)"
+  },
+  {
+    "Id": 7,
+    "DoctorId": 6,
+    "SpecializationId": 8,
+    "Saturday": "od 9:00 (raz w miesiącu)"
+  },
+  {
+    "Id": 8,
+    "DoctorId": 7,
+    "SpecializationId": 2,
+    "Saturday": "od 11:00 (raz w miesiącu)"
+  },
+  {
+    "Id": 9,
+    "DoctorId": 8,
+    "SpecializationId": 9,
+    "Tuesday": "15:30 - 17.00",
+    "Wednesday": "15:30 - 17.00",
+    "Thursday": "15:30 - 17.00"
+  },
+  {
+    "Id": 10,
+    "DoctorId": 9,
+    "SpecializationId": 3,
+    "Tuesday": "15:30 - 17.00",
+    "Wednesday": "15:30 - 17.00",
+    "Thursday": "15:30 - 17.00",
+    "Friday": "16:00 - 17:00"
+  },
+  {
+    "Id": 12,
+    "DoctorId": 2,
+    "SpecializationId": 10,
+    "Wednesday": "15:00 - 17.00"
+  },
+  {
+    "Id": 13,
+    "DoctorId": 10,
+    "SpecializationId": 10,
+    "Tuesday": "14:00 - 16.00"
+  },
+  {
+    "Id": 14,
+    "DoctorId": 11,
+    "SpecializationId": 11,
+    "Thursday": "15:00 - 16.30"
+  },
+  {
+    "Id": 15,
+    "DoctorId": 3,
+    "SpecializationId": 11,
+    "Friday": "12:00 - 18.00",
+    "Saturday": "12:00 - 18.00"
+  },
+  {
+    "Id": 16,
+    "DoctorId": 1,
+    "SpecializationId": 12,
+    "Tuesday": "15:30 - 17.00",
+    "Wednesday": "15:30 - 17.00",
+    "Thursday": "15:30 - 17.00",
+    "Friday": "15:30 - 17.00"
+  },
+  {
+    "Id": 17,
+    "DoctorId": 2,
+    "SpecializationId": 12,
+    "Monday": "15:00 - 17.00",
+    "Tuesday": "15:00 - 17.00",
+    "Wednesday": "15:00 - 17.00",
+    "Thursday": "15:00 - 17.00"
+  },
+  {
+    "Id": 18,
+    "DoctorId": 10,
+    "SpecializationId": 12,
+    "Tuesday": "14:00 - 16.00"
   }
 ]
