@@ -30,7 +30,7 @@ jobs:
       
       - if: ${{inputs.run_migration}} == 'Yes'
         name: Update database
-        run: dotnet ef database update -p MedicusApp/MedicusApp.csproj
+        run: dotnet ef database update -p MedicusApp
         env:
             ASPNETCORE_ENVIRONMENT: Production
       
