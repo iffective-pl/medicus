@@ -24,7 +24,7 @@ jobs:
 
       - if: ${{inputs.run_migration}} == 'Yes'
         name: Update database
-        run: ~/.dotnet/tools/dotnet-ef database update -p MedicusApp
+        run: ~/.dotnet/tools/dotnet-ef database update -p MedicusApp -c Release
         env:
             ASPNETCORE_ENVIRONMENT: Production
       
