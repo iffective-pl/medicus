@@ -20,6 +20,7 @@ namespace MedicusApp.Repositories.Impl
             {
                 Id = s.Id,
                 Name = s.Name,
+                Href = s.Href,
                 ClassName = s.ClassName,
                 Doctors = s.Doctors.Select(d => new DoctorDto()
                 {

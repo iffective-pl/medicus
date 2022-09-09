@@ -1,4 +1,6 @@
-﻿namespace MedicusApp.Models
+﻿using MedicusApp.Model.People;
+
+namespace MedicusApp.Models
 {
     public class Spec
     {

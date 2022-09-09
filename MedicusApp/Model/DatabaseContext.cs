@@ -1,4 +1,5 @@
-﻿using MedicusApp.Models.Seeding;
+﻿using MedicusApp.Model.People;
+using MedicusApp.Models.Seeding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
