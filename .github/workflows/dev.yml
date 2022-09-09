@@ -21,16 +21,10 @@ jobs:
       
       - name: Restart containers
         run: docker compose up -d --remove-orphans
-      
-      - name: Install Entity Framework Core 6
-        run: | 
-            dotnet tool install --global dotnet-ef
-            dotnet tool restore
-        continue-on-error: true
-      
+
       - if: ${{inputs.run_migration}} == 'Yes'
         name: Update database
-        run: dotnet ef database update -p MedicusApp
+        run: ~/.dotnet/tools/dotnet-ef -p MedicusApp
         env:
             ASPNETCORE_ENVIRONMENT: Production
       
