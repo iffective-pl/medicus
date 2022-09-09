@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
-      - name: Update database
-        if: github.event.inputs.run_migration == 'true'
+      - if: inputs.run_migration == 'true'
+        name: Update database
         run: |
             dotnet tool install --global dotnet-ef
             dotnet tool restore
