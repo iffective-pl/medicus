@@ -12,6 +12,8 @@ services:
       context: .
     restart: always
     hostname: medicus
+    depends_on:
+      - sql
 networks:
   default:
     name: application
