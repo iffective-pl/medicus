@@ -14,7 +14,7 @@ on:
       run_migration:
         description: 'Run Migration?'
         required: true
-        default: 'Yes' 
+        default: 'No' 
         type: choice
         options:
         - 'No'
