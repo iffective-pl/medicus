@@ -15,7 +15,7 @@ export default function HomeAdvantages() {
             <Col className="advantages right hover fit">
               <a href="docs" className="advantages">
                 <div>
-                  <div className="heart icon" />
+                  <i className="heart icon advantages" />
                   <div className="h5 p-1">Wysokiej klasy specjaliści</div>
                 </div>
               </a>
@@ -23,7 +23,7 @@ export default function HomeAdvantages() {
             <Col className="advantages right hover fit">
               <a href="about" className="advantages">
                 <div>
-                  <div className="ventilator icon" />
+                  <i className="ventilator icon advantages" />
                   <div className="h5 p-1">Nowoczesny sprzęt do ultrasonografii i echokardiografii</div>
                 </div>
               </a>
@@ -33,7 +33,7 @@ export default function HomeAdvantages() {
             <Col className="advantages right hover fit">
               <a href="contact" className="advantages">
                 <div>
-                  <div className="wheelchair icon" />
+                  <i className="wheelchair icon advantages" />
                   <div className="h5 p-1">Łatwy dostęp</div>
                 </div>
               </a>
@@ -41,7 +41,7 @@ export default function HomeAdvantages() {
             <Col className="advantages right hover fit">
               <a href="contact" className="advantages">
                 <div>
-                  <div className="city icon" />
+                  <i className="city icon advantages" />
                   <div className="h5 p-1">Komfortowe nowe wnętrza w idealnej lokalizacji</div>
                 </div>
               </a>

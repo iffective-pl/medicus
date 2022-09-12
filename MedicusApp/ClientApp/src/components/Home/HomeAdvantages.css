@@ -29,11 +29,9 @@ img.main {
     position: absolute;
 }
 
-div.icon {
-    width: 50%;
+.icon.advantages {
+    height: 20vh !important;
     margin-top: 10%;
-    aspect-ratio: 1 / 1;
-    display: inline-block;
 }
 
 .very-center {

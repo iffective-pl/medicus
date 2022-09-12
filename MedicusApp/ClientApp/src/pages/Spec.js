@@ -17,7 +17,7 @@ export default function Spec(props) {
 
   if(data) {
     return (
-      <Container>
+      <Container className="title">
         <h2 className="text-center">{data.name}</h2>
         <Line center/>
         <DocsDoctors doctors={data.doctors}/>
