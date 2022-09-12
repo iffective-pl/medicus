@@ -3,6 +3,7 @@ using System;
 using MedicusApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MedicusApp.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220912155857_Descriptions")]
+    partial class Descriptions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -297,7 +299,7 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 6,
-                            Href = "/pediatrics",
+                            Href = "/pediatri",
                             LinkId = 4,
                             Name = "Pediatria",
                             Order = 6
@@ -364,9 +366,6 @@ namespace MedicusApp.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Order")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("SpecId")
                         .HasColumnType("integer");
 
@@ -389,7 +388,6 @@ namespace MedicusApp.Migrations
                         {
                             Id = 1,
                             Image = "images/new/iStock-1395118113.jpg",
-                            Order = 0,
                             SpecId = 1,
                             Text = "Zachęcamy do skorzystania z konsultacji kardiologicznych. Otaczamy specjalistyczną opieką pacjentów ze schorzeniami układu krążenia. Naszym zadaniem jest trafna diagnoza oraz zaproponowanie skutecznych metod leczenia. Pomagamy w takich schorzeniach jak: nadciśnienie tętnicze, choroba niedokrwienna serca (choroba wieńcowa), z jej ostrymi powikłaniami np. zawałem serca. Wykonujemy specjalistyczne badania kardiologiczne. Wczesne wykrycie nieprawidłowości pozwala na wdrożenie odpowiedniego leczenia. Konsultacje kardiologiczne zalecamy w szczególności pacjentom, którzy przebyli operacje serca, mają wrodzone wady serca, zmagają się z nadciśnieniem tętniczym, zaburzeniami lipidowymi i zaburzeniami rytmu serca.",
                             Title = "Fachowe konsultacje kardiologiczne"
@@ -627,7 +625,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 3,
                             ClassName = "leg",
-                            Href = "orthopedy",
+                            Href = "ortopedy",
                             Name = "Ortopedia",
                             Order = 3
                         },

@@ -1,4 +1,4 @@
-﻿using MedicusApp.Model.Dto;
+﻿using MedicusApp.Models.Dto;
 
 namespace MedicusApp.Services
 {

@@ -18,7 +18,7 @@
   {
     "Id": 3,
     "Name": "Ortopedia",
-    "Href": "ortopedy",
+    "Href": "orthopedy",
     "ClassName": "leg",
     "Order": 3,
     "IsHeader": false

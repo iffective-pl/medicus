@@ -1,6 +1,6 @@
-﻿namespace MedicusApp.Models.Seeding
+﻿namespace MedicusApp.Models.People
 {
-    public class WorkingHoursSeed
+    public class WorkingHours
     {
         public int Id { get; set; }
         public string? Monday { get; set; }
@@ -10,8 +10,7 @@
         public string? Friday { get; set; }
         public string? Saturday { get; set; }
         public string? Sunday { get; set; }
-
-        public int DoctorId { get; set; }
-        public int SpecializationId {get; set;}
+        public Doctor Doctor { get; set; }
+        public Spec Specialization { get; set; }
     }
 }

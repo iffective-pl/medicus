@@ -5,6 +5,6 @@ namespace MedicusApp.Repositories
     public interface ISpecRepository
     {
         public IEnumerable<SpecDto> GetSpecs();
-        public IEnumerable<SpecDto> GetFullSpecs();
+        public SpecDto? GetFullSpec(string type);
     }
 }

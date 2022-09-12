@@ -1,5 +1,5 @@
-﻿using MedicusApp.Model.Dto;
-using MedicusApp.Model.Links;
+﻿using MedicusApp.Models.Dto;
+using MedicusApp.Models.Links;
 using MedicusApp.Repositories;
 
 namespace MedicusApp.Services.Impl

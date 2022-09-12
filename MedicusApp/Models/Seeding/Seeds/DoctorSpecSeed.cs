@@ -1,4 +1,4 @@
-﻿namespace MedicusApp.Models.Seeding
+﻿namespace MedicusApp.Models.Seeding.Seeds
 {
     public class DoctorSpecSeed
     {

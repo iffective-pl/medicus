@@ -16,7 +16,7 @@ export default function DocsSpecs() {
   return(
     <Container fluid="sm" className="text-center pt-5 pb-5">
       <div className="h2 title m-3">Nasi lekarze specjalizują się w</div>
-      <Line/>
+      <Line center />
       {specs.map((item, index) => (
         <a href={"docs/" + item.href} key={index}>
           <div className="d-inline-block spec m-2 p-3 shadow">

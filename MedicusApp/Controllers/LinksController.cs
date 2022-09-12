@@ -1,6 +1,5 @@
-﻿using MedicusApp.Model.Dto;
+﻿using MedicusApp.Models.Dto;
 using MedicusApp.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicusApp.Controllers

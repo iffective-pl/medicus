@@ -6,12 +6,12 @@ hr {
 }
 
 .nav-link.header {
-    color: #241474;
+    color: #241474 !important;
     font-size: 1.25rem;
 }
 
 .nav-link.header:hover {
-    color: #cc241c;
+    color: #cc241c !important;
 }
 
 .active.header {

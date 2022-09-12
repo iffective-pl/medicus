@@ -4,11 +4,14 @@ import {useEffect, useState} from "react";
 
 export default function Footer() {
   let [links, setLinks] = useState([]);
-
+  let [specs, setSpecs] = useState([]);
   useEffect(() => {
     fetch("/api/Links")
       .then(r => r.json())
       .then(j => setLinks(j))
+    fetch("/api/Specs")
+      .then(r => r.json())
+      .then(j => setSpecs(j))
   }, []);
 
   return (
@@ -39,28 +42,15 @@ export default function Footer() {
             </Col>
 
             <Col md="3" lg="2" xl="2" className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-3'>Useful links</h6>
+              <h6 className='text-uppercase fw-bold mb-3'>Lekarze specjaliści</h6>
               <Nav vertical>
-                <NavItem>
-                  <NavLink className="footer" href="#">
-                    Pricing
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="footer" href="#">
-                    Settings
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="footer" href="#">
-                    Orders
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="footer" href="#">
-                    Help
-                  </NavLink>
-                </NavItem>
+                {specs.map((item, index) => (
+                  <NavItem key={index}>
+                    <NavLink className="footer" href={"docs/" + item.href}>
+                      {item.name}
+                    </NavLink>
+                  </NavItem>
+                ))}
               </Nav>
             </Col>
 

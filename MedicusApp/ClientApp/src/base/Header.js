@@ -9,10 +9,10 @@ import {
 } from "reactstrap";
 
 import "./Header.css";
-import HeaderDropdown from "../components/HeaderDropdown";
+import HeaderDropdown from "../components/Header/HeaderDropdown";
 
 export default function Header() {
-  let [collapse, setCollapse] = useState(false);
+  let [isOpen, setIsOpen] = useState(false);
   let [links, setLinks] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Header() {
   let headers = (item, index) => {
     if(item.options.length > 0) {
       return (
-        <HeaderDropdown item={item} key={index} />
+        <HeaderDropdown item={item} key={index} isOpen={isOpen} />
       )
     } else {
       return (
@@ -42,8 +42,8 @@ export default function Header() {
       <NavbarBrand href="/">
         <img src="images/logo-oryg-medicus-cropped.png" alt="logo" className="logo" />
       </NavbarBrand>
-      <NavbarToggler onClick={() => setCollapse(!collapse)} />
-      <Collapse isOpen={collapse} navbar>
+      <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
+      <Collapse isOpen={isOpen} navbar>
         <Nav className="me-auto" navbar>
           {links.filter(q => !q.isIndex).map(headers)}
         </Nav>

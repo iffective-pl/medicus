@@ -6,6 +6,6 @@ namespace MedicusApp.Services
     public interface ISpecService
     {
         public IEnumerable<SpecDto> GetSpecs();
-        public IEnumerable<SpecDto> GetFullSpecs();
+        public SpecDto? GetFullSpec(string type);
     }
 }

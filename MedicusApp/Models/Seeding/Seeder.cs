@@ -1,12 +1,11 @@
-﻿using MedicusApp.Model.Seeding;
-using System.Reflection.PortableExecutable;
+﻿using MedicusApp.Models.Seeding.Seeds;
 using System.Text.Json;
 
 namespace MedicusApp.Models.Seeding
 {
-    public class Seeds
+    public class Seeder
     {
-        public Seeds()
+        public Seeder()
         {
             using (Stream reader = File.OpenRead("Data/doctors.json"))
                 this.DoctorSeeds = JsonSerializer.Deserialize<List<DoctorSeed>>(reader) ?? new List<DoctorSeed>();
@@ -20,6 +19,10 @@ namespace MedicusApp.Models.Seeding
                 this.LinkSeeds = JsonSerializer.Deserialize<List<LinkSeed>>(reader) ?? new List<LinkSeed>();
             using(Stream reader = File.OpenRead("Data/options.json"))
                 this.OptionSeeds = JsonSerializer.Deserialize<List<OptionSeed>>(reader) ?? new List<OptionSeed>();
+            using (Stream reader = File.OpenRead("Data/prices.json"))
+                this.PriceSeeds = JsonSerializer.Deserialize<List<PriceSeed>>(reader) ?? new List<PriceSeed>();
+            using (Stream reader = File.OpenRead("Data/descriptions.json"))
+                this.DescriptionSeeds = JsonSerializer.Deserialize<List<DescriptionSeed>>(reader) ?? new List<DescriptionSeed>();
         }
 
         public List<DoctorSeed> DoctorSeeds { get; private set; }
@@ -28,5 +31,7 @@ namespace MedicusApp.Models.Seeding
         public List<WorkingHoursSeed> WorkingHoursSeeds { get; private set; }
         public List<LinkSeed> LinkSeeds { get; private set; }
         public List<OptionSeed> OptionSeeds { get; private set; }
+        public List<PriceSeed> PriceSeeds { get; private set; }
+        public List<DescriptionSeed> DescriptionSeeds { get; private set; }
     }
 }

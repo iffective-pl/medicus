@@ -1,0 +1,16 @@
+.line {
+    width: 5vw;
+    overflow: hidden;
+}
+
+.line.mid {
+    width: 3vw;
+}
+
+.line.small {
+    width: 2.5vw;
+}
+
+.line-container {
+    width: 100%;
+}

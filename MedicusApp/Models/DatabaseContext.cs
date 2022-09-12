@@ -1,18 +1,16 @@
-﻿using MedicusApp.Model.Links;
+﻿using MedicusApp.Models.Links;
+using MedicusApp.Models.People;
 using MedicusApp.Models.Seeding;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using System;
-using System.Numerics;
 
 namespace MedicusApp.Models
 {
     public class DatabaseContext : DbContext
     {
-        private readonly Seeds seeds;
+        private readonly Seeder seeds;
         protected readonly IConfiguration configuration;
 
-        public DatabaseContext(Seeds seeds, IConfiguration configuration)
+        public DatabaseContext(Seeder seeds, IConfiguration configuration)
         {
             this.seeds = seeds;
             this.configuration = configuration;
@@ -58,19 +56,20 @@ namespace MedicusApp.Models
 
 
             modelBuilder.Entity<Spec>().HasData(seeds.SpecSeeds);
-
+            modelBuilder.Entity<Price>().HasData(seeds.PriceSeeds);
+            modelBuilder.Entity<Description>().HasData(seeds.DescriptionSeeds);
             modelBuilder.Entity<Doctor>().HasData(seeds.DoctorSeeds);
-
             modelBuilder.Entity<WorkingHours>().HasData(seeds.WorkingHoursSeeds);
 
             modelBuilder.Entity<Link>().HasData(seeds.LinkSeeds);
-
             modelBuilder.Entity<Option>().HasData(seeds.OptionSeeds);
         }
 
+        public DbSet<Spec> Specializations { get; set; }
+        public DbSet<Price> Prices { get; set; }
+        public DbSet<Description> Descriptions { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<WorkingHours> WorkHours { get; set; }
-        public DbSet<Spec> Specializations { get; set; }
 
         public DbSet<Link> Links { get; set; }
         public DbSet<Option> Options { get; set; }

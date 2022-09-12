@@ -1,12 +1,12 @@
-﻿namespace MedicusApp.Models.Dto
+﻿namespace MedicusApp.Models.Seeding.Seeds
 {
-    public class DoctorDto
+    public class DoctorSeed
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string City { get; set; }
-        public IEnumerable<WorkingHoursDto> WorkingHours { get; set; }
+        public string Image { get; set; }
     }
 }

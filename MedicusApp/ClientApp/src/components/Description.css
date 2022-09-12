@@ -1,0 +1,20 @@
+.desc-container {
+    height: 35vh;
+}
+
+.desc-image {
+    height: 100%;
+}
+
+.desc-image-container {
+    width: 50%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+}
+
+.desc-text {
+    width: 50%;
+    height: 100%;
+    float: left;
+}

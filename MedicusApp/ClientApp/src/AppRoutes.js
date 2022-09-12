@@ -3,9 +3,6 @@ import About from "./pages/About";
 import Docs from "./pages/Docs";
 import Contact from "./pages/Contact";
 import Register from "./pages/Register";
-import USG from "./pages/USG";
-import Holter from "./pages/Holter";
-import ECHO from "./pages/ECHO";
 
 const AppRoutes = [
   {
@@ -34,30 +31,6 @@ const AppRoutes = [
       }
     ],
     element: <Docs />
-  },
-  {
-    path: "usg",
-    optional: [
-      {
-        path: ":type",
-        element: <Docs />
-      }
-    ],
-    element: <USG />
-  },
-  {
-    path: "echo",
-    optional: [
-      {
-        path: ":type",
-        element: <Docs />
-      }
-    ],
-    element: <ECHO />
-  },
-  {
-    path: "holter",
-    element: <Holter />
   },
   {
     path: "contact",

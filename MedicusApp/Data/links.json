@@ -27,19 +27,19 @@
   {
     "Id": 5,
     "Name": "USG",
-    "Href": "usg",
+    "Href": "docs/usg",
     "Order": 5
   },
   {
     "Id": 6,
     "Name": "ECHO Serca",
-    "Href": "echo",
+    "Href": "docs/echo",
     "Order": 6
   },
   {
     "Id": 7,
     "Name": "Holter",
-    "Href": "holter",
+    "Href": "docs/holter",
     "Order": 7
   },
   {

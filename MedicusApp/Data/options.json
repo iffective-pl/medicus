@@ -38,7 +38,7 @@
     "Id": 6,
     "LinkId": 4,
     "Name": "Pediatria",
-    "Href": "/pediatri",
+    "Href": "/pediatrics",
     "Order": 6
   },
   {
@@ -52,35 +52,35 @@
     "Id": 8,
     "LinkId": 5,
     "Name": "USG Dzieci",
-    "Href": "/kids",
+    "Href": "#kids",
     "Order": 1
   },
   {
     "Id": 9,
     "LinkId": 5,
     "Name": "USG Dorosłych",
-    "Href": "/adults",
+    "Href": "#adults",
     "Order": 2
   },
   {
     "Id": 10,
     "LinkId": 5,
     "Name": "USG Ciąży",
-    "Href": "/pregnancy",
+    "Href": "#pregnancy",
     "Order": 3
   },
   {
     "Id": 11,
     "LinkId": 6,
     "Name": "ECHO Dzieci",
-    "Href": "/kids",
+    "Href": "#kids",
     "Order": 1
   },
   {
     "Id": 12,
     "LinkId": 6,
     "Name": "ECHO Dorosłych",
-    "Href": "/adults",
+    "Href": "#adults",
     "Order": 2
   }
 ]

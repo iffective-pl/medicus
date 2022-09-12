@@ -3,6 +3,7 @@ using System;
 using MedicusApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MedicusApp.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220912090012_Pricing")]
+    partial class Pricing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -124,7 +126,7 @@ namespace MedicusApp.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.Links.Link", b =>
+            modelBuilder.Entity("MedicusApp.Model.Links.Link", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -191,7 +193,7 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 5,
-                            Href = "docs/usg",
+                            Href = "usg",
                             IsIndex = false,
                             Name = "USG",
                             Order = 5
@@ -199,7 +201,7 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 6,
-                            Href = "docs/echo",
+                            Href = "echo",
                             IsIndex = false,
                             Name = "ECHO Serca",
                             Order = 6
@@ -207,7 +209,7 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 7,
-                            Href = "docs/holter",
+                            Href = "holter",
                             IsIndex = false,
                             Name = "Holter",
                             Order = 7
@@ -222,7 +224,7 @@ namespace MedicusApp.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.Links.Option", b =>
+            modelBuilder.Entity("MedicusApp.Model.Links.Option", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -297,7 +299,7 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 6,
-                            Href = "/pediatrics",
+                            Href = "/pediatri",
                             LinkId = 4,
                             Name = "Pediatria",
                             Order = 6
@@ -313,7 +315,7 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 8,
-                            Href = "#kids",
+                            Href = "/kids",
                             LinkId = 5,
                             Name = "USG Dzieci",
                             Order = 1
@@ -321,7 +323,7 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 9,
-                            Href = "#adults",
+                            Href = "/adults",
                             LinkId = 5,
                             Name = "USG Dorosłych",
                             Order = 2
@@ -329,7 +331,7 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 10,
-                            Href = "#pregnancy",
+                            Href = "/pregnancy",
                             LinkId = 5,
                             Name = "USG Ciąży",
                             Order = 3
@@ -337,7 +339,7 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 11,
-                            Href = "#kids",
+                            Href = "/kids",
                             LinkId = 6,
                             Name = "ECHO Dzieci",
                             Order = 1
@@ -345,14 +347,14 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 12,
-                            Href = "#adults",
+                            Href = "/adults",
                             LinkId = 6,
                             Name = "ECHO Dorosłych",
                             Order = 2
                         });
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.Description", b =>
+            modelBuilder.Entity("MedicusApp.Model.People.Price", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -360,43 +362,54 @@ namespace MedicusApp.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Order")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("SpecId")
                         .HasColumnType("integer");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<double>("Value")
+                        .HasColumnType("double precision");
+
                     b.HasKey("Id");
 
                     b.HasIndex("SpecId");
 
-                    b.ToTable("Descriptions");
+                    b.ToTable("Prices");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Image = "images/new/iStock-1395118113.jpg",
-                            Order = 0,
                             SpecId = 1,
-                            Text = "Zachęcamy do skorzystania z konsultacji kardiologicznych. Otaczamy specjalistyczną opieką pacjentów ze schorzeniami układu krążenia. Naszym zadaniem jest trafna diagnoza oraz zaproponowanie skutecznych metod leczenia. Pomagamy w takich schorzeniach jak: nadciśnienie tętnicze, choroba niedokrwienna serca (choroba wieńcowa), z jej ostrymi powikłaniami np. zawałem serca. Wykonujemy specjalistyczne badania kardiologiczne. Wczesne wykrycie nieprawidłowości pozwala na wdrożenie odpowiedniego leczenia. Konsultacje kardiologiczne zalecamy w szczególności pacjentom, którzy przebyli operacje serca, mają wrodzone wady serca, zmagają się z nadciśnieniem tętniczym, zaburzeniami lipidowymi i zaburzeniami rytmu serca.",
-                            Title = "Fachowe konsultacje kardiologiczne"
+                            Title = "Konsultacja",
+                            Value = 150.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            SpecId = 1,
+                            Title = "Konsultacja + ECHO serca",
+                            Value = 220.0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            SpecId = 1,
+                            Title = "Konsultacja + ECHO serca + EKG",
+                            Value = 250.0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            SpecId = 1,
+                            Title = "ECHO Serca",
+                            Value = 170.0
                         });
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.Doctor", b =>
+            modelBuilder.Entity("MedicusApp.Models.Doctor", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -410,9 +423,6 @@ namespace MedicusApp.Migrations
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Image")
                         .HasColumnType("text");
 
                     b.Property<string>("LastName")
@@ -518,62 +528,7 @@ namespace MedicusApp.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.Price", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("SpecId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<double>("Value")
-                        .HasColumnType("double precision");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SpecId");
-
-                    b.ToTable("Prices");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            SpecId = 1,
-                            Title = "Konsultacja",
-                            Value = 150.0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            SpecId = 1,
-                            Title = "Konsultacja + ECHO serca",
-                            Value = 220.0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            SpecId = 1,
-                            Title = "Konsultacja + ECHO serca + EKG",
-                            Value = 250.0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            SpecId = 1,
-                            Title = "ECHO Serca",
-                            Value = 170.0
-                        });
-                });
-
-            modelBuilder.Entity("MedicusApp.Models.People.Spec", b =>
+            modelBuilder.Entity("MedicusApp.Models.Spec", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -627,7 +582,7 @@ namespace MedicusApp.Migrations
                         {
                             Id = 3,
                             ClassName = "leg",
-                            Href = "orthopedy",
+                            Href = "ortopedy",
                             Name = "Ortopedia",
                             Order = 3
                         },
@@ -705,7 +660,7 @@ namespace MedicusApp.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.WorkingHours", b =>
+            modelBuilder.Entity("MedicusApp.Models.WorkingHours", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -896,49 +851,42 @@ namespace MedicusApp.Migrations
 
             modelBuilder.Entity("DoctorSpec", b =>
                 {
-                    b.HasOne("MedicusApp.Models.People.Doctor", null)
+                    b.HasOne("MedicusApp.Models.Doctor", null)
                         .WithMany()
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MedicusApp.Models.People.Spec", null)
+                    b.HasOne("MedicusApp.Models.Spec", null)
                         .WithMany()
                         .HasForeignKey("SpecId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.Links.Option", b =>
+            modelBuilder.Entity("MedicusApp.Model.Links.Option", b =>
                 {
-                    b.HasOne("MedicusApp.Models.Links.Link", null)
+                    b.HasOne("MedicusApp.Model.Links.Link", null)
                         .WithMany("Options")
                         .HasForeignKey("LinkId");
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.Description", b =>
+            modelBuilder.Entity("MedicusApp.Model.People.Price", b =>
                 {
-                    b.HasOne("MedicusApp.Models.People.Spec", null)
-                        .WithMany("Descriptions")
-                        .HasForeignKey("SpecId");
-                });
-
-            modelBuilder.Entity("MedicusApp.Models.People.Price", b =>
-                {
-                    b.HasOne("MedicusApp.Models.People.Spec", null)
+                    b.HasOne("MedicusApp.Models.Spec", null)
                         .WithMany("Prices")
                         .HasForeignKey("SpecId");
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.WorkingHours", b =>
+            modelBuilder.Entity("MedicusApp.Models.WorkingHours", b =>
                 {
-                    b.HasOne("MedicusApp.Models.People.Doctor", "Doctor")
+                    b.HasOne("MedicusApp.Models.Doctor", "Doctor")
                         .WithMany("WorkingHours")
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MedicusApp.Models.People.Spec", "Specialization")
+                    b.HasOne("MedicusApp.Models.Spec", "Specialization")
                         .WithMany("WorkingHours")
                         .HasForeignKey("SpecializationId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -949,20 +897,18 @@ namespace MedicusApp.Migrations
                     b.Navigation("Specialization");
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.Links.Link", b =>
+            modelBuilder.Entity("MedicusApp.Model.Links.Link", b =>
                 {
                     b.Navigation("Options");
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.Doctor", b =>
+            modelBuilder.Entity("MedicusApp.Models.Doctor", b =>
                 {
                     b.Navigation("WorkingHours");
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.Spec", b =>
+            modelBuilder.Entity("MedicusApp.Models.Spec", b =>
                 {
-                    b.Navigation("Descriptions");
-
                     b.Navigation("Prices");
 
                     b.Navigation("WorkingHours");

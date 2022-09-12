@@ -9,7 +9,7 @@ export default function HomeServices() {
   return (
     <Container fluid className="p-4">
       <span className="h2 text-center d-block title">Nasze usługi</span>
-      <Line/>
+      <Line center />
       <div className="text-center pb-4">
         {services.map((item, index) => (
           <Card key={index} className="services shadow m-2 d-inline-block">

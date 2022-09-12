@@ -1,4 +1,4 @@
-﻿namespace MedicusApp.Models
+﻿namespace MedicusApp.Models.People
 {
     public class Spec
     {
@@ -9,5 +9,7 @@
         public int Order { get; set; }
         public List<Doctor> Doctors { get; set; }
         public List<WorkingHours> WorkingHours { get; set; }
+        public List<Price> Prices { get; set; }
+        public List<Description> Descriptions { get; set; }
     }
 }

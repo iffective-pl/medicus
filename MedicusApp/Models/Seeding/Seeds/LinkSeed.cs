@@ -1,13 +1,11 @@
-﻿using MedicusApp.Model.Links;
-
-namespace MedicusApp.Model.Dto
+﻿namespace MedicusApp.Models.Seeding.Seeds
 {
-    public class LinkDto
+    public class LinkSeed
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Href { get; set; }
+        public int Order { get; set; }
         public bool IsIndex { get; set; }
-        public IEnumerable<OptionDto> Options { get; set; }
     }
 }
