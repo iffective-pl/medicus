@@ -1,5 +1,8 @@
 import {Table} from "reactstrap";
 import Line from "../Line";
+import {isMobile} from "react-device-detect";
+
+import './DocsDoctors.css';
 
 export default function DocsDoctors(props) {
   let isNull = (day) => {
@@ -13,13 +16,14 @@ export default function DocsDoctors(props) {
     <div className="p-3">
       <h3>Nasi lekarze</h3>
       <Line left className="mid"/>
-      {props.doctors.map((item, index) =>
-        <div key={index} className="d-inline-block flex-row me-5">
-          <h4>{item.title}</h4>
-          <h3>{item.firstName} {item.lastName}</h3>
-          <div>{item.city}</div>
-          <Table>
-            <thead>
+      <div className={"doctors-container " + (isMobile ? "doctors-rows" : "doctors-cols")}>
+        {props.doctors.map((item, index) =>
+          <div key={index}>
+            <h4>{item.title}</h4>
+            <h3>{item.firstName} {item.lastName}</h3>
+            <div>{item.city}</div>
+            <Table>
+              <thead>
               <tr>
                 <th>
                   Dzień tygodnia
@@ -28,8 +32,8 @@ export default function DocsDoctors(props) {
                   Godziny przyjęć
                 </th>
               </tr>
-            </thead>
-            <tbody>
+              </thead>
+              <tbody>
               <tr>
                 <td>Poniedziałek</td>
                 <td>{isNull(item.workingHours.monday)}</td>
@@ -58,10 +62,11 @@ export default function DocsDoctors(props) {
                 <td>Niedziela</td>
                 <td>{isNull(item.workingHours.sunday)}</td>
               </tr>
-            </tbody>
-          </Table>
-        </div>
-      )}
+              </tbody>
+            </Table>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

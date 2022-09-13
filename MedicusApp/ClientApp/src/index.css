@@ -92,13 +92,17 @@ h6 {
     color: white;
 }
 
-.col.advantages.left {
+.advantages-container {
     color: white;
-    background-color: #53ACE1;
+    background-color: #b8d1df;
 }
 
-.col.advantages.right {
-    background-color: #C9D9E5;
+.advantages {
+    background-color: #0f2147;
+}
+
+div.advantage {
+    background-color: #b8d1df;
 }
 
 .container-fluid.reminder {

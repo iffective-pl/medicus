@@ -1,54 +1,61 @@
-import {Col, Container, Row} from "reactstrap";
+import {Container} from "reactstrap";
 
 import './HomeAdvantages.css';
+import {isMobile} from "react-device-detect";
 
 export default function HomeAdvantages() {
   return (
-    <Container fluid>
-      <Row className="main p-0">
-        <Col className="advantages left text-center overflow-hidden">
-          <img src="images/used/advantages.jpg" alt="main-2" className="main" />
+    <Container className="p-0" fluid>
+      <div className={"advantages-container " + (isMobile ? "advantages-rows" : "advantages-cols")}>
+        <div className="text-center overflow-hidden advantages-image-container">
           <span className="h1 very-center">Co nas wyróżnia?</span>
-        </Col>
-        <Col className="advantages text-center title">
-          <Row className="advantages">
-            <Col className="advantages right hover fit">
-              <a href="docs" className="advantages">
-                <div>
-                  <i className="heart icon advantages" />
-                  <div className="h5 p-1">Wysokiej klasy specjaliści</div>
+          <img src="images/used/advantages.jpg" alt="main-2" className="advantages-image" />
+        </div>
+        <div className="text-center title">
+          <div className="advantages">
+            <div className="advantage-hover">
+              <a href="docs" className="advantage">
+                <div className="advantage">
+                  <div className="advantage-cell">
+                    <i className="heart icon advantage" />
+                    <div className="h4 p-1">Wysokiej klasy specjaliści</div>
+                  </div>
                 </div>
               </a>
-            </Col>
-            <Col className="advantages right hover fit">
-              <a href="about" className="advantages">
-                <div>
-                  <i className="ventilator icon advantages" />
-                  <div className="h5 p-1">Nowoczesny sprzęt do ultrasonografii i echokardiografii</div>
+            </div>
+            <div className="advantage-hover">
+              <a href="about" className="advantage">
+                <div className="advantage">
+                  <div className="advantage-cell">
+                    <i className="ventilator icon advantage" />
+                    <div className="h4 p-1">Nowoczesny sprzęt do ultrasonografii i echokardiografii</div>
+                  </div>
                 </div>
               </a>
-            </Col>
-          </Row>
-          <Row className="advantages">
-            <Col className="advantages right hover fit">
-              <a href="contact" className="advantages">
-                <div>
-                  <i className="wheelchair icon advantages" />
-                  <div className="h5 p-1">Łatwy dostęp</div>
+            </div>
+            <div className="advantage-hover">
+              <a href="contact" className="advantage">
+                <div className="advantage">
+                  <div className="advantage-cell">
+                    <i className="wheelchair icon advantage" />
+                    <div className="h4 p-1">Łatwy dostęp</div>
+                  </div>
                 </div>
               </a>
-            </Col>
-            <Col className="advantages right hover fit">
-              <a href="contact" className="advantages">
-                <div>
-                  <i className="city icon advantages" />
-                  <div className="h5 p-1">Komfortowe nowe wnętrza w idealnej lokalizacji</div>
+            </div>
+            <div className="advantage-hover">
+              <a href="contact" className="advantage">
+                <div className="advantage">
+                  <div className="advantage-cell">
+                    <i className="city icon advantage" />
+                    <div className="h4 p-1">Komfortowe nowe wnętrza w idealnej lokalizacji</div>
+                  </div>
                 </div>
               </a>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+            </div>
+          </div>
+        </div>
+      </div>
     </Container>
   )
 }
