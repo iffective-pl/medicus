@@ -2,6 +2,8 @@ import {Col, Container, Nav, NavItem, NavLink, Row} from "reactstrap";
 
 import {useEffect, useState} from "react";
 
+import './Footer.css';
+
 export default function Footer() {
   let [links, setLinks] = useState([]);
   let [specs, setSpecs] = useState([]);
@@ -58,60 +60,49 @@ export default function Footer() {
               <h6 className='text-uppercase fw-bold mb-3'>Kontakt</h6>
               <Nav vertical>
                 <NavItem>
-                  <NavLink className="footer position-relative" href="#">
-                    <Row>
-                      <Col xs="1">
+                    <div className="footer-container">
+                    <div className="footer-icon-single">
+                      <div className="footer-icon">
                         <i className="bi bi-geo-alt"/>
-                      </Col>
-                      <Col>
+                      </div>
+                    </div>
+                    <div>
+                      <NavLink className="footer" href="#">
                         <div>Plac Wolności 15</div>
                         <div>87-800 Włocławek</div>
-                      </Col>
-                    </Row>
-                  </NavLink>
+                      </NavLink>
+                    </div>
+                  </div>
                 </NavItem>
                 <NavItem>
-                  <NavLink className="footer" href="#">
-                    <Row>
-                      <Col xs="1">
+                  <div className="footer-container">
+                    <div className="footer-icon-container">
+                      <div className="footer-icon">
                         <i className="bi bi-envelope" />
-                      </Col>
-                      <Col>
-                        info@example.com
-                      </Col>
-                    </Row>
-                  </NavLink>
+                      </div>
+                    </div>
+                    <div><NavLink className="footer" href="#">biuro@medicus.włocławek.pl</NavLink></div>
+                    <div><NavLink className="footer" href="#">rejestracja@medicus.włocławek.pl</NavLink></div>
+                  </div>
                 </NavItem>
                 <NavItem>
-                  <NavLink className="footer" href="#">
-                    <Row>
-                      <Col xs="1">
+                  <div className="footer-container">
+                    <div className="footer-icon-container">
+                      <div className="footer-icon">
                         <i className="bi bi-telephone" />
-                      </Col>
-                      <Col>
-                        54 2313141
-                      </Col>
-                    </Row>
-                  </NavLink>
-                  <NavLink className="footer" href="#">
-                    <Row>
-                      <Col xs="1">
-                      </Col>
-                      <Col>
-                        54 2313741
-                      </Col>
-                    </Row>
-                  </NavLink>
-                  <NavLink className="footer" href="#">
-                    <Row>
-                      <Col xs="1">
+                      </div>
+                    </div>
+                    <div><NavLink className="footer" href="#">54 2313741</NavLink></div>
+                    <div><NavLink className="footer" href="#">54 2313141</NavLink></div>
+                    <div className="footer-icon-single">
+                      <div className="footer-icon">
                         <i className="bi bi-phone" />
-                      </Col>
-                      <Col>
-                        692 184 214
-                      </Col>
-                    </Row>
-                  </NavLink>
+                      </div>
+                    </div>
+                    <div>
+                      <NavLink className="footer" href="#">692 184 214</NavLink>
+                    </div>
+                  </div>
                 </NavItem>
               </Nav>
             </Col>
