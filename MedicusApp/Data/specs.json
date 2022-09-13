@@ -18,7 +18,7 @@
   {
     "Id": 3,
     "Name": "Ortopedia",
-    "Href": "ortopedy",
+    "Href": "orthopedy",
     "ClassName": "leg",
     "Order": 3,
     "IsHeader": false
@@ -73,7 +73,7 @@
   },
   {
     "Id": 10,
-    "Name": "ECHO",
+    "Name": "ECHO Serca",
     "Href": "echo",
     "ClassName": "echo",
     "Order": 10,

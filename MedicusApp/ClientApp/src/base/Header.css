@@ -2,3 +2,7 @@
     height: 10vh;
     padding: 1rem 0;
 }
+
+div.dropdown-menu {
+    border: none !important;
+}

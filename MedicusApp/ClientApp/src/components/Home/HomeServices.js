@@ -2,12 +2,14 @@ import {Card, CardBody, CardImg, CardImgOverlay, CardSubtitle, CardTitle, Contai
 
 import Services from '../../data/services.json';
 import './HomeServices.css';
+import Line from "../Line";
 
 export default function HomeServices() {
   let services = Services.services;
   return (
     <Container fluid className="p-4">
-      <span className="h2 text-center d-block pb-4 title">Nasze usługi</span>
+      <span className="h2 text-center d-block title">Nasze usługi</span>
+      <Line center />
       <div className="text-center pb-4">
         {services.map((item, index) => (
           <Card key={index} className="services shadow m-2 d-inline-block">

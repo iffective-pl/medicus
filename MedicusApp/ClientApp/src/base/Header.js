@@ -1,34 +1,30 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {
-  Collapse, DropdownItem, DropdownMenu,
-  DropdownToggle,
+  Collapse,
   Nav,
   Navbar,
   NavbarBrand,
   NavbarToggler,
-  NavItem, NavLink,
-  UncontrolledDropdown
+  NavItem, NavLink
 } from "reactstrap";
 
 import "./Header.css";
-import AppRoutes from "../AppRoutes";
+import HeaderDropdown from "../components/Header/HeaderDropdown";
 
 export default function Header() {
-  let [collapse, setCollapse] = useState(false);
+  let [isOpen, setIsOpen] = useState(false);
+  let [links, setLinks] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/Links")
+      .then(r => r.json())
+      .then(j => setLinks(j))
+  }, []);
 
   let headers = (item, index) => {
-    if(item.options) {
+    if(item.options.length > 0) {
       return (
-        <UncontrolledDropdown nav inNavbar key={index}>
-          <DropdownToggle className="header" nav caret>
-            {item.name}
-          </DropdownToggle>
-          <DropdownMenu>
-            {item.options.map((option, index) => (
-              <DropdownItem className="header" key={index} tag="a" href={item.href + option.href}>{option.name}</DropdownItem>
-            ))}
-          </DropdownMenu>
-        </UncontrolledDropdown>
+        <HeaderDropdown item={item} key={index} isOpen={isOpen} />
       )
     } else {
       return (
@@ -46,10 +42,10 @@ export default function Header() {
       <NavbarBrand href="/">
         <img src="images/logo-oryg-medicus-cropped.png" alt="logo" className="logo" />
       </NavbarBrand>
-      <NavbarToggler onClick={() => setCollapse(!collapse)} />
-      <Collapse isOpen={collapse} navbar>
+      <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
+      <Collapse isOpen={isOpen} navbar>
         <Nav className="me-auto" navbar>
-          {AppRoutes.filter(q => !q.index).map(headers)}
+          {links.filter(q => !q.isIndex).map(headers)}
         </Nav>
       </Collapse>
     </Navbar>

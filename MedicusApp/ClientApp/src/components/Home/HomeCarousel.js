@@ -43,7 +43,7 @@ export default function HomeCarousel() {
               <h3 className="sub-title fw-bold">{item.captionText}</h3>
               <Button
                 size="lg"
-                className="title-button mt-3"
+                className="title-button mt-2"
                 tag="a" href="docs"
               >Nasi specjaliści</Button>
             </span>

@@ -1,3 +1,10 @@
+.icon {
+    height: 5vh;
+    aspect-ratio: 1/1;
+    display: inline-block;
+    background-color: #241474;
+}
+
 .allergies {
     -webkit-mask-size: cover;
     -webkit-mask-image: url(icons/allergies.svg);
@@ -75,7 +82,7 @@
     mask-image: url(icons/leg.svg);
 }
 
-.leg {
+.neurology {
     -webkit-mask-size: cover;
     -webkit-mask-image: url(icons/neurology.svg);
     mask-size: cover;
@@ -115,4 +122,32 @@
     -webkit-mask-image: url(icons/xray.svg);
     mask-size: cover;
     mask-image: url(icons/xray.svg);
+}
+
+.location {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/geo_location.svg);
+    mask-size: cover;
+    mask-image: url(icons/geo_location.svg);
+}
+
+.mobile {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/mobile.svg);
+    mask-size: cover;
+    mask-image: url(icons/mobile.svg);
+}
+
+.phone {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/phone.svg);
+    mask-size: cover;
+    mask-image: url(icons/phone.svg);
+}
+
+.message {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/message.svg);
+    mask-size: cover;
+    mask-image: url(icons/message.svg);
 }

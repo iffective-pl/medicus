@@ -14,10 +14,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DatabaseContext>();
 
 builder.Services.AddTransient<ISpecRepository, SpecRepository>();
+builder.Services.AddTransient<ILinkRepository, LinkRepository>();
 
 builder.Services.AddTransient<ISpecService, SpecService>();
+builder.Services.AddTransient<ILinkService, LinkService>();
 
-builder.Services.AddSingleton<Seeds>();
+builder.Services.AddSingleton<Seeder>();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);

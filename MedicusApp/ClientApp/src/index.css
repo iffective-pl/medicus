@@ -1,10 +1,21 @@
+hr {
+    width: 5vw;
+    margin: auto;
+    border-color: #241474;
+    border-width: .5vh;
+}
+
 .nav-link.header {
-    color: #241474;
+    color: #241474 !important;
     font-size: 1.25rem;
 }
 
 .nav-link.header:hover {
-    color: #cc241c;
+    color: #cc241c !important;
+}
+
+.active.header {
+    color: #cc241c !important;
 }
 
 .dropdown-item.header {
@@ -13,11 +24,11 @@
 }
 
 .dropdown-item.header:hover {
-    background-color: #DCC7D4;
+    background-color: #cc241c;
 }
 
 .dropdown-item.header::selection {
-    background: #ddabb1;
+    background: #cc241c;
 }
 
 .nav-link.footer {
@@ -74,7 +85,7 @@ h6 {
 }
 
 .btn-info {
-    color: white;
+    color: white !important;
 }
 
 .card-body.services {
@@ -96,4 +107,56 @@ h6 {
 
 div.icon {
     background-color: #241474;
+}
+
+div.spec {
+    background-color: #F9F9FC;
+}
+
+i.heart.spec-icon {
+    background-color: #880808;
+}
+
+i.kidneys.spec-icon {
+    background-color: #73A9AD;
+}
+
+i.leg.spec-icon {
+    background-color: #F2AF88;
+}
+
+i.pregnant.spec-icon {
+    background-color: #F49AB8;
+}
+
+i.coughing.spec-icon {
+    background-color: #C6D57E;
+}
+
+i.lactation.spec-icon {
+    background-color: #FF7878;
+}
+
+i.stethoscope.spec-icon {
+    background-color: #241474;
+}
+
+i.neurology.spec-icon {
+    background-color: #CC9B6D;
+}
+
+i.allergies.spec-icon {
+    background-color: #FFAAA5;
+}
+
+i.echo.spec-icon {
+    background-color: #A4D7E1;
+}
+
+i.xray.spec-icon {
+    background-color: #89A3B2;
+}
+
+i.blood_pressure.spec-icon {
+    background-color: #E4D183;
 }

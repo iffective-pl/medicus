@@ -17,5 +17,10 @@ namespace MedicusApp.Services.Impl
         {
             return specRepository.GetSpecs();
         }
+
+        public SpecDto? GetFullSpec(string type)
+        {
+            return specRepository.GetFullSpec(type);
+        }
     }
 }

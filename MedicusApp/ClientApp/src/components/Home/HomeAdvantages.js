@@ -13,22 +13,38 @@ export default function HomeAdvantages() {
         <Col className="advantages text-center title">
           <Row className="advantages">
             <Col className="advantages right hover fit">
-              <div className="heart icon" />
-              <div className="h5 p-1">Wysokiej klasy specjaliści</div>
+              <a href="docs" className="advantages">
+                <div>
+                  <i className="heart icon advantages" />
+                  <div className="h5 p-1">Wysokiej klasy specjaliści</div>
+                </div>
+              </a>
             </Col>
             <Col className="advantages right hover fit">
-              <div className="ventilator icon" />
-              <div className="h5 p-1">Nowoczesny sprzęt do ultrasonografii i echokardiografii</div>
+              <a href="about" className="advantages">
+                <div>
+                  <i className="ventilator icon advantages" />
+                  <div className="h5 p-1">Nowoczesny sprzęt do ultrasonografii i echokardiografii</div>
+                </div>
+              </a>
             </Col>
           </Row>
           <Row className="advantages">
             <Col className="advantages right hover fit">
-              <div className="wheelchair icon" />
-              <div className="h5 p-1">Łatwy dostęp</div>
+              <a href="contact" className="advantages">
+                <div>
+                  <i className="wheelchair icon advantages" />
+                  <div className="h5 p-1">Łatwy dostęp</div>
+                </div>
+              </a>
             </Col>
             <Col className="advantages right hover fit">
-              <div className="city icon" />
-              <div className="h5 p-1">Komfortowe nowe wnętrza w idealnej lokalizacji</div>
+              <a href="contact" className="advantages">
+                <div>
+                  <i className="city icon advantages" />
+                  <div className="h5 p-1">Komfortowe nowe wnętrza w idealnej lokalizacji</div>
+                </div>
+              </a>
             </Col>
           </Row>
         </Col>

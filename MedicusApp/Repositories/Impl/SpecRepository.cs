@@ -1,7 +1,5 @@
 ﻿using MedicusApp.Models;
 using MedicusApp.Models.Dto;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace MedicusApp.Repositories.Impl
 {
@@ -22,8 +20,19 @@ namespace MedicusApp.Repositories.Impl
                 Name = s.Name,
                 Href = s.Href,
                 ClassName = s.ClassName,
+                Order = s.Order
+            });
+        }
+
+        public SpecDto? GetFullSpec(string type)
+        {
+            return context.Specializations.Where(q => q.Href == type).Select(s => new SpecDto()
+            {
+                Id = s.Id,
+                Name = s.Name,
+                Href = s.Href,
+                ClassName = s.ClassName,
                 Order = s.Order,
-                IsHeader = s.IsHeader,
                 Doctors = s.Doctors.Select(d => new DoctorDto()
                 {
                     Id = d.Id,
@@ -44,9 +53,24 @@ namespace MedicusApp.Repositories.Impl
                             Friday = wh.Friday,
                             Saturday = wh.Saturday,
                             Sunday = wh.Sunday
-                        })
+                        }).Single()
+                }),
+                Prices = s.Prices.Select(p => new PricesDto()
+                {
+                    Id = p.Id,
+                    SpecId = s.Id,
+                    Title = p.Title,
+                    Value = p.Value
+                }),
+                Descriptions = s.Descriptions.Select(d => new DescriptionDto()
+                {
+                    Id = d.Id,
+                    Title = d.Title,
+                    Text = d.Text,
+                    Image = d.Image,
+                    SpecId = s.Id
                 })
-            });
+            }).SingleOrDefault();
         }
     }
 }

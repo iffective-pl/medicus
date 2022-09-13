@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "SpecId": 1,
+    "Title": "Konsultacja",
+    "Value": 150.00
+  },
+  {
+    "Id": 2,
+    "SpecId": 1,
+    "Title": "Konsultacja + ECHO serca",
+    "Value": 220.00
+  },
+  {
+    "Id": 3,
+    "SpecId": 1,
+    "Title": "Konsultacja + ECHO serca + EKG",
+    "Value": 250.00
+  },
+  {
+    "Id": 4,
+    "SpecId": 1,
+    "Title": "ECHO Serca",
+    "Value": 170.00
+  }
+]
