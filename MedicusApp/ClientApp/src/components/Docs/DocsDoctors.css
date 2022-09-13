@@ -1,0 +1,14 @@
+.doctors-container {
+    width: 100%;
+    display: inline-grid;
+}
+
+.doctors-rows {
+    grid-template-rows: max-content;
+    grid-row-gap: 5vh;
+}
+
+.doctors-cols {
+    grid-template-columns: auto auto;
+    grid-column-gap: 2.5vw;
+}

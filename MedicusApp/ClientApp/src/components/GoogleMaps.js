@@ -1,5 +1,16 @@
-import {GoogleMap, useJsApiLoader} from "@react-google-maps/api";
-import {useCallback, useState} from "react";
+import {GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/api";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  CardText,
+  CardTitle,
+  Popover,
+  PopoverBody,
+  PopoverHeader
+} from "reactstrap";
 
 const center = {
   lat: 52.654110,
@@ -11,35 +22,40 @@ const style = {
   height: "45vh"
 }
 
+const options = {
+  streetViewControl: false
+}
+
 export default function GoogleMaps() {
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: "AIzaSyDN8u8t4uc6OR_6I3jUhU7uZc0fcrY_kIo"
   })
 
-  const [map, setMap] = useState(null)
-
-  const onLoad = useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
-
-  const onUnmount = useCallback(function callback() {
-    setMap(null)
-  }, [])
-
   return isLoaded ? (
     <div className="mt-4">
       <GoogleMap
-        zoom={15}
-        onLoad={onLoad}
+        zoom={17}
         center={center}
+        options={options}
         mapContainerStyle={style}
-        onUnmount={onUnmount}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
+
+        <InfoWindow
+          position={center}
+        >
+          <Card className="border-0">
+            <CardBody className="p-2">
+              <CardTitle tag="h5">
+                Poradnia Specjalistyczna<br/>MEDICUS
+              </CardTitle>
+              <CardText>
+                <div>Plac Wolności 15</div>
+                <div>87-800 Włocławek</div>
+              </CardText>
+            </CardBody>
+          </Card>
+        </InfoWindow>
       </GoogleMap>
     </div>
   ) : <></>
