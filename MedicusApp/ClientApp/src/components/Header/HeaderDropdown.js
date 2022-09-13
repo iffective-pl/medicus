@@ -2,24 +2,31 @@ import {Collapse, Dropdown, DropdownItem, DropdownMenu, NavLink} from "reactstra
 import {useEffect, useState} from "react";
 
 export default function HeaderDropdown(props) {
-  let [isOpen, setIsOpen] = useState(false);
   let [isCollapseOpen, setCollapseOpen] = useState(false);
+  let [disabled, setDisable] = useState(false);
+
   let toggle = () => {
-    setIsOpen(!isOpen);
-    setCollapseOpen(!isCollapseOpen);
+    if (!disabled) {
+      setCollapseOpen(!isCollapseOpen);
+    }
   }
 
   useEffect(() => {
-    setCollapseOpen(!props.isOpen);
-    setTimeout(() => {
-      setCollapseOpen(props.isOpen);
-      setIsOpen(props.isOpen)
-    }, 250);
-  }, [props.isOpen]);
+    if(props.toggled !== undefined) {
+      setDisable(true);
+      if(props.toggled) {
+        setTimeout(() => {
+          setCollapseOpen(props.toggled);
+        }, 250);
+      } else {
+        setCollapseOpen(props.toggled);
+      }
+    }
+  }, [props.toggled]);
 
   return (
     <div onMouseEnter={toggle} onMouseLeave={toggle}>
-      <Dropdown isOpen={isOpen} toggle={toggle} nav inNavbar>
+      <Dropdown isOpen={true} toggle={toggle} nav inNavbar>
         <NavLink className="header" active={document.location.href.endsWith(props.item.href)} href={props.item.href} mouseEnter={() => console.log("active")}>
           {props.item.name}
         </NavLink>

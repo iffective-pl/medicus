@@ -14,6 +14,7 @@ import HeaderDropdown from "../components/Header/HeaderDropdown";
 export default function Header() {
   let [isOpen, setIsOpen] = useState(false);
   let [links, setLinks] = useState([]);
+  let [toggled, setToggle] = useState(undefined);
 
   useEffect(() => {
     fetch("/api/Links")
@@ -21,10 +22,17 @@ export default function Header() {
       .then(j => setLinks(j))
   }, []);
 
+  let toggle = () => {
+    if(toggled)
+      setToggle(!toggled);
+    else
+      setToggle(true);
+  }
+
   let headers = (item, index) => {
     if(item.options.length > 0) {
       return (
-        <HeaderDropdown item={item} key={index} isOpen={isOpen} />
+        <HeaderDropdown item={item} key={index} toggled={toggled} />
       )
     } else {
       return (
@@ -42,7 +50,10 @@ export default function Header() {
       <NavbarBrand href="/">
         <img src="images/logo-oryg-medicus-cropped.png" alt="logo" className="logo" />
       </NavbarBrand>
-      <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
+      <NavbarToggler onClick={() => {
+        setIsOpen(!isOpen);
+        toggle();
+      }} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="me-auto" navbar>
           {links.filter(q => !q.isIndex).map(headers)}
