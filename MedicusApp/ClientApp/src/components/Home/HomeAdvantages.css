@@ -12,6 +12,7 @@
 
 .row.main {
     min-height: 75vh;
+    overflow: hidden;
 }
 
 .row.advantages {

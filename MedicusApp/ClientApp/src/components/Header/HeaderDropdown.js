@@ -1,32 +1,18 @@
 import {Collapse, Dropdown, DropdownItem, DropdownMenu, NavLink} from "reactstrap";
-import {useEffect, useState} from "react";
+import {useState} from "react";
+import {isMobile} from "react-device-detect";
 
 export default function HeaderDropdown(props) {
-  let [isCollapseOpen, setCollapseOpen] = useState(false);
-  let [disabled, setDisable] = useState(false);
+  let [isCollapseOpen, setCollapseOpen] = useState(isMobile);
 
   let toggle = () => {
-    if (!disabled) {
+    if(!isMobile)
       setCollapseOpen(!isCollapseOpen);
-    }
   }
-
-  useEffect(() => {
-    if(props.toggled !== undefined) {
-      setDisable(true);
-      if(props.toggled) {
-        setTimeout(() => {
-          setCollapseOpen(props.toggled);
-        }, 250);
-      } else {
-        setCollapseOpen(props.toggled);
-      }
-    }
-  }, [props.toggled]);
 
   return (
     <div onMouseEnter={toggle} onMouseLeave={toggle}>
-      <Dropdown isOpen={true} toggle={toggle} nav inNavbar>
+      <Dropdown isOpen={isCollapseOpen} toggle={toggle} nav inNavbar className="me-2">
         <NavLink className="header" active={document.location.href.endsWith(props.item.href)} href={props.item.href} mouseEnter={() => console.log("active")}>
           {props.item.name}
         </NavLink>

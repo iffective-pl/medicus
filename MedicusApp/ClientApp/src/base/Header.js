@@ -12,9 +12,8 @@ import "./Header.css";
 import HeaderDropdown from "../components/Header/HeaderDropdown";
 
 export default function Header() {
-  let [isOpen, setIsOpen] = useState(false);
+  let [isOpen, setIsOpen] = useState(undefined);
   let [links, setLinks] = useState([]);
-  let [toggled, setToggle] = useState(undefined);
 
   useEffect(() => {
     fetch("/api/Links")
@@ -22,21 +21,21 @@ export default function Header() {
       .then(j => setLinks(j))
   }, []);
 
-  let toggle = () => {
-    if(toggled)
-      setToggle(!toggled);
+  let toggleButton = () => {
+    if(isOpen)
+      setIsOpen(!isOpen);
     else
-      setToggle(true);
+      setIsOpen(true);
   }
 
   let headers = (item, index) => {
     if(item.options.length > 0) {
       return (
-        <HeaderDropdown item={item} key={index} toggled={toggled} />
+        <HeaderDropdown item={item} key={index} />
       )
     } else {
       return (
-        <NavItem key={index}>
+        <NavItem key={index} className="me-2">
           <NavLink className="header" active={document.location.href.endsWith(item.href)} href={item.href}>
             {item.name}
           </NavLink>
@@ -50,10 +49,7 @@ export default function Header() {
       <NavbarBrand href="/">
         <img src="images/logo-oryg-medicus-cropped.png" alt="logo" className="logo" />
       </NavbarBrand>
-      <NavbarToggler onClick={() => {
-        setIsOpen(!isOpen);
-        toggle();
-      }} />
+        <NavbarToggler onClick={toggleButton}/>
       <Collapse isOpen={isOpen} navbar>
         <Nav className="me-auto" navbar>
           {links.filter(q => !q.isIndex).map(headers)}

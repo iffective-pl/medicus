@@ -1,20 +1,18 @@
-.desc-container {
-    height: 35vh;
+.desc-row {
+    display: inline-grid;
+}
+
+.rows {
+    grid-template-rows: auto max-content;
+    grid-row-gap: 5vh;
+}
+
+.columns {
+    grid-template-columns: auto auto;
+    grid-column-gap: 2.5vw;
 }
 
 .desc-image {
-    height: 100%;
-}
-
-.desc-image-container {
-    width: 50%;
-    height: 100%;
-    float: left;
+    height: 35vh;
     overflow: hidden;
-}
-
-.desc-text {
-    width: 50%;
-    height: 100%;
-    float: left;
 }

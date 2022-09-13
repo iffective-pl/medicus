@@ -17,6 +17,7 @@ export default function GoogleMaps() {
     googleMapsApiKey: "AIzaSyDN8u8t4uc6OR_6I3jUhU7uZc0fcrY_kIo"
   })
 
+  // eslint-disable-next-line no-unused-vars
   const [map, setMap] = useState(null)
 
   const onLoad = useCallback(function callback(map) {
