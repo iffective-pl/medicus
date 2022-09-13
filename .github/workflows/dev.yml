@@ -30,11 +30,11 @@ jobs:
       - name: Restart containers
         run: docker compose up -d --remove-orphans
 
-      - if: ${{ github.event.inputs.drop_database }} == 'Yes'
+      - if: ${{ github.event.inputs.drop_database == 'Yes' }} 
         name: Drop database
         run: ~/.dotnet/tools/dotnet-ef database drop -f -p MedicusApp
 
-      - if: ${{ github.event.inputs.run_migration }} == 'Yes'
+      - if: ${{ github.event.inputs.run_migration == 'Yes' }} 
         name: Update database
         run: ~/.dotnet/tools/dotnet-ef database update -p MedicusApp
       
