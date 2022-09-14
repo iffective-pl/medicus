@@ -7,6 +7,12 @@ namespace MedicusApp.Models.Seeding
     {
         public Seeder()
         {
+            using (Stream reader = File.OpenRead("Data/companies.json"))
+                this.ComapnySeeds = JsonSerializer.Deserialize<List<ComapnySeed>>(reader) ?? new List<ComapnySeed>();
+            using (Stream reader = File.OpenRead("Data/emails.json"))
+                this.EmailSeeds = JsonSerializer.Deserialize<List<EmailSeed>>(reader) ?? new List<EmailSeed>();
+            using (Stream reader = File.OpenRead("Data/phones.json"))
+                this.PhoneSeeds = JsonSerializer.Deserialize<List<PhoneSeed>>(reader) ?? new List<PhoneSeed>();
             using (Stream reader = File.OpenRead("Data/doctors.json"))
                 this.DoctorSeeds = JsonSerializer.Deserialize<List<DoctorSeed>>(reader) ?? new List<DoctorSeed>();
             using (Stream reader = File.OpenRead("Data/specs.json"))
@@ -23,8 +29,13 @@ namespace MedicusApp.Models.Seeding
                 this.PriceSeeds = JsonSerializer.Deserialize<List<PriceSeed>>(reader) ?? new List<PriceSeed>();
             using (Stream reader = File.OpenRead("Data/descriptions.json"))
                 this.DescriptionSeeds = JsonSerializer.Deserialize<List<DescriptionSeed>>(reader) ?? new List<DescriptionSeed>();
+            using (Stream reader = File.OpenRead("Data/descriptiontexts.json"))
+                this.DescriptionTextSeeds = JsonSerializer.Deserialize<List<DescriptionTextSeed>>(reader) ?? new List<DescriptionTextSeed>();
         }
 
+        public List<ComapnySeed> ComapnySeeds { get; private set; }
+        public List<EmailSeed> EmailSeeds { get; private set; }
+        public List<PhoneSeed> PhoneSeeds { get; private set; }
         public List<DoctorSeed> DoctorSeeds { get; private set; }
         public List<SpecSeeding> SpecSeeds { get; private set; }
         public List<DoctorSpecSeed> DoctorSpecSeeds { get; private set; }
@@ -33,5 +44,6 @@ namespace MedicusApp.Models.Seeding
         public List<OptionSeed> OptionSeeds { get; private set; }
         public List<PriceSeed> PriceSeeds { get; private set; }
         public List<DescriptionSeed> DescriptionSeeds { get; private set; }
+        public List<DescriptionTextSeed> DescriptionTextSeeds { get; private set; }
     }
 }

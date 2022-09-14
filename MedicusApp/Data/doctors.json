@@ -4,42 +4,48 @@
     "Title": "Dr n. med.",
     "FirstName": "Wiesław",
     "LastName": "Nowakowski",
-    "City": "Włocławek"
+    "SpecTitle": "Specjalista w zakresie chorób wewnętrznych i kardiologii",
+    "Description": ""
   },
   {
     "Id": 2,
     "Title": "Dr n. med.",
     "FirstName": "Irena",
     "LastName": "Nowakowska",
-    "City": "Włocławek"
+    "SpecTitle": "Specjalista w zakresie pediatrii i kardiologii",
+    "Description": ""
   },
   {
     "Id": 3,
     "Title": "Prof. dr hab. med.",
     "FirstName": "Dorota",
     "LastName": "Nowakowska",
-    "City": "Łódź"
+    "SpecTitle": "Specjalista w zakresie położnictwa i ginekologii oraz perinatologii",
+    "Description": ""
   },
   {
     "Id": 4,
     "Title": "Lek. med.",
     "FirstName": "Zbigniew",
     "LastName": "Placek",
-    "City": "Włocławek"
+    "SpecTitle": "",
+    "Description": ""
   },
   {
     "Id": 5,
     "Title": "Prof. dr hab. med.",
     "FirstName": "Ewa",
     "LastName": "Sewerynek",
-    "City": "Łódź"
+    "SpecTitle": "",
+    "Description": ""
   },
   {
     "Id": 6,
     "Title": "Dr n. med.",
     "FirstName": "Tomasz",
     "LastName": "Kmieć",
-    "City": "Warszawa"
+    "SpecTitle": "",
+    "Description": ""
   },
   {
     "Id": 7,
@@ -53,27 +59,31 @@
     "Title": "Lek. med.",
     "FirstName": "Janina",
     "LastName": "Wielicka",
-    "City": "Włocławek"
+    "SpecTitle": "",
+    "Description": ""
   },
   {
     "Id": 9,
     "Title": "Lek. med.",
     "FirstName": "Bogdan",
     "LastName": "Wojtecki",
-    "City": "Włocławek"
+    "SpecTitle": "",
+    "Description": ""
   },
   {
     "Id": 10,
     "Title": "Lek. med.",
     "FirstName": "Leszek",
     "LastName": "Dura",
-    "City": "Włocławek"
+    "SpecTitle": "",
+    "Description": ""
   },
   {
     "Id": 11,
     "Title": "Lek. med.",
     "FirstName": "Zbyszek",
     "LastName": "Ruszkowski",
-    "City": "Włocławek"
+    "SpecTitle": "",
+    "Description": ""
   }
 ]

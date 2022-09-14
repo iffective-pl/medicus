@@ -15,9 +15,11 @@ builder.Services.AddDbContext<DatabaseContext>();
 
 builder.Services.AddTransient<ISpecRepository, SpecRepository>();
 builder.Services.AddTransient<ILinkRepository, LinkRepository>();
+builder.Services.AddTransient<ICompanyRepository, CompanyRepository>();
 
 builder.Services.AddTransient<ISpecService, SpecService>();
 builder.Services.AddTransient<ILinkService, LinkService>();
+builder.Services.AddTransient<ICompanyService, CompanyService>();
 
 builder.Services.AddSingleton<Seeder>();
 

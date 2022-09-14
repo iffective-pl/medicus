@@ -4,9 +4,16 @@ import {useEffect, useState} from "react";
 
 import './Footer.css';
 
+let company = {
+  emails: [],
+  phones: [],
+  mobilePhones: []
+}
+
 export default function Footer() {
   let [links, setLinks] = useState([]);
   let [specs, setSpecs] = useState([]);
+  let [comp, setComp] = useState(company);
   useEffect(() => {
     fetch("/api/Links")
       .then(r => r.json())
@@ -14,6 +21,9 @@ export default function Footer() {
     fetch("/api/Specs")
       .then(r => r.json())
       .then(j => setSpecs(j))
+    fetch("/api/Company")
+      .then(r => r.json())
+      .then(j => setComp(j))
   }, []);
 
   return (
@@ -23,11 +33,8 @@ export default function Footer() {
           <Row>
             <Col md="3" lg="4" xl="3" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
-                Poradnia Specjalistyczna MEDICUS
+                {comp.name}
               </h6>
-              <p>
-                Opis
-              </p>
             </Col>
 
             <Col md="2" lg="2" xl="2" className='mx-auto mb-4'>
@@ -68,8 +75,8 @@ export default function Footer() {
                     </div>
                     <div>
                       <NavLink className="footer" href="#">
-                        <div>Plac Wolności 15</div>
-                        <div>87-800 Włocławek</div>
+                        <div>{comp.address}</div>
+                        <div>{comp.code} {comp.city}</div>
                       </NavLink>
                     </div>
                   </div>
@@ -81,8 +88,9 @@ export default function Footer() {
                         <i className="bi bi-envelope" />
                       </div>
                     </div>
-                    <div><NavLink className="footer" href="#">biuro@medicus.włocławek.pl</NavLink></div>
-                    <div><NavLink className="footer" href="#">rejestracja@medicus.włocławek.pl</NavLink></div>
+                    {comp.emails.map((item, index) =>
+                      <div key={index}><NavLink className="footer" href="#">{item}</NavLink></div>
+                    )}
                   </div>
                 </NavItem>
                 <NavItem>
@@ -92,16 +100,17 @@ export default function Footer() {
                         <i className="bi bi-telephone" />
                       </div>
                     </div>
-                    <div><NavLink className="footer" href="#">54 2313741</NavLink></div>
-                    <div><NavLink className="footer" href="#">54 2313141</NavLink></div>
+                    {comp.phones.map((item, index) =>
+                      <div key={index}><NavLink className="footer" href="#">{item}</NavLink></div>
+                    )}
                     <div className="footer-icon-single">
                       <div className="footer-icon">
                         <i className="bi bi-phone" />
                       </div>
                     </div>
-                    <div>
-                      <NavLink className="footer" href="#">692 184 214</NavLink>
-                    </div>
+                    {comp.mobilePhones.map((item, index) =>
+                      <div key={index}><NavLink className="footer" href="#">{item}</NavLink></div>
+                    )}
                   </div>
                 </NavItem>
               </Nav>

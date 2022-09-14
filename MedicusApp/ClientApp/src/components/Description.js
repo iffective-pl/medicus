@@ -11,8 +11,12 @@ export default function Description(props) {
           <img src={desc.image} className="desc-image" alt="desc"/>
         </div>
         <div>
-          <h4>{desc.title}</h4>
-          <span>{desc.text}</span>
+          {desc.descriptionTexts.map((item, index) =>
+            <div key={index} className="pt-2">
+              <h4>{item.title}</h4>
+              <span>{item.text}</span>
+            </div>
+          )}
         </div>
       </div>
     )

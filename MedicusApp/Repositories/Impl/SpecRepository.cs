@@ -39,7 +39,8 @@ namespace MedicusApp.Repositories.Impl
                     Title = d.Title,
                     FirstName = d.FirstName,
                     LastName = d.LastName,
-                    City = d.City,
+                    SpecTitle = d.SpecTitle,
+                    Description = d.Description,
                     WorkingHours = d.WorkingHours
                         .Where(q => q.Specialization.Id == s.Id)
                         .Select(wh => new WorkingHoursDto()
@@ -51,8 +52,7 @@ namespace MedicusApp.Repositories.Impl
                             Wednesday = wh.Wednesday,
                             Thursday = wh.Thursday,
                             Friday = wh.Friday,
-                            Saturday = wh.Saturday,
-                            Sunday = wh.Sunday
+                            Saturday = wh.Saturday
                         }).Single()
                 }),
                 Prices = s.Prices.Select(p => new PricesDto()
@@ -65,9 +65,12 @@ namespace MedicusApp.Repositories.Impl
                 Descriptions = s.Descriptions.Select(d => new DescriptionDto()
                 {
                     Id = d.Id,
-                    Title = d.Title,
-                    Text = d.Text,
                     Image = d.Image,
+                    DescriptionTexts = d.DescriptionTexts.Select(dt => new DescriptionTextDto()
+                    {
+                        Title = dt.Title,
+                        Text = dt.Text
+                    }),
                     SpecId = s.Id
                 })
             }).SingleOrDefault();

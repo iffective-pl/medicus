@@ -21,8 +21,9 @@ export default function DocsDoctors(props) {
           <div key={index}>
             <h4>{item.title}</h4>
             <h3>{item.firstName} {item.lastName}</h3>
-            <div>{item.city}</div>
-            <Table>
+            <div>{item.specTitle}</div>
+            <div>{item.description}</div>
+            <Table className="mt-3">
               <thead>
               <tr>
                 <th>
@@ -57,10 +58,6 @@ export default function DocsDoctors(props) {
               <tr>
                 <td>Sobota</td>
                 <td>{isNull(item.workingHours.saturday)}</td>
-              </tr>
-              <tr>
-                <td>Niedziela</td>
-                <td>{isNull(item.workingHours.sunday)}</td>
               </tr>
               </tbody>
             </Table>

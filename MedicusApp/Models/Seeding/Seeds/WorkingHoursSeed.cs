@@ -9,7 +9,6 @@
         public string? Thursday { get; set; }
         public string? Friday { get; set; }
         public string? Saturday { get; set; }
-        public string? Sunday { get; set; }
 
         public int DoctorId { get; set; }
         public int SpecializationId { get; set; }

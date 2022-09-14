@@ -5,7 +5,7 @@ import {isMobile} from "react-device-detect";
 
 export default function HomeAdvantages() {
   return (
-    <Container className="p-0" fluid>
+    <Container className="p-0 mt-5" fluid>
       <div className={"advantages-container " + (isMobile ? "advantages-rows" : "advantages-cols")}>
         <div className="text-center overflow-hidden advantages-image-container">
           <span className="h1 very-center">Co nas wyróżnia?</span>

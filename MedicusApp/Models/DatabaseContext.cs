@@ -1,6 +1,7 @@
 ﻿using MedicusApp.Models.Links;
 using MedicusApp.Models.People;
 using MedicusApp.Models.Seeding;
+using MedicusApp.Models.Subject;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedicusApp.Models
@@ -55,9 +56,14 @@ namespace MedicusApp.Models
                 .ValueGeneratedOnAdd();
 
 
+            modelBuilder.Entity<Company>().HasData(seeds.ComapnySeeds);
+            modelBuilder.Entity<Email>().HasData(seeds.EmailSeeds);
+            modelBuilder.Entity<Phone>().HasData(seeds.PhoneSeeds);
+
             modelBuilder.Entity<Spec>().HasData(seeds.SpecSeeds);
             modelBuilder.Entity<Price>().HasData(seeds.PriceSeeds);
             modelBuilder.Entity<Description>().HasData(seeds.DescriptionSeeds);
+            modelBuilder.Entity<DescriptionText>().HasData(seeds.DescriptionTextSeeds);
             modelBuilder.Entity<Doctor>().HasData(seeds.DoctorSeeds);
             modelBuilder.Entity<WorkingHours>().HasData(seeds.WorkingHoursSeeds);
 
@@ -65,9 +71,14 @@ namespace MedicusApp.Models
             modelBuilder.Entity<Option>().HasData(seeds.OptionSeeds);
         }
 
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Email> Emails { get; set; }
+        public DbSet<Phone> Phones { get; set; }
+
         public DbSet<Spec> Specializations { get; set; }
         public DbSet<Price> Prices { get; set; }
         public DbSet<Description> Descriptions { get; set; }
+        public DbSet<DescriptionText> DescriptionTexts { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<WorkingHours> WorkHours { get; set; }
 
