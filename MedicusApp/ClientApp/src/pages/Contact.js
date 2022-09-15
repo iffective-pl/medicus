@@ -1,4 +1,4 @@
-import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from "reactstrap";
+import {Button, Col, Container, Form, FormGroup, Input, Label, NavLink, Row} from "reactstrap";
 import GoogleMaps from "../components/GoogleMaps";
 import Line from "../components/Line";
 import {isMobile} from "react-device-detect";
@@ -33,7 +33,7 @@ export default function Contact() {
                   <i className="phone icon"/>
                 </div>
                 <div>
-                  {comp.allPhones.map((item, index) => <div key={index}>{item}</div>)}
+                  {comp.allPhones.map((item, index) => <div key={index}><NavLink href={"tel:" + item}>{item}</NavLink></div>)}
                 </div>
               </div>
               <div className="pb-4">
@@ -41,7 +41,7 @@ export default function Contact() {
                   <i className="message icon"/>
                 </div>
                 <div>
-                  {comp.emails.map((item, index) => <div key={index}>{item}</div>)}
+                  {comp.emails.map((item, index) => <div key={index}><NavLink href={"mailto:" + item}>{item}</NavLink></div>)}
                 </div>
               </div>
               <div className="pb-4">

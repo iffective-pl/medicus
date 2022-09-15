@@ -7,7 +7,7 @@ import Line from "../Line";
 export default function HomeServices() {
   let services = Services.services;
   return (
-    <Container fluid className="p-5 mt-5">
+    <Container fluid className="p-5 mt-3">
       <span className="h2 text-center d-block title">Nasze usługi</span>
       <Line center />
       <div className="text-center pb-4">

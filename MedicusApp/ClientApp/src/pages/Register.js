@@ -1,6 +1,6 @@
 import Line from "../components/Line";
 import {isMobile} from "react-device-detect";
-import {Container} from "reactstrap";
+import {Container, NavLink} from "reactstrap";
 
 import './Register.css';
 import {useEffect, useState} from "react";
@@ -30,7 +30,7 @@ export default function Register() {
             <i className="phone icon"/>
           </div>
           <div>
-            {comp.phones.map((item, index) => <div key={index}>{item}</div>)}
+            {comp.phones.map((item, index) => <div key={index}><NavLink href={"tel:" + item}>{item}</NavLink></div>)}
           </div>
         </div>
         <div className="table-cont">
@@ -43,7 +43,7 @@ export default function Register() {
             <i className="mobile icon"/>
           </div>
           <div>
-            {comp.mobilePhones.map((item, index) => <div key={index}>{item}</div>)}
+            {comp.mobilePhones.map((item, index) => <div key={index}><NavLink href={"tel:" + item}>{item}</NavLink></div>)}
           </div>
         </div>
         <div className="table-cont">
@@ -51,25 +51,25 @@ export default function Register() {
             Rejestracja telefoniczna codziennie od 8:00 do 19:00
           </div>
         </div>
-          <div className="pb-4">
-            <div>
-              <i className="location icon"/>
-            </div>
-            <div>
-              <div>{comp.address}</div>
-              <div>{comp.code} {comp.city}</div>
-            </div>
+        <div className="pb-4">
+          <div>
+            <i className="message icon"/>
           </div>
-          <div/>
-          <div className="pb-4">
-            <div>
-              <i className="message icon"/>
-            </div>
-            <div>
-              {comp.emails.map((item, index) => <div key={index}>{item}</div>)}
-            </div>
+          <div>
+            {comp.emails.map((item, index) => <div key={index}><NavLink href={"mailto:" + item}>{item}</NavLink></div>)}
           </div>
         </div>
+        <div/>
+        <div className="pb-4">
+          <div>
+            <i className="location icon"/>
+          </div>
+          <div>
+            <div>{comp.address}</div>
+            <div>{comp.code} {comp.city}</div>
+          </div>
+        </div>
+      </div>
     </Container>
   );
 }

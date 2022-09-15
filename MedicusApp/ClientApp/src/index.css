@@ -24,10 +24,12 @@ hr {
 }
 
 .dropdown-item.header:hover {
+    color: white;
     background-color: #cc241c;
 }
 
 .dropdown-item.header::selection {
+    color: white;
     background: #cc241c;
 }
 
