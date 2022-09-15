@@ -3,6 +3,7 @@ import About from "./pages/About";
 import Docs from "./pages/Docs";
 import Contact from "./pages/Contact";
 import Register from "./pages/Register";
+import Admin from "./pages/Admin";
 
 const AppRoutes = [
   {
@@ -35,6 +36,10 @@ const AppRoutes = [
   {
     path: "contact",
     element: <Contact />
+  },
+  {
+    path: "admin",
+    element: <Admin />
   }
 ];
 

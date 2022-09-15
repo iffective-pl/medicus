@@ -16,7 +16,7 @@ namespace MedicusApp.Models.Seeding
             using (Stream reader = File.OpenRead("Data/doctors.json"))
                 this.DoctorSeeds = JsonSerializer.Deserialize<List<DoctorSeed>>(reader) ?? new List<DoctorSeed>();
             using (Stream reader = File.OpenRead("Data/specs.json"))
-                this.SpecSeeds = JsonSerializer.Deserialize<List<SpecSeeding>>(reader) ?? new List<SpecSeeding>();
+                this.SpecSeeds = JsonSerializer.Deserialize<List<SpecSeed>>(reader) ?? new List<SpecSeed>();
             using (Stream reader = File.OpenRead("Data/doctorspec.json"))
                 this.DoctorSpecSeeds = JsonSerializer.Deserialize<List<DoctorSpecSeed>>(reader) ?? new List<DoctorSpecSeed>();
             using(Stream reader = File.OpenRead("Data/workinghours.json"))
@@ -37,7 +37,7 @@ namespace MedicusApp.Models.Seeding
         public List<EmailSeed> EmailSeeds { get; private set; }
         public List<PhoneSeed> PhoneSeeds { get; private set; }
         public List<DoctorSeed> DoctorSeeds { get; private set; }
-        public List<SpecSeeding> SpecSeeds { get; private set; }
+        public List<SpecSeed> SpecSeeds { get; private set; }
         public List<DoctorSpecSeed> DoctorSpecSeeds { get; private set; }
         public List<WorkingHoursSeed> WorkingHoursSeeds { get; private set; }
         public List<LinkSeed> LinkSeeds { get; private set; }

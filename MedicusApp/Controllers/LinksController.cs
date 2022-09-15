@@ -1,5 +1,6 @@
 ﻿using MedicusApp.Models.Dto;
 using MedicusApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicusApp.Controllers
@@ -16,6 +17,7 @@ namespace MedicusApp.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<LinkDto> GetLinks()
         {
             return service.GetLinks();

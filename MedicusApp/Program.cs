@@ -1,3 +1,5 @@
+using AspNet.Security.OAuth.Keycloak;
+using MedicusApp.Config;
 using MedicusApp.Models;
 using MedicusApp.Models.Seeding;
 using MedicusApp.Repositories;
@@ -7,6 +9,16 @@ using MedicusApp.Services.Impl;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication()
+    .AddKeycloak(options =>
+    {
+        var config = builder.Configuration.GetSection("Keycloak").Get<KeycloakConfiguration>();
+        options.ClientId = config.ClientId;
+        options.ClientSecret = config.ClientSecret;
+        options.Realm = config.Realm;
+        options.BaseAddress = new Uri(config.BaseAddress);
+    });
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -38,6 +50,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseStaticFiles();
 app.UseRouting();
 

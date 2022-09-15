@@ -1,15 +1,9 @@
-import {GoogleMap, InfoWindow, Marker, useJsApiLoader} from "@react-google-maps/api";
+import {GoogleMap, InfoWindow, useJsApiLoader} from "@react-google-maps/api";
 import {
-  Button,
   Card,
   CardBody,
-  CardFooter,
-  CardHeader,
   CardText,
-  CardTitle,
-  Popover,
-  PopoverBody,
-  PopoverHeader
+  CardTitle
 } from "reactstrap";
 
 const center = {
