@@ -61,6 +61,13 @@
     mask-image: url(icons/heart_cardiogram.svg);
 }
 
+.entry {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/heart_cardiogram.svg);
+    mask-size: cover;
+    mask-image: url(icons/heart_cardiogram.svg);
+}
+
 .kidneys {
     -webkit-mask-size: cover;
     -webkit-mask-image: url(icons/kidneys.svg);
@@ -80,6 +87,13 @@
     -webkit-mask-image: url(icons/leg.svg);
     mask-size: cover;
     mask-image: url(icons/leg.svg);
+}
+
+.menu {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/menu.svg);
+    mask-size: cover;
+    mask-image: url(icons/menu.svg);
 }
 
 .neurology {

@@ -26,3 +26,7 @@
     grid-template-rows: auto auto auto auto;
     grid-template-columns: auto;
 }
+
+.text-area-size {
+    height: 10vh !important;
+}

@@ -1,4 +1,3 @@
-using AspNet.Security.OAuth.Keycloak;
 using MedicusApp.Config;
 using MedicusApp.Models;
 using MedicusApp.Models.Seeding;
@@ -6,18 +5,19 @@ using MedicusApp.Repositories;
 using MedicusApp.Repositories.Impl;
 using MedicusApp.Services;
 using MedicusApp.Services.Impl;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAuthentication()
-    .AddKeycloak(options =>
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
     {
         var config = builder.Configuration.GetSection("Keycloak").Get<KeycloakConfiguration>();
-        options.ClientId = config.ClientId;
-        options.ClientSecret = config.ClientSecret;
-        options.Realm = config.Realm;
-        options.BaseAddress = new Uri(config.BaseAddress);
+        options.MetadataAddress = config.MetadataAddress;
+        options.Authority = config.Authority;
+        options.Audience = config.Audience;
+        options.RequireHttpsMetadata = config.RequireHttpsMetadata;
     });
 
 builder.Services.AddEndpointsApiExplorer();
@@ -50,10 +50,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 }
 
-app.UseAuthentication();
-app.UseAuthorization();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

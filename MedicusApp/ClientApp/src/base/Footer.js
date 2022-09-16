@@ -122,7 +122,7 @@ export default function Footer() {
       <section className='text-center p-3 border-top border-2 footer-secondary'>
         <Nav justified>
           <NavItem>
-            <NavLink className="footer-secondary" href="/">
+            <NavLink className="footer-secondary" href="admin">
               Copyright © 2022 - MEDICUS
             </NavLink>
           </NavItem>

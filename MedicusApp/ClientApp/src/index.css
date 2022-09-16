@@ -166,3 +166,7 @@ i.xray.spec-icon {
 i.blood_pressure.spec-icon {
     background-color: #E4D183;
 }
+
+.vertical-center {
+    vertical-align: middle;
+}

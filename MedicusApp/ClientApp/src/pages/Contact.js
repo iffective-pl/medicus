@@ -59,38 +59,35 @@ export default function Contact() {
             <Form>
               <Row>
                 <Col>
-                  <FormGroup>
-                    <Label for="firstName">
-                      Imię
-                    </Label>
+                  <FormGroup floating>
                     <Input
                       bsSize="lg"
                       id="firstName"
                       name="firstName"
                       placeholder="Imię"
                     />
+                    <Label for="firstName">
+                      Imię
+                    </Label>
                   </FormGroup>
                 </Col>
                 <Col>
-                  <FormGroup>
-                    <Label for="lastName">
-                      Nazwisko
-                    </Label>
+                  <FormGroup floating>
                     <Input
                       bsSize="lg"
                       id="lastName"
                       name="lastName"
                       placeholder="Nazwisko"
                     />
+                    <Label for="lastName">
+                      Nazwisko
+                    </Label>
                   </FormGroup>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <FormGroup>
-                    <Label for="phoneNumber">
-                      Numer telefonu
-                    </Label>
+                  <FormGroup floating>
                     <Input
                       bsSize="lg"
                       id="phoneNumber"
@@ -98,13 +95,13 @@ export default function Contact() {
                       placeholder="Numer telefonu"
                       type="text"
                     />
+                    <Label for="phoneNumber">
+                      Numer telefonu
+                    </Label>
                   </FormGroup>
                 </Col>
                 <Col>
-                  <FormGroup>
-                    <Label for="email">
-                      Email
-                    </Label>
+                  <FormGroup floating>
                     <Input
                       bsSize="lg"
                       id="email"
@@ -112,22 +109,26 @@ export default function Contact() {
                       placeholder="Email"
                       type="email"
                     />
+                    <Label for="email">
+                      Email
+                    </Label>
                   </FormGroup>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <FormGroup>
-                    <Label for="message">
-                      Wiadomość
-                    </Label>
+                  <FormGroup floating>
                     <Input
                       bsSize="lg"
                       id="message"
                       name="message"
                       placeholder="Wiadomość"
                       type="textarea"
+                      className="text-area-size"
                     />
+                    <Label for="message">
+                      Wiadomość
+                    </Label>
                   </FormGroup>
                 </Col>
               </Row>
