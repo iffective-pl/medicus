@@ -13,8 +13,6 @@ services:
       KEYCLOAK_ADMIN: "admin"
       KEYCLOAK_ADMIN_PASSWORD: "1P%cuS9tMIk0"
     command: ["start-dev"]
-    depends_on:
-      - sql
   app:
     build:
       context: .
