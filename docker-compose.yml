@@ -14,7 +14,7 @@ services:
     environment:
       KEYCLOAK_ADMIN: "admin"
       KEYCLOAK_ADMIN_PASSWORD: "1P%cuS9tMIk0"
-    command: ["start-dev"]
+    command: ["start-dev", "--proxy=edge"]
   app:
     build:
       context: .
