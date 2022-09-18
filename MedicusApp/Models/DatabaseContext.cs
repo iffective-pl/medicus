@@ -2,6 +2,7 @@
 using MedicusApp.Models.People;
 using MedicusApp.Models.Seeding;
 using MedicusApp.Models.Subject;
+using MedicusApp.Models.Versioning;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedicusApp.Models
@@ -25,6 +26,18 @@ namespace MedicusApp.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Company>()
+                .Property(c => c.Created)
+                .HasDefaultValueSql("NOW()");
+
+            modelBuilder.Entity<Email>()
+                .Property(e => e.Created)
+                .HasDefaultValueSql("NOW()");
+
+            modelBuilder.Entity<Phone>()
+                .Property(p => p.Created)
+                .HasDefaultValueSql("NOW()");
+
             modelBuilder.Entity<Spec>()
                 .HasMany(s => s.Doctors)
                 .WithMany(s => s.Specializations)

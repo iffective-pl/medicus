@@ -1,10 +1,46 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Button, Card, CardBody, CardHeader, Collapse, Input, InputGroup} from "reactstrap";
 
 import './AddDeleteList.css';
 
 export default function AddDeleteList(props) {
   let [open, setOpen] = useState(false);
+  let [elements, setElements] = useState([]);
+
+  useEffect(() => {
+    switch(props.type) {
+      default:
+      case "phone": {
+        fetch("api/Company/GetPhones", {
+          headers: {
+            "Authorization": "Bearer " + props.token
+          }
+        })
+            .then(r => r.json())
+            .then(j => setElements(j))
+        break
+      }
+      case "mobile": {
+        fetch("api/Company/GetMobilePhones", {
+          headers: {
+            "Authorization": "Bearer " + props.token
+          }
+        })
+            .then(r => r.json())
+            .then(j => setElements(j))
+        break
+      }
+      case "email": {
+        fetch("api/Company/GetEmails", {
+          headers: {
+            "Authorization": "Bearer " + props.token
+          }
+        })
+            .then(r => r.json())
+            .then(j => setElements(j))
+      }
+    }
+  }, [props.type, props.token]);
 
   let title = () => {
     switch (props.type) {
@@ -30,9 +66,9 @@ export default function AddDeleteList(props) {
       </CardHeader>
       <Collapse isOpen={open}>
         <CardBody>
-          {props.elements.map((item, index) => (
+          {elements.map((item, index) => (
             <InputGroup key={index} className="p-2">
-              <Input value={item}/>
+              <Input value={props.type === "email" ? item.address : item.number}/>
               <Button color="danger">
                 Usuń
               </Button>

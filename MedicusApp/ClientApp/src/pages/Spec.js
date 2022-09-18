@@ -13,7 +13,7 @@ export default function Spec(props) {
     fetch("api/Specs/" + props.type)
       .then(r => r.json())
       .then(j => setData(j));
-  }, []);
+  }, [props.type]);
 
   if(data) {
     return (

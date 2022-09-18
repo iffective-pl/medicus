@@ -15,7 +15,7 @@ export default function Contact() {
   let [comp, setComp] = useState(company);
 
   useEffect(() => {
-    fetch("api/Company")
+    fetch("api/Company/GetCompany/full")
       .then(r => r.json())
       .then(j => setComp(j))
   }, [])

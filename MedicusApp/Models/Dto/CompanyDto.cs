@@ -7,9 +7,9 @@
         public string Address { get; set; }
         public string Code { get; set; }
         public string City { get; set; }
-        public IEnumerable<string> Emails { get; set; }
-        public IEnumerable<string> Phones { get; set; }
-        public IEnumerable<string> MobilePhones { get; set; }
-        public IEnumerable<string> AllPhones { get; set; }
+        public IEnumerable<EmailDto>? Emails { get; set; }
+        public IEnumerable<PhoneDto>? Phones { get; set; }
+        public IEnumerable<PhoneDto>? MobilePhones { get; set; }
+        public IEnumerable<PhoneDto>? AllPhones { get; set; }
     }
 }

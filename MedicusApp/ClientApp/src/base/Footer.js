@@ -21,7 +21,7 @@ export default function Footer() {
     fetch("/api/Specs")
       .then(r => r.json())
       .then(j => setSpecs(j))
-    fetch("/api/Company")
+    fetch("/api/Company/GetFullCompany")
       .then(r => r.json())
       .then(j => setComp(j))
   }, []);
@@ -89,7 +89,7 @@ export default function Footer() {
                       </div>
                     </div>
                     {comp.emails.map((item, index) =>
-                      <div key={index}><NavLink className="footer" href="#">{item}</NavLink></div>
+                      <div key={index}><NavLink className="footer" href="#">{item.address}</NavLink></div>
                     )}
                   </div>
                 </NavItem>
@@ -101,7 +101,7 @@ export default function Footer() {
                       </div>
                     </div>
                     {comp.phones.map((item, index) =>
-                      <div key={index}><NavLink className="footer" href="#">{item}</NavLink></div>
+                      <div key={index}><NavLink className="footer" href="#">{item.number}</NavLink></div>
                     )}
                     <div className="footer-icon-single">
                       <div className="footer-icon">
@@ -109,7 +109,7 @@ export default function Footer() {
                       </div>
                     </div>
                     {comp.mobilePhones.map((item, index) =>
-                      <div key={index}><NavLink className="footer" href="#">{item}</NavLink></div>
+                      <div key={index}><NavLink className="footer" href="#">{item.number}</NavLink></div>
                     )}
                   </div>
                 </NavItem>

@@ -1,6 +1,8 @@
-﻿namespace MedicusApp.Models.Subject
+﻿using MedicusApp.Models.Control;
+
+namespace MedicusApp.Models.Subject
 {
-    public class Phone
+    public class Phone : Sort
     {
         public int Id { get; set; }
         public string Number { get; set; }

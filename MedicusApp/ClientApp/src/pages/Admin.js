@@ -10,7 +10,6 @@ export default function Admin() {
   const [authenticated, setAuthenticated] = useState();
 
   useEffect(() => {
-    // eslint-disable-next-line no-undef
     const service = new Keycloak(Config);
     service.init({ onLoad: "login-required" }).then(authenticated => {
       setKeycloak(service)

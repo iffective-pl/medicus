@@ -1,4 +1,5 @@
 import {
+  Button,
   Col,
   Form,
   FormGroup,
@@ -9,35 +10,76 @@ import {
 } from "reactstrap";
 import {useEffect, useState} from "react";
 import AddDeleteList from "../AddDeleteList";
+import Notification from "../../components/Notification";
 
 let comp = {
   id: undefined,
   name: "",
   address: "",
   code: "",
-  city: "",
-  emails: [],
-  phones: [],
-  mobilePhones: []
+  city: ""
 }
 
 export default function TabCompany(props) {
   let [company, setCompany] = useState(comp);
+  let [loading, setLoading] = useState(undefined);
+  let [message, setMessage] = useState(undefined);
+  let [success, setSuccess] = useState(undefined);
 
-  useEffect(() => {
-    fetch("api/Company", {
+  let load = () => {
+    fetch("api/Company/GetCompany", {
       headers: {
         "Authorization": "Bearer " + props.keycloak.token
       }
     })
-      .then(r => r.json())
-      .then(j => setCompany(j))
+        .then(r => r.json())
+        .then(j => setCompany(j))
   }
-  , [props.keycloak.token]);
+
+  useEffect(() => {
+    load()
+  }, [props.keycloak.token]);
+
+  let onChange = (e) => {
+    const c = company;
+    c[e.target.name] = e.target.value;
+    setCompany(c);
+  }
+
+  let onSubmit = (e) => {
+    setLoading(true);
+    setMessage("Aktualizacja danych...");
+    e.preventDefault();
+    let data = { id: company.id };
+    Object.entries(e.target).filter(q => q.nodeName !== "BUTTON").forEach(([key, value]) => {
+      data[value.name] = value.value;
+    });
+
+    fetch("api/Company/UpdateCompany", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + props.keycloak.token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+        .then(r => r.text())
+        .then(t => {
+          load()
+          setLoading(false);
+          if(t === "true") {
+            setSuccess(true)
+            setMessage("Aktualizacja powiodła się")
+          } else {
+            setSuccess(false)
+            setMessage("Aktualizacja nie powiodła się")
+          }
+        })
+  }
 
   return (
-    <TabPane tabId="1" className="p-5">
-      <Form>
+    <TabPane tabId="1" className="pt-5 pb-5">
+      <Form onSubmit={onSubmit}>
         <Row>
           <Col>
             <FormGroup floating>
@@ -46,7 +88,8 @@ export default function TabCompany(props) {
                 id="name"
                 name="Name"
                 type="text"
-                value={company.name}
+                defaultValue={company.name}
+                onChange={onChange}
               />
               <Label for="name">
                 Nazwa Przychodni
@@ -62,7 +105,8 @@ export default function TabCompany(props) {
                 id="address"
                 name="address"
                 type="text"
-                value={company.address}
+                defaultValue={company.address}
+                onChange={onChange}
               />
               <Label for="name">
                 Adres
@@ -78,7 +122,8 @@ export default function TabCompany(props) {
                 id="code"
                 name="code"
                 type="text"
-                value={company.code}
+                defaultValue={company.code}
+                onChange={onChange}
               />
               <Label for="name">
                 Kod pocztowy
@@ -92,7 +137,8 @@ export default function TabCompany(props) {
                 id="city"
                 name="city"
                 type="text"
-                value={company.city}
+                defaultValue={company.city}
+                onChange={onChange}
               />
               <Label for="name">
                 Miasto
@@ -102,16 +148,22 @@ export default function TabCompany(props) {
         </Row>
         <Row>
           <Col>
-            <AddDeleteList elements={company.phones} type="phone"/>
-          </Col>
-          <Col>
-            <AddDeleteList elements={company.mobilePhones} type="mobile"/>
-          </Col>
-          <Col>
-            <AddDeleteList elements={company.emails} type="email"/>
+            <Button className="float-end" color="info" type="submit" active={!loading}>Zaktualizuj</Button>
           </Col>
         </Row>
       </Form>
+      <Row className="mt-3">
+        <Col>
+          <AddDeleteList type="phone" token={props.keycloak.token}/>
+        </Col>
+        <Col>
+          <AddDeleteList type="mobile" token={props.keycloak.token}/>
+        </Col>
+        <Col>
+          <AddDeleteList type="email" token={props.keycloak.token}/>
+        </Col>
+      </Row>
+      <Notification loading={loading} success={success} message={message}/>
     </TabPane>
   )
 }

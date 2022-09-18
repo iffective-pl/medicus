@@ -15,7 +15,7 @@ export default function Register() {
   let [comp, setComp] = useState(company);
 
   useEffect(() => {
-    fetch("api/Company")
+    fetch("api/Company/GetFullCompany")
       .then(r => r.json())
       .then(j => setComp(j))
   }, [])

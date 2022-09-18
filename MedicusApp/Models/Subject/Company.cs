@@ -1,6 +1,8 @@
-﻿namespace MedicusApp.Models.Subject
+﻿using MedicusApp.Models.Versioning;
+
+namespace MedicusApp.Models.Subject
 {
-    public class Company
+    public class Company : Create
     {
         public int Id { get; set; }
         public string Name { get; set; }
