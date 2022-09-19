@@ -5,6 +5,7 @@ import TabCompany from "./tabs/TabCompany";
 import TabHeaders from "./tabs/TabHeaders";
 import TabSpecs from "./tabs/TabSpecs";
 import AdminContext from "./AdminContext";
+import TabDoctors from "./tabs/TabDoctors";
 
 export default function AdminContent() {
   let [tab, setTab] = useState(1);
@@ -28,6 +29,11 @@ export default function AdminContent() {
         </NavItem>
         <NavItem>
           <NavLink className={isActive(3)} onClick={() => setTab(3)}>
+            Lekarze
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className={isActive(4)} onClick={() => setTab(4)}>
             Specjalizacje
           </NavLink>
         </NavItem>
@@ -38,6 +44,7 @@ export default function AdminContent() {
               <>
                 <TabCompany keycloak={keycloak}/>
                 <TabHeaders keycloak={keycloak}/>
+                <TabDoctors keycloak={keycloak}/>
                 <TabSpecs keycloak={keycloak}/>
               </>
           )}

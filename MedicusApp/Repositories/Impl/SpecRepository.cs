@@ -53,7 +53,7 @@ namespace MedicusApp.Repositories.Impl
                             Thursday = wh.Thursday,
                             Friday = wh.Friday,
                             Saturday = wh.Saturday
-                        }).Single()
+                        })
                 }),
                 Prices = s.Prices.Select(p => new PricesDto()
                 {

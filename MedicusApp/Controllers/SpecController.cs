@@ -7,11 +7,11 @@ namespace MedicusApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SpecsController : ControllerBase
+    public class SpecController : ControllerBase
     {
         private readonly ISpecService specServices;
 
-        public SpecsController(ISpecService specServices)
+        public SpecController(ISpecService specServices)
         {
             this.specServices = specServices;
         }

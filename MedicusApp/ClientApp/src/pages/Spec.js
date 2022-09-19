@@ -10,7 +10,7 @@ export default function Spec(props) {
   let [data, setData] = useState();
 
   useEffect(() => {
-    fetch("api/Specs/" + props.type)
+    fetch("api/Spec/" + props.type)
       .then(r => r.json())
       .then(j => setData(j));
   }, [props.type]);

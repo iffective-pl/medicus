@@ -16,7 +16,7 @@ export default function Header() {
   let [links, setLinks] = useState([]);
 
   useEffect(() => {
-    fetch("/api/Links")
+    fetch("/api/Link")
       .then(r => r.json())
       .then(j => setLinks(j))
   }, []);

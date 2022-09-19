@@ -15,10 +15,10 @@ export default function Footer() {
   let [specs, setSpecs] = useState([]);
   let [comp, setComp] = useState(company);
   useEffect(() => {
-    fetch("/api/Links")
+    fetch("/api/Link")
       .then(r => r.json())
       .then(j => setLinks(j))
-    fetch("/api/Specs")
+    fetch("/api/Spec")
       .then(r => r.json())
       .then(j => setSpecs(j))
     fetch("/api/Company/GetFullCompany")

@@ -37,27 +37,27 @@ export default function DocsDoctors(props) {
               <tbody>
               <tr>
                 <td>Poniedziałek</td>
-                <td>{isNull(item.workingHours.monday)}</td>
+                <td>{isNull(item.workingHours[0].monday)}</td>
               </tr>
               <tr>
                 <td>Wtorek</td>
-                <td>{isNull(item.workingHours.tuesday)}</td>
+                <td>{isNull(item.workingHours[0].tuesday)}</td>
               </tr>
               <tr>
                 <td>Środa</td>
-                <td>{isNull(item.workingHours.wednesday)}</td>
+                <td>{isNull(item.workingHours[0].wednesday)}</td>
               </tr>
               <tr>
                 <td>Czwartek</td>
-                <td>{isNull(item.workingHours.thursday)}</td>
+                <td>{isNull(item.workingHours[0].thursday)}</td>
               </tr>
               <tr>
                 <td>Piątek</td>
-                <td>{isNull(item.workingHours.friday)}</td>
+                <td>{isNull(item.workingHours[0].friday)}</td>
               </tr>
               <tr>
                 <td>Sobota</td>
-                <td>{isNull(item.workingHours.saturday)}</td>
+                <td>{isNull(item.workingHours[0].saturday)}</td>
               </tr>
               </tbody>
             </Table>

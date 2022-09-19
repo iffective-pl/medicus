@@ -3,6 +3,7 @@ using System;
 using MedicusApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MedicusApp.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220918215336_DoctorModifications")]
+    partial class DoctorModifications
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +36,7 @@ namespace MedicusApp.Migrations
 
                     b.HasIndex("SpecId");
 
-                    b.ToTable("DoctorSpec", (string)null);
+                    b.ToTable("DoctorSpec");
 
                     b.HasData(
                         new
@@ -153,7 +155,7 @@ namespace MedicusApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Links", (string)null);
+                    b.ToTable("Links");
 
                     b.HasData(
                         new
@@ -251,7 +253,7 @@ namespace MedicusApp.Migrations
 
                     b.HasIndex("LinkId");
 
-                    b.ToTable("Options", (string)null);
+                    b.ToTable("Options");
 
                     b.HasData(
                         new
@@ -374,7 +376,7 @@ namespace MedicusApp.Migrations
 
                     b.HasIndex("SpecId");
 
-                    b.ToTable("Descriptions", (string)null);
+                    b.ToTable("Descriptions");
 
                     b.HasData(
                         new
@@ -409,7 +411,7 @@ namespace MedicusApp.Migrations
 
                     b.HasIndex("DescriptionId");
 
-                    b.ToTable("DescriptionTexts", (string)null);
+                    b.ToTable("DescriptionTexts");
 
                     b.HasData(
                         new
@@ -466,7 +468,7 @@ namespace MedicusApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Doctors", (string)null);
+                    b.ToTable("Doctors");
 
                     b.HasData(
                         new
@@ -590,7 +592,7 @@ namespace MedicusApp.Migrations
 
                     b.HasIndex("SpecId");
 
-                    b.ToTable("Prices", (string)null);
+                    b.ToTable("Prices");
 
                     b.HasData(
                         new
@@ -654,7 +656,7 @@ namespace MedicusApp.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Specializations", (string)null);
+                    b.ToTable("Specializations");
 
                     b.HasData(
                         new
@@ -793,7 +795,7 @@ namespace MedicusApp.Migrations
 
                     b.HasIndex("SpecializationId");
 
-                    b.ToTable("WorkHours", (string)null);
+                    b.ToTable("WorkHours");
 
                     b.HasData(
                         new
@@ -972,7 +974,7 @@ namespace MedicusApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Companies", (string)null);
+                    b.ToTable("Companies");
 
                     b.HasData(
                         new
@@ -1018,7 +1020,7 @@ namespace MedicusApp.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("Emails", (string)null);
+                    b.ToTable("Emails");
 
                     b.HasData(
                         new
@@ -1071,7 +1073,7 @@ namespace MedicusApp.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("Phones", (string)null);
+                    b.ToTable("Phones");
 
                     b.HasData(
                         new

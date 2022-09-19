@@ -1,10 +1,21 @@
 import {useEffect, useState} from "react";
-import {Button, Card, CardBody, CardHeader, Collapse, Input, InputGroup} from "reactstrap";
+import {
+  AccordionBody,
+  AccordionHeader,
+  AccordionItem,
+  Button,
+  Card,
+  CardBody,
+  CardHeader, Col,
+  Collapse,
+  Input,
+  InputGroup, Row,
+  UncontrolledAccordion
+} from "reactstrap";
 
 import './AddDeleteList.css';
 
 export default function AddDeleteList(props) {
-  let [open, setOpen] = useState(false);
   let [elements, setElements] = useState([]);
 
   useEffect(() => {
@@ -55,28 +66,31 @@ export default function AddDeleteList(props) {
   }
 
   return (
-    <Card className="mb-3">
-      <CardHeader onClick={() => setOpen(!open)}>
-        <div className="d-inline-block">
-            {title()}
-        </div>
-        <div className="d-inline-block add-delete-list">
-          <i className="icon menu add-delete-list"/>
-        </div>
-      </CardHeader>
-      <Collapse isOpen={open}>
-        <CardBody>
+    <UncontrolledAccordion className="mb-3">
+      <AccordionItem>
+        <AccordionHeader targetId="1">
+          {title()}
+        </AccordionHeader>
+        <AccordionBody accordionId="1">
           {elements.map((item, index) => (
-            <InputGroup key={index} className="p-2">
-              <Input value={props.type === "email" ? item.address : item.number}/>
-              <Button color="danger">
-                Usuń
-              </Button>
-            </InputGroup>
+            <Row>
+              <Col>
+                <InputGroup key={index} className="p-2">
+                  <Input value={props.type === "email" ? item.address : item.number}/>
+                  <Button color="danger">
+                    Usuń
+                  </Button>
+                </InputGroup>
+              </Col>
+            </Row>
           ))}
-          <Button className="m-2" color="success">Dodaj</Button>
-        </CardBody>
-      </Collapse>
-    </Card>
+          <Row>
+            <Col>
+              <Button className="m-2" color="success">Dodaj</Button>
+            </Col>
+          </Row>
+        </AccordionBody>
+      </AccordionItem>
+    </UncontrolledAccordion>
   )
 }

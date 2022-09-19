@@ -28,10 +28,12 @@ builder.Services.AddDbContext<DatabaseContext>();
 builder.Services.AddTransient<ISpecRepository, SpecRepository>();
 builder.Services.AddTransient<ILinkRepository, LinkRepository>();
 builder.Services.AddTransient<ICompanyRepository, CompanyRepository>();
+builder.Services.AddTransient<IDoctorRepository, DoctorRepository>();
 
 builder.Services.AddTransient<ISpecService, SpecService>();
 builder.Services.AddTransient<ILinkService, LinkService>();
 builder.Services.AddTransient<ICompanyService, CompanyService>();
+builder.Services.AddTransient<IDoctorService, DoctorService>();
 
 builder.Services.AddSingleton<Seeder>();
 

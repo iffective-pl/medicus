@@ -48,7 +48,7 @@ export default function TabCompany(props) {
 
   let onSubmit = (e) => {
     setLoading(true);
-    setMessage("Aktualizacja danych...");
+    setMessage("Aktualizacja danych placówki...");
     e.preventDefault();
     let data = { id: company.id };
     Object.entries(e.target).filter(q => q.nodeName !== "BUTTON").forEach(([key, value]) => {
@@ -67,11 +67,10 @@ export default function TabCompany(props) {
         .then(t => {
           load()
           setLoading(false);
+          setSuccess(t === "true")
           if(t === "true") {
-            setSuccess(true)
             setMessage("Aktualizacja powiodła się")
           } else {
-            setSuccess(false)
             setMessage("Aktualizacja nie powiodła się")
           }
         })

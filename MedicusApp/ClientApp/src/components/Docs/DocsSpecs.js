@@ -8,7 +8,7 @@ export default function DocsSpecs() {
   let [specs, setSpecs] = useState([]);
 
   useEffect(() => {
-    fetch("/api/Specs")
+    fetch("/api/Spec")
       .then(r => r.json())
       .then(j => setSpecs(j));
   });

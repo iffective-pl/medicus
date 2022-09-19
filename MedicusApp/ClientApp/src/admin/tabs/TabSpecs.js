@@ -2,7 +2,7 @@ import {Col, Row, TabPane} from "reactstrap";
 
 export default function TabSpecs() {
   return (
-    <TabPane tabId="3">
+    <TabPane tabId="4">
       <Row>
         <Col sm="12">
           <h4>

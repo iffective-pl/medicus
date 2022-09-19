@@ -7,11 +7,11 @@ namespace MedicusApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LinksController : ControllerBase
+    public class LinkController : ControllerBase
     {
         private readonly ILinkService service;
 
-        public LinksController(ILinkService service)
+        public LinkController(ILinkService service)
         {
             this.service = service;
         }
