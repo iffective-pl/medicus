@@ -23,9 +23,9 @@ namespace MedicusApp.Controllers
         }
         
         [HttpGet]
-        public DoctorDto GetDoctor(int id)
+        public DoctorDto GetDoctor(int doctorId)
         {
-            return service.GetDoctor(id);
+            return service.GetDoctor(doctorId);
         }
 
         [HttpGet]
@@ -40,12 +40,6 @@ namespace MedicusApp.Controllers
             return service.UpdateDoctor(doctor);
         }
 
-        [HttpDelete]
-        public bool DeleteDoctor(int id)
-        {
-            return service.DeleteDoctor(id);
-        }
-
         [HttpPost]
         public bool UpdateWorkingHours(WorkingHoursDto workingHours)
         {
@@ -53,9 +47,21 @@ namespace MedicusApp.Controllers
         }
 
         [HttpPut]
+        public bool AddDoctor(DoctorDto doctor)
+        {
+            return service.AddDoctor(doctor);
+        }
+
+        [HttpPut]
         public bool AddSpec(int doctorId, int specId)
         {
             return service.AddSpec(doctorId, specId);
+        }
+
+        [HttpDelete]
+        public bool DeleteDoctor(int doctorId)
+        {
+            return service.DeleteDoctor(doctorId);
         }
 
         [HttpDelete]

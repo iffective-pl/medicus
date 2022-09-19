@@ -37,21 +37,22 @@ export default function DelSpecButton(props) {
 
   return (
     <>
-      <Modal isOpen={open} toggle={toggle} active={!loading}>
+      <Button color="danger" onClick={toggle}>Usuń</Button>
+      <Modal isOpen={open} toggle={toggle}>
         <Form onSubmit={onSubmit}>
           <ModalHeader toggle={toggle}>Specjalizacja</ModalHeader>
           <ModalBody>
-            Czy na pewno chcesz usunąć specjalizację: {props.name}
+            Czy na pewno chcesz usunąć specjalizację: {props.name}?
           </ModalBody>
           <ModalFooter>
             <Row>
               <Col>
-                <Button color="primary" type="submit" active={!loading}>
+                <Button color="primary" type="submit" disabled={!loading}>
                   Zatwierdź
                 </Button>
               </Col>
               <Col>
-                <Button color="secondary" onClick={toggle} active={!loading}>
+                <Button color="secondary" onClick={toggle} disabled={loading}>
                   Anuluj
                 </Button>
               </Col>
@@ -60,7 +61,6 @@ export default function DelSpecButton(props) {
         </Form>
       </Modal>
       <Notification loading={loading} success={success} message={message}/>
-      <Button color="danger" onClick={toggle}>Usuń</Button>
     </>
   )
 }

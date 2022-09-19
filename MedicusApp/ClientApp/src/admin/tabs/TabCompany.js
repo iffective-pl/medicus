@@ -77,7 +77,7 @@ export default function TabCompany(props) {
   }
 
   return (
-    <TabPane tabId="1" className="pt-5 pb-5">
+    <TabPane tabId="1" className="pt-3 pb-3">
       <Form onSubmit={onSubmit}>
         <Row>
           <Col>
@@ -147,7 +147,7 @@ export default function TabCompany(props) {
         </Row>
         <Row>
           <Col>
-            <Button className="float-end" color="info" type="submit" active={!loading}>Zaktualizuj</Button>
+            <Button className="float-end" color="info" type="submit" disabled={loading}>Zaktualizuj</Button>
           </Col>
         </Row>
       </Form>

@@ -15,6 +15,27 @@ namespace MedicusApp.Repositories.Impl
             this.context = context;
         }
 
+        public bool AddDoctor(DoctorDto doctor)
+        {
+            try
+            {
+                var doc = new Doctor()
+                {
+                    Title = doctor.Title,
+                    FirstName = doctor.FirstName,
+                    LastName = doctor.LastName,
+                    SpecTitle = doctor.SpecTitle,
+                    Description = doctor.Description
+                };
+                context.Doctors.Add(doc);
+                context.SaveChanges();
+                return true;
+            } catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public bool AddSpec(int doctorId, int specId)
         {
             try
@@ -40,12 +61,12 @@ namespace MedicusApp.Repositories.Impl
             }
         }
 
-        public bool DeleteDoctor(int id)
+        public bool DeleteDoctor(int doctorId)
         {
             try
             {
-                var doc = context.Doctors.Where(d => d.Id == id).Single();
-                doc.Deleted = DateTime.Now;
+                var doc = context.Doctors.Where(d => d.Id == doctorId).Single();
+                doc.Deleted = DateTime.UtcNow;
                 context.SaveChanges();
                 return true;
             } catch (Exception)
@@ -93,9 +114,9 @@ namespace MedicusApp.Repositories.Impl
             }
         }
 
-        public DoctorDto GetDoctor(int id)
+        public DoctorDto GetDoctor(int doctorId)
         {
-            return context.Doctors.Where(d => d.Id == id).Select(d => new DoctorDto()
+            return context.Doctors.Where(d => d.Id == doctorId).Select(d => new DoctorDto()
             {
                 Id = d.Id,
                 Title = d.Title,

@@ -12,14 +12,19 @@ namespace MedicusApp.Services.Impl
             this.repository = repository;
         }
 
+        public bool AddDoctor(DoctorDto doctor)
+        {
+            return repository.AddDoctor(doctor);
+        }
+
         public bool AddSpec(int doctorId, int specId)
         {
             return repository.AddSpec(doctorId, specId);
         }
 
-        public bool DeleteDoctor(int id)
+        public bool DeleteDoctor(int doctorId)
         {
-            return repository.DeleteDoctor(id);
+            return repository.DeleteDoctor(doctorId);
         }
 
         public bool DeleteSpec(int doctorId, int specId)
@@ -32,9 +37,9 @@ namespace MedicusApp.Services.Impl
             return repository.GetAvailableSpecs(doctorId);
         }
 
-        public DoctorDto GetDoctor(int id)
+        public DoctorDto GetDoctor(int doctorId)
         {
-            return repository.GetDoctor(id);
+            return repository.GetDoctor(doctorId);
         }
 
         public IEnumerable<int> GetDoctors()

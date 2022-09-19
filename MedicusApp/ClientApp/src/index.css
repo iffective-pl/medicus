@@ -170,3 +170,7 @@ i.blood_pressure.spec-icon {
 .vertical-center {
     vertical-align: middle;
 }
+
+.max-width {
+    width: 100%;
+}

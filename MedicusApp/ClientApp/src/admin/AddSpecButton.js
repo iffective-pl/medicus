@@ -50,7 +50,7 @@ export default function AddSpecButton(props) {
 
   return (
     <>
-      <Button color="success" onClick={toggle} active={!loading}>Dodaj</Button>
+      <Button className="float-end" color="success" onClick={toggle} disabled={loading}>Dodaj</Button>
       <Modal isOpen={open} toggle={toggle}>
         <Form onSubmit={onSubmit}>
           <ModalHeader toggle={toggle}>Specjalizacja</ModalHeader>
@@ -75,12 +75,12 @@ export default function AddSpecButton(props) {
           <ModalFooter>
             <Row>
               <Col>
-                <Button color="primary" type="submit" active={!loading}>
+                <Button color="primary" type="submit" disabled={loading}>
                   Zatwierdź
                 </Button>
               </Col>
               <Col>
-                <Button color="secondary" onClick={toggle} active={!loading}>
+                <Button color="secondary" onClick={toggle} disabled={loading}>
                   Anuluj
                 </Button>
               </Col>
