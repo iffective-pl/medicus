@@ -76,7 +76,7 @@ export default function TabDoctors(props) {
       <Row className="mb-3">
         <Col>
           <Button className="float-end" color="success" onClick={toggle}>Stwórz</Button>
-          <Modal isOpen={open} toggle={toggle}>
+          <Modal isOpen={open} toggle={toggle} size="xl">
             <Form onSubmit={create}>
               <ModalHeader toggle={toggle}>Nowy profil lekarza</ModalHeader>
               <ModalBody>
@@ -167,11 +167,7 @@ export default function TabDoctors(props) {
           </Modal>
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <Notification loading={loading} success={success} message={message}/>
-        </Col>
-      </Row>
+      <Notification loading={loading} success={success} message={message}/>
       <UncontrolledAccordion className="mb-3">
         {doctors.map((item, key) => <TabDoctor id={item} token={props.keycloak.token} index={key} key={key} update={load}/>)}
       </UncontrolledAccordion>

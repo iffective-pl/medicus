@@ -1,8 +1,20 @@
-import {Button, Col, Form, Modal, ModalBody, ModalFooter, ModalHeader, Row} from "reactstrap";
+import {
+  Button,
+  Col,
+  Form,
+  FormGroup,
+  FormText,
+  Input,
+  Modal,
+  ModalBody,
+  ModalFooter,
+  ModalHeader,
+  Row
+} from "reactstrap";
 import {useState} from "react";
 import Notification from "../components/Notification";
 
-export default function DelSpecButton(props) {
+export default function AddDescButton(props) {
   let [open, setOpen] = useState(false);
 
   let [loading, setLoading] = useState(undefined);
@@ -14,22 +26,27 @@ export default function DelSpecButton(props) {
   let onSubmit = (e) => {
     setOpen(false)
     setLoading(true)
-    setMessage("Usuwanie specjalizacji lekarza...")
+    setMessage("Dodawanie nowej sekcji opisu...")
     e.preventDefault();
-    fetch("api/Doctor/DeleteSpec?doctorId=" + props.doc + "&specId=" + props.id, {
-      method: "DELETE",
+
+    let data = {};
+
+    fetch("api/Spec/AddDesc?specId=" + props.id, {
+      method: "PUT",
       headers: {
-        "Authorization": "Bearer " + props.token
-      }
+        "Authorization": "Bearer " + props.token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
     })
       .then(r => r.text())
       .then(t => {
         setLoading(false);
         setSuccess(t === "true");
         if(t === "true") {
-          setMessage("Specjalizacja lekarza została usunięta")
+          setMessage("Sekcja opis został dodany")
         } else {
-          setMessage("Usuwanie nie powiodło się")
+          setMessage("Nie udało się dodać nowej sekcji opisu")
         }
         props.load()
       })
@@ -37,12 +54,25 @@ export default function DelSpecButton(props) {
 
   return (
     <>
-      <Button color="danger" onClick={toggle}>Usuń</Button>
+      <Button className="float-end" color="success" onClick={toggle} disabled={loading}>Dodaj</Button>
       <Modal isOpen={open} toggle={toggle}>
         <Form onSubmit={onSubmit}>
-          <ModalHeader toggle={toggle}>Specjalizacja</ModalHeader>
+          <ModalHeader toggle={toggle}>Sekcja opisu</ModalHeader>
           <ModalBody>
-            Czy na pewno chcesz usunąć specjalizację: {props.name}?
+            <Row>
+              <Col>
+                <FormGroup>
+                  <Input
+                    name="file"
+                    type="file"
+                    accept=".jpg,.jpeg,.png"
+                  />
+                  <FormText>
+                    Wybierz zdjęcie dla sekcji opisu
+                  </FormText>
+                </FormGroup>
+              </Col>
+            </Row>
           </ModalBody>
           <ModalFooter>
             <Row>

@@ -18,7 +18,7 @@ export default function Footer() {
     fetch("/api/Link")
       .then(r => r.json())
       .then(j => setLinks(j))
-    fetch("/api/Spec")
+    fetch("/api/Spec/GetSpecs")
       .then(r => r.json())
       .then(j => setSpecs(j))
     fetch("/api/Company/GetFullCompany")

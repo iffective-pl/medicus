@@ -1,6 +1,8 @@
-﻿namespace MedicusApp.Models.People
+﻿using MedicusApp.Models.Control;
+
+namespace MedicusApp.Models.People
 {
-    public class Price
+    public class Price : Sort
     {
         public int Id { get; set; }
         public string Title { get; set; }

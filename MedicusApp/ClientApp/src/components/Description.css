@@ -8,11 +8,16 @@
 }
 
 .columns {
-    grid-template-columns: auto auto;
+    grid-template-columns: 50% 50%;
     grid-column-gap: 2.5vw;
 }
 
 .desc-image {
     height: 35vh;
     overflow: hidden;
+}
+
+.no-gap {
+    grid-column-gap: 0 !important;
+    grid-row-gap: 0 !important;
 }

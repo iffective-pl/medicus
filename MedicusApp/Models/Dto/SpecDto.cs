@@ -1,4 +1,5 @@
-﻿using MedicusApp.Models.People;
+﻿using MedicusApp.Models.Control;
+using MedicusApp.Models.People;
 
 namespace MedicusApp.Models.Dto
 {

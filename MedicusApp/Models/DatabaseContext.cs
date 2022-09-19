@@ -42,6 +42,14 @@ namespace MedicusApp.Models
                 .Property(p => p.Created)
                 .HasDefaultValueSql("NOW()");
 
+            modelBuilder.Entity<Description>()
+                .Property(p => p.Created)
+                .HasDefaultValueSql("NOW()");
+
+            modelBuilder.Entity<Price>()
+                .Property(p => p.Created)
+                .HasDefaultValueSql("NOW()");
+
             modelBuilder.Entity<Spec>()
                 .HasMany(s => s.Doctors)
                 .WithMany(s => s.Specializations)
