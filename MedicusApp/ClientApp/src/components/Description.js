@@ -1,5 +1,6 @@
 import './Description.css';
 import {isMobile} from "react-device-detect";
+import Config from "../admin/config/Config";
 
 export default function Description(props) {
   let desc = props.description;
@@ -8,7 +9,7 @@ export default function Description(props) {
     return (
       <div className={"desc-row " + (isMobile ? "rows" : "columns")}>
         <div className="desc-image shadow-lg">
-          <img src={desc.image} className="desc-image" alt="desc"/>
+          <img src={Config.minio + desc.image} className="desc-image" alt="desc"/>
         </div>
         <div>
           {desc.descriptionTexts.map((item, index) =>

@@ -2,7 +2,7 @@
 
 namespace MedicusApp.Models.Dto
 {
-    public class PricesDto : Sort
+    public class PriceDto : Sort
     {
         public int Id { get; set; }
         public string Title { get; set; }

@@ -7,6 +7,7 @@ namespace MedicusApp.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class SpecController : ControllerBase
     {
         private readonly ISpecService service;
@@ -49,9 +50,9 @@ namespace MedicusApp.Controllers
         }
 
         [HttpPut]
-        public bool AddDesc(int specId, DescriptionDto description)
+        public bool AddDesc(DescriptionDto description)
         {
-            return service.AddDesc(specId, description);
+            return service.AddDesc(description);
         }
 
         [HttpPost]
@@ -64,6 +65,36 @@ namespace MedicusApp.Controllers
         public bool DeleteDesc(int descId)
         {
             return service.DeleteDesc(descId);
+        }
+
+        [HttpGet]
+        public IEnumerable<int> GetPrices(int specId)
+        {
+            return service.GetPrices(specId);
+        }
+
+        [HttpGet]
+        public PriceDto GetPrice(int priceId)
+        {
+            return service.GetPrice(priceId);
+        }
+
+        [HttpPut]
+        public bool AddPrice(PriceDto price)
+        {
+            return service.AddPrice(price);
+        }
+
+        [HttpPost]
+        public bool UpdatePrice(PriceDto price)
+        {
+            return service.UpdatePrice(price);
+        }
+
+        [HttpDelete]
+        public bool DeletePrice(int priceId)
+        {
+            return service.DeletePrice(priceId);
         }
     }
 }

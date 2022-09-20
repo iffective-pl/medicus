@@ -6,6 +6,6 @@
         public string Title { get; set; }
         public double Value { get; set; }
 
-        public int SpecId { get; set; }
+        public int SpecializationId { get; set; }
     }
 }

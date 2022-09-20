@@ -4,10 +4,7 @@ import {
   AccordionHeader,
   AccordionItem,
   Button,
-  Card,
-  CardBody,
-  CardHeader, Col,
-  Collapse,
+  Col,
   Input,
   InputGroup, Row,
   UncontrolledAccordion
@@ -73,10 +70,10 @@ export default function AddDeleteList(props) {
         </AccordionHeader>
         <AccordionBody accordionId="1">
           {elements.map((item, index) => (
-            <Row>
+            <Row key={index}>
               <Col>
                 <InputGroup key={index} className="p-2">
-                  <Input value={props.type === "email" ? item.address : item.number}/>
+                  <Input defaultValue={props.type === "email" ? item.address : item.number}/>
                   <Button color="danger">
                     Usuń
                   </Button>

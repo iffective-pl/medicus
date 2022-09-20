@@ -4,6 +4,7 @@ using MedicusApp.Models.Control;
 using MedicusApp.Models.Dto;
 using MedicusApp.Models.People;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Mime;
 
 namespace MedicusApp.Repositories.Impl
 {
@@ -59,7 +60,7 @@ namespace MedicusApp.Repositories.Impl
                             Saturday = wh.Saturday
                         })
                 }),
-                Prices = s.Prices.Select(p => new PricesDto()
+                Prices = s.Prices.Select(p => new PriceDto()
                 {
                     Id = p.Id,
                     SpecId = s.Id,
@@ -105,7 +106,7 @@ namespace MedicusApp.Repositories.Impl
                     Deleted = d.Deleted,
                     Order = d.Order
                 }),
-                Prices = s.Prices.Where(p => p.Deleted == null).Select(p => new PricesDto()
+                Prices = s.Prices.Where(p => p.Deleted == null).Select(p => new PriceDto()
                 {
                     Id = p.Id,
                     Title = p.Title,
@@ -132,11 +133,11 @@ namespace MedicusApp.Repositories.Impl
             }
         }
 
-        public bool AddDesc(int specId, DescriptionDto description)
+        public bool AddDesc(DescriptionDto description)
         {
             try
             {
-                var sp = context.Specializations.Where(s => s.Id == specId).Single();
+                var sp = context.Specializations.Where(s => s.Id == description.SpecId).Include(s => s.Descriptions).Single();
                 var desc = new Description()
                 {
                     Image = description.Image
@@ -197,6 +198,75 @@ namespace MedicusApp.Repositories.Impl
                 context.SaveChanges();
                 return true;
             } catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public IEnumerable<int> GetPrices(int specId)
+        {
+            return context.Specializations.Where(s => s.Id == specId).Include(s => s.Prices).Single().Prices.Where(p => p.Deleted == null).Select(p => p.Id);
+        }
+
+        public PriceDto GetPrice(int priceId)
+        {
+            return context.Prices.Where(p => p.Id == priceId).Include(p => p.Specialization).Select(p => new PriceDto()
+            {
+                Id = p.Id,
+                Title = p.Title,
+                Value = p.Value,
+                Created = p.Created,
+                Deleted = p.Deleted,
+                Order = p.Order,
+                SpecId = p.Specialization.Id
+            }).Single();
+        }
+
+        public bool AddPrice(PriceDto price)
+        {
+            try
+            {
+                var spec = context.Specializations.Where(s => s.Id == price.SpecId).Include(s => s.Prices).Single();
+                var p = new Price()
+                {
+                    Title = price.Title,
+                    Value = price.Value
+                };
+                spec.Prices.Add(p);
+                context.SaveChanges();
+                return true;
+            } catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool UpdatePrice(PriceDto price)
+        {
+            try
+            {
+                var pr = context.Prices.Where(p => p.Id == price.Id).Single();
+                pr.Title = price.Title;
+                pr.Value = price.Value;
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool DeletePrice(int priceId)
+        {
+            try
+            {
+                var pr = context.Prices.Where(p => p.Id == priceId).Single();
+                pr.Deleted = DateTime.UtcNow;
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
             {
                 return false;
             }

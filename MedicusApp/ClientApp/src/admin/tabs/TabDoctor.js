@@ -272,11 +272,11 @@ export default function TabDoctor(props) {
                     <CardHeader targetId="=1">Specjalizacje</CardHeader>
                     <CardBody accordion="-1">
                       {doctor.specializations.map((item, key) => (
-                        <Row>
+                        <Row key={key}>
                           <Col>
                             <InputGroup key={key} className="mb-3">
                               <DelSpecButton id={item.id} name={item.name} doc={doctor.id} token={props.token} load={load}/>
-                              <Input type="text" value={item.name}/>
+                              <Input type="text" defaultValue={item.name} disabled/>
                             </InputGroup>
                           </Col>
                         </Row>
@@ -307,7 +307,7 @@ export default function TabDoctor(props) {
                               disabled={doctor.specializations.length < 1}
                             >
                               {doctor.specializations.map((item, key) => (
-                                <option value={item.id} key={key}>
+                                <option defaultValue={item.id} key={key}>
                                   {item.name}
                                 </option>
                               ))}

@@ -36,6 +36,7 @@ builder.Services.AddTransient<ICompanyService, CompanyService>();
 builder.Services.AddTransient<IDoctorService, DoctorService>();
 
 builder.Services.AddSingleton<Seeder>();
+builder.Services.AddSingleton<MinioService>();
 
 builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);

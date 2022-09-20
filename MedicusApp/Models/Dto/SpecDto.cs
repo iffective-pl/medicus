@@ -11,7 +11,7 @@ namespace MedicusApp.Models.Dto
         public string ClassName { get; set; }
         public int Order { get; set; }
         public IEnumerable<DoctorDto>? Doctors { get; set; }
-        public IEnumerable<PricesDto>? Prices { get; set; }
+        public IEnumerable<PriceDto>? Prices { get; set; }
         public IEnumerable<DescriptionDto>? Descriptions { get; set; }
     }
 }

@@ -9,6 +9,7 @@ import {
 import {useEffect, useState} from "react";
 import DelDescButton from "../DelDescButton";
 import EditDescButton from "../EditDescButton";
+import Config from "../config/Config";
 
 let des = {
   id: undefined,
@@ -28,7 +29,7 @@ export default function TabSpecDesc(props) {
       <CardBody className="p-0">
         <div className={"no-gap desc-row " + (isMobile ? "rows" : "columns")}>
           <div className="desc-image shadow-lg">
-            <img src={desc.image} className="desc-image" alt="desc"/>
+            <img src={Config.minio + desc.image} className="desc-image" alt="desc"/>
           </div>
           <div className="ps-3">
             {desc.descriptionTexts.map((item, index) =>
@@ -43,7 +44,7 @@ export default function TabSpecDesc(props) {
       <CardFooter>
         <Row>
           <Col>
-            <DelDescButton token={props.token} load={props.update}/>
+            <DelDescButton token={props.token} load={props.update} desc={desc.id}/>
           </Col>
           <Col>
             <EditDescButton desc={desc} token={props.token} update={props.update}/>

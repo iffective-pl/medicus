@@ -38,9 +38,9 @@ namespace MedicusApp.Services.Impl
             return repository.UpdateSpec(spec);
         }
 
-        public bool AddDesc(int specId, DescriptionDto description)
+        public bool AddDesc(DescriptionDto description)
         {
-            return repository.AddDesc(specId, description);
+            return repository.AddDesc(description);
         }
 
         public bool UpdateDesc(DescriptionDto description)
@@ -51,6 +51,31 @@ namespace MedicusApp.Services.Impl
         public bool DeleteDesc(int descId)
         {
             return repository.DeleteDesc(descId);
+        }
+
+        public IEnumerable<int> GetPrices(int specId)
+        {
+            return repository.GetPrices(specId);
+        }
+
+        public PriceDto GetPrice(int priceId)
+        {
+            return repository.GetPrice(priceId);
+        }
+
+        public bool AddPrice(PriceDto price)
+        {
+            return repository.AddPrice(price);
+        }
+
+        public bool UpdatePrice(PriceDto price)
+        {
+            return repository.UpdatePrice(price);
+        }
+
+        public bool DeletePrice(int priceId)
+        {
+            return repository.DeletePrice(priceId);
         }
     }
 }

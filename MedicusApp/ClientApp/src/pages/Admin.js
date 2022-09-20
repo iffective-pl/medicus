@@ -5,6 +5,8 @@ import AdminContext from "../admin/AdminContext";
 import Config from '../admin/config/Config';
 import AdminContent from "../admin/AdminContent";
 
+import './Admin.css';
+
 export default function Admin() {
   const [keycloak, setKeycloak] = useState(undefined);
   const [authenticated, setAuthenticated] = useState();

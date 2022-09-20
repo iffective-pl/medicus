@@ -14,6 +14,7 @@ import {
 import Notification from "../../components/Notification";
 import TabSpecDesc from "./TabSpecDesc";
 import AddDescButton from "../AddDescButton";
+import TabSpecPrices from "./TabSpecPrices";
 
 let sp = {
   id: undefined,
@@ -133,6 +134,7 @@ export default function TabSpec(props) {
                 </Card>
               </Col>
             </Row>
+            <TabSpecPrices token={props.token} id={spec.id}/>
           </AccordionBody>
         </AccordionItem>
       </Col>

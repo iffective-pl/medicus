@@ -1,5 +1,6 @@
 ﻿using MedicusApp.Models.Dto;
 using MedicusApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace MedicusApp.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class DoctorController : ControllerBase
     {
         private readonly IDoctorService service;

@@ -7,6 +7,7 @@ namespace MedicusApp.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
+    [Authorize]
     public class CompanyController : ControllerBase
     {
         private readonly ICompanyService service;
