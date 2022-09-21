@@ -1,8 +1,10 @@
-﻿using MedicusApp.Models.Links;
-using MedicusApp.Models.People;
+﻿using MedicusApp.Models.Data;
+using MedicusApp.Models.Data.Desc;
+using MedicusApp.Models.Data.Person;
+using MedicusApp.Models.Data.UI;
+using MedicusApp.Models.Links;
 using MedicusApp.Models.Seeding;
 using MedicusApp.Models.Subject;
-using MedicusApp.Models.Versioning;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedicusApp.Models
@@ -49,10 +51,22 @@ namespace MedicusApp.Models
             modelBuilder.Entity<Price>()
                 .Property(p => p.Created)
                 .HasDefaultValueSql("NOW()");
+            
+            modelBuilder.Entity<Header>()
+                .Property(p => p.Created)
+                .HasDefaultValueSql("NOW()");
+            
+            modelBuilder.Entity<Link>()
+                .Property(p => p.Created)
+                .HasDefaultValueSql("NOW()");
+
+            modelBuilder.Entity<Spec>()
+                .Property(p => p.Created)
+                .HasDefaultValueSql("NOW()");
 
             modelBuilder.Entity<Spec>()
                 .HasMany(s => s.Doctors)
-                .WithMany(s => s.Specializations)
+                .WithMany(d => d.Specs)
                 .UsingEntity<Dictionary<int, int>>(
                     "DoctorSpec",
                     d => d.HasOne<Doctor>().WithMany().HasForeignKey("DoctorId"),
@@ -65,18 +79,24 @@ namespace MedicusApp.Models
                 )
                 .HasIndex(p => new { p.Name })
                 .IsUnique(true);
-            modelBuilder.Entity<Spec>()
+
+            modelBuilder.Entity<Link>()
+                .HasOne(l => l.Spec)
+                .WithOne(s => s.Link)
+                .HasForeignKey<Link>(l => l.SpecId);
+
+            modelBuilder.Entity<Header>()
                 .Property(s => s.Order)
                 .ValueGeneratedOnAdd();
 
-            modelBuilder.Entity<Link>()
-                .Property(s => s.IsIndex)
+            modelBuilder.Entity<Header>()
+                .Property(h => h.IsIndex)
                 .HasDefaultValue(false);
-            modelBuilder.Entity<Link>()
-                .Property(s => s.Order)
-                .ValueGeneratedOnAdd();
+            modelBuilder.Entity<Header>()
+                .Property(h => h.IsHidden)
+                .HasDefaultValue(false);
 
-            modelBuilder.Entity<Option>()
+            modelBuilder.Entity<Link>()
                 .Property(s => s.Order)
                 .ValueGeneratedOnAdd();
 
@@ -92,22 +112,24 @@ namespace MedicusApp.Models
             modelBuilder.Entity<Doctor>().HasData(seeds.DoctorSeeds);
             modelBuilder.Entity<WorkingHours>().HasData(seeds.WorkingHoursSeeds);
 
+            modelBuilder.Entity<Header>().HasData(seeds.HeaderSeeds);
             modelBuilder.Entity<Link>().HasData(seeds.LinkSeeds);
-            modelBuilder.Entity<Option>().HasData(seeds.OptionSeeds);
+            modelBuilder.Entity<Style>().HasData(seeds.StyleSeeds);
         }
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<Email> Emails { get; set; }
         public DbSet<Phone> Phones { get; set; }
 
-        public DbSet<Spec> Specializations { get; set; }
+        public DbSet<Spec> Specs { get; set; }
         public DbSet<Price> Prices { get; set; }
         public DbSet<Description> Descriptions { get; set; }
         public DbSet<DescriptionText> DescriptionTexts { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
-        public DbSet<WorkingHours> WorkHours { get; set; }
+        public DbSet<WorkingHours> WorkingHours { get; set; }
 
         public DbSet<Link> Links { get; set; }
-        public DbSet<Option> Options { get; set; }
+        public DbSet<Header> Headers { get; set; }
+        public DbSet<Style> Styles { get; set; }
     }
 }

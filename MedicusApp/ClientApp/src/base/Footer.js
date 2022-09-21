@@ -12,15 +12,15 @@ let company = {
 
 export default function Footer() {
   let [links, setLinks] = useState([]);
-  let [specs, setSpecs] = useState([]);
+  let [headers, setHeaders] = useState([]);
   let [comp, setComp] = useState(company);
   useEffect(() => {
-    fetch("/api/Link")
+    fetch("/api/UI/GetLinks")
       .then(r => r.json())
       .then(j => setLinks(j))
-    fetch("/api/Spec/GetSpecs")
+    fetch("/api/UI/GetHeaders")
       .then(r => r.json())
-      .then(j => setSpecs(j))
+      .then(j => setHeaders(j))
     fetch("/api/Company/GetFullCompany")
       .then(r => r.json())
       .then(j => setComp(j))
@@ -40,7 +40,7 @@ export default function Footer() {
             <Col md="2" lg="2" xl="2" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-3'>Mapa strony</h6>
               <Nav vertical>
-                {links.map((item, index) => (
+                {headers.map((item, index) => (
                   <NavItem key={index}>
                     <NavLink className="footer" href={item.href}>
                       {item.name}
@@ -53,10 +53,10 @@ export default function Footer() {
             <Col md="3" lg="2" xl="2" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-3'>Lekarze specjaliści</h6>
               <Nav vertical>
-                {specs.map((item, index) => (
+                {links.map((item, index) => (
                   <NavItem key={index}>
                     <NavLink className="footer" href={"docs/" + item.href}>
-                      {item.name}
+                      {item.spec.name}
                     </NavLink>
                   </NavItem>
                 ))}

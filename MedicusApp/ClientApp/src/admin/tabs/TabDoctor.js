@@ -307,7 +307,7 @@ export default function TabDoctor(props) {
                               disabled={doctor.specializations.length < 1}
                             >
                               {doctor.specializations.map((item, key) => (
-                                <option defaultValue={item.id} key={key}>
+                                <option value={item.id} key={key}>
                                   {item.name}
                                 </option>
                               ))}

@@ -1,5 +1,4 @@
 ﻿using MedicusApp.Models.Control;
-using MedicusApp.Models.Versioning;
 
 namespace MedicusApp.Models.Subject
 {

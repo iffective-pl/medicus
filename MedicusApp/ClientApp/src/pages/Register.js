@@ -30,7 +30,7 @@ export default function Register() {
             <i className="phone icon"/>
           </div>
           <div>
-            {comp.phones.map((item, index) => <div key={index}><NavLink href={"tel:" + item}>{item}</NavLink></div>)}
+            {comp.phones.map((item, index) => <div key={index}><NavLink href={"tel:" + item.number}>{item.number}</NavLink></div>)}
           </div>
         </div>
         <div className="table-cont">
@@ -43,7 +43,7 @@ export default function Register() {
             <i className="mobile icon"/>
           </div>
           <div>
-            {comp.mobilePhones.map((item, index) => <div key={index}><NavLink href={"tel:" + item}>{item}</NavLink></div>)}
+            {comp.mobilePhones.map((item, index) => <div key={index}><NavLink href={"tel:" + item.number}>{item.number}</NavLink></div>)}
           </div>
         </div>
         <div className="table-cont">
@@ -56,7 +56,7 @@ export default function Register() {
             <i className="message icon"/>
           </div>
           <div>
-            {comp.emails.map((item, index) => <div key={index}><NavLink href={"mailto:" + item}>{item}</NavLink></div>)}
+            {comp.emails.map((item, index) => <div key={index}><NavLink href={"mailto:" + item}>{item.address}</NavLink></div>)}
           </div>
         </div>
         <div/>

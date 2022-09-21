@@ -1,4 +1,4 @@
-﻿using MedicusApp.Models.Dto;
+﻿using MedicusApp.Models.Subject.Dto;
 using MedicusApp.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

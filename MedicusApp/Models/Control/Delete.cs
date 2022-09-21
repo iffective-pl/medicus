@@ -1,4 +1,4 @@
-﻿namespace MedicusApp.Models.Versioning
+﻿namespace MedicusApp.Models.Control
 {
     public class Delete : Create
     {

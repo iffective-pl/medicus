@@ -1,0 +1,51 @@
+[
+  {
+    "Id": 1,
+    "Name": "Strona główna",
+    "Href": "/",
+    "Order": 1,
+    "IsIndex": true
+  },
+  {
+    "Id": 2,
+    "Name": "O nas",
+    "Href": "about",
+    "Order": 2
+  },
+  {
+    "Id": 3,
+    "Name": "Rejestracja",
+    "Href": "register",
+    "Order": 3
+  },
+  {
+    "Id": 4,
+    "Name": "Nasi specjaliści",
+    "Href": "docs",
+    "Order": 4
+  },
+  {
+    "Id": 5,
+    "Name": "USG",
+    "Href": "",
+    "Order": 5
+  },
+  {
+    "Id": 6,
+    "Name": "ECHO Serca",
+    "Href": "",
+    "Order": 6
+  },
+  {
+    "Id": 7,
+    "Name": "Holter",
+    "Href": "",
+    "Order": 7
+  },
+  {
+    "Id": 8,
+    "Name": "Kontakt",
+    "Href": "contact",
+    "Order": 8
+  }
+]

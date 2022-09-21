@@ -1,8 +1,8 @@
 ﻿using MedicusApp.Models;
+using MedicusApp.Models.Data.Person;
 using MedicusApp.Models.Dto;
-using MedicusApp.Models.People;
+using MedicusApp.Models.Dto.Person;
 using Microsoft.EntityFrameworkCore;
-using System.Numerics;
 
 namespace MedicusApp.Repositories.Impl
 {
@@ -40,18 +40,18 @@ namespace MedicusApp.Repositories.Impl
         {
             try
             {
-                var doctor = context.Doctors.Where(q => q.Id == doctorId).Include(d => d.Specializations).Include(d => d.WorkingHours).Single();
-                if (doctor.Specializations.Any(q => q.Id == specId))
+                var doctor = context.Doctors.Where(q => q.Id == doctorId).Include(d => d.Specs).Include(d => d.WorkingHours).Single();
+                if (doctor.Specs.Any(q => q.Id == specId))
                 {
                     return false;
                 }
-                var spec = context.Specializations.Where(q => q.Id == specId).Single();
+                var spec = context.Specs.Where(q => q.Id == specId).Single();
                 var workingHours = new WorkingHours()
                 {
                     Specialization = spec
                 };
                 doctor.WorkingHours.Add(workingHours);
-                doctor.Specializations.Add(spec);
+                doctor.Specs.Add(spec);
                 context.SaveChanges();
                 return true;
             }
@@ -79,15 +79,15 @@ namespace MedicusApp.Repositories.Impl
         {
             try
             {
-                var doctor = context.Doctors.Where(q => q.Id == doctorId).Include(d => d.Specializations).Include(d => d.WorkingHours).Single();
-                if(!doctor.Specializations.Any(q => q.Id == specId))
+                var doctor = context.Doctors.Where(q => q.Id == doctorId).Include(d => d.Specs).Include(d => d.WorkingHours).Single();
+                if(!doctor.Specs.Any(q => q.Id == specId))
                 {
                     return false;
                 }
-                var spec = context.Specializations.Where(q => q.Id == specId).Single();
+                var spec = context.Specs.Where(q => q.Id == specId).Single();
                 var workingHours = doctor.WorkingHours.Where(q => q.Specialization.Id == spec.Id).Single();
                 doctor.WorkingHours.Remove(workingHours);
-                doctor.Specializations.Remove(spec);
+                doctor.Specs.Remove(spec);
                 context.SaveChanges();
                 return true;
             }
@@ -101,9 +101,9 @@ namespace MedicusApp.Repositories.Impl
         {
             try
             {
-                var doctor = context.Doctors.Where(d => d.Id == doctorId).Include(d => d.Specializations).Single();
-                var specs = doctor.Specializations.Select(s => s.Id);
-                return context.Specializations.Where(s => !specs.Contains(s.Id)).Select(s => new SpecDto()
+                var doctor = context.Doctors.Where(d => d.Id == doctorId).Include(d => d.Specs).Single();
+                var specs = doctor.Specs.Select(s => s.Id);
+                return context.Specs.Where(s => !specs.Contains(s.Id)).Select(s => new SpecDto()
                 {
                     Id = s.Id,
                     Name = s.Name
@@ -128,7 +128,7 @@ namespace MedicusApp.Repositories.Impl
                 Created = d.Created,
                 Deleted = d.Deleted,
                 Order = d.Order,
-                Specializations = d.Specializations.Select(s => new SpecDto()
+                Specializations = d.Specs.Select(s => new SpecDto()
                 {
                     Id = s.Id,
                     Name = s.Name
@@ -179,7 +179,7 @@ namespace MedicusApp.Repositories.Impl
         {
             try
             {
-                var workingHours = context.WorkHours.Where(wh => wh.Doctor.Id == workHours.DoctorId && wh.Specialization.Id == workHours.SpecId).Single();
+                var workingHours = context.WorkingHours.Where(wh => wh.Doctor.Id == workHours.DoctorId && wh.Specialization.Id == workHours.SpecId).Single();
                 workingHours.Monday = workHours.Monday;
                 workingHours.Tuesday = workHours.Tuesday;
                 workingHours.Wednesday = workHours.Wednesday;

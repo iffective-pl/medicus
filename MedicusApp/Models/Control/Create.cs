@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace MedicusApp.Models.Versioning
+﻿namespace MedicusApp.Models.Control
 {
     public class Create
     {

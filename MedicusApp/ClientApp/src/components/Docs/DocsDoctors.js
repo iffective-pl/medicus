@@ -19,9 +19,9 @@ export default function DocsDoctors(props) {
       <div className={"doctors-container " + (isMobile ? "doctors-rows" : "doctors-cols")}>
         {props.doctors.map((item, index) =>
           <div key={index}>
-            <h4>{item.title}</h4>
+            <h5>{item.title}</h5>
             <h3>{item.firstName} {item.lastName}</h3>
-            <div>{item.specTitle}</div>
+            <h4>{item.specTitle}</h4>
             <div>{item.description}</div>
             <Table className="mt-3">
               <thead>
@@ -37,27 +37,27 @@ export default function DocsDoctors(props) {
               <tbody>
               <tr>
                 <td>Poniedziałek</td>
-                <td>{isNull(item.workingHours[0].monday)}</td>
+                <td>{isNull(item.workingHours[0]?.monday)}</td>
               </tr>
               <tr>
                 <td>Wtorek</td>
-                <td>{isNull(item.workingHours[0].tuesday)}</td>
+                <td>{isNull(item.workingHours[0]?.tuesday)}</td>
               </tr>
               <tr>
                 <td>Środa</td>
-                <td>{isNull(item.workingHours[0].wednesday)}</td>
+                <td>{isNull(item.workingHours[0]?.wednesday)}</td>
               </tr>
               <tr>
                 <td>Czwartek</td>
-                <td>{isNull(item.workingHours[0].thursday)}</td>
+                <td>{isNull(item.workingHours[0]?.thursday)}</td>
               </tr>
               <tr>
                 <td>Piątek</td>
-                <td>{isNull(item.workingHours[0].friday)}</td>
+                <td>{isNull(item.workingHours[0]?.friday)}</td>
               </tr>
               <tr>
                 <td>Sobota</td>
-                <td>{isNull(item.workingHours[0].saturday)}</td>
+                <td>{isNull(item.workingHours[0]?.saturday)}</td>
               </tr>
               </tbody>
             </Table>

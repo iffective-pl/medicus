@@ -1,10 +1,10 @@
-﻿using MedicusApp.Migrations;
-using MedicusApp.Models;
-using MedicusApp.Models.Control;
+﻿using MedicusApp.Models;
+using MedicusApp.Models.Data.Desc;
 using MedicusApp.Models.Dto;
-using MedicusApp.Models.People;
+using MedicusApp.Models.Dto.Desc;
+using MedicusApp.Models.Dto.Person;
+using MedicusApp.Models.Dto.UI;
 using Microsoft.EntityFrameworkCore;
-using System.Net.Mime;
 
 namespace MedicusApp.Repositories.Impl
 {
@@ -19,25 +19,29 @@ namespace MedicusApp.Repositories.Impl
 
         public IEnumerable<SpecDto> GetSpecs()
         {
-            return context.Specializations.Select(s => new SpecDto()
+            return context.Specs.Select(s => new SpecDto()
             {
                 Id = s.Id,
                 Name = s.Name,
-                Href = s.Href,
-                ClassName = s.ClassName,
-                Order = s.Order
+                Style = new StyleDto() {
+                   Id = s.Style.Id,
+                   ClassName = s.Style.ClassName,
+                   Color = s.Style.Color
+                },
+                Link = new LinkDto()
+                {
+                    Id = s.Link.Id,
+                    Href = s.Link.Href
+                }
             });
         }
 
         public SpecDto? GetFullSpec(string type)
         {
-            return context.Specializations.Where(q => q.Href == type).Select(s => new SpecDto()
+            return context.Specs.Where(q => q.Link.Href.EndsWith(type)).Select(s => new SpecDto()
             {
                 Id = s.Id,
                 Name = s.Name,
-                Href = s.Href,
-                ClassName = s.ClassName,
-                Order = s.Order,
                 Doctors = s.Doctors.Select(d => new DoctorDto()
                 {
                     Id = d.Id,
@@ -60,14 +64,14 @@ namespace MedicusApp.Repositories.Impl
                             Saturday = wh.Saturday
                         })
                 }),
-                Prices = s.Prices.Select(p => new PriceDto()
+                Prices = s.Prices.Where(p => p.Deleted == null).Select(p => new PriceDto()
                 {
                     Id = p.Id,
                     SpecId = s.Id,
                     Title = p.Title,
                     Value = p.Value
                 }),
-                Descriptions = s.Descriptions.Select(d => new DescriptionDto()
+                Descriptions = s.Descriptions.Where(d => d.Deleted == null).Select(d => new DescriptionDto()
                 {
                     Id = d.Id,
                     Image = d.Image,
@@ -83,12 +87,12 @@ namespace MedicusApp.Repositories.Impl
 
         public IEnumerable<int> GetSpecIds()
         {
-            return context.Specializations.Select(s => s.Id);
+            return context.Specs.Select(s => s.Id);
         }
 
         public SpecDto GetSpec(int specId)
         {
-            return context.Specializations.Where(s => s.Id == specId).Select(s => new SpecDto()
+            return context.Specs.Where(s => s.Id == specId).Select(s => new SpecDto()
             {
                 Id = s.Id,
                 Name = s.Name,
@@ -114,8 +118,7 @@ namespace MedicusApp.Repositories.Impl
                     Created = p.Created,
                     Deleted= p.Deleted,
                     Order= p.Order
-                }),
-                Order = s.Order
+                })
             }).Single();
         }
 
@@ -123,7 +126,7 @@ namespace MedicusApp.Repositories.Impl
         {
             try
             {
-                var sp = context.Specializations.Where(s => s.Id == spec.Id).Single();
+                var sp = context.Specs.Where(s => s.Id == spec.Id).Single();
                 sp.Name = spec.Name;
                 context.SaveChanges();
                 return true;
@@ -137,7 +140,7 @@ namespace MedicusApp.Repositories.Impl
         {
             try
             {
-                var sp = context.Specializations.Where(s => s.Id == description.SpecId).Include(s => s.Descriptions).Single();
+                var sp = context.Specs.Where(s => s.Id == description.SpecId).Include(s => s.Descriptions).Single();
                 var desc = new Description()
                 {
                     Image = description.Image
@@ -205,7 +208,7 @@ namespace MedicusApp.Repositories.Impl
 
         public IEnumerable<int> GetPrices(int specId)
         {
-            return context.Specializations.Where(s => s.Id == specId).Include(s => s.Prices).Single().Prices.Where(p => p.Deleted == null).Select(p => p.Id);
+            return context.Specs.Where(s => s.Id == specId).Include(s => s.Prices).Single().Prices.Where(p => p.Deleted == null).Select(p => p.Id);
         }
 
         public PriceDto GetPrice(int priceId)
@@ -226,7 +229,7 @@ namespace MedicusApp.Repositories.Impl
         {
             try
             {
-                var spec = context.Specializations.Where(s => s.Id == price.SpecId).Include(s => s.Prices).Single();
+                var spec = context.Specs.Where(s => s.Id == price.SpecId).Include(s => s.Prices).Single();
                 var p = new Price()
                 {
                     Title = price.Title,

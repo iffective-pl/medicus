@@ -6,6 +6,6 @@
         public string Name { get; set; }
         public string Href { get; set; }
         public int Order { get; set; }
-        public bool IsIndex { get; set; }
+        public int SpecId { get; set; }
     }
 }

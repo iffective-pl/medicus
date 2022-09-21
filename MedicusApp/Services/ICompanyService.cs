@@ -1,4 +1,4 @@
-﻿using MedicusApp.Models.Dto;
+﻿using MedicusApp.Models.Subject.Dto;
 using System.Runtime.CompilerServices;
 
 namespace MedicusApp.Services

@@ -1,5 +1,4 @@
-﻿using MedicusApp.Models.Versioning;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MedicusApp.Models.Control
 {

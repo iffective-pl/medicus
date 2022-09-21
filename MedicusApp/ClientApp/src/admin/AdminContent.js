@@ -23,8 +23,8 @@ export default function AdminContent() {
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink className={isActive(2)} onClick={() => setTab(2)}>
-            Nagłówki
+          <NavLink className={isActive(4)} onClick={() => setTab(4)}>
+            Specjalizacje
           </NavLink>
         </NavItem>
         <NavItem>
@@ -33,8 +33,8 @@ export default function AdminContent() {
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink className={isActive(4)} onClick={() => setTab(4)}>
-            Specjalizacje
+          <NavLink className={isActive(2)} onClick={() => setTab(2)}>
+            Nagłówki
           </NavLink>
         </NavItem>
       </Nav>

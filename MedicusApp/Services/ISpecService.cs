@@ -1,5 +1,6 @@
 ﻿using MedicusApp.Models;
 using MedicusApp.Models.Dto;
+using MedicusApp.Models.Dto.Desc;
 
 namespace MedicusApp.Services
 {
