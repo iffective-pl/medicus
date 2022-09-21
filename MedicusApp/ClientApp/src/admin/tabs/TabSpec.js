@@ -3,18 +3,17 @@ import {
   AccordionBody,
   AccordionHeader,
   AccordionItem,
-  Button, Card, CardBody, CardHeader,
+  Button,
   Col,
   Form,
   FormGroup,
   Input,
-  Label,
+  Label, Modal, ModalBody, ModalFooter, ModalHeader,
   Row
 } from "reactstrap";
 import Notification from "../../components/Notification";
-import TabSpecDesc from "./TabSpecDesc";
-import AddDescButton from "../AddDescButton";
 import TabSpecPrices from "./TabSpecPrices";
+import TabSpecDescs from "./TabSpecDescs";
 
 let sp = {
   id: undefined,
@@ -66,7 +65,7 @@ export default function TabSpec(props) {
         name: spec.name
       })
     })
-      .then(r => r.json())
+      .then(r => r.text())
       .then(t => {
         setLoading(false);
         setSuccess(t === "true");
@@ -75,6 +74,31 @@ export default function TabSpec(props) {
         } else {
           setMessage("Nie udało się zaktualizować nazwy specjalizacji")
         }
+        load()
+      })
+  }
+
+  let onDelete = (e) => {
+    setLoading(true)
+    setMessage("Usuwanie specjalizacji...")
+    e.preventDefault()
+
+    fetch("api/Spec/DeleteSpec?specId=" + spec.id, {
+      method: "DELETE",
+      headers: {
+        "Authorization": "Bearer " + props.token
+      }
+    })
+      .then(r => r.text())
+      .then(t => {
+        setLoading(false);
+        setSuccess(t === "true");
+        if(t === "true") {
+          setMessage("Specjalizacja została usunięta")
+        } else {
+          setMessage("Nie udało się usunąć specjalizacji")
+        }
+        props.load()
       })
   }
 
@@ -98,8 +122,8 @@ export default function TabSpec(props) {
                       defaultValue={spec.name}
                       onChange={onChange}
                     />
-                    <Label for="title">
-                      Nazwa
+                    <Label for="name">
+                      Nazwa specjalizacji
                     </Label>
                   </FormGroup>
                 </Col>
@@ -111,30 +135,35 @@ export default function TabSpec(props) {
               </Row>
             </Form>
             <Notification loading={loading} success={success} message={message}/>
+            <TabSpecDescs token={props.token} spec={spec} load={load}/>
+            <TabSpecPrices token={props.token} id={spec.id}/>
             <Row className="mt-3">
               <Col>
-                <Card>
-                  <CardHeader>
-                    <Row>
-                      <Col className="d-table">
-                        <div className="vertical-center d-table-cell">
-                          Sekcje opisów
-                        </div>
-                      </Col>
-                      <Col>
-                        <AddDescButton id={spec.id} token={props.token} load={load}/>
-                      </Col>
-                    </Row>
-                  </CardHeader>
-                  <CardBody className="p-3">
-                    {spec.descriptions.map((item, key) => (
-                      <TabSpecDesc desc={item} key={key} token={props.token} update={load}/>
-                    ))}
-                  </CardBody>
-                </Card>
+                <Button color="danger" onClick={toggle}>Usuń specjalizację</Button>
+                <Modal isOpen={open} toggle={toggle}>
+                  <Form onSubmit={onDelete}>
+                    <ModalHeader toggle={toggle}>Specjalizacja</ModalHeader>
+                    <ModalBody>
+                      Czy na pewno chcesz usunąć specjalizację: {spec.name}?
+                    </ModalBody>
+                    <ModalFooter>
+                      <Row>
+                        <Col>
+                          <Button color="primary" type="submit" disabled={loading}>
+                            Zatwierdź
+                          </Button>
+                        </Col>
+                        <Col>
+                          <Button color="secondary" onClick={toggle} disabled={loading}>
+                            Anuluj
+                          </Button>
+                        </Col>
+                      </Row>
+                    </ModalFooter>
+                  </Form>
+                </Modal>
               </Col>
             </Row>
-            <TabSpecPrices token={props.token} id={spec.id}/>
           </AccordionBody>
         </AccordionItem>
       </Col>

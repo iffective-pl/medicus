@@ -52,6 +52,5 @@ export default function TabSpecDesc(props) {
         </Row>
       </CardFooter>
     </Card>
-
   )
 }

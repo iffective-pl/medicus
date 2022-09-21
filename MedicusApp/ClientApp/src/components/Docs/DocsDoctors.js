@@ -21,7 +21,7 @@ export default function DocsDoctors(props) {
           <div key={index}>
             <h5>{item.title}</h5>
             <h3>{item.firstName} {item.lastName}</h3>
-            <h4>{item.specTitle}</h4>
+            <h4 className="sub-title">{item.specTitle}</h4>
             <div>{item.description}</div>
             <Table className="mt-3">
               <thead>

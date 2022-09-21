@@ -21,11 +21,11 @@ export default function TabSpecPrices(props) {
   let [success, setSuccess] = useState(undefined);
   let toggle = () => setOpen(!open);
 
-  let load = (id, token) => {
-    if(id) {
-      fetch("api/Spec/GetPrices?specId=" + id, {
+  let load = () => {
+    if(props.id) {
+      fetch("api/Spec/GetPrices?specId=" + props.id, {
         headers: {
-          "Authorization": "Bearer " + token
+          "Authorization": "Bearer " + props.token
         }
       })
         .then(r => r.json())
@@ -33,7 +33,7 @@ export default function TabSpecPrices(props) {
     }
   }
 
-  useEffect(() => load(props.id, props.token), [props.id, props.token])
+  useEffect(() => load(), [props.id, props.token])
 
   let onSubmit = (e) => {
     setOpen(false);
@@ -129,7 +129,7 @@ export default function TabSpecPrices(props) {
             </CardHeader>
             <CardBody>
               {prices.map((item, index) => (
-                <TabSpecPrice id={item} specId={props.id} token={props.token} key={index}/>
+                <TabSpecPrice id={item} specId={props.id} token={props.token} key={index} load={load}/>
               ))}
             </CardBody>
           </Card>

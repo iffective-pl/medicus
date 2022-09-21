@@ -75,7 +75,7 @@ export default function TabDoctors(props) {
     <TabPane tabId="3" className="pt-3 pb-3">
       <Row className="mb-3">
         <Col>
-          <Button className="float-end" color="success" onClick={toggle}>Stwórz</Button>
+          <Button className="float-end" color="success" onClick={toggle}>Dodaj lekarza</Button>
           <Modal isOpen={open} toggle={toggle} size="xl">
             <Form onSubmit={create}>
               <ModalHeader toggle={toggle}>Nowy profil lekarza</ModalHeader>

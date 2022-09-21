@@ -418,7 +418,7 @@ export default function TabDoctor(props) {
               </Row>
               <Row className="mt-3">
                 <Col>
-                  <Button color="danger" onClick={toggle} disabled={loading}>Usuń</Button>
+                  <Button color="danger" onClick={toggle} disabled={loading}>Usuń lekarza</Button>
                   <Modal isOpen={open} toggle={toggle}>
                     <Form onSubmit={deleteDoctor}>
                       <ModalHeader toggle={toggle}>Lekarz</ModalHeader>

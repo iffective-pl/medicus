@@ -103,7 +103,7 @@ namespace MedicusApp.Repositories.Impl
             {
                 var doctor = context.Doctors.Where(d => d.Id == doctorId).Include(d => d.Specs).Single();
                 var specs = doctor.Specs.Select(s => s.Id);
-                return context.Specs.Where(s => !specs.Contains(s.Id)).Select(s => new SpecDto()
+                return context.Specs.Where(s => !specs.Contains(s.Id) && s.Deleted == null).Select(s => new SpecDto()
                 {
                     Id = s.Id,
                     Name = s.Name
@@ -128,7 +128,7 @@ namespace MedicusApp.Repositories.Impl
                 Created = d.Created,
                 Deleted = d.Deleted,
                 Order = d.Order,
-                Specializations = d.Specs.Select(s => new SpecDto()
+                Specializations = d.Specs.Where(s => s.Deleted == null).Select(s => new SpecDto()
                 {
                     Id = s.Id,
                     Name = s.Name

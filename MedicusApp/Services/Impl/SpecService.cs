@@ -78,5 +78,15 @@ namespace MedicusApp.Services.Impl
         {
             return repository.DeletePrice(priceId);
         }
+
+        public bool AddSpec(SpecDto spec)
+        {
+            return repository.AddSpec(spec);
+        }
+
+        public bool RemoveSpec(int specId)
+        {
+            return repository.RemoveSpec(specId);
+        }
     }
 }

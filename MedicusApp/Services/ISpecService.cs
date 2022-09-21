@@ -10,7 +10,9 @@ namespace MedicusApp.Services
         public SpecDto GetSpec(int specId);
         public IEnumerable<SpecDto> GetSpecs();
         public SpecDto? GetFullSpec(string type);
+        public bool AddSpec(SpecDto spec);
         public bool UpdateSpec(SpecDto spec);
+        public bool RemoveSpec(int specId);
         public bool AddDesc(DescriptionDto description);
         public bool UpdateDesc(DescriptionDto description);
         public bool DeleteDesc(int descId);

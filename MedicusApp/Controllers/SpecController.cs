@@ -44,10 +44,22 @@ namespace MedicusApp.Controllers
             return service.GetSpec(specId);
         }
 
+        [HttpPut]
+        public bool AddSpec(SpecDto spec)
+        {
+            return service.AddSpec(spec);
+        }
+
         [HttpPost]
         public bool UpdateSpec(SpecDto spec)
         {
             return service.UpdateSpec(spec);
+        }
+
+        [HttpDelete]
+        public bool DeleteSpec(int specId)
+        {
+            return service.RemoveSpec(specId);
         }
 
         [HttpPut]

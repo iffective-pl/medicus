@@ -1,9 +1,12 @@
 ﻿using MedicusApp.Models;
+using MedicusApp.Models.Data;
 using MedicusApp.Models.Data.Desc;
+using MedicusApp.Models.Data.UI;
 using MedicusApp.Models.Dto;
 using MedicusApp.Models.Dto.Desc;
 using MedicusApp.Models.Dto.Person;
 using MedicusApp.Models.Dto.UI;
+using MedicusApp.Models.Links;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedicusApp.Repositories.Impl
@@ -87,12 +90,12 @@ namespace MedicusApp.Repositories.Impl
 
         public IEnumerable<int> GetSpecIds()
         {
-            return context.Specs.Select(s => s.Id);
+            return context.Specs.Where(s => s.Deleted == null).Select(s => s.Id);
         }
 
         public SpecDto GetSpec(int specId)
         {
-            return context.Specs.Where(s => s.Id == specId).Select(s => new SpecDto()
+            return context.Specs.Where(s => s.Id == specId && s.Deleted == null).Select(s => new SpecDto()
             {
                 Id = s.Id,
                 Name = s.Name,
@@ -270,6 +273,47 @@ namespace MedicusApp.Repositories.Impl
                 return true;
             }
             catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool AddSpec(SpecDto spec)
+        {
+            try
+            {
+                var s = new Spec()
+                {
+                    Name = spec.Name,
+                    Style = new Style()
+                    {
+                        ClassName = spec.Style.ClassName,
+                        Color = spec.Style.Color,
+                    },
+                    Link = new Link()
+                    {
+                        Href = spec.Link.Href
+                    }
+                };
+                context.Specs.Add(s);
+                context.SaveChanges();
+                return true;
+            } catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool RemoveSpec(int specId)
+        {
+            try
+            {
+                var s = context.Specs.Where(s => s.Id == specId).Include(s => s.Link).Single();
+                s.Deleted = DateTime.UtcNow;
+                s.Link.Deleted = DateTime.UtcNow;
+                context.SaveChanges();
+                return true;
+            } catch (Exception)
             {
                 return false;
             }

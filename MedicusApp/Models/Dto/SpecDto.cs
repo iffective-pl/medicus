@@ -11,9 +11,9 @@ namespace MedicusApp.Models.Dto
         public string Name { get; set; }
         public StyleDto Style { get; set; }
         public LinkDto Link { get; set; }
-        public IEnumerable<DoctorDto> Doctors { get; set; }
-        public IEnumerable<WorkingHoursDto> WorkingHours { get; set; }
-        public IEnumerable<DescriptionDto> Descriptions { get; set; }
-        public IEnumerable<PriceDto> Prices { get; set; }
+        public IEnumerable<DoctorDto>? Doctors { get; set; }
+        public IEnumerable<WorkingHoursDto>? WorkingHours { get; set; }
+        public IEnumerable<DescriptionDto>? Descriptions { get; set; }
+        public IEnumerable<PriceDto>? Prices { get; set; }
     }
 }

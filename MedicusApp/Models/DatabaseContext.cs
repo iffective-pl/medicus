@@ -76,9 +76,7 @@ namespace MedicusApp.Models
                         je.HasKey("DoctorId", "SpecId");
                         je.HasData(seeds.DoctorSpecSeeds);
                     }
-                )
-                .HasIndex(p => new { p.Name })
-                .IsUnique(true);
+                );
 
             modelBuilder.Entity<Link>()
                 .HasOne(l => l.Spec)
