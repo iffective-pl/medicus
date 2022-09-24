@@ -4,7 +4,6 @@ namespace MedicusApp.Models.Control
 {
     public class Sort : Delete
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Order { get; set; }
     }
 }

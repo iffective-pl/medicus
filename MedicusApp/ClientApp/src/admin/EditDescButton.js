@@ -3,9 +3,7 @@ import {
   Card,
   CardBody, CardFooter,
   CardHeader, Col,
-  Form,
   FormGroup,
-  FormText,
   Input, Label,
   Modal,
   ModalBody, ModalFooter,
@@ -13,6 +11,10 @@ import {
 } from "reactstrap";
 import {useEffect, useState} from "react";
 import Notification from "../components/Notification";
+import ImageSelector from "./ImageSelector";
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
 
 let des = {
   title: "",
@@ -64,10 +66,12 @@ export default function EditDescButton(props) {
       })
   }
 
-  let onImageChange = (e) => {
-    let d = desc;
-    d.image = e.target.value;
-    setDesc(d);
+  let onImageChange = (v) => {
+    setDesc({
+      id: desc.id,
+      image: v,
+      descriptionTexts: desc.descriptionTexts
+    });
   }
 
   let onAdd = () => {
@@ -106,17 +110,7 @@ export default function EditDescButton(props) {
       <Modal isOpen={open} toggle={toggleEdit} size="xl">
         <ModalHeader toggle={toggleEdit}>Sekcja Opisu</ModalHeader>
         <ModalBody>
-          <FormGroup>
-            <Input
-              name="file"
-              type="file"
-              accept=".jpg,.jpeg,.png"
-              onChange={onImageChange}
-            />
-            <FormText>
-              Wybierz zdjęcie dla sekcji opisu
-            </FormText>
-          </FormGroup>
+          <ImageSelector token={props.token} image={desc.image} setImage={onImageChange}/>
           <Card className="mt-3">
             <CardHeader>
               <Row>
@@ -149,19 +143,7 @@ export default function EditDescButton(props) {
                     </FormGroup>
                   </CardHeader>
                   <CardBody className="pb-0">
-                    <FormGroup floating>
-                      <Input
-                        id="text"
-                        name="text"
-                        type="textarea"
-                        className="text-area-size"
-                        defaultValue={item.text}
-                        onChange={(e) => onChange(e, index)}
-                      />
-                      <Label for="text">
-                        Treść opisu
-                      </Label>
-                    </FormGroup>
+                    <Editor/>
                   </CardBody>
                   <CardFooter>
                     <Row>

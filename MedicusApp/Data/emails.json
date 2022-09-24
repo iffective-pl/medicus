@@ -2,11 +2,13 @@
   {
     "Id": 1,
     "Address": "biuro@medicus.włocławek.pl",
-    "CompanyId": 1
+    "CompanyId": 1,
+    "Order": 1
   },
   {
     "Id": 2,
     "Address": "rejestracja@medicus.włocławek.pl",
-    "CompanyId": 1
+    "CompanyId": 1,
+    "Order": 2
   }
 ]

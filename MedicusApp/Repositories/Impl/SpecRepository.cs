@@ -22,7 +22,7 @@ namespace MedicusApp.Repositories.Impl
 
         public IEnumerable<SpecDto> GetSpecs()
         {
-            return context.Specs.Select(s => new SpecDto()
+            return context.Specs.Where(q => q.Deleted == null).Select(s => new SpecDto()
             {
                 Id = s.Id,
                 Name = s.Name,
@@ -41,7 +41,7 @@ namespace MedicusApp.Repositories.Impl
 
         public SpecDto? GetFullSpec(string type)
         {
-            return context.Specs.Where(q => q.Link.Href.EndsWith(type)).Select(s => new SpecDto()
+            return context.Specs.Where(q => q.Link.Href.EndsWith(type) && q.Deleted == null).Select(s => new SpecDto()
             {
                 Id = s.Id,
                 Name = s.Name,
@@ -282,6 +282,7 @@ namespace MedicusApp.Repositories.Impl
         {
             try
             {
+                int order = context.Links.Where(l => l.Deleted == null && l.Header == null).Count();
                 var s = new Spec()
                 {
                     Name = spec.Name,
@@ -292,7 +293,8 @@ namespace MedicusApp.Repositories.Impl
                     },
                     Link = new Link()
                     {
-                        Href = spec.Link.Href
+                        Href = spec.Link.Href,
+                        Order = order
                     }
                 };
                 context.Specs.Add(s);

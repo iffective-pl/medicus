@@ -3,3 +3,7 @@
     bottom: 2rem !important;
     position: fixed !important;
 }
+
+.onTop {
+    z-index: -1;
+}

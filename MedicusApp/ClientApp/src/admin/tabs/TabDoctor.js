@@ -16,6 +16,7 @@ import {
 import Notification from "../../components/Notification";
 import AddSpecButton from "../AddSpecButton";
 import DelSpecButton from "../DelSpecButton";
+import AddDescButton from "../AddDescButton";
 
 let doc = {
   id: undefined,
@@ -269,7 +270,18 @@ export default function TabDoctor(props) {
               <Row className="mt-3">
                 <Col>
                   <Card>
-                    <CardHeader targetId="=1">Specjalizacje</CardHeader>
+                    <CardHeader targetId="=1">
+                      <Row>
+                        <Col className="d-table">
+                          <div className="vertical-center d-table-cell">
+                            Specjalizacje
+                          </div>
+                        </Col>
+                        <Col>
+                          <AddSpecButton doc={doctor.id} token={props.token} load={load} specs={doctor.specializations}/>
+                        </Col>
+                      </Row>
+                    </CardHeader>
                     <CardBody accordion="-1">
                       {doctor.specializations.map((item, key) => (
                         <Row key={key}>
@@ -281,11 +293,6 @@ export default function TabDoctor(props) {
                           </Col>
                         </Row>
                       ))}
-                      <Row>
-                        <Col>
-                          <AddSpecButton doc={doctor.id} token={props.token} load={load} specs={doctor.specializations}/>
-                        </Col>
-                      </Row>
                     </CardBody>
                   </Card>
                 </Col>

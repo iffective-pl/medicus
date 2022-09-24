@@ -1,0 +1,23 @@
+.tab-cont {
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+}
+
+.tab-headers-cont {
+    overflow-y: auto;
+}
+
+.tab-headers {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.tab-header {
+    width: 10vw;
+    float: right;
+}
+
+.tab-body {
+    min-height: 10vh;
+}

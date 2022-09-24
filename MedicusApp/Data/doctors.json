@@ -5,7 +5,8 @@
     "FirstName": "Wiesław",
     "LastName": "Nowakowski",
     "SpecTitle": "Specjalista w zakresie chorób wewnętrznych i kardiologii",
-    "Description": ""
+    "Description": "",
+    "Order": 1
   },
   {
     "Id": 2,
@@ -13,7 +14,8 @@
     "FirstName": "Irena",
     "LastName": "Nowakowska",
     "SpecTitle": "Specjalista w zakresie pediatrii i kardiologii",
-    "Description": ""
+    "Description": "",
+    "Order": 2
   },
   {
     "Id": 3,
@@ -21,7 +23,8 @@
     "FirstName": "Dorota",
     "LastName": "Nowakowska",
     "SpecTitle": "Specjalista w zakresie położnictwa i ginekologii oraz perinatologii",
-    "Description": ""
+    "Description": "",
+    "Order": 3
   },
   {
     "Id": 4,
@@ -29,7 +32,8 @@
     "FirstName": "Zbigniew",
     "LastName": "Placek",
     "SpecTitle": "",
-    "Description": ""
+    "Description": "",
+    "Order": 4
   },
   {
     "Id": 5,
@@ -37,7 +41,8 @@
     "FirstName": "Ewa",
     "LastName": "Sewerynek",
     "SpecTitle": "",
-    "Description": ""
+    "Description": "",
+    "Order": 5
   },
   {
     "Id": 6,
@@ -45,14 +50,16 @@
     "FirstName": "Tomasz",
     "LastName": "Kmieć",
     "SpecTitle": "",
-    "Description": ""
+    "Description": "",
+    "Order": 6
   },
   {
     "Id": 7,
     "Title": "Dr n. med.",
     "FirstName": "Marek",
     "LastName": "Wrona",
-    "City": "Łódź"
+    "City": "Łódź",
+    "Order": 7
   },
   {
     "Id": 8,
@@ -60,7 +67,8 @@
     "FirstName": "Janina",
     "LastName": "Wielicka",
     "SpecTitle": "",
-    "Description": ""
+    "Description": "",
+    "Order": 8
   },
   {
     "Id": 9,
@@ -68,7 +76,8 @@
     "FirstName": "Bogdan",
     "LastName": "Wojtecki",
     "SpecTitle": "",
-    "Description": ""
+    "Description": "",
+    "Order": 9
   },
   {
     "Id": 10,
@@ -76,7 +85,8 @@
     "FirstName": "Leszek",
     "LastName": "Dura",
     "SpecTitle": "",
-    "Description": ""
+    "Description": "",
+    "Order": 10
   },
   {
     "Id": 11,
@@ -84,6 +94,7 @@
     "FirstName": "Zbyszek",
     "LastName": "Ruszkowski",
     "SpecTitle": "",
-    "Description": ""
+    "Description": "",
+    "Order": 11
   }
 ]

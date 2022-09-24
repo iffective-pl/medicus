@@ -3,6 +3,7 @@ using System;
 using MedicusApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MedicusApp.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220924142806_Order")]
+    partial class Order
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -737,9 +739,6 @@ namespace MedicusApp.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsDropdown")
-                        .HasColumnType("boolean");
-
                     b.Property<bool>("IsHidden")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
@@ -766,7 +765,6 @@ namespace MedicusApp.Migrations
                         {
                             Id = 1,
                             Href = "/",
-                            IsDropdown = false,
                             IsIndex = true,
                             Name = "Strona główna",
                             Order = 1
@@ -775,7 +773,6 @@ namespace MedicusApp.Migrations
                         {
                             Id = 2,
                             Href = "about",
-                            IsDropdown = false,
                             IsIndex = false,
                             Name = "O nas",
                             Order = 2
@@ -784,7 +781,6 @@ namespace MedicusApp.Migrations
                         {
                             Id = 3,
                             Href = "register",
-                            IsDropdown = false,
                             IsIndex = false,
                             Name = "Rejestracja",
                             Order = 3
@@ -793,7 +789,6 @@ namespace MedicusApp.Migrations
                         {
                             Id = 4,
                             Href = "docs",
-                            IsDropdown = true,
                             IsIndex = false,
                             Name = "Nasi specjaliści",
                             Order = 4
@@ -802,7 +797,6 @@ namespace MedicusApp.Migrations
                         {
                             Id = 5,
                             Href = "",
-                            IsDropdown = true,
                             IsIndex = false,
                             Name = "USG",
                             Order = 5
@@ -811,7 +805,6 @@ namespace MedicusApp.Migrations
                         {
                             Id = 6,
                             Href = "",
-                            IsDropdown = true,
                             IsIndex = false,
                             Name = "ECHO Serca",
                             Order = 6
@@ -820,7 +813,6 @@ namespace MedicusApp.Migrations
                         {
                             Id = 7,
                             Href = "",
-                            IsDropdown = false,
                             IsIndex = false,
                             Name = "Holter",
                             Order = 7
@@ -829,7 +821,6 @@ namespace MedicusApp.Migrations
                         {
                             Id = 8,
                             Href = "contact",
-                            IsDropdown = false,
                             IsIndex = false,
                             Name = "Kontakt",
                             Order = 8

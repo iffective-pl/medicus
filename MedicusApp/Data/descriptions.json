@@ -2,6 +2,7 @@
   {
     "Id": 1,
     "Image": "medicus/iStock-1395118113.jpg",
+    "Order": 1,
     "SpecId": 1
   }
 ]

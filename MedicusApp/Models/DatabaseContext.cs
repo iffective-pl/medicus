@@ -84,19 +84,11 @@ namespace MedicusApp.Models
                 .HasForeignKey<Link>(l => l.SpecId);
 
             modelBuilder.Entity<Header>()
-                .Property(s => s.Order)
-                .ValueGeneratedOnAdd();
-
-            modelBuilder.Entity<Header>()
                 .Property(h => h.IsIndex)
                 .HasDefaultValue(false);
             modelBuilder.Entity<Header>()
                 .Property(h => h.IsHidden)
                 .HasDefaultValue(false);
-
-            modelBuilder.Entity<Link>()
-                .Property(s => s.Order)
-                .ValueGeneratedOnAdd();
 
 
             modelBuilder.Entity<Company>().HasData(seeds.ComapnySeeds);

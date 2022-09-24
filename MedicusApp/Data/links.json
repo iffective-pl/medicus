@@ -44,31 +44,31 @@
   {
     "Id": 8,
     "Href": "echokids",
-    "Order": 1,
+    "Order": 8,
     "SpecId": 8
   },
   {
     "Id": 9,
     "Href": "echoadults",
-    "Order": 2,
+    "Order": 9,
     "SpecId": 9
   },
   {
     "Id": 10,
     "Href": "echopregnancy",
-    "Order": 3,
+    "Order": 10,
     "SpecId": 10
   },
   {
     "Id": 11,
     "Href": "usgkids",
-    "Order": 1,
+    "Order": 11,
     "SpecId": 11
   },
   {
     "Id": 12,
     "Href": "usgadults",
-    "Order": 2,
+    "Order": 12,
     "SpecId": 12
   }
 ]

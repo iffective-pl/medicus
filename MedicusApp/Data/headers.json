@@ -4,48 +4,56 @@
     "Name": "Strona główna",
     "Href": "/",
     "Order": 1,
-    "IsIndex": true
+    "IsIndex": true,
+    "IsDropdown": false
   },
   {
     "Id": 2,
     "Name": "O nas",
     "Href": "about",
-    "Order": 2
+    "Order": 2,
+    "IsDropdown": false
   },
   {
     "Id": 3,
     "Name": "Rejestracja",
     "Href": "register",
-    "Order": 3
+    "Order": 3,
+    "IsDropdown": false
   },
   {
     "Id": 4,
     "Name": "Nasi specjaliści",
     "Href": "docs",
-    "Order": 4
+    "Order": 4,
+    "IsDropdown": true
   },
   {
     "Id": 5,
     "Name": "USG",
     "Href": "",
-    "Order": 5
+    "Order": 5,
+    "IsDropdown": true
   },
   {
     "Id": 6,
     "Name": "ECHO Serca",
     "Href": "",
-    "Order": 6
+    "Order": 6,
+    "IsDropdown": true
   },
   {
     "Id": 7,
     "Name": "Holter",
     "Href": "",
-    "Order": 7
+    "Order": 7,
+    "IsDropdown": false
   },
   {
     "Id": 8,
     "Name": "Kontakt",
     "Href": "contact",
-    "Order": 8
+    "Order": 8,
+    "IsDropdown": false
   }
 ]

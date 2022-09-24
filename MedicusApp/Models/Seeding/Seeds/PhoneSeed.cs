@@ -6,5 +6,6 @@
         public string Number { get; set; }
         public bool IsMobile { get; set; }
         public int CompanyId { get; set; }
+        public int Order { get; set; }
     }
 }

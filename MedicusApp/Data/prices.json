@@ -3,24 +3,28 @@
     "Id": 1,
     "SpecializationId": 1,
     "Title": "Konsultacja",
-    "Value": "150.00"
+    "Value": "150.00",
+    "Order": 1
   },
   {
     "Id": 2,
     "SpecializationId": 1,
     "Title": "Konsultacja + ECHO serca",
-    "Value": "220.00"
+    "Value": "220.00",
+    "Order": 2
   },
   {
     "Id": 3,
     "SpecializationId": 1,
     "Title": "Konsultacja + ECHO serca + EKG",
-    "Value": "250.00"
+    "Value": "250.00",
+    "Order": 3
   },
   {
     "Id": 4,
     "SpecializationId": 1,
     "Title": "ECHO Serca",
-    "Value": "170.00"
+    "Value": "170.00",
+    "Order": 4
   }
 ]

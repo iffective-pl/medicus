@@ -3,18 +3,21 @@
     "Id": 1,
     "Number": "54 2313141",
     "IsMobile": false,
-    "CompanyId": 1
+    "CompanyId": 1,
+    "Order": 1
   },
   {
     "Id": 2,
     "Number": "54 2313741",
     "IsMobile": false,
-    "CompanyId": 1
+    "CompanyId": 1,
+    "Order": 2
   },
   {
     "Id": 3,
     "Number": "692 184 214",
     "IsMobile": true,
-    "CompanyId": 1
+    "CompanyId": 1,
+    "Order": 3
   }
 ]

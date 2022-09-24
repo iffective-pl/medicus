@@ -38,7 +38,7 @@ export default function Header() {
   }
 
   let headers = (item, index) => {
-    if(item.options.length > 0) {
+    if(item.links.length > 0) {
       return (
         <HeaderDropdown item={item} key={index} />
       )
