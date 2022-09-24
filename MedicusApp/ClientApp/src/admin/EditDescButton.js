@@ -12,8 +12,8 @@ import {
 import {useEffect, useState} from "react";
 import Notification from "../components/Notification";
 import ImageSelector from "./ImageSelector";
-import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import TextEditor from "./TextEditor";
 
 
 let des = {
@@ -37,9 +37,12 @@ export default function EditDescButton(props) {
   let [message, setMessage] = useState(undefined);
   let [success, setSuccess] = useState(undefined);
 
+  let [update, setUpdate] = useState(undefined);
+
   useEffect(() => setDesc(props.desc), [props.desc])
 
   let onSubmit = (e) => {
+    setUpdate(!update);
     setOpen(false);
     setLoading(true);
     setMessage("Aktualizacja sekcji opisu...");
@@ -143,7 +146,7 @@ export default function EditDescButton(props) {
                     </FormGroup>
                   </CardHeader>
                   <CardBody className="pb-0">
-                    <Editor/>
+                    <TextEditor dt={item} onChange={(e) => onChange(e, index)} update={update}/>
                   </CardBody>
                   <CardFooter>
                     <Row>

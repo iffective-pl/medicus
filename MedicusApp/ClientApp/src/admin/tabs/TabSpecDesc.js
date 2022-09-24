@@ -10,6 +10,7 @@ import {useEffect, useState} from "react";
 import DelDescButton from "../DelDescButton";
 import EditDescButton from "../EditDescButton";
 import Config from "../config/Config";
+import {convertFromRaw, Editor, EditorState} from "draft-js";
 
 let des = {
   id: undefined,
@@ -35,7 +36,7 @@ export default function TabSpecDesc(props) {
             {desc.descriptionTexts.map((item, index) =>
               <div key={index} className="pt-2">
                 <h4>{item.title}</h4>
-                <span>{item.text}</span>
+                <Editor editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(item.text)))} readOnly={true} />
               </div>
             )}
           </div>
