@@ -16,7 +16,7 @@ export default function Header() {
   let [links, setLinks] = useState([]);
 
   useEffect(() => {
-    fetch("/api/Links")
+    fetch("/api/UI/GetHeaders")
       .then(r => r.json())
       .then(j => setLinks(j))
   }, []);
@@ -28,15 +28,24 @@ export default function Header() {
       setIsOpen(true);
   }
 
+  let isActive = (href) => {
+    if(href.length > 0) {
+      if(document.location.href.endsWith(href)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   let headers = (item, index) => {
-    if(item.options.length > 0) {
+    if(item.links.length > 0) {
       return (
         <HeaderDropdown item={item} key={index} />
       )
     } else {
       return (
         <NavItem key={index} className="me-2">
-          <NavLink className="header" active={document.location.href.endsWith(item.href)} href={item.href}>
+          <NavLink className="header" active={isActive(item.href)} href={item.href}>
             {item.name}
           </NavLink>
         </NavItem>

@@ -4,76 +4,97 @@
     "Title": "Dr n. med.",
     "FirstName": "Wiesław",
     "LastName": "Nowakowski",
-    "City": "Włocławek"
+    "SpecTitle": "Specjalista w zakresie chorób wewnętrznych i kardiologii",
+    "Description": "",
+    "Order": 1
   },
   {
     "Id": 2,
     "Title": "Dr n. med.",
     "FirstName": "Irena",
     "LastName": "Nowakowska",
-    "City": "Włocławek"
+    "SpecTitle": "Specjalista w zakresie pediatrii i kardiologii",
+    "Description": "",
+    "Order": 2
   },
   {
     "Id": 3,
     "Title": "Prof. dr hab. med.",
     "FirstName": "Dorota",
     "LastName": "Nowakowska",
-    "City": "Łódź"
+    "SpecTitle": "Specjalista w zakresie położnictwa i ginekologii oraz perinatologii",
+    "Description": "",
+    "Order": 3
   },
   {
     "Id": 4,
     "Title": "Lek. med.",
     "FirstName": "Zbigniew",
     "LastName": "Placek",
-    "City": "Włocławek"
+    "SpecTitle": "",
+    "Description": "",
+    "Order": 4
   },
   {
     "Id": 5,
     "Title": "Prof. dr hab. med.",
     "FirstName": "Ewa",
     "LastName": "Sewerynek",
-    "City": "Łódź"
+    "SpecTitle": "",
+    "Description": "",
+    "Order": 5
   },
   {
     "Id": 6,
     "Title": "Dr n. med.",
     "FirstName": "Tomasz",
     "LastName": "Kmieć",
-    "City": "Warszawa"
+    "SpecTitle": "",
+    "Description": "",
+    "Order": 6
   },
   {
     "Id": 7,
     "Title": "Dr n. med.",
     "FirstName": "Marek",
     "LastName": "Wrona",
-    "City": "Łódź"
+    "City": "Łódź",
+    "Order": 7
   },
   {
     "Id": 8,
     "Title": "Lek. med.",
     "FirstName": "Janina",
     "LastName": "Wielicka",
-    "City": "Włocławek"
+    "SpecTitle": "",
+    "Description": "",
+    "Order": 8
   },
   {
     "Id": 9,
     "Title": "Lek. med.",
     "FirstName": "Bogdan",
     "LastName": "Wojtecki",
-    "City": "Włocławek"
+    "SpecTitle": "",
+    "Description": "",
+    "Order": 9
   },
   {
     "Id": 10,
     "Title": "Lek. med.",
     "FirstName": "Leszek",
     "LastName": "Dura",
-    "City": "Włocławek"
+    "SpecTitle": "",
+    "Description": "",
+    "Order": 10
   },
   {
     "Id": 11,
     "Title": "Lek. med.",
     "FirstName": "Zbyszek",
     "LastName": "Ruszkowski",
-    "City": "Włocławek"
+    "SpecTitle": "",
+    "Description": "",
+    "Order": 11
   }
 ]

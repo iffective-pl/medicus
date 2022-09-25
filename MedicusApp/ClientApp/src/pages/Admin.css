@@ -1,0 +1,15 @@
+.image-cont {
+    height: 10vh;
+    aspect-ratio: 1.5/1;
+}
+
+.images-cont {
+    max-height: 20vh;
+    overflow-y: auto;
+}
+
+.image-checkbox {
+    top: .5rem;
+    left: .5rem;
+    position: absolute;
+}

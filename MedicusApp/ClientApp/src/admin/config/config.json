@@ -1,0 +1,14 @@
+{
+  "dev": {
+    "realm": "medicus",
+    "clientId": "app",
+    "url": "http://localhost:8080/",
+    "minio": "http://localhost:9000/"
+  },
+  "prod": {
+    "realm": "medicus",
+    "clientId": "medicus-web",
+    "url": "auth",
+    "minio": "s3"
+  }
+}

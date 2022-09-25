@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "ClassName": "heart",
+    "Color": ""
+  },
+  {
+    "Id": 2,
+    "ClassName": "kidneys",
+    "Color": ""
+  },
+  {
+    "Id": 3,
+    "ClassName": "leg",
+    "Color": ""
+  },
+  {
+    "Id": 4,
+    "ClassName": "pregnant",
+    "Color": ""
+  },
+  {
+    "Id": 5,
+    "ClassName": "coughing",
+    "Color": ""
+  },
+  {
+    "Id": 6,
+    "ClassName": "lactation",
+    "Color": ""
+  },
+  {
+    "Id": 7,
+    "ClassName": "stethoscope",
+    "Color": ""
+  },
+  {
+    "Id": 8,
+    "ClassName": "neurology",
+    "Color": ""
+  },
+  {
+    "Id": 9,
+    "ClassName": "allergies",
+    "Color": ""
+  },
+  {
+    "Id": 10,
+    "ClassName": "echo",
+    "Color": ""
+  },
+  {
+    "Id": 11,
+    "ClassName": "xray",
+    "Color": ""
+  },
+  {
+    "Id": 12,
+    "ClassName": "blood_pressure",
+    "Color": ""
+  }
+]

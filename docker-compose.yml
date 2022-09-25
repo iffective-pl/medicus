@@ -1,19 +1,9 @@
 services:
-  sql:
-    image: postgres
-    restart: always
-    hostname: postgres
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_PASSWORD: "postgrespw"
   app:
     build:
-      context: .
+      context: ./app
     restart: always
     hostname: medicus
-    depends_on:
-      - sql
 networks:
   default:
     name: application

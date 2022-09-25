@@ -1,0 +1,32 @@
+.main-container {
+    width: 100%;
+    display: inline-grid;
+}
+
+.main-container.small {
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+}
+
+.main-container.normal {
+    grid-template-columns: auto auto;
+}
+
+.side-container {
+    width: 100%;
+    display: inline-grid;
+}
+
+.side-container.small {
+    grid-template-rows: auto auto;
+    grid-template-columns: 50% 50%;
+}
+
+.side-container.normal {
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto;
+}
+
+.text-area-size {
+    height: 15vh !important;
+}

@@ -1,51 +1,74 @@
 [
   {
     "Id": 1,
-    "Name": "Strona główna",
-    "Href": "/",
+    "Href": "cardiology",
     "Order": 1,
-    "IsIndex": true
+    "SpecId": 1
   },
   {
     "Id": 2,
-    "Name": "O nas",
-    "Href": "about",
-    "Order": 2
+    "Href": "urology",
+    "Order": 2,
+    "SpecId": 2
   },
   {
     "Id": 3,
-    "Name": "Rejestracja",
-    "Href": "register",
-    "Order": 3
+    "Href": "orthopedy",
+    "Order": 3,
+    "SpecId": 3
   },
   {
     "Id": 4,
-    "Name": "Nasi specjaliści",
-    "Href": "docs",
-    "Order": 4
+    "Href": "ginecology",
+    "Order": 4,
+    "SpecId": 4
   },
   {
     "Id": 5,
-    "Name": "USG",
-    "Href": "docs/usg",
-    "Order": 5
+    "Href": "internist",
+    "Order": 5,
+    "SpecId": 5
   },
   {
     "Id": 6,
-    "Name": "ECHO Serca",
-    "Href": "docs/echo",
-    "Order": 6
+    "Href": "pediatrics",
+    "Order": 6,
+    "SpecId": 6
   },
   {
     "Id": 7,
-    "Name": "Holter",
-    "Href": "docs/holter",
-    "Order": 7
+    "Href": "endokrynology",
+    "Order": 7,
+    "SpecId": 7
   },
   {
     "Id": 8,
-    "Name": "Kontakt",
-    "Href": "contact",
-    "Order": 8
+    "Href": "echokids",
+    "Order": 8,
+    "SpecId": 8
+  },
+  {
+    "Id": 9,
+    "Href": "echoadults",
+    "Order": 9,
+    "SpecId": 9
+  },
+  {
+    "Id": 10,
+    "Href": "echopregnancy",
+    "Order": 10,
+    "SpecId": 10
+  },
+  {
+    "Id": 11,
+    "Href": "usgkids",
+    "Order": 11,
+    "SpecId": 11
+  },
+  {
+    "Id": 12,
+    "Href": "usgadults",
+    "Order": 12,
+    "SpecId": 12
   }
 ]

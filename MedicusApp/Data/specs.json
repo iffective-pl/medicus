@@ -2,97 +2,61 @@
   {
     "Id": 1,
     "Name": "Kardiologia",
-    "Href": "cardiology",
-    "ClassName": "heart",
-    "Order": 1,
-    "IsHeader": false
+    "StyleId": 1
   },
   {
     "Id": 2,
     "Name": "Urologia",
-    "Href": "urology",
-    "ClassName": "kidneys",
-    "Order": 2,
-    "IsHeader": false
+    "StyleId": 2
   },
   {
     "Id": 3,
     "Name": "Ortopedia",
-    "Href": "orthopedy",
-    "ClassName": "leg",
-    "Order": 3,
-    "IsHeader": false
+    "StyleId": 3
   },
   {
     "Id": 4,
     "Name": "Ginekologia",
-    "Href": "ginecology",
-    "ClassName": "pregnant",
-    "Order": 4,
-    "IsHeader": false
+    "StyleId": 4
   },
   {
     "Id": 5,
     "Name": "Internista",
-    "Href": "internist",
-    "ClassName": "coughing",
-    "Order": 5,
-    "IsHeader": false
+    "StyleId": 5
   },
   {
     "Id": 6,
     "Name": "Pediatria",
-    "Href": "pediatrics",
-    "ClassName": "lactation",
-    "Order": 6,
-    "IsHeader": false
+    "StyleId": 6
   },
   {
     "Id": 7,
     "Name": "Endokrynologia",
-    "Href": "endocrinology",
-    "ClassName": "stethoscope",
-    "Order": 7,
-    "IsHeader": false
+    "StyleId": 7
   },
   {
     "Id": 8,
     "Name": "Neurologia",
-    "Href": "neurology",
-    "ClassName": "neurology",
-    "Order": 8,
-    "IsHeader": false
+    "StyleId": 8
   },
   {
     "Id": 9,
     "Name": "Dermatologia",
-    "Href": "dermatology",
-    "ClassName": "allergies",
-    "Order": 9,
-    "IsHeader": false
+    "StyleId": 9
   },
   {
     "Id": 10,
     "Name": "ECHO Serca",
-    "Href": "echo",
-    "ClassName": "echo",
-    "Order": 10,
-    "IsHeader": true
+    "StyleId": 10
   },
   {
     "Id": 11,
     "Name": "USG",
-    "Href": "usg",
-    "ClassName": "xray",
-    "Order": 11,
-    "IsHeader": true
+    "StyleId": 11
   },
   {
     "Id": 12,
     "Name": "Holter",
-    "Href": "holter",
-    "ClassName": "blood_pressure",
-    "Order": 12,
-    "IsHeader": true
+    "StyleId": 12
   }
 ]

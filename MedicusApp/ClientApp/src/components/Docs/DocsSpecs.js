@@ -8,7 +8,7 @@ export default function DocsSpecs() {
   let [specs, setSpecs] = useState([]);
 
   useEffect(() => {
-    fetch("/api/Specs")
+    fetch("/api/Spec/GetSpecs")
       .then(r => r.json())
       .then(j => setSpecs(j));
   });
@@ -18,10 +18,10 @@ export default function DocsSpecs() {
       <h2 className="title m-3">Nasi lekarze specjalizują się w</h2>
       <Line center />
       {specs.map((item, index) => (
-        <a href={"docs/" + item.href} key={index}>
+        <a href={"docs/" + item.link.href} key={index}>
           <div className="d-inline-block spec m-2 p-3 shadow">
             <div className="spec-icon-container">
-              <i className={item.className + " spec-icon"}/>
+              <i className={item.style.className + " spec-icon"}/>
             </div>
             <div className="mt-3">
               <div className="h4 flex-row title">{item.name}</div>

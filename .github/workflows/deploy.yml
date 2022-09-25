@@ -1,0 +1,45 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      drop_database:
+        description: 'Drop Database?'
+        required: true
+        default: 'No' 
+        type: choice
+        options:
+        - 'No'
+        - 'Yes'
+      run_migration:
+        description: 'Run Migration?'
+        required: true
+        default: 'No' 
+        type: choice
+        options:
+        - 'No'
+        - 'Yes'
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Stop container
+        run: docker compose stop
+
+      - if: ${{ inputs.drop_database == 'Yes' }} 
+        name: Drop database
+        run: ~/.dotnet/tools/dotnet-ef database drop -f -p MedicusApp
+
+      - if: ${{ inputs.run_migration == 'Yes' || inputs.drop_database == 'Yes' }}
+        name: Update database
+        run: ~/.dotnet/tools/dotnet-ef database update -p MedicusApp
+      
+      - name: Build image
+        run: docker compose build --no-cache
+
+      - name: Deploy container
+        run: docker compose up -d --remove-orphans

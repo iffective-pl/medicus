@@ -1,0 +1,22 @@
+.main-container-reg {
+    width: 100%;
+    display: inline-grid;
+}
+
+.main-container-reg.small {
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+}
+
+.main-container-reg.normal {
+    grid-template-columns: auto auto;
+}
+
+.table-cont {
+    display: table;
+}
+
+.table-text {
+    display: table-cell;
+    vertical-align: middle;
+}

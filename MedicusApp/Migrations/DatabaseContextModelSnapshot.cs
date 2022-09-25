@@ -17,7 +17,7 @@ namespace MedicusApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.8")
+                .HasAnnotation("ProductVersion", "6.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -124,7 +124,7 @@ namespace MedicusApp.Migrations
                         });
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.Links.Link", b =>
+            modelBuilder.Entity("MedicusApp.Models.Data.Desc.Description", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -132,233 +132,13 @@ namespace MedicusApp.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Href")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<bool>("IsIndex")
+                    b.Property<DateTime>("Created")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false);
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Order")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Order"));
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Links");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Href = "/",
-                            IsIndex = true,
-                            Name = "Strona główna",
-                            Order = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Href = "about",
-                            IsIndex = false,
-                            Name = "O nas",
-                            Order = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Href = "register",
-                            IsIndex = false,
-                            Name = "Rejestracja",
-                            Order = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Href = "docs",
-                            IsIndex = false,
-                            Name = "Nasi specjaliści",
-                            Order = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Href = "docs/usg",
-                            IsIndex = false,
-                            Name = "USG",
-                            Order = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Href = "docs/echo",
-                            IsIndex = false,
-                            Name = "ECHO Serca",
-                            Order = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Href = "docs/holter",
-                            IsIndex = false,
-                            Name = "Holter",
-                            Order = 7
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Href = "contact",
-                            IsIndex = false,
-                            Name = "Kontakt",
-                            Order = 8
-                        });
-                });
-
-            modelBuilder.Entity("MedicusApp.Models.Links.Option", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Href")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int?>("LinkId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Order")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Order"));
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LinkId");
-
-                    b.ToTable("Options");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Href = "/cardiology",
-                            LinkId = 4,
-                            Name = "Kardiologia",
-                            Order = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Href = "/urology",
-                            LinkId = 4,
-                            Name = "Urologia",
-                            Order = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Href = "/orthopedy",
-                            LinkId = 4,
-                            Name = "Ortopedia",
-                            Order = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Href = "/ginecology",
-                            LinkId = 4,
-                            Name = "Ginekologia",
-                            Order = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Href = "/ginecology",
-                            LinkId = 4,
-                            Name = "Internista",
-                            Order = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Href = "/pediatrics",
-                            LinkId = 4,
-                            Name = "Pediatria",
-                            Order = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Href = "/endokrynology",
-                            LinkId = 4,
-                            Name = "Endokrynologia",
-                            Order = 7
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Href = "#kids",
-                            LinkId = 5,
-                            Name = "USG Dzieci",
-                            Order = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Href = "#adults",
-                            LinkId = 5,
-                            Name = "USG Dorosłych",
-                            Order = 2
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Href = "#pregnancy",
-                            LinkId = 5,
-                            Name = "USG Ciąży",
-                            Order = 3
-                        },
-                        new
-                        {
-                            Id = 11,
-                            Href = "#kids",
-                            LinkId = 6,
-                            Name = "ECHO Dzieci",
-                            Order = 1
-                        },
-                        new
-                        {
-                            Id = 12,
-                            Href = "#adults",
-                            LinkId = 6,
-                            Name = "ECHO Dorosłych",
-                            Order = 2
-                        });
-                });
-
-            modelBuilder.Entity("MedicusApp.Models.People.Description", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -368,6 +148,33 @@ namespace MedicusApp.Migrations
                         .HasColumnType("integer");
 
                     b.Property<int?>("SpecId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SpecId");
+
+                    b.ToTable("Descriptions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Image = "medicus/iStock-1395118113.jpg",
+                            Order = 1,
+                            SpecId = 1
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.Desc.DescriptionText", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("DescriptionId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Text")
@@ -380,23 +187,21 @@ namespace MedicusApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SpecId");
+                    b.HasIndex("DescriptionId");
 
-                    b.ToTable("Descriptions");
+                    b.ToTable("DescriptionTexts");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Image = "images/new/iStock-1395118113.jpg",
-                            Order = 0,
-                            SpecId = 1,
-                            Text = "Zachęcamy do skorzystania z konsultacji kardiologicznych. Otaczamy specjalistyczną opieką pacjentów ze schorzeniami układu krążenia. Naszym zadaniem jest trafna diagnoza oraz zaproponowanie skutecznych metod leczenia. Pomagamy w takich schorzeniach jak: nadciśnienie tętnicze, choroba niedokrwienna serca (choroba wieńcowa), z jej ostrymi powikłaniami np. zawałem serca. Wykonujemy specjalistyczne badania kardiologiczne. Wczesne wykrycie nieprawidłowości pozwala na wdrożenie odpowiedniego leczenia. Konsultacje kardiologiczne zalecamy w szczególności pacjentom, którzy przebyli operacje serca, mają wrodzone wady serca, zmagają się z nadciśnieniem tętniczym, zaburzeniami lipidowymi i zaburzeniami rytmu serca.",
+                            DescriptionId = 1,
+                            Text = "",
                             Title = "Fachowe konsultacje kardiologiczne"
                         });
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.Doctor", b =>
+            modelBuilder.Entity("MedicusApp.Models.Data.Desc.Price", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -404,8 +209,86 @@ namespace MedicusApp.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("City")
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SpecializationId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SpecializationId");
+
+                    b.ToTable("Prices");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Order = 1,
+                            SpecializationId = 1,
+                            Title = "Konsultacja",
+                            Value = "150.00"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Order = 2,
+                            SpecializationId = 1,
+                            Title = "Konsultacja + ECHO serca",
+                            Value = "220.00"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Order = 3,
+                            SpecializationId = 1,
+                            Title = "Konsultacja + ECHO serca + EKG",
+                            Value = "250.00"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Order = 4,
+                            SpecializationId = 1,
+                            Title = "ECHO Serca",
+                            Value = "170.00"
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.Person.Doctor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
                         .HasColumnType("text");
 
                     b.Property<string>("FirstName")
@@ -417,6 +300,12 @@ namespace MedicusApp.Migrations
 
                     b.Property<string>("LastName")
                         .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("SpecTitle")
                         .HasColumnType("text");
 
                     b.Property<string>("Title")
@@ -431,281 +320,114 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 1,
-                            City = "Włocławek",
+                            Description = "",
                             FirstName = "Wiesław",
                             LastName = "Nowakowski",
+                            Order = 1,
+                            SpecTitle = "Specjalista w zakresie chorób wewnętrznych i kardiologii",
                             Title = "Dr n. med."
                         },
                         new
                         {
                             Id = 2,
-                            City = "Włocławek",
+                            Description = "",
                             FirstName = "Irena",
                             LastName = "Nowakowska",
+                            Order = 2,
+                            SpecTitle = "Specjalista w zakresie pediatrii i kardiologii",
                             Title = "Dr n. med."
                         },
                         new
                         {
                             Id = 3,
-                            City = "Łódź",
+                            Description = "",
                             FirstName = "Dorota",
                             LastName = "Nowakowska",
+                            Order = 3,
+                            SpecTitle = "Specjalista w zakresie położnictwa i ginekologii oraz perinatologii",
                             Title = "Prof. dr hab. med."
                         },
                         new
                         {
                             Id = 4,
-                            City = "Włocławek",
+                            Description = "",
                             FirstName = "Zbigniew",
                             LastName = "Placek",
+                            Order = 4,
+                            SpecTitle = "",
                             Title = "Lek. med."
                         },
                         new
                         {
                             Id = 5,
-                            City = "Łódź",
+                            Description = "",
                             FirstName = "Ewa",
                             LastName = "Sewerynek",
+                            Order = 5,
+                            SpecTitle = "",
                             Title = "Prof. dr hab. med."
                         },
                         new
                         {
                             Id = 6,
-                            City = "Warszawa",
+                            Description = "",
                             FirstName = "Tomasz",
                             LastName = "Kmieć",
+                            Order = 6,
+                            SpecTitle = "",
                             Title = "Dr n. med."
                         },
                         new
                         {
                             Id = 7,
-                            City = "Łódź",
                             FirstName = "Marek",
                             LastName = "Wrona",
+                            Order = 7,
                             Title = "Dr n. med."
                         },
                         new
                         {
                             Id = 8,
-                            City = "Włocławek",
+                            Description = "",
                             FirstName = "Janina",
                             LastName = "Wielicka",
+                            Order = 8,
+                            SpecTitle = "",
                             Title = "Lek. med."
                         },
                         new
                         {
                             Id = 9,
-                            City = "Włocławek",
+                            Description = "",
                             FirstName = "Bogdan",
                             LastName = "Wojtecki",
+                            Order = 9,
+                            SpecTitle = "",
                             Title = "Lek. med."
                         },
                         new
                         {
                             Id = 10,
-                            City = "Włocławek",
+                            Description = "",
                             FirstName = "Leszek",
                             LastName = "Dura",
+                            Order = 10,
+                            SpecTitle = "",
                             Title = "Lek. med."
                         },
                         new
                         {
                             Id = 11,
-                            City = "Włocławek",
+                            Description = "",
                             FirstName = "Zbyszek",
                             LastName = "Ruszkowski",
+                            Order = 11,
+                            SpecTitle = "",
                             Title = "Lek. med."
                         });
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.Price", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("SpecId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<double>("Value")
-                        .HasColumnType("double precision");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SpecId");
-
-                    b.ToTable("Prices");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            SpecId = 1,
-                            Title = "Konsultacja",
-                            Value = 150.0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            SpecId = 1,
-                            Title = "Konsultacja + ECHO serca",
-                            Value = 220.0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            SpecId = 1,
-                            Title = "Konsultacja + ECHO serca + EKG",
-                            Value = 250.0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            SpecId = 1,
-                            Title = "ECHO Serca",
-                            Value = 170.0
-                        });
-                });
-
-            modelBuilder.Entity("MedicusApp.Models.People.Spec", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ClassName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Href")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Order")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Order"));
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
-
-                    b.ToTable("Specializations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ClassName = "heart",
-                            Href = "cardiology",
-                            Name = "Kardiologia",
-                            Order = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ClassName = "kidneys",
-                            Href = "urology",
-                            Name = "Urologia",
-                            Order = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ClassName = "leg",
-                            Href = "orthopedy",
-                            Name = "Ortopedia",
-                            Order = 3
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ClassName = "pregnant",
-                            Href = "ginecology",
-                            Name = "Ginekologia",
-                            Order = 4
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ClassName = "coughing",
-                            Href = "internist",
-                            Name = "Internista",
-                            Order = 5
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ClassName = "lactation",
-                            Href = "pediatrics",
-                            Name = "Pediatria",
-                            Order = 6
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ClassName = "stethoscope",
-                            Href = "endocrinology",
-                            Name = "Endokrynologia",
-                            Order = 7
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ClassName = "neurology",
-                            Href = "neurology",
-                            Name = "Neurologia",
-                            Order = 8
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ClassName = "allergies",
-                            Href = "dermatology",
-                            Name = "Dermatologia",
-                            Order = 9
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ClassName = "echo",
-                            Href = "echo",
-                            Name = "ECHO Serca",
-                            Order = 10
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ClassName = "xray",
-                            Href = "usg",
-                            Name = "USG",
-                            Order = 11
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ClassName = "blood_pressure",
-                            Href = "holter",
-                            Name = "Holter",
-                            Order = 12
-                        });
-                });
-
-            modelBuilder.Entity("MedicusApp.Models.People.WorkingHours", b =>
+            modelBuilder.Entity("MedicusApp.Models.Data.Person.WorkingHours", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -728,9 +450,6 @@ namespace MedicusApp.Migrations
                     b.Property<int>("SpecializationId")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Sunday")
-                        .HasColumnType("text");
-
                     b.Property<string>("Thursday")
                         .HasColumnType("text");
 
@@ -746,7 +465,7 @@ namespace MedicusApp.Migrations
 
                     b.HasIndex("SpecializationId");
 
-                    b.ToTable("WorkHours");
+                    b.ToTable("WorkingHours");
 
                     b.HasData(
                         new
@@ -894,51 +613,653 @@ namespace MedicusApp.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MedicusApp.Models.Data.Spec", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("StyleId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StyleId");
+
+                    b.ToTable("Specs");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Kardiologia",
+                            StyleId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Urologia",
+                            StyleId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Ortopedia",
+                            StyleId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Ginekologia",
+                            StyleId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Internista",
+                            StyleId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Pediatria",
+                            StyleId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Endokrynologia",
+                            StyleId = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Neurologia",
+                            StyleId = 8
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Dermatologia",
+                            StyleId = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "ECHO Serca",
+                            StyleId = 10
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "USG",
+                            StyleId = 11
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Holter",
+                            StyleId = 12
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.UI.Header", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Href")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsDropdown")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsHidden")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool>("IsIndex")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Headers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Href = "/",
+                            IsDropdown = false,
+                            IsIndex = true,
+                            Name = "Strona główna",
+                            Order = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Href = "about",
+                            IsDropdown = false,
+                            IsIndex = false,
+                            Name = "O nas",
+                            Order = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Href = "register",
+                            IsDropdown = false,
+                            IsIndex = false,
+                            Name = "Rejestracja",
+                            Order = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Href = "docs",
+                            IsDropdown = true,
+                            IsIndex = false,
+                            Name = "Nasi specjaliści",
+                            Order = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Href = "",
+                            IsDropdown = true,
+                            IsIndex = false,
+                            Name = "USG",
+                            Order = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Href = "",
+                            IsDropdown = true,
+                            IsIndex = false,
+                            Name = "ECHO Serca",
+                            Order = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Href = "",
+                            IsDropdown = false,
+                            IsIndex = false,
+                            Name = "Holter",
+                            Order = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Href = "contact",
+                            IsDropdown = false,
+                            IsIndex = false,
+                            Name = "Kontakt",
+                            Order = 8
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.UI.Style", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClassName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Styles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ClassName = "heart",
+                            Color = ""
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ClassName = "kidneys",
+                            Color = ""
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ClassName = "leg",
+                            Color = ""
+                        },
+                        new
+                        {
+                            Id = 4,
+                            ClassName = "pregnant",
+                            Color = ""
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClassName = "coughing",
+                            Color = ""
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ClassName = "lactation",
+                            Color = ""
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ClassName = "stethoscope",
+                            Color = ""
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ClassName = "neurology",
+                            Color = ""
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ClassName = "allergies",
+                            Color = ""
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ClassName = "echo",
+                            Color = ""
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ClassName = "xray",
+                            Color = ""
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ClassName = "blood_pressure",
+                            Color = ""
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Links.Link", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("HeaderId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Href")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SpecId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HeaderId");
+
+                    b.HasIndex("SpecId")
+                        .IsUnique();
+
+                    b.ToTable("Links");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Href = "cardiology",
+                            Order = 1,
+                            SpecId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Href = "urology",
+                            Order = 2,
+                            SpecId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Href = "orthopedy",
+                            Order = 3,
+                            SpecId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Href = "ginecology",
+                            Order = 4,
+                            SpecId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Href = "internist",
+                            Order = 5,
+                            SpecId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Href = "pediatrics",
+                            Order = 6,
+                            SpecId = 6
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Href = "endokrynology",
+                            Order = 7,
+                            SpecId = 7
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Href = "echokids",
+                            Order = 8,
+                            SpecId = 8
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Href = "echoadults",
+                            Order = 9,
+                            SpecId = 9
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Href = "echopregnancy",
+                            Order = 10,
+                            SpecId = 10
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Href = "usgkids",
+                            Order = 11,
+                            SpecId = 11
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Href = "usgadults",
+                            Order = 12,
+                            SpecId = 12
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Subject.Company", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "Plac Wolności 15",
+                            City = "Włocławek",
+                            Code = "87-800",
+                            Name = "Przychodnia Specjalistyczna MEDICUS"
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Subject.Email", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Emails");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "biuro@medicus.włocławek.pl",
+                            CompanyId = 1,
+                            Order = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "rejestracja@medicus.włocławek.pl",
+                            CompanyId = 1,
+                            Order = 2
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Subject.Phone", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("CompanyId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("IsMobile")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Number")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Order")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.ToTable("Phones");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CompanyId = 1,
+                            IsMobile = false,
+                            Number = "54 2313141",
+                            Order = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CompanyId = 1,
+                            IsMobile = false,
+                            Number = "54 2313741",
+                            Order = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CompanyId = 1,
+                            IsMobile = true,
+                            Number = "692 184 214",
+                            Order = 3
+                        });
+                });
+
             modelBuilder.Entity("DoctorSpec", b =>
                 {
-                    b.HasOne("MedicusApp.Models.People.Doctor", null)
+                    b.HasOne("MedicusApp.Models.Data.Person.Doctor", null)
                         .WithMany()
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MedicusApp.Models.People.Spec", null)
+                    b.HasOne("MedicusApp.Models.Data.Spec", null)
                         .WithMany()
                         .HasForeignKey("SpecId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.Links.Option", b =>
+            modelBuilder.Entity("MedicusApp.Models.Data.Desc.Description", b =>
                 {
-                    b.HasOne("MedicusApp.Models.Links.Link", null)
-                        .WithMany("Options")
-                        .HasForeignKey("LinkId");
-                });
-
-            modelBuilder.Entity("MedicusApp.Models.People.Description", b =>
-                {
-                    b.HasOne("MedicusApp.Models.People.Spec", null)
+                    b.HasOne("MedicusApp.Models.Data.Spec", null)
                         .WithMany("Descriptions")
                         .HasForeignKey("SpecId");
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.Price", b =>
+            modelBuilder.Entity("MedicusApp.Models.Data.Desc.DescriptionText", b =>
                 {
-                    b.HasOne("MedicusApp.Models.People.Spec", null)
-                        .WithMany("Prices")
-                        .HasForeignKey("SpecId");
+                    b.HasOne("MedicusApp.Models.Data.Desc.Description", null)
+                        .WithMany("DescriptionTexts")
+                        .HasForeignKey("DescriptionId");
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.WorkingHours", b =>
+            modelBuilder.Entity("MedicusApp.Models.Data.Desc.Price", b =>
                 {
-                    b.HasOne("MedicusApp.Models.People.Doctor", "Doctor")
+                    b.HasOne("MedicusApp.Models.Data.Spec", "Specialization")
+                        .WithMany("Prices")
+                        .HasForeignKey("SpecializationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Specialization");
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.Person.WorkingHours", b =>
+                {
+                    b.HasOne("MedicusApp.Models.Data.Person.Doctor", "Doctor")
                         .WithMany("WorkingHours")
                         .HasForeignKey("DoctorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MedicusApp.Models.People.Spec", "Specialization")
+                    b.HasOne("MedicusApp.Models.Data.Spec", "Specialization")
                         .WithMany("WorkingHours")
                         .HasForeignKey("SpecializationId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -949,23 +1270,80 @@ namespace MedicusApp.Migrations
                     b.Navigation("Specialization");
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.Links.Link", b =>
+            modelBuilder.Entity("MedicusApp.Models.Data.Spec", b =>
                 {
-                    b.Navigation("Options");
+                    b.HasOne("MedicusApp.Models.Data.UI.Style", "Style")
+                        .WithMany()
+                        .HasForeignKey("StyleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Style");
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.Doctor", b =>
+            modelBuilder.Entity("MedicusApp.Models.Links.Link", b =>
+                {
+                    b.HasOne("MedicusApp.Models.Data.UI.Header", "Header")
+                        .WithMany("Links")
+                        .HasForeignKey("HeaderId");
+
+                    b.HasOne("MedicusApp.Models.Data.Spec", "Spec")
+                        .WithOne("Link")
+                        .HasForeignKey("MedicusApp.Models.Links.Link", "SpecId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Header");
+
+                    b.Navigation("Spec");
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Subject.Email", b =>
+                {
+                    b.HasOne("MedicusApp.Models.Subject.Company", null)
+                        .WithMany("Emails")
+                        .HasForeignKey("CompanyId");
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Subject.Phone", b =>
+                {
+                    b.HasOne("MedicusApp.Models.Subject.Company", null)
+                        .WithMany("Phones")
+                        .HasForeignKey("CompanyId");
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.Desc.Description", b =>
+                {
+                    b.Navigation("DescriptionTexts");
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.Person.Doctor", b =>
                 {
                     b.Navigation("WorkingHours");
                 });
 
-            modelBuilder.Entity("MedicusApp.Models.People.Spec", b =>
+            modelBuilder.Entity("MedicusApp.Models.Data.Spec", b =>
                 {
                     b.Navigation("Descriptions");
+
+                    b.Navigation("Link")
+                        .IsRequired();
 
                     b.Navigation("Prices");
 
                     b.Navigation("WorkingHours");
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.UI.Header", b =>
+                {
+                    b.Navigation("Links");
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Subject.Company", b =>
+                {
+                    b.Navigation("Emails");
+
+                    b.Navigation("Phones");
                 });
 #pragma warning restore 612, 618
         }
