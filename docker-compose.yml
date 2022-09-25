@@ -1,36 +1,9 @@
 services:
-  sql:
-    image: postgres
-    restart: always
-    hostname: postgres
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_PASSWORD: "BdfUm*C@s2*QcbEUr8xOuqN*ciMbOS17f!xxPv8fA4k7^b38Hw"
-  s3:
-    image: quay.io/minio/minio
-    restart: always
-    environment:
-      MINIO_ROOT_USER: "9deMUp5d84kUIrIY3VusYEVnQJh70K"
-      MINIO_ROOT_PASSWORD: "S%3%MxzCoLXB007*2USfEAxbX@MA2!sjf7&%h6g2hq@ccGSIPD"
-    entrypoint: minio server --console-address ":9001" /data
   app:
     build:
-      context: ./Docker/app
+      context: ./app
     restart: always
     hostname: medicus
-  auth:
-    build:
-      context: ./Docker/keycloak
-    restart: always
-    hostname: auth
-    environment:
-      KEYCLOAK_ADMIN: "lx9AiCS5R3oMA6m0BC9KOtHRcaOjBn"
-      KEYCLOAK_ADMIN_PASSWORD: "j0nYHBE@2uKX2m&zNOFznZKH8&L317TA!VH10XlK9IM5P#jw$T"
-    command: ["start", "--optimized", "--proxy=edge"]
-  nginx:
-    build:
-      context: ./Docker/nginx
-    restart: always
-    ports:
-     - 443:443
+networks:
+  default:
+    name: application
