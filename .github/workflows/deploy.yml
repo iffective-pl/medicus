@@ -30,21 +30,13 @@ on:
 
 jobs:
   deploy:
-    runs-on: ['self-hosted', ${{ inputs.environment }}]
+    runs-on: ['self-hosted', inputs.environment]
 
     steps:
       - uses: actions/checkout@v3
       
-      - name: Stop all containers
+      - name: Stop container
         run: docker compose stop
-      
-      - name: Start required containers
-        run: docker compose up sql s3 -d --remove-orphans
-        
-      - name: Create auth database
-        run: |
-        /usr/bin/psql -h localhost -p 5432 -U postgres
-        echo "BdfUm*C@s2*QcbEUr8xOuqN*ciMbOS17f!xxPv8fA4k7^b38Hw"
 
       - if: ${{ inputs.drop_database == 'Yes' }} 
         name: Drop database
