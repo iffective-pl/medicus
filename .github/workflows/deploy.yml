@@ -3,14 +3,6 @@ name: Deploy
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Environment'
-        required: true
-        default: 'dev' 
-        type: choice
-        options:
-        - 'dev'
-        - 'prod'
       drop_database:
         description: 'Drop Database?'
         required: true
@@ -30,7 +22,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: 'self-hosted'
+    runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v3
