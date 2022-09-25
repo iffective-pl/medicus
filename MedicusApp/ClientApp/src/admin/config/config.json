@@ -7,7 +7,7 @@
   },
   "prod": {
     "realm": "medicus",
-    "clientId": "medicus-web",
+    "clientId": "app",
     "url": "auth",
     "minio": "s3"
   }
