@@ -3,6 +3,14 @@ name: Deploy
 on:
   workflow_dispatch:
     inputs:
+      environment:
+        description: 'Environment'
+        required: true
+        default: 'dev' 
+        type: choice
+        options:
+        - 'dev'
+        - 'prod'
       drop_database:
         description: 'Drop Database?'
         required: true
@@ -22,13 +30,21 @@ on:
 
 jobs:
   deploy:
-    runs-on: ['self-hosted', 'dev']
+    runs-on: ['self-hosted', ${{ inputs.environment }}]
 
     steps:
       - uses: actions/checkout@v3
       
-      - name: Restart containers
-        run: docker compose up -d --remove-orphans
+      - name: Stop all containers
+        run: docker compose stop
+      
+      - name: Start required containers
+        run: docker compose up sql s3 -d --remove-orphans
+        
+      - name: Create auth database
+        run: |
+        /usr/bin/psql -h localhost -p 5432 -U postgres
+        echo "BdfUm*C@s2*QcbEUr8xOuqN*ciMbOS17f!xxPv8fA4k7^b38Hw"
 
       - if: ${{ inputs.drop_database == 'Yes' }} 
         name: Drop database
