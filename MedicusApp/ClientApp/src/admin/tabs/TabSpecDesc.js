@@ -25,6 +25,14 @@ export default function TabSpecDesc(props) {
     setDesc(props.desc);
   }, [props.desc])
 
+  let content = (t) => {
+    if(t === "") {
+      return EditorState.createEmpty();
+    } else {
+      return EditorState.createWithContent(convertFromRaw(JSON.parse(t)))
+    }
+  }
+
   return (
     <Card className="mb-3">
       <CardBody className="p-0">
@@ -36,7 +44,7 @@ export default function TabSpecDesc(props) {
             {desc.descriptionTexts.map((item, index) =>
               <div key={index} className="pt-2">
                 <h4>{item.title}</h4>
-                <Editor editorState={EditorState.createWithContent(convertFromRaw(JSON.parse(item.text)))} readOnly={true} />
+                <Editor editorState={content(item.text)} readOnly={true} />
               </div>
             )}
           </div>

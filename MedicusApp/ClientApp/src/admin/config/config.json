@@ -9,6 +9,6 @@
     "realm": "medicus",
     "clientId": "medicus-web",
     "url": "auth",
-    "minio": "static"
+    "minio": "s3"
   }
 }

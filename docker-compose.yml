@@ -1,28 +1,9 @@
 services:
-  sql:
-    image: postgres
-    restart: always
-    hostname: postgres
-    ports:
-      - 5432:5432
-    environment:
-      POSTGRES_PASSWORD: "postgrespw"
-  auth:
-    image: quay.io/keycloak/keycloak:latest
-    restart: always
-    hostname: auth
-    environment:
-      KEYCLOAK_ADMIN: "admin"
-      KEYCLOAK_ADMIN_PASSWORD: "1P%cuS9tMIk0"
-    command: ["start", "--optimized", "--hostname=auth", "--proxy=edge"]
   app:
     build:
-      context: .
+      context: ./app
     restart: always
     hostname: medicus
-    depends_on:
-      - sql
-      - auth
 networks:
   default:
     name: application

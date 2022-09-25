@@ -6,8 +6,12 @@ export default function TextEditor(props) {
   let [editorState, setEditorState] = useState(EditorState.createEmpty())
 
   useEffect(() => {
-    let raw = convertFromRaw(JSON.parse(props.dt.text));
-    setEditorState(EditorState.createWithContent(raw));
+    if(props.dt.text === "") {
+      setEditorState(EditorState.createEmpty());
+    } else {
+      let raw = convertFromRaw(JSON.parse(props.dt.text));
+      setEditorState(EditorState.createWithContent(raw));
+    }
   }, [])
 
   let onChange = (e) => {

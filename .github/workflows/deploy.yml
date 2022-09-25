@@ -22,13 +22,13 @@ on:
 
 jobs:
   deploy:
-    runs-on: ['self-hosted', 'dev']
+    runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v3
       
-      - name: Restart containers
-        run: docker compose up -d --remove-orphans
+      - name: Stop container
+        run: docker compose stop
 
       - if: ${{ inputs.drop_database == 'Yes' }} 
         name: Drop database
