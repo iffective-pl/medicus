@@ -4,11 +4,11 @@ function cfg() {
     switch(process.env.NODE_ENV) {
         default:
         case "dev":
-            return config.dev
+            return config.Dev
         case "preprod":
-            return config.preprod
+            return config.Preprod
         case "prod":
-            return config.prod
+            return config.Production
     }
 }
 
