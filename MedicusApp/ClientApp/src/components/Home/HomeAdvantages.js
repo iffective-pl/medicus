@@ -1,6 +1,7 @@
 import {Container} from "reactstrap";
 
 import './HomeAdvantages.css';
+import Config from '../../config/Config';
 import {isMobile} from "react-device-detect";
 
 export default function HomeAdvantages() {
@@ -9,7 +10,7 @@ export default function HomeAdvantages() {
       <div className={"advantages-container " + (isMobile ? "advantages-rows" : "advantages-cols")}>
         <div className="text-center overflow-hidden advantages-image-container">
           <span className="h1 very-center">Co nas wyróżnia?</span>
-          <img src="images/used/advantages.jpg" alt="main-2" className="advantages-image" />
+          <img src={Config.minio + "medicus-static/advantages.jpg"} alt="advantages" className="advantages-image" />
         </div>
         <div className="text-center title">
           <div className="advantages">

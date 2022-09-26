@@ -2,6 +2,7 @@ import {useState} from "react";
 import {Button, Carousel, CarouselControl, CarouselIndicators, CarouselItem} from "reactstrap";
 
 import './HomeCarousel.css';
+import Config from '../../config/Config';
 import Items from '../../data/carousel.json';
 
 export default function HomeCarousel() {
@@ -58,7 +59,7 @@ export default function HomeCarousel() {
           key={index}
           className="description-back"
         >
-          <img src={item.src} alt={item.altText} className="description-img" />
+          <img src={Config.minio + item.src} alt={item.altText} className="description-img" />
           <span className="description">
             <span className="description-text">
               <p className="fs-1 mb-2 title">Tytuł główny</p>

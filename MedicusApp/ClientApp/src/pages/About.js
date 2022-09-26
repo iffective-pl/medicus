@@ -2,6 +2,7 @@ import {Container} from "reactstrap";
 import Line from "../components/Line";
 
 import './About.css';
+import Config from '../config/Config';
 import {isMobile} from "react-device-detect";
 import GoogleMaps from "../components/GoogleMaps";
 
@@ -21,12 +22,12 @@ export default function About() {
           </div>
           <div className="about-table">
             <div className="about-cell">
-              <img src="images/used/about-1.jpg" alt="przychodnia" className="about shadow-lg" />
+              <img src={Config.minio + "medicus-static/about-1.jpg"} alt="przychodnia" className="about shadow-lg" />
             </div>
           </div>
           <div className="about-table">
             <div className="about-cell">
-              <img src="images/used/about-2.jpg" alt="przychodnia" className="about shadow-lg" />
+              <img src={Config.minio + "medicus-static/about-2.jpg"} alt="przychodnia" className="about shadow-lg" />
             </div>
           </div>
           <div className="fs-5 about-table">

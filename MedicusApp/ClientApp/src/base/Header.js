@@ -9,6 +9,7 @@ import {
 } from "reactstrap";
 
 import "./Header.css";
+import Config from '../config/Config';
 import HeaderDropdown from "../components/Header/HeaderDropdown";
 
 export default function Header() {
@@ -56,7 +57,7 @@ export default function Header() {
   return (
     <Navbar light container expand="lg">
       <NavbarBrand href="/">
-        <img src="images/logo-oryg-medicus-cropped.png" alt="logo" className="logo" />
+        <img src={Config.minio + "medicus-static/logo.png"} alt="logo" className="logo" />
       </NavbarBrand>
         <NavbarToggler onClick={toggleButton}/>
       <Collapse isOpen={isOpen} navbar>

@@ -1,6 +1,6 @@
 import './Description.css';
 import {isMobile} from "react-device-detect";
-import Config from "../admin/config/Config";
+import Config from "../config/Config";
 import {Editor, convertFromRaw, EditorState} from 'draft-js'
 
 export default function Description(props) {

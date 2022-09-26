@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import Keycloak from "keycloak-js";
 import {Spinner} from "reactstrap";
 import AdminContext from "../admin/AdminContext";
-import Config from '../admin/config/Config';
+import Config from '../config/Config';
 import AdminContent from "../admin/AdminContent";
 
 import './Admin.css';

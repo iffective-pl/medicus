@@ -1,5 +1,5 @@
 import {FormGroup, Input, Label} from "reactstrap";
-import Config from "./config/Config";
+import Config from "../config/Config";
 import {useEffect, useState} from "react";
 import Notification from "../components/Notification";
 
