@@ -22,7 +22,7 @@ export default function HeaderDropdown(props) {
   return (
     <div onMouseEnter={toggle} onMouseLeave={toggle}>
       <Dropdown isOpen={isCollapseOpen} toggle={toggle} nav inNavbar className="me-2">
-        <NavLink className="header" active={isActive(props.item.href)} href={props.item.href}>
+        <NavLink className="header" active={isActive(props.item.href)} href={props.item.href ? props.item.href : "#"}>
           {props.item.name}
         </NavLink>
         <Collapse isOpen={isCollapseOpen}>

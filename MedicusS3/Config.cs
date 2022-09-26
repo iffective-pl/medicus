@@ -9,6 +9,6 @@ namespace MedicusS3
 {
     internal class Config
     {
-        public MinioConfiguration MinioConfiguration { get; set; }
+        public MinioConfiguration Minio { get; set; }
     }
 }

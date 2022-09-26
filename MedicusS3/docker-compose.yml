@@ -1,0 +1,8 @@
+services:
+  migration:
+    build:
+      context: .
+    hostname: medicus-migration
+networks:
+  default:
+    name: application

@@ -1,28 +1,34 @@
-﻿using MedicusS3;
-using Microsoft.AspNetCore.StaticFiles;
+﻿using Microsoft.AspNetCore.StaticFiles;
 using Minio;
 using Minio.Exceptions;
+using Serilog;
+using Serilog.Core;
 using System.Text.Json;
+using System.Xml.Linq;
 
 namespace MedicusS3
 {
     public class Program
     {
-        private MinioClient minio;
-        private FileExtensionContentTypeProvider contentType;
-        private static string MedicusStatic = "medicus-static";
+        private readonly Logger logger;
+        private readonly MinioClient minio;
+        private readonly FileExtensionContentTypeProvider contentType;
+        private static readonly string MedicusStatic = "medicus-static";
 
-        static void Main(string[] args)
+        static void Main()
         {
-            new Program();
+            _ = new Program();
         }
 
         public Program()
         {
-            contentType = new FileExtensionContentTypeProvider();
-            using (var stream = File.OpenRead("appsettings.json"))
+            try
             {
-                var config = JsonSerializer.Deserialize<Config>(stream).MinioConfiguration;
+                logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+                logger.Information("S3 Migration starting");
+                contentType = new FileExtensionContentTypeProvider();
+                using var stream = File.OpenRead("appsettings.json");
+                var config = JsonSerializer.Deserialize<Config>(stream).Minio;
                 MinioClient builder = new MinioClient()
                             .WithEndpoint(config.Url)
                             .WithCredentials(config.AccessKey, config.SecretKey);
@@ -32,20 +38,22 @@ namespace MedicusS3
                     builder.WithSSL();
                 }
 
-                var minio = builder.Build();
+                minio = builder.Build();
                 MakeBucketIfDoesntExist();
                 VerifyBucketSettings();
 
                 var images = Directory.GetFiles("images");
                 foreach (var image in images)
                 {
-                    string type;
-                    contentType.TryGetContentType(image, out type);
-                    using (var s = File.OpenRead(image))
-                    {
-                        UploadFile(image, type, s);
-                    }
+                    contentType.TryGetContentType(image, out string type);
+                    var s = File.OpenRead(image);
+                    UploadFile(image, type, s);
+                    logger.Information("Uploaded file {name}", image);
                 }
+                logger.Information("S3 Migration finished");
+            } catch (Exception e)
+            {
+                logger.Error(e, "Exception occured: {e}");
             }
         }
 
