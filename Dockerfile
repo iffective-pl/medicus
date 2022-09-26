@@ -1,9 +1,10 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
-ENV NODE_ENV=Preprod
+ARG ASPNETCORE_ENVIRONMENT
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
 WORKDIR /app
 COPY . ./
+COPY ./.env/$ASPNETCORE_ENVIRONMENT ./MedicusApp/ClientApp
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
 

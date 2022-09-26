@@ -1,2 +1,2 @@
-NODE_ENV=Production
+BROWSER=none
 ASPNETCORE_ENVIRONMENT=Production
