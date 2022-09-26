@@ -1,0 +1,12 @@
+services:
+  migration:
+    build:
+      context: .
+    entrypoint: "dotnet ef database drop -f -p MedicusApp"
+  drop:
+    build:
+      context: .
+    entrypoint: "dotnet ef database update -p MedicusApp"
+networks:
+  default:
+    name: application
