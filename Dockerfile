@@ -9,6 +9,8 @@ RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
+ENV NODE_ENV Production
+ENV ASPNETCORE_ENVIRONMENT Production
 WORKDIR /app
 COPY --from=build-env /app/out .
 ENTRYPOINT ["dotnet", "MedicusApp.dll"]
