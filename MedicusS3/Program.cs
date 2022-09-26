@@ -4,7 +4,7 @@ using Minio.Exceptions;
 using Serilog;
 using Serilog.Core;
 using System.Text.Json;
-using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MedicusS3
 {
@@ -39,16 +39,15 @@ namespace MedicusS3
                 }
 
                 minio = builder.Build();
-                MakeBucketIfDoesntExist();
-                VerifyBucketSettings();
+                MakeBucketIfDoesntExist().GetAwaiter().GetResult();
+                VerifyBucketSettings().GetAwaiter().GetResult();
 
                 var images = Directory.GetFiles("images");
                 foreach (var image in images)
                 {
                     contentType.TryGetContentType(image, out string type);
                     var s = File.OpenRead(image);
-                    UploadFile(image, type, s);
-                    logger.Information("Uploaded file {name}", image);
+                    UploadFile(image, type, s).GetAwaiter().GetResult();
                 }
                 logger.Information("S3 Migration finished");
             } catch (Exception e)
@@ -57,35 +56,40 @@ namespace MedicusS3
             }
         }
 
-        public async void UploadFile(string name, string type, FileStream file)
+        public async Task UploadFile(string name, string type, FileStream file)
         {
             var args = new PutObjectArgs();
-
+            var obj = Path.GetFileName(name);
             args.WithBucket(MedicusStatic)
-                .WithObject(Path.GetFileName(name))
+                .WithObject(obj)
                 .WithObjectSize(file.Length)
                 .WithContentType(type)
                 .WithStreamData(file);
 
             await minio.PutObjectAsync(args);
+            logger.Information("Uploaded file {name}", obj);
         }
 
-        private async void MakeBucketIfDoesntExist()
+        private async Task MakeBucketIfDoesntExist()
         {
             var args = new BucketExistsArgs();
             args.WithBucket(MedicusStatic);
+            logger.Information("Verifying if bucket {bucket} exists", MedicusStatic);
             var exists = await minio.BucketExistsAsync(args);
             if (!exists)
             {
                 var bucket = new MakeBucketArgs();
                 bucket.WithBucket(MedicusStatic);
+                logger.Information("Bucket {bucket} does not exists. Creating a new one", MedicusStatic);
                 await minio.MakeBucketAsync(bucket);
+                logger.Information("Bucket {bucket} has been created", MedicusStatic);
             }
         }
 
 
-        private async void VerifyBucketSettings()
+        private async Task VerifyBucketSettings()
         {
+            logger.Information("Verifying if bucket {bucket} has correct policies", MedicusStatic);
             var args = new GetVersioningArgs();
             args.WithBucket(MedicusStatic);
             var vc = await minio.GetVersioningAsync(args);
@@ -126,7 +130,9 @@ namespace MedicusS3
 
                 var setPolictyArgs = new SetPolicyArgs();
                 setPolictyArgs.WithBucket(MedicusStatic).WithPolicy(JsonSerializer.Serialize(policy));
+                logger.Information("Applying new policies", MedicusStatic);
                 await minio.SetPolicyAsync(setPolictyArgs);
+                logger.Information("New policies has been applied", MedicusStatic);
             }
         }
 
