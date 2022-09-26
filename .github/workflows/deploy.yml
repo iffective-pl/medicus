@@ -61,8 +61,8 @@ jobs:
         name: S3 Migration
         working-directory: ./MedicusS3
         run: |
-        docker compose build --no-cache
-        docker compose run migration --rm
+             docker compose build --no-cache
+             docker compose run migration --rm
         
       - name: Deploy container
         run: docker compose -f docker-compose.yml -f ${{ inputs.select_env }}.yml up -d --remove-orphans
