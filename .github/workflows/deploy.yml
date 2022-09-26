@@ -57,5 +57,10 @@ jobs:
         name: Update database
         run: ~/.dotnet/tools/dotnet-ef database update -p MedicusApp
         
+      - if: ${{ inputs.run_s3_migration == 'Yes' }}
+        name: S3 Migration
+        working-directory: ./MedicusS3
+        run: docker compose run migration --rm
+        
       - name: Deploy container
         run: docker compose -f docker-compose.yml -f ${{ inputs.select_env }}.yml up -d --remove-orphans
