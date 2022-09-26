@@ -50,4 +50,4 @@ jobs:
         run: docker compose build --no-cache
 
       - name: Deploy container
-        run: docker compose up -d --remove-orphans --env-file env/${{ inputs.select_env }}
+        run: docker compose --env-file ./.env/${{ inputs.select_env }} up -d --remove-orphans
