@@ -1,6 +1,7 @@
 import config from './config.json';
 
 function cfg() {
+    console.log(process.env)
     switch(process.env.NODE_ENV) {
         default:
         case "Development":
