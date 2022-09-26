@@ -7,7 +7,7 @@ function cfg() {
             return config.Development
         case "Preprod":
             return config.Preprod
-        case "Prod":
+        case "Production":
             return config.Production
     }
 }

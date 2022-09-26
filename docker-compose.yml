@@ -5,8 +5,8 @@ services:
     restart: always
     hostname: medicus
     environment:
-      - ENV NODE_ENV=Production
-      - ENV ASPNETCORE_ENVIRONMENT=Production
+      - ENV NODE_ENV=Preprod
+      - ENV ASPNETCORE_ENVIRONMENT=Preprod
 networks:
   default:
     name: application
