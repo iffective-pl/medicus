@@ -36,7 +36,7 @@ export default function HomeCarousel() {
           key={index}
           className="description-back"
         >
-          <img src={item.src} alt={item.altText} className="description-img" />
+          <img src={Config.minio + item.src} alt={item.altText} className="description-img" />
           <span className="description">
             <span className="description-text">
               <h1 className="title">{item.captionHeader}</h1>
