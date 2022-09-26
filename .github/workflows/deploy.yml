@@ -50,4 +50,4 @@ jobs:
         run: docker compose build --no-cache
         
       - name: Deploy container
-        run: docker run -e ASPNETCORE_ENVIRONMENT=${{ inputs.select_env }} --name medicus-app-1 -d app
+        run: docker compose -f docker-compose.yml -f ${{ inputs.select_env }}.yml up -d --remove-orphans
