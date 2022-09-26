@@ -50,4 +50,4 @@ jobs:
         run: docker compose build --no-cache
 
       - name: Deploy container
-        run: docker compose up -e NODE_ENV=${{ inputs.select_env }} -e ASPNETCORE_ENVIRONMENT=${{ inputs.select_env }} -d --remove-orphans
+        run: docker compose up -d --remove-orphans --env-file env/${{ inputs.select_env }}

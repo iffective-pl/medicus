@@ -3,11 +3,11 @@ import config from './config.json';
 function cfg() {
     switch(process.env.NODE_ENV) {
         default:
-        case "dev":
-            return config.Dev
-        case "preprod":
+        case "Development":
+            return config.Development
+        case "Preprod":
             return config.Preprod
-        case "prod":
+        case "Prod":
             return config.Production
     }
 }

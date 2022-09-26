@@ -1,5 +1,5 @@
 {
-  "Dev": {
+  "Development": {
     "realm": "medicus",
     "clientId": "app",
     "url": "http://localhost:8080/",
