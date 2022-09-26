@@ -3,6 +3,14 @@ name: Deploy
 on:
   workflow_dispatch:
     inputs:
+      select_env:
+        description: 'Which environment?'
+        required: true
+        default: 'Preprod' 
+        type: choice
+        options:
+        - 'Preprod'
+        - 'Prod'
       drop_database:
         description: 'Drop Database?'
         required: true
@@ -39,7 +47,7 @@ jobs:
         run: ~/.dotnet/tools/dotnet-ef database update -p MedicusApp
       
       - name: Build image
-        run: docker compose build --no-cache
+        run: docker compose build -e NODE_ENV=${{ inputs.select_env }} -e ASPNET_ENVIRONMENT=${{ inputs.select_env }} --no-cache
 
       - name: Deploy container
         run: docker compose up -d --remove-orphans
