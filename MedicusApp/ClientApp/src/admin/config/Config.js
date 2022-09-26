@@ -1,10 +1,7 @@
-import dotenv from 'dotenv';
 import config from './config.json';
 
-const env = dotenv.config();
-
 function cfg() {
-    console.log(env)
+    console.log(process.env)
     switch(process.env.NODE_ENV) {
         default:
         case "Development":
