@@ -2,6 +2,9 @@ services:
   app:
     build:
       context: .
+      args:
+        - NODE_ENV
+        - ASPNETCORE_ENVIRONMENT
     restart: always
     hostname: medicus
 networks:
