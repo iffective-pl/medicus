@@ -47,7 +47,7 @@ jobs:
         run: ~/.dotnet/tools/dotnet-ef database update -p MedicusApp
       
       - name: Build image
-        run: docker compose build --no-cache --build-arg ASPNETCORE_ENVIRONMENT=${{ inputs.select_env }}
-
+        run: docker compose --env-file ./.env/${{ inputs.select_env }} build --no-cache
+        
       - name: Deploy container
         run: docker compose up -d --remove-orphans

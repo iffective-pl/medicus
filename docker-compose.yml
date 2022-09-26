@@ -2,12 +2,8 @@ services:
   app:
     build:
       context: .
-      args:
-        - ASPNETCORE_ENVIRONMENT=Development
     restart: always
     hostname: medicus
-    environment:
-      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
 networks:
   default:
     name: application
