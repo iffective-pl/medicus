@@ -9,12 +9,12 @@
     "realm": "medicus",
     "clientId": "app",
     "url": "https://auth.iffective.pl",
-    "minio": "https://s3.iffective.pl"
+    "minio": "https://s3.iffective.pl/"
   },
   "Production": {
     "realm": "medicus",
     "clientId": "app",
     "url": "https://auth.medicus.wlocalwek.pl",
-    "minio": "https://s3.medicus.wloclawek.pl"
+    "minio": "https://s3.medicus.wloclawek.pl/"
   }
 }
