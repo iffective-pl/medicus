@@ -35,6 +35,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       
+      - name: Build image
+        run: docker compose build --no-cache
+        
       - name: Stop container
         run: docker compose stop
 
@@ -45,9 +48,6 @@ jobs:
       - if: ${{ inputs.run_migration == 'Yes' || inputs.drop_database == 'Yes' }}
         name: Update database
         run: ~/.dotnet/tools/dotnet-ef database update -p MedicusApp
-      
-      - name: Build image
-        run: docker compose build --no-cache
         
       - name: Deploy container
         run: docker compose -f docker-compose.yml -f ${{ inputs.select_env }}.yml up -d --remove-orphans
