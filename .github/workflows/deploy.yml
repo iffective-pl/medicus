@@ -38,7 +38,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: ${{ inputs.select_env }}
 
     steps:
       - uses: actions/checkout@v3
@@ -54,13 +54,13 @@ jobs:
         working-directory: ./MedicusApp
         run: |
              docker compose build --no-cache
-             docker compose run drop --rm
+             docker compose run drop --rm -f
       - if: ${{ inputs.run_migration == 'Yes' || inputs.drop_database == 'Yes' }}
         name: Update database
         working-directory: ./MedicusApp
         run: |
              docker compose build --no-cache
-             docker compose run migration --rm
+             docker compose run migration --rm -f
       - if: ${{ inputs.run_s3_migration == 'Yes' }}
         name: S3 Migration
         working-directory: ./MedicusS3
