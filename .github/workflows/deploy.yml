@@ -54,19 +54,19 @@ jobs:
         working-directory: ./MedicusApp
         run: |
              docker compose build --no-cache
-             docker compose run  --rm -f drop
+             docker compose run  --rm drop
       - if: ${{ inputs.run_migration == 'Yes' || inputs.drop_database == 'Yes' }}
         name: Update database
         working-directory: ./MedicusApp
         run: |
              docker compose build --no-cache
-             docker compose run --rm -f migration
+             docker compose run --rm migration
       - if: ${{ inputs.run_s3_migration == 'Yes' }}
         name: S3 Migration
         working-directory: ./MedicusS3
         run: |
              docker compose build --no-cache
-             docker compose run --rm -f migration
+             docker compose run --rm migration
         
       - name: Deploy container
         run: docker compose -f docker-compose.yml -f ${{ inputs.select_env }}.yml up -d --remove-orphans
