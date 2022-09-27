@@ -3,3 +3,4 @@ RUN dotnet tool install -g dotnet-ef
 ENV PATH="${PATH}:/root/.dotnet/tools"
 WORKDIR /app
 COPY . ./
+RUN dotnet build
