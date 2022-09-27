@@ -54,13 +54,13 @@ jobs:
         working-directory: ./MedicusApp
         run: |
              docker compose build --no-cache
-             docker compose run  --rm drop
+             docker compose run -e ASPNETCORE_ENVIRONMENT=${{ inputs.select_env }} --rm drop
       - if: ${{ inputs.run_migration == 'Yes' || inputs.drop_database == 'Yes' }}
         name: Update database
         working-directory: ./MedicusApp
         run: |
              docker compose build --no-cache
-             docker compose run --rm migration
+             docker compose run --rm -e ASPNETCORE_ENVIRONMENT=${{ inputs.select_env }} migration
       - if: ${{ inputs.run_s3_migration == 'Yes' }}
         name: S3 Migration
         working-directory: ./MedicusS3
