@@ -1,6 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get install -y nodejs
+RUN npm install -g npm@8.19.2
 WORKDIR /app
 COPY . ./
 RUN dotnet restore
