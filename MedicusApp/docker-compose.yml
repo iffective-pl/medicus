@@ -2,11 +2,12 @@ services:
   migration:
     build:
       context: .
-    entrypoint: "dotnet ef database drop -f"
+    entrypoint: "dotnet ef database update"
+    
   drop:
     build:
       context: .
-    entrypoint: "dotnet ef database update"
+    entrypoint: "dotnet ef database drop -f"
 networks:
   default:
     name: application
