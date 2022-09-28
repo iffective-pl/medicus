@@ -2,7 +2,7 @@
   "Development": {
     "realm": "medicus",
     "clientId": "app",
-    "url": "http://localhost:8080/",
+    "url": "https://localhost:8443/",
     "minio": "http://localhost:9000/"
   },
   "Preprod": {

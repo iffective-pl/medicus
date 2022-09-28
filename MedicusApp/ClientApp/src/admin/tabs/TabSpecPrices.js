@@ -71,6 +71,7 @@ export default function TabSpecPrices(props) {
 
   return (
     <>
+      <Notification loading={loading} success={success} message={message}/>
       <Row className="mt-3">
         <Col>
           <Card>
@@ -135,7 +136,6 @@ export default function TabSpecPrices(props) {
           </Card>
         </Col>
       </Row>
-      <Notification loading={loading} success={success} message={message}/>
     </>
   )
 }
