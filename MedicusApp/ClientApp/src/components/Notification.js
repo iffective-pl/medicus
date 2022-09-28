@@ -26,7 +26,7 @@ export default function Notification(props) {
   }
 
   return (
-    <div hidden={hidden} className="notification">
+    <div hidden={hidden} className="notification onTop">
       <Toast>
         <ToastHeader icon={icon()}>
           Operacja

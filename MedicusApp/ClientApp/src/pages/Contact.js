@@ -5,6 +5,7 @@ import {isMobile} from "react-device-detect";
 
 import './Contact.css';
 import {useEffect, useState} from "react";
+import Notification from "../components/Notification";
 
 let company = {
   emails: [],
@@ -14,11 +15,46 @@ let company = {
 export default function Contact() {
   let [comp, setComp] = useState(company);
 
+  let [loading, setLoading] = useState(undefined);
+  let [message, setMessage] = useState(undefined);
+  let [success, setSuccess] = useState(undefined);
+
   useEffect(() => {
     fetch("api/Company/GetFullCompany")
       .then(r => r.json())
       .then(j => setComp(j))
   }, [])
+
+  let onSubmit = (e) => {
+    setLoading(true)
+    setMessage("Wysyłanie wiadomości...")
+    e.preventDefault();
+    let data = {
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value,
+      email: e.target.email.value,
+      number: e.target.number.value,
+      message: e.target.message.value
+    }
+
+    fetch("api/Email/Send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(r => r.text())
+      .then(t => {
+        setLoading(false);
+        setSuccess(t === "true");
+        if(t === "true") {
+          setMessage("Wiadomość została wysłana")
+        } else {
+          setMessage("Wiadomość nie została wysłana")
+        }
+      })
+  }
 
   return (
     <>
@@ -56,7 +92,7 @@ export default function Contact() {
             </div>
           </div>
           <div>
-            <Form>
+            <Form onSubmit={onSubmit}>
               <Row>
                 <Col>
                   <FormGroup floating>
@@ -90,8 +126,8 @@ export default function Contact() {
                   <FormGroup floating>
                     <Input
                       bsSize="lg"
-                      id="phoneNumber"
-                      name="phoneNumber"
+                      id="number"
+                      name="number"
                       placeholder="Numer telefonu"
                       type="text"
                     />
@@ -155,7 +191,7 @@ export default function Contact() {
               <Row className="mt-3">
                 <Col>
                   <div>
-                    <Button color="info" size="lg" className="float-end">
+                    <Button color="info" size="lg" className="float-end" type="submit" disabled={loading}>
                       Wyślij
                     </Button>
                   </div>
@@ -166,6 +202,7 @@ export default function Contact() {
         </div>
       </Container>
       <GoogleMaps/>
+      <Notification loading={loading} success={success} message={message}/>
     </>
   )
 }

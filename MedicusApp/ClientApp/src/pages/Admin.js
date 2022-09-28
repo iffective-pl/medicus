@@ -10,7 +10,6 @@ import './Admin.css';
 export default function Admin() {
   const [keycloak, setKeycloak] = useState(undefined);
   const [authenticated, setAuthenticated] = useState();
-
   useEffect(() => {
     const service = new Keycloak(Config);
     service.init({ onLoad: "login-required" }).then(authenticated => {
