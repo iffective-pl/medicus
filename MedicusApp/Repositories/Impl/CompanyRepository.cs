@@ -1,4 +1,5 @@
 ﻿using MedicusApp.Models;
+using MedicusApp.Models.Subject;
 using MedicusApp.Models.Subject.Dto;
 
 namespace MedicusApp.Repositories.Impl
@@ -12,12 +13,49 @@ namespace MedicusApp.Repositories.Impl
             this.context = context;
         }
 
+        public bool AddEmail(EmailDto email)
+        {
+            try
+            {
+                var e = new Email()
+                {
+                    Address = email.Address
+                };
+                context.Emails.Add(e);
+                context.SaveChanges();
+                return true;
+            } catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool AddNumber(PhoneDto number)
+        {
+            try
+            {
+                var p = new Phone()
+                {
+                    Number = number.Number,
+                    IsMobile = number.IsMobile
+                };
+                context.Phones.Add(p);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
         public bool DeleteEmail(int id)
         {
             try
             {
                 var email = context.Emails.Where(e => e.Id == id).Single();
-                email.Deleted = DateTime.Now;
+                email.Deleted = DateTime.UtcNow;
+                context.SaveChanges();
                 return true;
             } catch (Exception)
             {
@@ -30,7 +68,8 @@ namespace MedicusApp.Repositories.Impl
             try
             {
                 var number = context.Phones.Where(e => e.Id == id).Single();
-                number.Deleted = DateTime.Now;
+                number.Deleted = DateTime.UtcNow;
+                context.SaveChanges();
                 return true;
             }
             catch (Exception)
@@ -72,7 +111,7 @@ namespace MedicusApp.Repositories.Impl
                 Address = c.Address,
                 Code = c.Code,
                 City = c.City,
-                Emails = c.Emails.Select(e => new EmailDto()
+                Emails = c.Emails.Where(q => q.Deleted == null).Select(e => new EmailDto()
                 {
                     Id = e.Id,
                     Address = e.Address,
@@ -80,7 +119,7 @@ namespace MedicusApp.Repositories.Impl
                     Deleted = e.Deleted,
                     Order = e.Order
                 }),
-                Phones = c.Phones.Where(q => !q.IsMobile).Select(p => new PhoneDto()
+                Phones = c.Phones.Where(q => q.Deleted == null && !q.IsMobile).Select(p => new PhoneDto()
                 {
                     Id = p.Id,
                     Number = p.Number,
@@ -89,7 +128,7 @@ namespace MedicusApp.Repositories.Impl
                     Deleted = p.Deleted,
                     Order = p.Order
                 }),
-                MobilePhones = c.Phones.Where(q => q.IsMobile).Select(p => new PhoneDto()
+                MobilePhones = c.Phones.Where(q => q.Deleted == null && q.IsMobile).Select(p => new PhoneDto()
                 {
                     Id = p.Id,
                     Number = p.Number,
@@ -98,7 +137,7 @@ namespace MedicusApp.Repositories.Impl
                     Deleted = p.Deleted,
                     Order = p.Order
                 }),
-                AllPhones = c.Phones.Select(p => new PhoneDto()
+                AllPhones = c.Phones.Where(q => q.Deleted == null).Select(p => new PhoneDto()
                 {
                     Id = p.Id,
                     Number = p.Number,

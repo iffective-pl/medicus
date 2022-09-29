@@ -39,9 +39,9 @@ namespace MedicusApp.Repositories.Impl
             });
         }
 
-        public SpecDto? GetFullSpec(string type)
+        public SpecDto? GetFullSpec(int id)
         {
-            return context.Specs.Where(q => q.Link.Href.EndsWith(type) && q.Deleted == null).Select(s => new SpecDto()
+            return context.Specs.Where(q => q.Id == id && q.Deleted == null).Select(s => new SpecDto()
             {
                 Id = s.Id,
                 Name = s.Name,
@@ -310,9 +310,14 @@ namespace MedicusApp.Repositories.Impl
         {
             try
             {
-                var s = context.Specs.Where(s => s.Id == specId).Include(s => s.Link).Single();
+                var s = context.Specs.Where(s => s.Id == specId).Include(s => s.Link).Include(s => s.WorkingHours).Single();
                 s.Deleted = DateTime.UtcNow;
                 s.Link.Deleted = DateTime.UtcNow;
+                var whs = s.WorkingHours.ToArray();
+                foreach (var wh in whs)
+                {
+                    context.WorkingHours.Remove(wh);
+                }
                 context.SaveChanges();
                 return true;
             } catch (Exception)

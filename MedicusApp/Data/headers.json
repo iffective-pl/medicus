@@ -31,14 +31,14 @@
   {
     "Id": 5,
     "Name": "USG",
-    "Href": "",
+    "Href": "docs",
     "Order": 5,
     "IsDropdown": true
   },
   {
     "Id": 6,
     "Name": "ECHO Serca",
-    "Href": "",
+    "Href": "docs",
     "Order": 6,
     "IsDropdown": true
   },

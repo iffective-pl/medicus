@@ -48,6 +48,12 @@ namespace MedicusApp.Controllers
             return service.GetMobilePhones();
         }
 
+        [HttpPut]
+        public bool AddNumber(PhoneDto number)
+        {
+            return service.AddNumber(number);
+        }
+
         [HttpPost]
         public bool UpdateCompany(CompanyDto company)
         {
@@ -58,6 +64,12 @@ namespace MedicusApp.Controllers
         public bool UpdateNumber(PhoneDto number)
         {
             return service.UpdateNumber(number);
+        }
+
+        [HttpPut]
+        public bool AddEmail(EmailDto phone)
+        {
+            return service.AddEmail(phone);
         }
 
         [HttpPost]

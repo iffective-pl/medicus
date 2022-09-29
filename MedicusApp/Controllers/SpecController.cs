@@ -25,11 +25,11 @@ namespace MedicusApp.Controllers
             return service.GetSpecs();
         }
 
-        [HttpGet("{type}")]
+        [HttpGet("{id}")]
         [AllowAnonymous]
-        public SpecDto? GetFullSpecs(string type)
+        public SpecDto? GetFullSpecs(int id)
         {
-            return service.GetFullSpec(type);
+            return service.GetFullSpec(id);
         }
 
         [HttpGet]

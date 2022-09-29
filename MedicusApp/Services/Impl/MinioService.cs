@@ -26,8 +26,8 @@ namespace MedicusApp.Services.Impl
 
             minio = builder.Build();
 
-            MakeBucketIfDoesntExist();
-            VerifyBucketSettings();
+            MakeBucketIfDoesntExist().GetAwaiter().GetResult();
+            VerifyBucketSettings().GetAwaiter().GetResult();
         }
 
         public IEnumerable<string> GetFiles()
@@ -71,7 +71,7 @@ namespace MedicusApp.Services.Impl
             }
         }
 
-        private async void MakeBucketIfDoesntExist()
+        private async Task MakeBucketIfDoesntExist()
         {
             var args = new BucketExistsArgs();
             args.WithBucket(Medicus);
@@ -84,7 +84,7 @@ namespace MedicusApp.Services.Impl
             }
         }
 
-        private async void VerifyBucketSettings()
+        private async Task VerifyBucketSettings()
         {
             var args = new GetVersioningArgs();
             args.WithBucket(Medicus);
