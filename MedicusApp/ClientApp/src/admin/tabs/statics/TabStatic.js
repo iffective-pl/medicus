@@ -182,7 +182,7 @@ export default function TabStatic(props) {
             </CardHeader>
             <CardBody className="p-3">
               {s.descriptions.map((item, index) => (
-                <Card className="mb-3">
+                <Card className="mb-3" key={index}>
                   <CardBody className="p-0">
                     <Description description={item} isEven={index%2===0}/>
                   </CardBody>
@@ -241,7 +241,7 @@ export default function TabStatic(props) {
                                 name="name"
                                 type="text"
                                 onChange={onChangeText}
-                                value={s.name}
+                                defaultValue={s.name}
                               />
                               <Label for="name">
                                 Nazwa statycznej strony
@@ -256,7 +256,7 @@ export default function TabStatic(props) {
                                 name="hasMap"
                                 type="checkbox"
                                 onChange={onChangeCheckbox}
-                                checked={s.hasMap}
+                                defaultChecked={s.hasMap}
                               />
                               <Label check>
                                 Czy ma być wyświetlana mapa na dole strony?

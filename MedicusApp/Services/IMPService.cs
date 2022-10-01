@@ -1,9 +1,9 @@
 ﻿using MedicusApp.Models.Data.Main;
 using MedicusApp.Models.Dto.Main;
 
-namespace MedicusApp.Repositories
+namespace MedicusApp.Services
 {
-    public interface IMPRepository
+    public interface IMPService
     {
         public MainPageDto GetMainPage();
         public bool UpdateAdvantage(AdvantageDto advantage);

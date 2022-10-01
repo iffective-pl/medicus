@@ -38,6 +38,11 @@ namespace MedicusApp.Services.Impl
             return repository.GetHeaders();
         }
 
+        public IEnumerable<HeaderDto> GetHeaderDropdown()
+        {
+            return repository.GetHeaderDropdown();
+        }
+
         public IEnumerable<HeaderDto> GetHeadersOrder()
         {
             return repository.GetHeaders().Where(q => !q.IsIndex.Value);

@@ -31,6 +31,12 @@ namespace MedicusApp.Controllers
         }
 
         [HttpGet]
+        public IEnumerable<HeaderDto> GetHeaderDropdown()
+        {
+            return service.GetHeaderDropdown();
+        }
+
+        [HttpGet]
         public HeaderDto GetHeader(int headerId)
         {
             return service.GetHeader(headerId);

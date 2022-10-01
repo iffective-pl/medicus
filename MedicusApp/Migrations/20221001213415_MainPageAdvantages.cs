@@ -53,7 +53,7 @@ namespace MedicusApp.Migrations
                 values: new object[,]
                 {
                     { 1, "docs", "heart", 1, "Wysokiej klasy specjaliści" },
-                    { 2, "", "ventilator", 1, "Nowoczesny sprzęt do ultrasonografii i echokardiografii<" },
+                    { 2, "", "ventilator", 1, "Nowoczesny sprzęt do ultrasonografii i echokardiografii" },
                     { 3, "", "wheelchair", 1, "Łatwy dostęp" },
                     { 4, "", "city", 1, "Komfortowe nowe wnętrza w idealnej lokalizacji" }
                 });

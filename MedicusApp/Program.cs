@@ -31,6 +31,7 @@ builder.Services.AddTransient<ICompanyRepository, CompanyRepository>();
 builder.Services.AddTransient<IDoctorRepository, DoctorRepository>();
 builder.Services.AddTransient<IDescRepository, DescRepository>();
 builder.Services.AddTransient<IStaticRepository, StaticRepository>();
+builder.Services.AddTransient<IMPRepository, MPRepository>();
 
 builder.Services.AddTransient<ISpecService, SpecService>();
 builder.Services.AddTransient<IUIService, UIService>();
@@ -38,6 +39,7 @@ builder.Services.AddTransient<ICompanyService, CompanyService>();
 builder.Services.AddTransient<IDoctorService, DoctorService>();
 builder.Services.AddTransient<IDescService, DescService>();
 builder.Services.AddTransient<IStaticService, StaticService>();
+builder.Services.AddTransient<IMPService, MPService>();
 
 builder.Services.AddSingleton<Seeder>();
 builder.Services.AddSingleton<MinioService>();

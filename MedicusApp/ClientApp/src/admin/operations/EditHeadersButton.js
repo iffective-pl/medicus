@@ -138,7 +138,7 @@ export default function EditHeadersButton(props) {
                     name="name"
                     type="text"
                     onChange={onChangeText}
-                    value={header?.name}
+                    defaultValue={header?.name}
                   />
                   <Label for="name">
                     Nazwa nagłówka
@@ -156,7 +156,7 @@ export default function EditHeadersButton(props) {
                     id="href"
                     name="href"
                     type="select"
-                    value={header?.href}
+                    defaultValue={header?.href}
                     onChange={onChangeText}
                     disabled={header?.isDropdown || statics.length < 1}
                   >

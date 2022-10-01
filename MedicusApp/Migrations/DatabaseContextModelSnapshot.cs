@@ -335,7 +335,7 @@ namespace MedicusApp.Migrations
                             Href = "",
                             Icon = "ventilator",
                             MainPageId = 1,
-                            Name = "Nowoczesny sprzęt do ultrasonografii i echokardiografii<"
+                            Name = "Nowoczesny sprzęt do ultrasonografii i echokardiografii"
                         },
                         new
                         {

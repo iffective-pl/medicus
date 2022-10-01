@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MedicusApp.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20221001205350_MainPageAdvantages")]
+    [Migration("20221001213415_MainPageAdvantages")]
     partial class MainPageAdvantages
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -337,7 +337,7 @@ namespace MedicusApp.Migrations
                             Href = "",
                             Icon = "ventilator",
                             MainPageId = 1,
-                            Name = "Nowoczesny sprzęt do ultrasonografii i echokardiografii<"
+                            Name = "Nowoczesny sprzęt do ultrasonografii i echokardiografii"
                         },
                         new
                         {

@@ -7,7 +7,7 @@ import TabSpecs from "./tabs/specs/TabSpecs";
 import AdminContext from "./AdminContext";
 import TabDoctors from "./tabs/doctors/TabDoctors";
 import TabStatics from "./tabs/statics/TabStatics";
-import TabMain from "./tabs/TabMain";
+import TabMain from "./tabs/main/TabMain";
 
 export default function AdminContent() {
   let [tab, setTab] = useState(0);

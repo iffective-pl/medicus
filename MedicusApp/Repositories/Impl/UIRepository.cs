@@ -287,5 +287,14 @@ namespace MedicusApp.Repositories.Impl
                 return false;
             }
         }
+
+        public IEnumerable<HeaderDto> GetHeaderDropdown()
+        {
+            return context.Headers.Where(h => h.Deleted == null).Select(h => new HeaderDto()
+            {
+                Name = h.Name,
+                Href = h.Href
+            });
+        }
     }
 }

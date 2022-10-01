@@ -7,6 +7,7 @@ namespace MedicusApp.Services
     {
         public HeaderDto GetHeader(int headerId);
         public IEnumerable<HeaderDto> GetHeaders();
+        public IEnumerable<HeaderDto> GetHeaderDropdown();
         public IEnumerable<HeaderDto> GetHeadersOrder();
         public IEnumerable<int> GetHeaderIds();
         public IEnumerable<LinkDto> GetLinks();

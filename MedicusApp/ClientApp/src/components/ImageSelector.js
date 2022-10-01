@@ -85,7 +85,7 @@ export default function ImageSelector(props) {
           <Input
             id="image"
             name="image"
-            value={props.image}
+            defaultValue={props.image}
             type="text"
             disabled
           />
