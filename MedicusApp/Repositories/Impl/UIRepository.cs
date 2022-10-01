@@ -29,6 +29,8 @@ namespace MedicusApp.Repositories.Impl
                     Href = h.Href,
                     IsIndex = h.IsIndex,
                     IsHidden = h.IsHidden,
+                    IsDropdown = h.IsDropdown,
+                    IsPredefined = h.IsPredefined,
                     Created = h.Created,
                     Deleted = h.Deleted,
                     Order = h.Order,
@@ -60,6 +62,9 @@ namespace MedicusApp.Repositories.Impl
                     IsIndex = h.IsIndex,
                     IsHidden = h.IsHidden,
                     IsDropdown = h.IsDropdown,
+                    IsPredefined = h.IsPredefined,
+                    Created = h.Created,
+                    Deleted = h.Deleted,
                     Order = h.Order,
                     Links = h.Links.OrderBy(l => l.Order).Where(o => o.Deleted == null).Select(o => new LinkDto()
                     {

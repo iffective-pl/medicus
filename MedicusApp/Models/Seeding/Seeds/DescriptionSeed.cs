@@ -6,6 +6,7 @@
         public string Image { get; set; }
         public int Order { get; set; }
 
-        public int SpecId { get; set; }
+        public int? SpecId { get; set; }
+        public int? StaticId { get; set; }
     }
 }

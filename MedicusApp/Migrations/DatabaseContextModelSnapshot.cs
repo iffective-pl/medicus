@@ -150,9 +150,14 @@ namespace MedicusApp.Migrations
                     b.Property<int?>("SpecId")
                         .HasColumnType("integer");
 
+                    b.Property<int?>("StaticId")
+                        .HasColumnType("integer");
+
                     b.HasKey("Id");
 
                     b.HasIndex("SpecId");
+
+                    b.HasIndex("StaticId");
 
                     b.ToTable("Descriptions");
 
@@ -160,9 +165,16 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 1,
-                            Image = "medicus/iStock-1395118113.jpg",
+                            Image = "medicus-static/about-1.jpg",
                             Order = 1,
-                            SpecId = 1
+                            StaticId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Image = "medicus-static/about-2.jpg",
+                            Order = 2,
+                            StaticId = 1
                         });
                 });
 
@@ -197,7 +209,14 @@ namespace MedicusApp.Migrations
                             Id = 1,
                             DescriptionId = 1,
                             Text = "",
-                            Title = "Fachowe konsultacje kardiologiczne"
+                            Title = ""
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DescriptionId = 2,
+                            Text = "",
+                            Title = ""
                         });
                 });
 
@@ -269,6 +288,89 @@ namespace MedicusApp.Migrations
                             SpecializationId = 1,
                             Title = "ECHO Serca",
                             Value = "170.00"
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.Main.Advantage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Href")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Icon")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("MainPageId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MainPageId");
+
+                    b.ToTable("Advantages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Href = "docs",
+                            Icon = "heart",
+                            MainPageId = 1,
+                            Name = "Wysokiej klasy specjaliści"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Href = "",
+                            Icon = "ventilator",
+                            MainPageId = 1,
+                            Name = "Nowoczesny sprzęt do ultrasonografii i echokardiografii<"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Href = "",
+                            Icon = "wheelchair",
+                            MainPageId = 1,
+                            Name = "Łatwy dostęp"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Href = "",
+                            Icon = "city",
+                            MainPageId = 1,
+                            Name = "Komfortowe nowe wnętrza w idealnej lokalizacji"
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.Main.MainPage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MainPages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1
                         });
                 });
 
@@ -750,6 +852,11 @@ namespace MedicusApp.Migrations
                         .HasColumnType("boolean")
                         .HasDefaultValue(false);
 
+                    b.Property<bool>("IsPredefined")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
@@ -768,15 +875,17 @@ namespace MedicusApp.Migrations
                             Href = "/",
                             IsDropdown = false,
                             IsIndex = true,
+                            IsPredefined = false,
                             Name = "Strona główna",
                             Order = 1
                         },
                         new
                         {
                             Id = 2,
-                            Href = "about",
+                            Href = "static/1",
                             IsDropdown = false,
                             IsIndex = false,
+                            IsPredefined = false,
                             Name = "O nas",
                             Order = 2
                         },
@@ -786,6 +895,7 @@ namespace MedicusApp.Migrations
                             Href = "register",
                             IsDropdown = false,
                             IsIndex = false,
+                            IsPredefined = true,
                             Name = "Rejestracja",
                             Order = 3
                         },
@@ -795,6 +905,7 @@ namespace MedicusApp.Migrations
                             Href = "docs",
                             IsDropdown = true,
                             IsIndex = false,
+                            IsPredefined = false,
                             Name = "Nasi specjaliści",
                             Order = 4
                         },
@@ -804,6 +915,7 @@ namespace MedicusApp.Migrations
                             Href = "docs",
                             IsDropdown = true,
                             IsIndex = false,
+                            IsPredefined = false,
                             Name = "USG",
                             Order = 5
                         },
@@ -813,6 +925,7 @@ namespace MedicusApp.Migrations
                             Href = "docs",
                             IsDropdown = true,
                             IsIndex = false,
+                            IsPredefined = false,
                             Name = "ECHO Serca",
                             Order = 6
                         },
@@ -822,6 +935,7 @@ namespace MedicusApp.Migrations
                             Href = "",
                             IsDropdown = false,
                             IsIndex = false,
+                            IsPredefined = false,
                             Name = "Holter",
                             Order = 7
                         },
@@ -831,8 +945,47 @@ namespace MedicusApp.Migrations
                             Href = "contact",
                             IsDropdown = false,
                             IsIndex = false,
+                            IsPredefined = true,
                             Name = "Kontakt",
                             Order = 8
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.UI.Static", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("HasMap")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Statics");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            HasMap = true,
+                            Name = "O nas"
                         });
                 });
 
@@ -951,7 +1104,6 @@ namespace MedicusApp.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Href")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Order")
@@ -1228,9 +1380,17 @@ namespace MedicusApp.Migrations
 
             modelBuilder.Entity("MedicusApp.Models.Data.Desc.Description", b =>
                 {
-                    b.HasOne("MedicusApp.Models.Data.Spec", null)
+                    b.HasOne("MedicusApp.Models.Data.Spec", "Spec")
                         .WithMany("Descriptions")
                         .HasForeignKey("SpecId");
+
+                    b.HasOne("MedicusApp.Models.Data.UI.Static", "Static")
+                        .WithMany("Descriptions")
+                        .HasForeignKey("StaticId");
+
+                    b.Navigation("Spec");
+
+                    b.Navigation("Static");
                 });
 
             modelBuilder.Entity("MedicusApp.Models.Data.Desc.DescriptionText", b =>
@@ -1249,6 +1409,13 @@ namespace MedicusApp.Migrations
                         .IsRequired();
 
                     b.Navigation("Specialization");
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.Main.Advantage", b =>
+                {
+                    b.HasOne("MedicusApp.Models.Data.Main.MainPage", null)
+                        .WithMany("Advantages")
+                        .HasForeignKey("MainPageId");
                 });
 
             modelBuilder.Entity("MedicusApp.Models.Data.Person.WorkingHours", b =>
@@ -1317,6 +1484,11 @@ namespace MedicusApp.Migrations
                     b.Navigation("DescriptionTexts");
                 });
 
+            modelBuilder.Entity("MedicusApp.Models.Data.Main.MainPage", b =>
+                {
+                    b.Navigation("Advantages");
+                });
+
             modelBuilder.Entity("MedicusApp.Models.Data.Person.Doctor", b =>
                 {
                     b.Navigation("WorkingHours");
@@ -1337,6 +1509,11 @@ namespace MedicusApp.Migrations
             modelBuilder.Entity("MedicusApp.Models.Data.UI.Header", b =>
                 {
                     b.Navigation("Links");
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.UI.Static", b =>
+                {
+                    b.Navigation("Descriptions");
                 });
 
             modelBuilder.Entity("MedicusApp.Models.Subject.Company", b =>

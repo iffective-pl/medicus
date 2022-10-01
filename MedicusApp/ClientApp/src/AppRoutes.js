@@ -1,9 +1,9 @@
 import Home from "./pages/Home";
-import About from "./pages/About";
 import Docs from "./pages/Docs";
 import Contact from "./pages/Contact";
 import Register from "./pages/Register";
 import Admin from "./pages/Admin";
+import Static from "./pages/Static";
 
 const AppRoutes = [
   {
@@ -12,12 +12,16 @@ const AppRoutes = [
     element: <Home />
   },
   {
-    path: "about",
-    element: <About />
-  },
-  {
     path: "register",
     element: <Register />
+  },
+  {
+    path: "contact",
+    element: <Contact />
+  },
+  {
+    path: "admin",
+    element: <Admin />
   },
   {
     path: "docs",
@@ -34,12 +38,8 @@ const AppRoutes = [
     element: <Docs />
   },
   {
-    path: "contact",
-    element: <Contact />
-  },
-  {
-    path: "admin",
-    element: <Admin />
+    path: "static/:type",
+    element: <Static />
   }
 ];
 

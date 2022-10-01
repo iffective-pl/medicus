@@ -25,7 +25,7 @@ namespace MedicusApp.Controllers
             return service.GetSpecs();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         [AllowAnonymous]
         public SpecDto? GetFullSpecs(int id)
         {
@@ -60,24 +60,6 @@ namespace MedicusApp.Controllers
         public bool DeleteSpec(int specId)
         {
             return service.RemoveSpec(specId);
-        }
-
-        [HttpPut]
-        public bool AddDesc(DescriptionDto description)
-        {
-            return service.AddDesc(description);
-        }
-
-        [HttpPost]
-        public bool UpdateDesc(DescriptionDto description)
-        {
-            return service.UpdateDesc(description);
-        }
-
-        [HttpDelete]
-        public bool DeleteDesc(int descId)
-        {
-            return service.DeleteDesc(descId);
         }
 
         [HttpGet]
