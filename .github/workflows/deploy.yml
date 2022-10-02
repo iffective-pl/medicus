@@ -53,7 +53,8 @@ jobs:
 
   deploy:
     runs-on: ${{ inputs.environment }}
-
+    needs: build
+    
     steps:
       - uses: actions/checkout@v3
         
