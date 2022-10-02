@@ -179,18 +179,15 @@ export default function TabSpecs(props) {
                   {specs.map((item, key) => (
                     <Draggable draggableId={item.toString()} index={key}>
                       {(provided) => (
-                        <div ref={provided.innerRef}
-                             style={provided.draggableProps.style}
-                             {...provided.draggableProps}>
-                          <div {...provided.dragHandleProps} className="drag-tab">
-                            <div className="pt-2 pe-3">
+                          <div ref={provided.innerRef} style={provided.draggableProps.style}
+                            {...provided.draggableProps} className="drag-tab">
+                            <div {...provided.dragHandleProps} className="pt-2 pe-3">
                               <i className="menu-grid drag-icon"/>
                             </div>
                             <div>
                               <TabSpec id={item} token={props.keycloak.token} index={key} key={key} load={load}/>
                             </div>
                           </div>
-                        </div>
                       )}
                     </Draggable>
                     ))}
