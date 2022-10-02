@@ -6,4 +6,3 @@ RUN apt-get install -y nodejs
 RUN npm install -g npm@8.19.2
 WORKDIR /app
 COPY . ./
-RUN dotnet build

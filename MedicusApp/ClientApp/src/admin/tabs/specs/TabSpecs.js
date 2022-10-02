@@ -9,10 +9,12 @@ import TabSpec from "./TabSpec";
 import Notification from "../../../components/Notification";
 
 import list from '../../../data/icons.json';
+import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
 
 export default function TabSpecs(props) {
   let [specs, setSpecs] = useState([]);
   let [icon, setIcon] = useState("")
+  let [color, setColor] = useState("");
 
   let [open, setOpen] = useState(false);
   let [loading, setLoading] = useState(undefined);
@@ -69,6 +71,21 @@ export default function TabSpecs(props) {
       })
   }
 
+  let onDragEnd = (e) => {
+    let destination = e.destination;
+    destination.droppableId = 0;
+    fetch("api/Spec/OrderSpec?specId=" + e.draggableId, {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + props.keycloak.token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(e.destination)
+    })
+      .then(r => r.text())
+      .then(t => t === "true" ? load() : null)
+  }
+
   return (
     <TabPane tabId={props.index.toString()} className="pt-3 pb-3">
       <Row className="mb-3">
@@ -100,6 +117,7 @@ export default function TabSpecs(props) {
                         id="className"
                         name="className"
                         type="select"
+                        defaultValue={icon}
                         onChange={(e) => setIcon(e.target.value)}
                       >
                         <option></option>
@@ -115,18 +133,19 @@ export default function TabSpecs(props) {
                     </FormGroup>
                   </Col>
                   <Col xs="1">
-                    <i className={icon ? "icon " + icon : ""}/>
+                    <i className={icon ? "icon " + icon : ""} style={{"background-color": color}}/>
                   </Col>
                   <Col>
                     <FormGroup floating>
                       <Input
-                        bsSize="lg"
                         id="color"
                         name="color"
-                        type="text"
+                        type="color"
+                        value={color}
+                        onChange={(e) => setColor(e.target.value)}
                       />
                       <Label for="color">
-                        Kolor obrazka (HEX)
+                        Kolor obrazka
                       </Label>
                     </FormGroup>
                   </Col>
@@ -153,9 +172,30 @@ export default function TabSpecs(props) {
       </Row>
       <Row>
         <Col>
-          <UncontrolledAccordion className="mb-3" open="0" openDefault="0">
-            {specs.map((item, key) => <TabSpec id={item} token={props.keycloak.token} index={key} key={key} load={load}/>)}
-          </UncontrolledAccordion>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId={"specs"}>
+              {(provided) => (
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {specs.map((item, key) => (
+                    <Draggable draggableId={item.toString()} index={key}>
+                      {(provided) => (
+                          <div ref={provided.innerRef} style={provided.draggableProps.style}
+                            {...provided.draggableProps} className="drag-tab">
+                            <div {...provided.dragHandleProps} className="pt-2 pe-3">
+                              <i className="menu-grid drag-icon"/>
+                            </div>
+                            <div>
+                              <TabSpec id={item} token={props.keycloak.token} index={key} key={key} load={load}/>
+                            </div>
+                          </div>
+                      )}
+                    </Draggable>
+                    ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
         </Col>
       </Row>
     </TabPane>

@@ -1,5 +1,4 @@
-﻿using MedicusApp.Models;
-using MedicusApp.Models.Dto;
+﻿using MedicusApp.Models.Dto;
 using MedicusApp.Models.Dto.Desc;
 using MedicusApp.Repositories;
 
@@ -72,6 +71,16 @@ namespace MedicusApp.Services.Impl
         public bool RemoveSpec(int specId)
         {
             return repository.RemoveSpec(specId);
+        }
+
+        public bool OrderDoctor(int doctorId, DestinationDto destination)
+        {
+            return repository.OrderDoctor(doctorId, destination);
+        }
+
+        public bool OrderSpec(int specId, DestinationDto destination)
+        {
+            return repository.OrderSpec(specId, destination);
         }
     }
 }

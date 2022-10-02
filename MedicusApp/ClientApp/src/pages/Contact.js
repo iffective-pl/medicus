@@ -5,6 +5,7 @@ import {isMobile} from "react-device-detect";
 
 import './Contact.css';
 import {useEffect, useState} from "react";
+import Notification from "../components/Notification";
 
 let company = {
   emails: [],
@@ -14,11 +15,49 @@ let company = {
 export default function Contact() {
   let [comp, setComp] = useState(company);
 
+  let [loading, setLoading] = useState(undefined);
+  let [message, setMessage] = useState(undefined);
+  let [success, setSuccess] = useState(undefined);
+
+  let [email, setEmail] = useState();
+  let [number, setNumber] = useState()
+
   useEffect(() => {
     fetch("api/Company/GetFullCompany")
       .then(r => r.json())
       .then(j => setComp(j))
   }, [])
+
+  let onSubmit = (e) => {
+    setLoading(true)
+    setMessage("Wysyłanie wiadomości...")
+    e.preventDefault();
+    let data = {
+      firstName: e.target.firstName.value,
+      lastName: e.target.lastName.value,
+      email: e.target.email.value,
+      number: e.target.number.value,
+      message: e.target.message.value
+    }
+
+    fetch("api/Email/Send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(r => r.text())
+      .then(t => {
+        setLoading(false);
+        setSuccess(t === "true");
+        if(t === "true") {
+          setMessage("Wiadomość została wysłana")
+        } else {
+          setMessage("Wiadomość nie została wysłana")
+        }
+      })
+  }
 
   return (
     <>
@@ -56,7 +95,7 @@ export default function Contact() {
             </div>
           </div>
           <div>
-            <Form>
+            <Form onSubmit={onSubmit}>
               <Row>
                 <Col>
                   <FormGroup floating>
@@ -90,9 +129,11 @@ export default function Contact() {
                   <FormGroup floating>
                     <Input
                       bsSize="lg"
-                      id="phoneNumber"
-                      name="phoneNumber"
+                      id="number"
+                      name="number"
                       placeholder="Numer telefonu"
+                      value={number}
+                      onChange={(e) => setNumber(e.target.value)}
                       type="text"
                     />
                     <Label for="phoneNumber">
@@ -108,6 +149,8 @@ export default function Contact() {
                       name="email"
                       placeholder="Email"
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                     <Label for="email">
                       Email
@@ -135,9 +178,9 @@ export default function Contact() {
               <Row>
                 <Col>
                   <FormGroup check>
-                    <Input type="checkbox" />
+                    <Input type="checkbox" required={email} />
                     <Label check>
-                      Zgadzam się na na przetwarzanie moich danych osobowych przez Trimedic w celu prowadzenia marketingu bezpośredniego za pośrednictwem poczty elektronicznej zgodnie z ustawą z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną (t.j. Dz.U. z 2017 r. poz. 1219). Dane osobowe przekazuję dobrowolnie i oświadczam, że są zgodne z prawdą. Zapoznałem(-am) się z treścią klauzuli informacyjnej, w tym z informacją o celu i sposobach przetwarzania danych osobowych oraz prawie dostępu do treści swoich danych i prawie ich poprawiania.
+                      Zgadzam się na na przetwarzanie moich danych osobowych przez Medicus w celu prowadzenia marketingu bezpośredniego za pośrednictwem poczty elektronicznej zgodnie z ustawą z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną (t.j. Dz.U. z 2017 r. poz. 1219). Dane osobowe przekazuję dobrowolnie i oświadczam, że są zgodne z prawdą. Zapoznałem(-am) się z treścią klauzuli informacyjnej, w tym z informacją o celu i sposobach przetwarzania danych osobowych oraz prawie dostępu do treści swoich danych i prawie ich poprawiania.
                     </Label>
                   </FormGroup>
                 </Col>
@@ -145,9 +188,9 @@ export default function Contact() {
               <Row>
                 <Col>
                   <FormGroup check>
-                    <Input type="checkbox" />
+                    <Input type="checkbox" required={number} />
                     <Label check>
-                      Zgadzam się na na przetwarzanie moich danych osobowych przez Trimedic w celu prowadzenia marketingu bezpośredniego za pośrednictwem połączeń telefonicznych zgodnie z ustawą z dnia 16 lipca 2004 r. – Prawo telekomunikacyjne (t.j. Dz.U. z 2017 r. poz. 1907 ze zm.). Dane osobowe przekazuję dobrowolnie i oświadczam, że są zgodne z prawdą. Zapoznałem(-am) się z treścią klauzuli informacyjnej, w tym z informacją o celu i sposobach przetwarzania danych osobowych oraz prawie dostępu do treści swoich danych i prawie ich poprawiania.
+                      Zgadzam się na na przetwarzanie moich danych osobowych przez Medicus w celu prowadzenia marketingu bezpośredniego za pośrednictwem połączeń telefonicznych zgodnie z ustawą z dnia 16 lipca 2004 r. – Prawo telekomunikacyjne (t.j. Dz.U. z 2017 r. poz. 1907 ze zm.). Dane osobowe przekazuję dobrowolnie i oświadczam, że są zgodne z prawdą. Zapoznałem(-am) się z treścią klauzuli informacyjnej, w tym z informacją o celu i sposobach przetwarzania danych osobowych oraz prawie dostępu do treści swoich danych i prawie ich poprawiania.
                     </Label>
                   </FormGroup>
                 </Col>
@@ -155,7 +198,7 @@ export default function Contact() {
               <Row className="mt-3">
                 <Col>
                   <div>
-                    <Button color="info" size="lg" className="float-end">
+                    <Button color="info" size="lg" className="float-end" type="submit" disabled={loading}>
                       Wyślij
                     </Button>
                   </div>
@@ -166,6 +209,7 @@ export default function Contact() {
         </div>
       </Container>
       <GoogleMaps/>
+      <Notification loading={loading} success={success} message={message}/>
     </>
   )
 }

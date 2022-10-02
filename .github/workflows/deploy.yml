@@ -32,6 +32,25 @@ on:
         - 'Yes'
 
 jobs:
+  build:
+    runs-on: ${{ inputs.environment }}
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Build main image
+        run: docker compose build --no-cache
+      
+      - if: ${{ inputs.run_migration == 'Yes' || inputs.drop_database == 'Yes' }}
+        name: Build database migration image
+        working-directory: ./MedicusApp
+        run: docker compose build --no-cache
+        
+      - if: ${{ inputs.run_s3_migration == 'Yes' }}
+        name: Build S3 migration image
+        working-directory: ./MedicusS3
+        run: docker compose build --no-cache
+
   deploy:
     runs-on: ${{ inputs.environment }}
 
@@ -47,21 +66,17 @@ jobs:
       - if: ${{ inputs.drop_database == 'Yes' }} 
         name: Drop database
         working-directory: ./MedicusApp
-        run: |
-             docker compose build --no-cache
-             docker compose run -e ASPNETCORE_ENVIRONMENT=${{ inputs.environment }} --rm drop
+        run: docker compose run -e ASPNETCORE_ENVIRONMENT=${{ inputs.environment }} --rm drop
+        
       - if: ${{ inputs.run_migration == 'Yes' || inputs.drop_database == 'Yes' }}
         name: Update database
         working-directory: ./MedicusApp
-        run: |
-             docker compose build --no-cache
-             docker compose run --rm -e ASPNETCORE_ENVIRONMENT=${{ inputs.environment }} migration
+        run: docker compose run --rm -e ASPNETCORE_ENVIRONMENT=${{ inputs.environment }} migration
+        
       - if: ${{ inputs.run_s3_migration == 'Yes' }}
         name: S3 Migration
         working-directory: ./MedicusS3
-        run: |
-             docker compose build --no-cache
-             docker compose run --rm migration
+        run: docker compose run --rm migration
         
       - name: Deploy container
         run: docker compose -f docker-compose.yml -f ${{ inputs.environment }}.yml up -d --remove-orphans

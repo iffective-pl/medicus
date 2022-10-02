@@ -172,3 +172,10 @@
     mask-size: cover;
     mask-image: url(icons/message.svg);
 }
+
+.menu-grid {
+    -webkit-mask-size: cover;
+    -webkit-mask-image: url(icons/menu_grid.svg);
+    mask-size: cover;
+    mask-image: url(icons/menu_grid.svg);
+}

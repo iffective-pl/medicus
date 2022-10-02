@@ -14,6 +14,7 @@ export default function TabHeaders(props) {
   let [update, setUpdate] = useState(false);
 
   let loadHeaders = () => {
+    setHeaders([])
     fetch("api/UI/GetHeadersOrder", {
       headers: {
         "Authorization": "Bearer " + props.keycloak.token
@@ -128,7 +129,7 @@ export default function TabHeaders(props) {
                   <Card>
                     <CardBody>
                       {headers.map((item, key) => (
-                        <Draggable key={key} draggableId={item.id.toString()} index={item.order}>
+                        <Draggable key={key} draggableId={item.id.toString()} index={key}>
                           {(provided) => (
                             <div ref={provided.innerRef}
                                  style={provided.draggableProps.style}

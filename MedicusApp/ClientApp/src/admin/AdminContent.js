@@ -16,7 +16,7 @@ export default function AdminContent() {
     {element: TabCompany, name: "Dane Przychodni"},
     {disabled: true},
     {element: TabMain, name: "Strona główna"},
-    {element: TabStatics, name: "Statyczne Strony"},
+    {element: TabStatics, name: "Statyczne strony"},
     {disabled: true},
     {element: TabSpecs, name: "Specjalizacje"},
     {element: TabDoctors, name: "Lekarze"},

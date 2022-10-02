@@ -2,61 +2,85 @@
   {
     "Id": 1,
     "Name": "Kardiologia",
-    "StyleId": 1
+    "StyleId": 1,
+    "DoctorsOrder": [ 1, 2 ],
+    "Order": 2
   },
   {
     "Id": 2,
     "Name": "Urologia",
-    "StyleId": 2
+    "StyleId": 2,
+    "DoctorsOrder": [ 7 ],
+    "Order": 2
   },
   {
     "Id": 3,
     "Name": "Ortopedia",
-    "StyleId": 3
+    "StyleId": 3,
+    "DoctorsOrder": [ 9 ],
+    "Order": 3
   },
   {
     "Id": 4,
     "Name": "Ginekologia",
-    "StyleId": 4
+    "StyleId": 4,
+    "DoctorsOrder": [ 3, 4 ],
+    "Order": 4
   },
   {
     "Id": 5,
     "Name": "Internista",
-    "StyleId": 5
+    "StyleId": 5,
+    "DoctorsOrder": [],
+    "Order": 5
   },
   {
     "Id": 6,
     "Name": "Pediatria",
-    "StyleId": 6
+    "StyleId": 6,
+    "DoctorsOrder": [ 2 ],
+    "Order": 6
   },
   {
     "Id": 7,
     "Name": "Endokrynologia",
-    "StyleId": 7
+    "StyleId": 7,
+    "DoctorsOrder": [ 5 ],
+    "Order": 7
   },
   {
     "Id": 8,
     "Name": "Neurologia",
-    "StyleId": 8
+    "StyleId": 8,
+    "DoctorsOrder": [ 6 ],
+    "Order": 8
   },
   {
     "Id": 9,
     "Name": "Dermatologia",
-    "StyleId": 9
+    "StyleId": 9,
+    "DoctorsOrder": [ 8 ],
+    "Order": 9
   },
   {
     "Id": 10,
     "Name": "ECHO Serca",
-    "StyleId": 10
+    "StyleId": 10,
+    "DoctorsOrder": [ 2, 10 ],
+    "Order": 10
   },
   {
     "Id": 11,
     "Name": "USG",
-    "StyleId": 11
+    "StyleId": 11,
+    "DoctorsOrder": [ 11, 3 ],
+    "Order": 11
   },
   {
     "Id": 12,
     "Name": "Holter",
-    "StyleId": 12
+    "StyleId": 12,
+    "DoctorsOrder": [ 1, 2, 10 ],
+    "Order": 12
   }
 ]

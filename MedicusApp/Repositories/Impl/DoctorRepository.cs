@@ -53,6 +53,8 @@ namespace MedicusApp.Repositories.Impl
                 doctor.WorkingHours.Add(workingHours);
                 doctor.Specs.Add(spec);
                 context.SaveChanges();
+                spec.DoctorsOrder.Add(doctor.Id);
+                context.SaveChanges();
                 return true;
             }
             catch (Exception)
@@ -65,8 +67,12 @@ namespace MedicusApp.Repositories.Impl
         {
             try
             {
-                var doc = context.Doctors.Where(d => d.Id == doctorId).Single();
+                var doc = context.Doctors.Where(d => d.Id == doctorId).Include(d => d.Specs).Single();
                 doc.Deleted = DateTime.UtcNow;
+                foreach (var spec in doc.Specs)
+                {
+                    spec.DoctorsOrder.Remove(doc.Id);
+                }
                 context.SaveChanges();
                 return true;
             } catch (Exception)
@@ -85,6 +91,7 @@ namespace MedicusApp.Repositories.Impl
                     return false;
                 }
                 var spec = context.Specs.Where(q => q.Id == specId).Single();
+                spec.DoctorsOrder.Remove(doctor.Id);
                 var workingHours = doctor.WorkingHours.Where(q => q.Specialization.Id == spec.Id).Single();
                 doctor.WorkingHours.Remove(workingHours);
                 doctor.Specs.Remove(spec);

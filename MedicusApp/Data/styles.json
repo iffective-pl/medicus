@@ -2,61 +2,61 @@
   {
     "Id": 1,
     "ClassName": "heart",
-    "Color": ""
+    "Color": "#880808"
   },
   {
     "Id": 2,
     "ClassName": "kidneys",
-    "Color": ""
+    "Color": "#73A9AD"
   },
   {
     "Id": 3,
     "ClassName": "leg",
-    "Color": ""
+    "Color": "#F2AF88"
   },
   {
     "Id": 4,
     "ClassName": "pregnant",
-    "Color": ""
+    "Color": "#F49AB8"
   },
   {
     "Id": 5,
     "ClassName": "coughing",
-    "Color": ""
+    "Color": "#C6D57E"
   },
   {
     "Id": 6,
     "ClassName": "lactation",
-    "Color": ""
+    "Color": "#FF7878"
   },
   {
     "Id": 7,
     "ClassName": "stethoscope",
-    "Color": ""
+    "Color": "#241474"
   },
   {
     "Id": 8,
     "ClassName": "neurology",
-    "Color": ""
+    "Color": "#CC9B6D"
   },
   {
     "Id": 9,
     "ClassName": "allergies",
-    "Color": ""
+    "Color": "#FFAAA5"
   },
   {
     "Id": 10,
     "ClassName": "echo",
-    "Color": ""
+    "Color": "#A4D7E1"
   },
   {
     "Id": 11,
     "ClassName": "xray",
-    "Color": ""
+    "Color": "#89A3B2"
   },
   {
     "Id": 12,
     "ClassName": "blood_pressure",
-    "Color": ""
+    "Color": "#E4D183"
   }
 ]

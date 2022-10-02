@@ -27,7 +27,7 @@ namespace MedicusApp.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public SpecDto? GetFullSpecs(int id)
+        public SpecDto GetFullSpecs(int id)
         {
             return service.GetFullSpec(id);
         }
@@ -90,6 +90,18 @@ namespace MedicusApp.Controllers
         public bool DeletePrice(int priceId)
         {
             return service.DeletePrice(priceId);
+        }
+
+        [HttpPost]
+        public bool OrderDoctor(int doctorId, DestinationDto destination)
+        {
+            return service.OrderDoctor(doctorId, destination);
+        }
+        
+        [HttpPost]
+        public bool OrderSpec(int specId, DestinationDto destination)
+        {
+            return service.OrderSpec(specId, destination);
         }
     }
 }

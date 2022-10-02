@@ -17,5 +17,7 @@ namespace MedicusApp.Repositories
         public bool AddPrice(PriceDto price);
         public bool UpdatePrice(PriceDto price);
         public bool DeletePrice(int priceId);
+        public bool OrderDoctor(int doctorId, DestinationDto destination);
+        public bool OrderSpec(int specId, DestinationDto destination);
     }
 }
