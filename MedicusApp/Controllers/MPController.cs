@@ -24,6 +24,42 @@ namespace MedicusApp.Controllers
             return service.GetMainPage();
         }
 
+        [HttpPut]
+        public bool AddCarousel(CarouselDto carousel)
+        {
+            return service.AddCarousel(carousel);
+        }
+
+        [HttpPost]
+        public bool UpdateCarousel(CarouselDto carousel)
+        {
+            return service.UpdateCarousel(carousel);
+        }
+
+        [HttpDelete]
+        public bool DeleteCarousel(int carouselId)
+        {
+            return service.DeleteCarousel(carouselId);
+        }
+
+        [HttpPut]
+        public bool AddService(ServiceDto s)
+        {
+            return service.AddService(s);
+        }
+
+        [HttpPost]
+        public bool UpdateService(ServiceDto s)
+        {
+            return service.UpdateService(s);
+        }
+
+        [HttpDelete]
+        public bool DeleteService(int serviceId)
+        {
+            return service.DeleteCarousel(serviceId);
+        }
+
         [HttpPost]
         public bool UpdateAdvantage(AdvantageDto advantage)
         {

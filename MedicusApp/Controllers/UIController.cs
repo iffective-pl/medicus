@@ -55,6 +55,12 @@ namespace MedicusApp.Controllers
         }
 
         [HttpGet]
+        public IEnumerable<LinkDto> GetLinkDropdown()
+        {
+            return service.GetLinkDropdown();
+        }
+
+        [HttpGet]
         public IEnumerable<LinkDto> GetUnassignedLinks()
         {
             return service.GetUnassignedLinks();

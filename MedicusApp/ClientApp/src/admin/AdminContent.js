@@ -13,14 +13,14 @@ export default function AdminContent() {
   let [tab, setTab] = useState(0);
 
   let tabs = [
-    {element: TabSpecs, name: "Specjalizacje"},
-    {element: TabDoctors, name: "Lekarze"},
-    {element: TabHeaders, name: "Nagłówki"},
-    {disabled: true},
     {element: TabCompany, name: "Dane Przychodni"},
+    {disabled: true},
+    {element: TabMain, name: "Strona główna"},
     {element: TabStatics, name: "Statyczne Strony"},
     {disabled: true},
-    {element: TabMain, name: "Strona główna"}
+    {element: TabSpecs, name: "Specjalizacje"},
+    {element: TabDoctors, name: "Lekarze"},
+    {element: TabHeaders, name: "Nagłówki"}
   ]
 
   let isActive = (i) => tab === i ? "active" : "";

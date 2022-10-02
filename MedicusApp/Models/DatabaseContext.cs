@@ -5,6 +5,7 @@ using MedicusApp.Models.Data.Person;
 using MedicusApp.Models.Data.UI;
 using MedicusApp.Models.Links;
 using MedicusApp.Models.Seeding;
+using MedicusApp.Models.Seeding.Seeds;
 using MedicusApp.Models.Subject;
 using Microsoft.EntityFrameworkCore;
 
@@ -68,6 +69,14 @@ namespace MedicusApp.Models
             modelBuilder.Entity<Spec>()
                 .Property(p => p.Created)
                 .HasDefaultValueSql("NOW()");
+            
+            modelBuilder.Entity<Carousel>()
+                .Property(p => p.Created)
+                .HasDefaultValueSql("NOW()");
+
+            modelBuilder.Entity<Service>()
+                .Property(p => p.Created)
+                .HasDefaultValueSql("NOW()");
 
             modelBuilder.Entity<Spec>()
                 .HasMany(s => s.Doctors)
@@ -120,6 +129,8 @@ namespace MedicusApp.Models
             modelBuilder.Entity<Static>().HasData(seeds.StaticSeeds);
 
             modelBuilder.Entity<MainPage>().HasData(seeds.MainPageSeeds);
+            modelBuilder.Entity<Carousel>().HasData(seeds.CarouselSeeds);
+            modelBuilder.Entity<Service>().HasData(seeds.ServiceSeeds);
             modelBuilder.Entity<Advantage>().HasData(seeds.AdvantageSeeds);
         }
 
@@ -140,6 +151,8 @@ namespace MedicusApp.Models
         public DbSet<Static> Statics { get; set; }
 
         public DbSet<MainPage> MainPages { get; set; }
+        public DbSet<Carousel> Carousels { get; set; }
+        public DbSet<Service> Services { get; set; }
         public DbSet<Advantage> Advantages { get; set; }
     }
 }

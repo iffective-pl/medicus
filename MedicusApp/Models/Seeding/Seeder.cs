@@ -1,5 +1,4 @@
-﻿using MedicusApp.Models.Data.Main;
-using MedicusApp.Models.Seeding.Seeds;
+﻿using MedicusApp.Models.Seeding.Seeds;
 using System.Text.Json;
 
 namespace MedicusApp.Models.Seeding
@@ -38,8 +37,12 @@ namespace MedicusApp.Models.Seeding
                 this.StaticSeeds = JsonSerializer.Deserialize<List<StaticSeed>>(reader) ?? new List<StaticSeed>();
             using (Stream reader = File.OpenRead("Data/mainpages.json"))
                 this.MainPageSeeds = JsonSerializer.Deserialize<List<MainPageSeed>>(reader) ?? new List<MainPageSeed>();
+            using (Stream reader = File.OpenRead("Data/carousels.json"))
+                this.CarouselSeeds = JsonSerializer.Deserialize<List<CarouselSeed>>(reader) ?? new List<CarouselSeed>();
             using (Stream reader = File.OpenRead("Data/advantages.json"))
                 this.AdvantageSeeds = JsonSerializer.Deserialize<List<AdvantageSeed>>(reader) ?? new List<AdvantageSeed>();
+            using (Stream reader = File.OpenRead("Data/services.json"))
+                this.ServiceSeeds = JsonSerializer.Deserialize<List<ServiceSeed>>(reader) ?? new List<ServiceSeed>();
         }
 
         public List<ComapnySeed> ComapnySeeds { get; private set; }
@@ -57,6 +60,8 @@ namespace MedicusApp.Models.Seeding
         public List<StyleSeed> StyleSeeds { get; private set; }
         public List<StaticSeed> StaticSeeds { get; private set; }
         public List<MainPageSeed> MainPageSeeds { get; private set; }
+        public List<CarouselSeed> CarouselSeeds { get; private set; }
         public List<AdvantageSeed> AdvantageSeeds { get; private set; }
+        public List<ServiceSeed> ServiceSeeds { get; private set; }
     }
 }

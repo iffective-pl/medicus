@@ -355,6 +355,70 @@ namespace MedicusApp.Migrations
                         });
                 });
 
+            modelBuilder.Entity("MedicusApp.Models.Data.Main.Carousel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ButtonHref")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ButtonText")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("MainPageId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("MainTitle")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Source")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("SubTitle")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MainPageId");
+
+                    b.ToTable("Carousels");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ButtonHref = "docs",
+                            ButtonText = "Nasi specjaliści",
+                            MainPageId = 1,
+                            MainTitle = "MEDICUS we Włocławku",
+                            Source = "medicus-static/main-1.jpg",
+                            SubTitle = "Przychodnia Specjalistyczna",
+                            Text = "Leczymy naszych pacjentów od 1990 roku."
+                        },
+                        new
+                        {
+                            Id = 2,
+                            MainPageId = 1,
+                            Source = "medicus-static/main-2.jpg"
+                        });
+                });
+
             modelBuilder.Entity("MedicusApp.Models.Data.Main.MainPage", b =>
                 {
                     b.Property<int>("Id")
@@ -371,6 +435,86 @@ namespace MedicusApp.Migrations
                         new
                         {
                             Id = 1
+                        });
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.Main.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Href")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int?>("MainPageId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Source")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MainPageId");
+
+                    b.ToTable("Services");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "",
+                            Href = "",
+                            MainPageId = 1,
+                            Name = "Konsultacje",
+                            Source = "medicus-static/consult.jpg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "",
+                            Href = "",
+                            MainPageId = 1,
+                            Name = "ECHO Serca",
+                            Source = "medicus-static/heartecho.jpg"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "",
+                            Href = "",
+                            MainPageId = 1,
+                            Name = "USG Dorosłych",
+                            Source = "medicus-static/usg-male.jpg"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "",
+                            Href = "",
+                            MainPageId = 1,
+                            Name = "USG Ciąży",
+                            Source = "medicus-static/usg-female.jpg"
                         });
                 });
 
@@ -1418,6 +1562,20 @@ namespace MedicusApp.Migrations
                         .HasForeignKey("MainPageId");
                 });
 
+            modelBuilder.Entity("MedicusApp.Models.Data.Main.Carousel", b =>
+                {
+                    b.HasOne("MedicusApp.Models.Data.Main.MainPage", null)
+                        .WithMany("Carousels")
+                        .HasForeignKey("MainPageId");
+                });
+
+            modelBuilder.Entity("MedicusApp.Models.Data.Main.Service", b =>
+                {
+                    b.HasOne("MedicusApp.Models.Data.Main.MainPage", null)
+                        .WithMany("Services")
+                        .HasForeignKey("MainPageId");
+                });
+
             modelBuilder.Entity("MedicusApp.Models.Data.Person.WorkingHours", b =>
                 {
                     b.HasOne("MedicusApp.Models.Data.Person.Doctor", "Doctor")
@@ -1487,6 +1645,10 @@ namespace MedicusApp.Migrations
             modelBuilder.Entity("MedicusApp.Models.Data.Main.MainPage", b =>
                 {
                     b.Navigation("Advantages");
+
+                    b.Navigation("Carousels");
+
+                    b.Navigation("Services");
                 });
 
             modelBuilder.Entity("MedicusApp.Models.Data.Person.Doctor", b =>

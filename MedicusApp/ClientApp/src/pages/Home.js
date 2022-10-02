@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 
 let defaultM = {
   id: 0,
+  carousels: [],
+  services: [],
   advantages: []
 }
 
@@ -20,8 +22,8 @@ export default function Home() {
 
   return (
     <>
-      <HomeCarousel />
-      <HomeServices />
+      <HomeCarousel carousels={mp.carousels} />
+      <HomeServices services={mp.services} />
       <HomeAdvantages advantages={mp.advantages} />
       <Reminder />
     </>

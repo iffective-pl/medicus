@@ -11,6 +11,7 @@ namespace MedicusApp.Services
         public IEnumerable<HeaderDto> GetHeadersOrder();
         public IEnumerable<int> GetHeaderIds();
         public IEnumerable<LinkDto> GetLinks();
+        public IEnumerable<LinkDto> GetLinkDropdown();
         public IEnumerable<LinkDto> GetUnassignedLinks();
         public bool OrderHeader(int headerId, DestinationDto destination);
         public bool MoveLink(int linkId, DestinationDto destination);

@@ -12,6 +12,7 @@ let defaultAdv = {
 export default function TabAdvantage(props) {
   let [adv, setAdv] = useState(defaultAdv)
   let [statics, setStatics] = useState([])
+  let [links, setLinks] = useState([])
   let [headers, setHeaders] = useState([])
 
   let [loading, setLoading] = useState(undefined);
@@ -20,6 +21,7 @@ export default function TabAdvantage(props) {
 
   useEffect(() => {
     loadStatics()
+    loadLinks()
     loadHeaders()
     setAdv(props.adv)
   }, [props.token])
@@ -32,6 +34,16 @@ export default function TabAdvantage(props) {
     })
       .then(r => r.json())
       .then(j => setStatics(j))
+  }
+
+  let loadLinks = () => {
+    fetch("api/UI/GetLinkDropdown", {
+      headers: {
+        "Authorization": "Bearer " + props.token
+      }
+    })
+      .then(r => r.json())
+      .then(j => setLinks(j))
   }
 
   let loadHeaders = () => {
@@ -77,6 +89,8 @@ export default function TabAdvantage(props) {
     arr = arr.concat(s.map((item) => ({name: item.name, href: "static/" + item.id})));
     arr.push({name: "──────────", disabled: true})
     arr = arr.concat(h);
+    arr.push({name: "──────────", disabled: true})
+    arr = arr.concat(links.map((item) => ({name: item.spec.name, href: "docs/" + item.href})));
     return arr.map((item, key) => (
       <option value={item.href} key={key} disabled={item.disabled}>
         {item.name}

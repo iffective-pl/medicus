@@ -1,0 +1,34 @@
+[
+  {
+    "Id": 1,
+    "Name": "Konsultacje",
+    "Description": "",
+    "Source": "medicus-static/consult.jpg",
+    "Href": "",
+    "MainPageId": 1
+  },
+  {
+    "Id": 2,
+    "Name": "ECHO Serca",
+    "Description": "",
+    "Source": "medicus-static/heartecho.jpg",
+    "Href": "",
+    "MainPageId": 1
+  },
+  {
+    "Id": 3,
+    "Name": "USG Dorosłych",
+    "Description": "",
+    "Source": "medicus-static/usg-male.jpg",
+    "Href": "",
+    "MainPageId": 1
+  },
+  {
+    "Id": 4,
+    "Name": "USG Ciąży",
+    "Description": "",
+    "Source": "medicus-static/usg-female.jpg",
+    "Href": "",
+    "MainPageId": 1
+  }
+]

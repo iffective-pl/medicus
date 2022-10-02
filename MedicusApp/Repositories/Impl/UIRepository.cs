@@ -296,5 +296,17 @@ namespace MedicusApp.Repositories.Impl
                 Href = h.Href
             });
         }
+
+        public IEnumerable<LinkDto> GetLinkDropdown()
+        {
+            return context.Links.Where(l => l.Deleted == null).Include(l => l.Spec).Select(l => new LinkDto()
+            {
+                Href = l.Href,
+                Spec = new SpecDto()
+                {
+                    Name = l.Spec.Name
+                }
+            });
+        }
     }
 }

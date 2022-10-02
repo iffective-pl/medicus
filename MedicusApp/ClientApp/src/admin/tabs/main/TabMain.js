@@ -1,19 +1,36 @@
-import {Card, CardBody, CardHeader, Col, Row, TabPane} from "reactstrap";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Col,
+  Row,
+  TabPane
+} from "reactstrap";
 import {useEffect, useState} from "react";
 import TabAdvantage from "./TabAdvantage";
+import TabCarousel from "./TabCarousel";
+import AddCarouselButton from "../../operations/AddCarouselButton";
+import TabService from "./TabService";
+import AddServiceButton from "../../operations/AddServiceButton";
 
 let defaultM = {
   id: 0,
+  carousels: [],
+  services: [],
   advantages: []
 }
 
 export default function TabMain(props) {
   let [main, setMain] = useState(defaultM)
 
-  useEffect(() => {
+  let load = () => {
     fetch("api/MP/GetMainPage")
       .then(r => r.json())
       .then(j => setMain(j))
+  }
+
+  useEffect(() => {
+    load()
   }, [props.keycloak.token])
 
   return (
@@ -21,14 +38,50 @@ export default function TabMain(props) {
       <Row className="mb-3">
         <Col>
           <Card>
-            <CardHeader>Karuzela</CardHeader>
+            <CardHeader>
+              <Row>
+                <Col>
+                  <div className="d-table height-top">
+                    <div className="d-table-cell vertical-center">
+                      Karuzela
+                    </div>
+                  </div>
+                </Col>
+                <Col>
+                  <AddCarouselButton token={props.keycloak.token} load={load}/>
+                </Col>
+              </Row>
+            </CardHeader>
+            <CardBody>
+              {main.carousels.map((item, key) => (
+                <TabCarousel carousel={item} key={key} index={key} token={props.keycloak.token} update={load}/>
+              ))}
+            </CardBody>
           </Card>
         </Col>
       </Row>
       <Row className="mb-3">
         <Col>
           <Card>
-            <CardHeader>Usługi</CardHeader>
+            <CardHeader>
+              <Row>
+                <Col>
+                  <div className="d-table height-top">
+                    <div className="d-table-cell vertical-center">
+                      Usługi
+                    </div>
+                  </div>
+                </Col>
+                <Col>
+                  <AddServiceButton token={props.keycloak.token} load={load}/>
+                </Col>
+              </Row>
+            </CardHeader>
+            <CardBody className="text-center">
+              {main.services.map((item, key) => (
+                <TabService service={item} key={key} token={props.keycloak.token} update={load}/>
+              ))}
+            </CardBody>
           </Card>
         </Col>
       </Row>

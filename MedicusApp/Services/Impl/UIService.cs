@@ -53,6 +53,11 @@ namespace MedicusApp.Services.Impl
             return repository.GetLinks();
         }
 
+        public IEnumerable<LinkDto> GetLinkDropdown()
+        {
+            return repository.GetLinkDropdown();
+        }
+
         public IEnumerable<LinkDto> GetUnassignedLinks()
         {
             return repository.GetLinks().Where(l => l.Header == null).OrderBy(l => l.Order);
