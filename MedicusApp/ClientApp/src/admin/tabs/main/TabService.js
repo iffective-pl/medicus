@@ -68,13 +68,13 @@ export default function TabService(props) {
       .then(j => setHeaders(j))
   }
 
-  let joinCollections = (s, h) => {
+  let joinCollections = (s, h, l) => {
     let arr = [{name: "", href: ""}];
     arr = arr.concat(s.map((item) => ({name: item.name, href: "static/" + item.id})));
     arr.push({name: "──────────", disabled: true})
     arr = arr.concat(h);
     arr.push({name: "──────────", disabled: true})
-    arr = arr.concat(links.map((item) => ({name: item.spec.name, href: "docs/" + item.href})));
+    arr = arr.concat(l.map((item) => ({name: item.spec.name, href: "docs/" + item.href})));
     return arr.map((item, key) => (
       <option value={item.href} key={key} disabled={item.disabled}>
         {item.name}
@@ -246,7 +246,7 @@ export default function TabService(props) {
                             onChange={(e) => setHref(e.target.value)}
                             disabled={statics.length < 1}
                           >
-                            {joinCollections(statics, headers)}
+                            {joinCollections(statics, headers, links)}
                           </Input>
                         </FormGroup>
                       </Col>
