@@ -304,6 +304,7 @@ namespace MedicusApp.Repositories.Impl
                 Href = l.Href,
                 Spec = new SpecDto()
                 {
+                    Id = l.Spec.Id,
                     Name = l.Spec.Name
                 }
             });
