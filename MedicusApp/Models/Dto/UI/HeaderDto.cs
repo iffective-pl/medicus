@@ -10,6 +10,7 @@ namespace MedicusApp.Models.Dto.UI
         public bool? IsIndex { get; set; }
         public bool IsHidden { get; set; }
         public bool IsDropdown { get; set; }
+        public bool IsPredefined { get; set; }
         public IEnumerable<LinkDto>? Links { get; set; }
     }
 }

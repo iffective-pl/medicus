@@ -3,22 +3,20 @@ import {Button, Carousel, CarouselControl, CarouselIndicators, CarouselItem} fro
 
 import './HomeCarousel.css';
 import Config from '../../config/Config';
-import Items from '../../data/carousel.json';
 
-export default function HomeCarousel() {
+export default function HomeCarousel(props) {
   let [activeIndex, setActiveIndex] = useState(0);
   let [animating, setAnimating] = useState(false);
-  let items = Items.items;
 
   const next = () => {
     if (animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === props.carousels.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   };
 
   const previous = () => {
     if (animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? props.carousels.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   };
 
@@ -26,51 +24,6 @@ export default function HomeCarousel() {
     if (animating) return;
     setActiveIndex(newIndex);
   };
-
-  const slides = items.map((item, index) => {
-    if(item.brand) {
-      return (
-        <CarouselItem
-          onExiting={() => setAnimating(true)}
-          onExited={() => setAnimating(false)}
-          key={index}
-          className="description-back"
-        >
-          <img src={Config.minio + item.src} alt={item.altText} className="description-img" />
-          <span className="description">
-            <span className="description-text">
-              <h1 className="title">{item.captionHeader}</h1>
-              <h1 className="title">{item.brand}</h1>
-              <h3 className="sub-title fw-bold">{item.captionText}</h3>
-              <Button
-                size="lg"
-                className="title-button mt-2"
-                tag="a" href="docs"
-              >Nasi specjaliści</Button>
-            </span>
-          </span>
-        </CarouselItem>
-      );
-    } else {
-      return (
-        <CarouselItem
-          onExiting={() => setAnimating(true)}
-          onExited={() => setAnimating(false)}
-          key={index}
-          className="description-back"
-        >
-          <img src={Config.minio + item.src} alt={item.altText} className="description-img" />
-          <span className="description">
-            <span className="description-text">
-              <p className="fs-1 mb-2 title">Tytuł główny</p>
-              <p className="fs-3 fw-bold mb-2 sub-title">Tytuł podrzędny</p>
-            </span>
-          </span>
-        </CarouselItem>
-      );
-    }
-
-  });
 
   return (
     <Carousel
@@ -80,11 +33,32 @@ export default function HomeCarousel() {
       activeIndex={activeIndex}
     >
       <CarouselIndicators
-        items={items}
+        items={props.carousels}
         activeIndex={activeIndex}
         onClickHandler={goToIndex}
       />
-      {slides}
+      {props.carousels.map((item, key) => (
+        <CarouselItem
+          onExiting={() => setAnimating(true)}
+          onExited={() => setAnimating(false)}
+          key={key}
+          className="description-back"
+        >
+          <img src={Config.minio + item.source} alt={key} className="description-img" />
+          <span className="description">
+            <span className="description-text">
+              <h1 className="title">{item.mainTitle}</h1>
+              <h1 className="title">{item.subTitle}</h1>
+              <h3 className="sub-title fw-bold">{item.text}</h3>
+              <Button
+                tag="a" size="lg"
+                className="title-button mt-2"
+                hidden={!item.buttonHref} href={item.buttonHref}
+              >{item.buttonText}</Button>
+            </span>
+          </span>
+        </CarouselItem>
+      ))}
       <CarouselControl
         direction="prev"
         directionText="Previous"

@@ -8,6 +8,7 @@ namespace MedicusApp.Models.Dto.Desc
         public string Image { get; set; }
         public IEnumerable<DescriptionTextDto>? DescriptionTexts { get; set; }
 
-        public int SpecId { get; set; }
+        public int? SpecId { get; set; }
+        public int? StaticId { get; set; }
     }
 }

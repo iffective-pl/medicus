@@ -1,8 +1,14 @@
 [
   {
     "Id": 1,
-    "Image": "medicus/iStock-1395118113.jpg",
+    "Image": "medicus-static/about-1.jpg",
     "Order": 1,
-    "SpecId": 1
+    "StaticId": 1
+  },
+  {
+    "Id": 2,
+    "Image": "medicus-static/about-2.jpg",
+    "Order": 2,
+    "StaticId": 1
   }
 ]

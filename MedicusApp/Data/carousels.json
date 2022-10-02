@@ -1,0 +1,17 @@
+[
+  {
+    "Id": 1,
+    "Source": "medicus-static/main-1.jpg",
+    "MainTitle": "MEDICUS we Włocławku",
+    "SubTitle": "Przychodnia Specjalistyczna",
+    "Text": "Leczymy naszych pacjentów od 1990 roku.",
+    "ButtonHref": "docs",
+    "ButtonText": "Nasi specjaliści",
+    "MainPageId": 1
+  },
+  {
+    "Id": 2,
+    "Source": "medicus-static/main-2.jpg",
+    "MainPageId": 1
+  }
+]

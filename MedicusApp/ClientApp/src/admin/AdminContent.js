@@ -2,13 +2,26 @@ import {Container, Nav, NavItem, NavLink, TabContent} from "reactstrap";
 import Line from "../components/Line";
 import {useState} from "react";
 import TabCompany from "./tabs/TabCompany";
-import TabHeaders from "./tabs/TabHeaders";
-import TabSpecs from "./tabs/TabSpecs";
+import TabHeaders from "./tabs/headers/TabHeaders";
+import TabSpecs from "./tabs/specs/TabSpecs";
 import AdminContext from "./AdminContext";
-import TabDoctors from "./tabs/TabDoctors";
+import TabDoctors from "./tabs/doctors/TabDoctors";
+import TabStatics from "./tabs/statics/TabStatics";
+import TabMain from "./tabs/main/TabMain";
 
 export default function AdminContent() {
-  let [tab, setTab] = useState(1);
+  let [tab, setTab] = useState(0);
+
+  let tabs = [
+    {element: TabCompany, name: "Dane Przychodni"},
+    {disabled: true},
+    {element: TabMain, name: "Strona główna"},
+    {element: TabStatics, name: "Statyczne Strony"},
+    {disabled: true},
+    {element: TabSpecs, name: "Specjalizacje"},
+    {element: TabDoctors, name: "Lekarze"},
+    {element: TabHeaders, name: "Nagłówki"}
+  ]
 
   let isActive = (i) => tab === i ? "active" : "";
 
@@ -17,37 +30,21 @@ export default function AdminContent() {
       <h3 className="text-center title">Portal Administracyjny</h3>
       <Line center/>
       <Nav tabs>
-        <NavItem>
-          <NavLink className={isActive(1)} onClick={() => setTab(1)}>
-            Dane Przychodni
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink className={isActive(4)} onClick={() => setTab(4)}>
-            Specjalizacje
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink className={isActive(3)} onClick={() => setTab(3)}>
-            Lekarze
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink className={isActive(2)} onClick={() => setTab(2)}>
-            Nagłówki
-          </NavLink>
-        </NavItem>
+        {tabs.map((item, index) => (
+          <NavItem key={index}>
+            <NavLink className={isActive(index)} onClick={() => setTab(index)} disabled={item.disabled}>
+              {item.name}
+            </NavLink>
+          </NavItem>
+        ))}
       </Nav>
       <TabContent activeTab={tab.toString()} className="p-3">
         <AdminContext.Consumer>
-          {keycloak => (
-              <>
-                <TabCompany keycloak={keycloak}/>
-                <TabHeaders keycloak={keycloak}/>
-                <TabDoctors keycloak={keycloak}/>
-                <TabSpecs keycloak={keycloak}/>
-              </>
-          )}
+          {keycloak => {
+            return tabs.map((item, index) => item.disabled ? null : (
+              <item.element key={index} index={index} keycloak={keycloak}/>
+            ))
+          }}
         </AdminContext.Consumer>
       </TabContent>
     </Container>

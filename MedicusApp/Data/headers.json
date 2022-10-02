@@ -10,7 +10,7 @@
   {
     "Id": 2,
     "Name": "O nas",
-    "Href": "about",
+    "Href": "static/1",
     "Order": 2,
     "IsDropdown": false
   },
@@ -19,7 +19,8 @@
     "Name": "Rejestracja",
     "Href": "register",
     "Order": 3,
-    "IsDropdown": false
+    "IsDropdown": false,
+    "IsPredefined": true
   },
   {
     "Id": 4,
@@ -54,6 +55,7 @@
     "Name": "Kontakt",
     "Href": "contact",
     "Order": 8,
-    "IsDropdown": false
+    "IsDropdown": false,
+    "IsPredefined": true
   }
 ]

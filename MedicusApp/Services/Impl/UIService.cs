@@ -38,6 +38,11 @@ namespace MedicusApp.Services.Impl
             return repository.GetHeaders();
         }
 
+        public IEnumerable<HeaderDto> GetHeaderDropdown()
+        {
+            return repository.GetHeaderDropdown();
+        }
+
         public IEnumerable<HeaderDto> GetHeadersOrder()
         {
             return repository.GetHeaders().Where(q => !q.IsIndex.Value);
@@ -46,6 +51,11 @@ namespace MedicusApp.Services.Impl
         public IEnumerable<LinkDto> GetLinks()
         {
             return repository.GetLinks();
+        }
+
+        public IEnumerable<LinkDto> GetLinkDropdown()
+        {
+            return repository.GetLinkDropdown();
         }
 
         public IEnumerable<LinkDto> GetUnassignedLinks()

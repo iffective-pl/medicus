@@ -25,6 +25,10 @@
     height: 50vh;
 }
 
+.description-img.admin {
+    height: 35vh;
+}
+
 .title-button {
     float: left;
 }

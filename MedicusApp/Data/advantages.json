@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "Name": "Wysokiej klasy specjaliści",
+    "Icon": "heart",
+    "Href": "docs",
+    "MainPageId": 1
+  },
+  {
+    "Id": 2,
+    "Name": "Nowoczesny sprzęt do ultrasonografii i echokardiografii",
+    "Icon": "ventilator",
+    "Href": "",
+    "MainPageId": 1
+  },
+  {
+    "Id": 3,
+    "Name": "Łatwy dostęp",
+    "Icon": "wheelchair",
+    "Href": "",
+    "MainPageId": 1
+  },
+  {
+    "Id": 4,
+    "Name": "Komfortowe nowe wnętrza w idealnej lokalizacji",
+    "Icon": "city",
+    "Href": "",
+    "MainPageId": 1
+  }
+]

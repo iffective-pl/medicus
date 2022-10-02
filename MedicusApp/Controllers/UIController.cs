@@ -31,6 +31,12 @@ namespace MedicusApp.Controllers
         }
 
         [HttpGet]
+        public IEnumerable<HeaderDto> GetHeaderDropdown()
+        {
+            return service.GetHeaderDropdown();
+        }
+
+        [HttpGet]
         public HeaderDto GetHeader(int headerId)
         {
             return service.GetHeader(headerId);
@@ -46,6 +52,12 @@ namespace MedicusApp.Controllers
         public IEnumerable<LinkDto> GetLinks()
         {
             return service.GetLinks();
+        }
+
+        [HttpGet]
+        public IEnumerable<LinkDto> GetLinkDropdown()
+        {
+            return service.GetLinkDropdown();
         }
 
         [HttpGet]

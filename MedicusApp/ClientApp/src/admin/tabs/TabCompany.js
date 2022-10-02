@@ -9,7 +9,7 @@ import {
   TabPane
 } from "reactstrap";
 import {useEffect, useState} from "react";
-import AddDeleteList from "../AddDeleteList";
+import AddDeleteList from "../operations/AddDeleteList";
 import Notification from "../../components/Notification";
 
 let comp = {
@@ -77,7 +77,7 @@ export default function TabCompany(props) {
   }
 
   return (
-    <TabPane tabId="1" className="pt-3 pb-3">
+    <TabPane tabId={props.index.toString()} className="pt-3 pb-3">
       <Form onSubmit={onSubmit}>
         <Row>
           <Col>

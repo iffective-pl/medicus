@@ -16,13 +16,13 @@ export default function Description(props) {
 
   if(props.isEven) {
     return (
-      <div className={"desc-row " + (isMobile ? "rows" : "columns")}>
+      <div className={"desc-row mb-5 " + (isMobile ? "rows" : "columns")}>
         <div className="desc-image shadow-lg">
-          <img src={Config.minio + desc.image} className="desc-image" alt="desc"/>
+          <img src={Config.minio + desc.image} className="d-image" alt="desc"/>
         </div>
         <div>
           {desc.descriptionTexts.map((item, index) =>
-            <div key={index} className="pt-2">
+            <div key={index} className="ps-4 pe-4">
               <h4>{item.title}</h4>
               <Editor editorState={content(item.text)} readOnly={true} />
             </div>
@@ -32,17 +32,17 @@ export default function Description(props) {
     )
   } else {
     return (
-      <div className={"desc-row " + (isMobile ? "rows" : "columns")}>
+      <div className={"desc-row mb-5 " + (isMobile ? "rows" : "columns")}>
         <div>
           {desc.descriptionTexts.map((item, index) =>
-            <div key={index} className="pt-2">
+            <div key={index} className="ps-4 pe-4">
               <h4>{item.title}</h4>
               <Editor editorState={content(item.text)} readOnly={true} />
             </div>
           )}
         </div>
         <div className="desc-image shadow-lg">
-          <img src={Config.minio + desc.image} className="desc-image" alt="desc"/>
+          <img src={Config.minio + desc.image} className="d-image" alt="desc"/>
         </div>
       </div>
     )
