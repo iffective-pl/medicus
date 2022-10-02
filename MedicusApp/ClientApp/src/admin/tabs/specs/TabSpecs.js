@@ -72,18 +72,20 @@ export default function TabSpecs(props) {
   }
 
   let onDragEnd = (e) => {
-    let destination = e.destination;
-    destination.droppableId = 0;
-    fetch("api/Spec/OrderSpec?specId=" + e.draggableId, {
-      method: "POST",
-      headers: {
-        "Authorization": "Bearer " + props.keycloak.token,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(e.destination)
-    })
-      .then(r => r.text())
-      .then(t => t === "true" ? load() : null)
+    if(e.droppableId === "specs" && e.draggableId.startsWith("spec")) {
+      let destination = e.destination;
+      destination.droppableId = 0;
+      fetch("api/Spec/OrderSpec?specId=" + e.draggableId.replace("spec", ""), {
+        method: "POST",
+        headers: {
+          "Authorization": "Bearer " + props.keycloak.token,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(e.destination)
+      })
+        .then(r => r.text())
+        .then(t => t === "true" ? load() : null)
+    }
   }
 
   return (
@@ -177,7 +179,7 @@ export default function TabSpecs(props) {
               {(provided) => (
                 <div {...provided.droppableProps} ref={provided.innerRef}>
                   {specs.map((item, key) => (
-                    <Draggable draggableId={item.toString()} index={key}>
+                    <Draggable draggableId={"spec" + item.toString()} index={key}>
                       {(provided) => (
                           <div ref={provided.innerRef} style={provided.draggableProps.style}
                             {...provided.draggableProps} className="drag-tab">
