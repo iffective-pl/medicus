@@ -15,12 +15,6 @@ import ImageSelector from "./ImageSelector";
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import TextEditor from "./TextEditor";
 
-
-let des = {
-  title: "",
-  text: ""
-}
-
 let descDef = {
   id: undefined,
   image: "",
@@ -79,7 +73,10 @@ export default function EditDescButton(props) {
 
   let onAdd = () => {
     let l = desc.descriptionTexts;
-    l.push(des);
+    l.push({
+      title: "",
+      text: ""
+    });
     setDesc({
       id: desc.id,
       image: desc.image,

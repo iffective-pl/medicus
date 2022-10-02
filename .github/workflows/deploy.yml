@@ -3,14 +3,9 @@ name: Deploy
 on:
   workflow_dispatch:
     inputs:
-      select_env:
-        description: 'Which environment?'
-        required: true
-        default: 'Preprod' 
-        type: choice
-        options:
-        - 'Preprod'
-        - 'Production'
+      environment:
+        description: 'Environment'
+        type: environment
       drop_database:
         description: 'Drop Database?'
         required: true
@@ -38,7 +33,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ${{ inputs.select_env }}
+    runs-on: ${{ inputs.environment }}
 
     steps:
       - uses: actions/checkout@v3
@@ -54,13 +49,13 @@ jobs:
         working-directory: ./MedicusApp
         run: |
              docker compose build --no-cache
-             docker compose run -e ASPNETCORE_ENVIRONMENT=${{ inputs.select_env }} --rm drop
+             docker compose run -e ASPNETCORE_ENVIRONMENT=${{ inputs.environment }} --rm drop
       - if: ${{ inputs.run_migration == 'Yes' || inputs.drop_database == 'Yes' }}
         name: Update database
         working-directory: ./MedicusApp
         run: |
              docker compose build --no-cache
-             docker compose run --rm -e ASPNETCORE_ENVIRONMENT=${{ inputs.select_env }} migration
+             docker compose run --rm -e ASPNETCORE_ENVIRONMENT=${{ inputs.environment }} migration
       - if: ${{ inputs.run_s3_migration == 'Yes' }}
         name: S3 Migration
         working-directory: ./MedicusS3
@@ -69,4 +64,4 @@ jobs:
              docker compose run --rm migration
         
       - name: Deploy container
-        run: docker compose -f docker-compose.yml -f ${{ inputs.select_env }}.yml up -d --remove-orphans
+        run: docker compose -f docker-compose.yml -f ${{ inputs.environment }}.yml up -d --remove-orphans

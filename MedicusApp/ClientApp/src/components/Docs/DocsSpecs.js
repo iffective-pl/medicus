@@ -11,14 +11,14 @@ export default function DocsSpecs() {
     fetch("/api/Spec/GetSpecs")
       .then(r => r.json())
       .then(j => setSpecs(j));
-  });
+  }, []);
 
   return(
     <Container fluid="sm" className="text-center pt-5 pb-5">
       <h2 className="title m-3">Nasi lekarze specjalizują się w</h2>
       <Line center />
       {specs.map((item, index) => (
-        <a href={"docs/" + item.link.href} key={index}>
+        <a href={"docs/" + item.link.id} key={index}>
           <div className="d-inline-block spec m-2 p-3 shadow">
             <div className="spec-icon-container">
               <i className={item.style.className + " spec-icon"}/>

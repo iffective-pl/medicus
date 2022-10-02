@@ -28,7 +28,7 @@ export default function HeaderDropdown(props) {
         <Collapse isOpen={isCollapseOpen}>
           <DropdownMenu>
             {props.item.links.map((option, index) => (
-              <DropdownItem className="header" key={index} tag="a" href={props.item.href + option.href}>{option.spec.name}</DropdownItem>
+              <DropdownItem className="header" key={index} tag="a" href={props.item.href + "/" + option.id}>{option.spec.name}</DropdownItem>
             ))}
           </DropdownMenu>
         </Collapse>

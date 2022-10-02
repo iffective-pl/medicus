@@ -7,7 +7,7 @@ namespace MedicusApp.Models.Links
     public class Link : Sort
     {
         public int Id { get; set; }
-        public string Href { get; set; }
+        public string? Href { get; set; }
         public Spec Spec { get; set; }
         public Header? Header { get; set; }
 

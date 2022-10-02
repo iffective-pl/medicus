@@ -11,6 +11,16 @@ namespace MedicusApp.Services.Impl
             this.repository = repository;
         }
 
+        public bool AddEmail(EmailDto email)
+        {
+            return repository.AddEmail(email);
+        }
+
+        public bool AddNumber(PhoneDto number)
+        {
+            return repository.AddNumber(number);
+        }
+
         public bool DeleteEmail(int id)
         {
             return repository.DeleteEmail(id);

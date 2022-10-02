@@ -58,7 +58,7 @@ export default function Contact() {
 
   return (
     <>
-      <Container className="title">
+      <Container className="title mb-5">
         <h2 className="text-center">Kontakt</h2>
         <Line center />
         <div className={"main-container " + (isMobile ? "small" : "normal")}>
@@ -169,6 +169,26 @@ export default function Contact() {
                 </Col>
               </Row>
               <Row>
+                <Col>
+                  <FormGroup check>
+                    <Input type="checkbox" />
+                    <Label check>
+                      Zgadzam się na na przetwarzanie moich danych osobowych przez Trimedic w celu prowadzenia marketingu bezpośredniego za pośrednictwem poczty elektronicznej zgodnie z ustawą z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną (t.j. Dz.U. z 2017 r. poz. 1219). Dane osobowe przekazuję dobrowolnie i oświadczam, że są zgodne z prawdą. Zapoznałem(-am) się z treścią klauzuli informacyjnej, w tym z informacją o celu i sposobach przetwarzania danych osobowych oraz prawie dostępu do treści swoich danych i prawie ich poprawiania.
+                    </Label>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <FormGroup check>
+                    <Input type="checkbox" />
+                    <Label check>
+                      Zgadzam się na na przetwarzanie moich danych osobowych przez Trimedic w celu prowadzenia marketingu bezpośredniego za pośrednictwem połączeń telefonicznych zgodnie z ustawą z dnia 16 lipca 2004 r. – Prawo telekomunikacyjne (t.j. Dz.U. z 2017 r. poz. 1907 ze zm.). Dane osobowe przekazuję dobrowolnie i oświadczam, że są zgodne z prawdą. Zapoznałem(-am) się z treścią klauzuli informacyjnej, w tym z informacją o celu i sposobach przetwarzania danych osobowych oraz prawie dostępu do treści swoich danych i prawie ich poprawiania.
+                    </Label>
+                  </FormGroup>
+                </Col>
+              </Row>
+              <Row className="mt-3">
                 <Col>
                   <div>
                     <Button color="info" size="lg" className="float-end" type="submit" disabled={loading}>

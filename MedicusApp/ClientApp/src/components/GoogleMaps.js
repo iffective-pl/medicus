@@ -7,8 +7,8 @@ import {
 } from "reactstrap";
 
 const center = {
-  lat: 52.654110,
-  lng: 19.067100
+  lat: 52.654073468178176,
+  lng: 19.0671225821407
 }
 
 const style = {
@@ -37,18 +37,21 @@ export default function GoogleMaps() {
 
         <InfoWindow
           position={center}
+
         >
-          <Card className="border-0">
-            <CardBody className="p-2">
-              <CardTitle tag="h5">
-                Poradnia Specjalistyczna<br/>MEDICUS
-              </CardTitle>
-              <CardText>
-                <div>Plac Wolności 15</div>
-                <div>87-800 Włocławek</div>
-              </CardText>
-            </CardBody>
-          </Card>
+          <a href="https://goo.gl/maps/Bo7DdG3jAkWrWC6p8" target="_blank" className="advantage" rel="noreferrer">
+            <Card className="border-0">
+              <CardBody className="p-2">
+                <CardTitle tag="h5">
+                  Poradnia Specjalistyczna<br/>MEDICUS
+                </CardTitle>
+                <CardText>
+                  <div>Plac Wolności 15</div>
+                  <div>87-800 Włocławek</div>
+                </CardText>
+              </CardBody>
+            </Card>
+          </a>
         </InfoWindow>
       </GoogleMap>
     </div>

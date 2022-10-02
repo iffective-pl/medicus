@@ -45,9 +45,6 @@ export default function TabSpecs(props) {
       style: {
         className: e.target.className.value,
         color: e.target.color.value
-      },
-      link: {
-        href: e.target.link.value
       }
     }
 
@@ -92,19 +89,6 @@ export default function TabSpecs(props) {
                       />
                       <Label for="name">
                         Nazwa specjalizacji
-                      </Label>
-                    </FormGroup>
-                  </Col>
-                  <Col>
-                    <FormGroup floating>
-                      <Input
-                        bsSize="lg"
-                        id="link"
-                        name="link"
-                        type="text"
-                      />
-                      <Label for="link">
-                        Link przekierowania
                       </Label>
                     </FormGroup>
                   </Col>
