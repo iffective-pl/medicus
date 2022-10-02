@@ -90,7 +90,7 @@ export default function TabAdvantage(props) {
     arr.push({name: "──────────", disabled: true})
     arr = arr.concat(h);
     arr.push({name: "──────────", disabled: true})
-    arr = arr.concat(l.map((item) => ({name: item.spec.name, href: "docs/" + item.href})));
+    arr = arr.concat(l.map((item) => ({name: item.spec.name, href: "docs/" + item.spec.id})));
     return arr.map((item, key) => (
       <option value={item.href} key={key} disabled={item.disabled}>
         {item.name}
