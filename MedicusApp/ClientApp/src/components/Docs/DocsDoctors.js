@@ -17,52 +17,55 @@ export default function DocsDoctors(props) {
       <h3>Nasi lekarze</h3>
       <Line left className="mid"/>
       <div className={"doctors-container " + (isMobile ? "doctors-rows" : "doctors-cols")}>
-        {props.doctors.map((item, index) =>
-          <div key={index}>
-            <h5>{item.title}</h5>
-            <h3>{item.firstName} {item.lastName}</h3>
-            <h4 className="sub-title">{item.specTitle}</h4>
-            <div>{item.description}</div>
-            <Table className="mt-3">
-              <thead>
-              <tr>
-                <th>
-                  Dzień tygodnia
-                </th>
-                <th>
-                  Godziny przyjęć
-                </th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>Poniedziałek</td>
-                <td>{isNull(item.workingHours[0]?.monday)}</td>
-              </tr>
-              <tr>
-                <td>Wtorek</td>
-                <td>{isNull(item.workingHours[0]?.tuesday)}</td>
-              </tr>
-              <tr>
-                <td>Środa</td>
-                <td>{isNull(item.workingHours[0]?.wednesday)}</td>
-              </tr>
-              <tr>
-                <td>Czwartek</td>
-                <td>{isNull(item.workingHours[0]?.thursday)}</td>
-              </tr>
-              <tr>
-                <td>Piątek</td>
-                <td>{isNull(item.workingHours[0]?.friday)}</td>
-              </tr>
-              <tr>
-                <td>Sobota</td>
-                <td>{isNull(item.workingHours[0]?.saturday)}</td>
-              </tr>
-              </tbody>
-            </Table>
-          </div>
-        )}
+        {props.order.map((key, index) => {
+          let item = props.doctors.find(d => d.id === key)
+          return (
+            <div key={index}>
+              <h5>{item.title}</h5>
+              <h3>{item.firstName} {item.lastName}</h3>
+              <h4 className="sub-title">{item.specTitle}</h4>
+              <div>{item.description}</div>
+              <Table className="mt-3">
+                <thead>
+                <tr>
+                  <th>
+                    Dzień tygodnia
+                  </th>
+                  <th>
+                    Godziny przyjęć
+                  </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Poniedziałek</td>
+                  <td>{isNull(item.workingHours[0]?.monday)}</td>
+                </tr>
+                <tr>
+                  <td>Wtorek</td>
+                  <td>{isNull(item.workingHours[0]?.tuesday)}</td>
+                </tr>
+                <tr>
+                  <td>Środa</td>
+                  <td>{isNull(item.workingHours[0]?.wednesday)}</td>
+                </tr>
+                <tr>
+                  <td>Czwartek</td>
+                  <td>{isNull(item.workingHours[0]?.thursday)}</td>
+                </tr>
+                <tr>
+                  <td>Piątek</td>
+                  <td>{isNull(item.workingHours[0]?.friday)}</td>
+                </tr>
+                <tr>
+                  <td>Sobota</td>
+                  <td>{isNull(item.workingHours[0]?.saturday)}</td>
+                </tr>
+                </tbody>
+              </Table>
+            </div>
+          )
+        })}
       </div>
     </div>
   )

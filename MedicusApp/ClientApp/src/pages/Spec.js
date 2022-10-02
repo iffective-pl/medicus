@@ -10,7 +10,7 @@ export default function Spec(props) {
   let [data, setData] = useState();
 
   useEffect(() => {
-    fetch("api/Spec/GetFullSpecs/" + props.type)
+    fetch("api/Spec/GetFullSpecs?id=" + props.type)
       .then(r => r.json())
       .then(j => setData(j));
   }, [props.type]);
@@ -20,7 +20,7 @@ export default function Spec(props) {
       <Container className="title">
         <h2 className="text-center">{data.name}</h2>
         <Line center/>
-        <DocsDoctors doctors={data.doctors}/>
+        <DocsDoctors doctors={data.doctors} order={data.doctorsOrder}/>
         <DocsDescription descriptions={data.descriptions}/>
         <DocsPricing prices={data.prices}/>
       </Container>

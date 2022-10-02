@@ -9,6 +9,7 @@ import TabSpec from "./TabSpec";
 import Notification from "../../../components/Notification";
 
 import list from '../../../data/icons.json';
+import {DragDropContext, Draggable, Droppable} from "react-beautiful-dnd";
 
 export default function TabSpecs(props) {
   let [specs, setSpecs] = useState([]);
@@ -68,6 +69,21 @@ export default function TabSpecs(props) {
         }
         load()
       })
+  }
+
+  let onDragEnd = (e) => {
+    let destination = e.destination;
+    destination.droppableId = 0;
+    fetch("api/Spec/OrderSpec?specId=" + e.draggableId, {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + props.keycloak.token,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(e.destination)
+    })
+      .then(r => r.text())
+      .then(t => t === "true" ? load() : null)
   }
 
   return (
@@ -156,9 +172,33 @@ export default function TabSpecs(props) {
       </Row>
       <Row>
         <Col>
-          <UncontrolledAccordion className="mb-3" open="0" openDefault="0">
-            {specs.map((item, key) => <TabSpec id={item} token={props.keycloak.token} index={key} key={key} load={load}/>)}
-          </UncontrolledAccordion>
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable droppableId={"specs"}>
+              {(provided) => (
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {specs.map((item, key) => (
+                    <Draggable draggableId={item.toString()} index={key}>
+                      {(provided) => (
+                        <div ref={provided.innerRef}
+                             style={provided.draggableProps.style}
+                             {...provided.draggableProps}>
+                          <div {...provided.dragHandleProps} className="drag-tab">
+                            <div className="pt-2 pe-3">
+                              <i className="menu-grid drag-icon"/>
+                            </div>
+                            <div>
+                              <TabSpec id={item} token={props.keycloak.token} index={key} key={key} load={load}/>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </Draggable>
+                    ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
         </Col>
       </Row>
     </TabPane>

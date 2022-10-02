@@ -5,9 +5,13 @@ using MedicusApp.Models.Data.Person;
 using MedicusApp.Models.Data.UI;
 using MedicusApp.Models.Links;
 using MedicusApp.Models.Seeding;
-using MedicusApp.Models.Seeding.Seeds;
 using MedicusApp.Models.Subject;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.Linq.Expressions;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace MedicusApp.Models
 {
@@ -91,6 +95,20 @@ namespace MedicusApp.Models
                         je.HasData(seeds.DoctorSpecSeeds);
                     }
                 );
+            var converter = new ValueConverter<List<int>, string>(
+                v => JsonSerializer.Serialize(v, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.Never }),
+                v => JsonSerializer.Deserialize<List<int>>(v, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.Never }));
+
+            var comparer = new ValueComparer<List<int>>(
+                (a, b) => a.SequenceEqual(b),
+                c => c.Aggregate(0, (a, b) => HashCode.Combine(a, b.GetHashCode())),
+                c => c.ToList());
+
+            modelBuilder.Entity<Spec>()
+                .Property(s => s.DoctorsOrder)
+                .HasConversion(converter)
+                .Metadata
+                .SetValueComparer(comparer);
 
             modelBuilder.Entity<Link>()
                 .HasOne(l => l.Spec)

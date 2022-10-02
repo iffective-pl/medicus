@@ -3,6 +3,7 @@ using System;
 using MedicusApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MedicusApp.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221002164828_SpecDoctorsOrder")]
+    partial class SpecDoctorsOrder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -883,9 +885,6 @@ namespace MedicusApp.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Order")
-                        .HasColumnType("integer");
-
                     b.Property<int>("StyleId")
                         .HasColumnType("integer");
 
@@ -901,7 +900,6 @@ namespace MedicusApp.Migrations
                             Id = 1,
                             DoctorsOrder = "[1,2]",
                             Name = "Kardiologia",
-                            Order = 2,
                             StyleId = 1
                         },
                         new
@@ -909,7 +907,6 @@ namespace MedicusApp.Migrations
                             Id = 2,
                             DoctorsOrder = "[7]",
                             Name = "Urologia",
-                            Order = 2,
                             StyleId = 2
                         },
                         new
@@ -917,7 +914,6 @@ namespace MedicusApp.Migrations
                             Id = 3,
                             DoctorsOrder = "[9]",
                             Name = "Ortopedia",
-                            Order = 3,
                             StyleId = 3
                         },
                         new
@@ -925,7 +921,6 @@ namespace MedicusApp.Migrations
                             Id = 4,
                             DoctorsOrder = "[3,4]",
                             Name = "Ginekologia",
-                            Order = 4,
                             StyleId = 4
                         },
                         new
@@ -933,7 +928,6 @@ namespace MedicusApp.Migrations
                             Id = 5,
                             DoctorsOrder = "[]",
                             Name = "Internista",
-                            Order = 5,
                             StyleId = 5
                         },
                         new
@@ -941,7 +935,6 @@ namespace MedicusApp.Migrations
                             Id = 6,
                             DoctorsOrder = "[2]",
                             Name = "Pediatria",
-                            Order = 6,
                             StyleId = 6
                         },
                         new
@@ -949,7 +942,6 @@ namespace MedicusApp.Migrations
                             Id = 7,
                             DoctorsOrder = "[5]",
                             Name = "Endokrynologia",
-                            Order = 7,
                             StyleId = 7
                         },
                         new
@@ -957,7 +949,6 @@ namespace MedicusApp.Migrations
                             Id = 8,
                             DoctorsOrder = "[6]",
                             Name = "Neurologia",
-                            Order = 8,
                             StyleId = 8
                         },
                         new
@@ -965,7 +956,6 @@ namespace MedicusApp.Migrations
                             Id = 9,
                             DoctorsOrder = "[8]",
                             Name = "Dermatologia",
-                            Order = 9,
                             StyleId = 9
                         },
                         new
@@ -973,7 +963,6 @@ namespace MedicusApp.Migrations
                             Id = 10,
                             DoctorsOrder = "[2,10]",
                             Name = "ECHO Serca",
-                            Order = 10,
                             StyleId = 10
                         },
                         new
@@ -981,7 +970,6 @@ namespace MedicusApp.Migrations
                             Id = 11,
                             DoctorsOrder = "[11,3]",
                             Name = "USG",
-                            Order = 11,
                             StyleId = 11
                         },
                         new
@@ -989,7 +977,6 @@ namespace MedicusApp.Migrations
                             Id = 12,
                             DoctorsOrder = "[1,2,10]",
                             Name = "Holter",
-                            Order = 12,
                             StyleId = 12
                         });
                 });

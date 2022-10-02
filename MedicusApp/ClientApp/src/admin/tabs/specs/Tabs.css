@@ -21,3 +21,16 @@
 .tab-body {
     min-height: 10vh;
 }
+
+.drag-tab {
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+}
+
+.drag-icon {
+    height: 2.5vh;
+    aspect-ratio: 1/1;
+    display: inline-block;
+    background-color: #0f2147;
+}

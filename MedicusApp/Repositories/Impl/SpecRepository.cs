@@ -22,7 +22,7 @@ namespace MedicusApp.Repositories.Impl
 
         public IEnumerable<SpecDto> GetSpecs()
         {
-            return context.Specs.Where(q => q.Deleted == null).Select(s => new SpecDto()
+            return context.Specs.Where(q => q.Deleted == null).OrderBy(s => s.Order).Select(s => new SpecDto()
             {
                 Id = s.Id,
                 Name = s.Name,
@@ -35,7 +35,8 @@ namespace MedicusApp.Repositories.Impl
                 {
                     Id = s.Link.Id,
                     Href = s.Link.Href
-                }
+                },
+                Order = s.Order
             });
         }
 
@@ -67,6 +68,7 @@ namespace MedicusApp.Repositories.Impl
                             Saturday = wh.Saturday
                         })
                 }),
+                DoctorsOrder = s.DoctorsOrder,
                 Prices = s.Prices.Where(p => p.Deleted == null).Select(p => new PriceDto()
                 {
                     Id = p.Id,
@@ -84,13 +86,14 @@ namespace MedicusApp.Repositories.Impl
                         Text = dt.Text
                     }),
                     SpecId = s.Id
-                })
+                }),
+                Order = s.Order
             }).SingleOrDefault();
         }
 
         public IEnumerable<int> GetSpecIds()
         {
-            return context.Specs.Where(s => s.Deleted == null).Select(s => s.Id);
+            return context.Specs.Where(s => s.Deleted == null).OrderBy(s => s.Order).Select(s => s.Id);
         }
 
         public SpecDto GetSpec(int specId)
@@ -105,6 +108,14 @@ namespace MedicusApp.Repositories.Impl
                     ClassName = s.Style.ClassName,
                     Color = s.Style.Color
                 },
+                Doctors = s.Doctors.Select(d => new DoctorDto()
+                {
+                    Id = d.Id,
+                    Title = d.Title,
+                    FirstName = d.FirstName,
+                    LastName = d.LastName
+                }),
+                DoctorsOrder = s.DoctorsOrder,
                 Descriptions = s.Descriptions.Where(d => d.Deleted == null).Select(d => new DescriptionDto()
                 {
                     Id = d.Id,
@@ -127,7 +138,8 @@ namespace MedicusApp.Repositories.Impl
                     Created = p.Created,
                     Deleted= p.Deleted,
                     Order= p.Order
-                })
+                }),
+                Order = s.Order
             }).Single();
         }
 
@@ -255,6 +267,45 @@ namespace MedicusApp.Repositories.Impl
                 foreach (var wh in whs)
                 {
                     context.WorkingHours.Remove(wh);
+                }
+                context.SaveChanges();
+                return true;
+            } catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool OrderDoctor(int doctorId, DestinationDto destination)
+        {
+            try
+            {
+                var spec = context.Specs.Where(s => s.Id == destination.DroppableId).Single();
+                var currentIndex = spec.DoctorsOrder.IndexOf(doctorId);
+                if (currentIndex == -1)
+                {
+                    return false;
+                }
+                spec.DoctorsOrder.Remove(doctorId);
+                spec.DoctorsOrder.Insert(destination.Index.Value, doctorId);
+                context.SaveChanges();
+                return true;
+            } catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool OrderSpec(int specId, DestinationDto destination)
+        {
+            try
+            {
+                var spec = context.Specs.Single(s => s.Deleted == null && s.Id == specId);
+                var list = context.Specs.Where(s => s.Deleted == null && s.Id != specId).ToList();
+                list.Insert(destination.Index.Value, spec);
+                for (int i = 0; i < list.Count; i++)
+                {
+                    list[i].Order = i;
                 }
                 context.SaveChanges();
                 return true;

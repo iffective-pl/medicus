@@ -6,13 +6,14 @@ using MedicusApp.Models.Links;
 
 namespace MedicusApp.Models.Data
 {
-    public class Spec : Delete
+    public class Spec : Sort
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public Style Style { get; set; }
         public Link Link { get; set; }
         public List<Doctor> Doctors { get; set; }
+        public List<int> DoctorsOrder { get; set; }
         public List<WorkingHours> WorkingHours { get; set; }
         public List<Description> Descriptions { get; set; }
         public List<Price> Prices { get; set; }
