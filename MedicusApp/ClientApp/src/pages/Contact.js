@@ -19,6 +19,9 @@ export default function Contact() {
   let [message, setMessage] = useState(undefined);
   let [success, setSuccess] = useState(undefined);
 
+  let [email, setEmail] = useState();
+  let [number, setNumber] = useState()
+
   useEffect(() => {
     fetch("api/Company/GetFullCompany")
       .then(r => r.json())
@@ -129,6 +132,8 @@ export default function Contact() {
                       id="number"
                       name="number"
                       placeholder="Numer telefonu"
+                      value={number}
+                      onChange={(e) => setNumber(e.target.value)}
                       type="text"
                     />
                     <Label for="phoneNumber">
@@ -144,6 +149,8 @@ export default function Contact() {
                       name="email"
                       placeholder="Email"
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                     <Label for="email">
                       Email
@@ -171,9 +178,9 @@ export default function Contact() {
               <Row>
                 <Col>
                   <FormGroup check>
-                    <Input type="checkbox" />
+                    <Input type="checkbox" required={email} />
                     <Label check>
-                      Zgadzam się na na przetwarzanie moich danych osobowych przez Trimedic w celu prowadzenia marketingu bezpośredniego za pośrednictwem poczty elektronicznej zgodnie z ustawą z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną (t.j. Dz.U. z 2017 r. poz. 1219). Dane osobowe przekazuję dobrowolnie i oświadczam, że są zgodne z prawdą. Zapoznałem(-am) się z treścią klauzuli informacyjnej, w tym z informacją o celu i sposobach przetwarzania danych osobowych oraz prawie dostępu do treści swoich danych i prawie ich poprawiania.
+                      Zgadzam się na na przetwarzanie moich danych osobowych przez Medicus w celu prowadzenia marketingu bezpośredniego za pośrednictwem poczty elektronicznej zgodnie z ustawą z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną (t.j. Dz.U. z 2017 r. poz. 1219). Dane osobowe przekazuję dobrowolnie i oświadczam, że są zgodne z prawdą. Zapoznałem(-am) się z treścią klauzuli informacyjnej, w tym z informacją o celu i sposobach przetwarzania danych osobowych oraz prawie dostępu do treści swoich danych i prawie ich poprawiania.
                     </Label>
                   </FormGroup>
                 </Col>
@@ -181,9 +188,9 @@ export default function Contact() {
               <Row>
                 <Col>
                   <FormGroup check>
-                    <Input type="checkbox" />
+                    <Input type="checkbox" required={number} />
                     <Label check>
-                      Zgadzam się na na przetwarzanie moich danych osobowych przez Trimedic w celu prowadzenia marketingu bezpośredniego za pośrednictwem połączeń telefonicznych zgodnie z ustawą z dnia 16 lipca 2004 r. – Prawo telekomunikacyjne (t.j. Dz.U. z 2017 r. poz. 1907 ze zm.). Dane osobowe przekazuję dobrowolnie i oświadczam, że są zgodne z prawdą. Zapoznałem(-am) się z treścią klauzuli informacyjnej, w tym z informacją o celu i sposobach przetwarzania danych osobowych oraz prawie dostępu do treści swoich danych i prawie ich poprawiania.
+                      Zgadzam się na na przetwarzanie moich danych osobowych przez Medicus w celu prowadzenia marketingu bezpośredniego za pośrednictwem połączeń telefonicznych zgodnie z ustawą z dnia 16 lipca 2004 r. – Prawo telekomunikacyjne (t.j. Dz.U. z 2017 r. poz. 1907 ze zm.). Dane osobowe przekazuję dobrowolnie i oświadczam, że są zgodne z prawdą. Zapoznałem(-am) się z treścią klauzuli informacyjnej, w tym z informacją o celu i sposobach przetwarzania danych osobowych oraz prawie dostępu do treści swoich danych i prawie ich poprawiania.
                     </Label>
                   </FormGroup>
                 </Col>
