@@ -18,6 +18,11 @@ namespace MedicusApp.Controllers
         [HttpPost]
         public bool Send(EmailDto email)
         {
+            if (string.IsNullOrWhiteSpace(email.Email) && string.IsNullOrWhiteSpace(email.Number))
+            {
+                return false;
+            }
+
             return emailService.Send(email);
         }
     }
