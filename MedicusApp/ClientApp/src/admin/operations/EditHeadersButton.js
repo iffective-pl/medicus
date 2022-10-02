@@ -201,11 +201,7 @@ export default function EditHeadersButton(props) {
                     onChange={onChangeText}
                     disabled={header?.isDropdown || statics.length < 1}
                   >
-                    {joinCollections(statics, headers, links).map((item, key) => (
-                      <option value={"static/" + item.id} key={key}>
-                        {item.name}
-                      </option>
-                    ))}
+                    {joinCollections(statics, headers, links)}
                   </Input>
                 </FormGroup>
               </Col>
