@@ -4,7 +4,9 @@ import {useEffect, useState} from "react";
 
 export default function EditHeadersButton(props) {
   let [header, setHeader] = useState();
-  let [statics, setStatics] = useState([]);
+  let [statics, setStatics] = useState([])
+  let [links, setLinks] = useState([])
+  let [headers, setHeaders] = useState([])
   let [open, setOpen] = useState(false);
   let [loading, setLoading] = useState(undefined);
   let [message, setMessage] = useState(undefined);
@@ -16,17 +18,56 @@ export default function EditHeadersButton(props) {
     if(props.headers && props.headers.length > 0) {
       setHeader(props.headers[0])
     }
-    loadStatics()
   }, [props.headers])
+
+  useEffect(() => {
+    loadStatics()
+    loadLinks()
+    loadHeaders()
+  }, [props.token])
 
   let loadStatics = () => {
     fetch("api/Static/GetStaticDropdown", {
-        headers: {
-          "Authorization": "Bearer " + props.token,
-        }
-      })
+      headers: {
+        "Authorization": "Bearer " + props.token
+      }
+    })
       .then(r => r.json())
       .then(j => setStatics(j))
+  }
+
+  let loadLinks = () => {
+    fetch("api/UI/GetLinkDropdown", {
+      headers: {
+        "Authorization": "Bearer " + props.token
+      }
+    })
+      .then(r => r.json())
+      .then(j => setLinks(j))
+  }
+
+  let loadHeaders = () => {
+    fetch("api/UI/GetHeaderDropdown", {
+      headers: {
+        "Authorization": "Bearer " + props.token
+      }
+    })
+      .then(r => r.json())
+      .then(j => setHeaders(j))
+  }
+
+  let joinCollections = (s, h, l) => {
+    let arr = [{name: "", href: ""}];
+    arr = arr.concat(s.map((item) => ({name: item.name, href: "static/" + item.id})));
+    arr.push({name: "──────────", disabled: true})
+    arr = arr.concat(h);
+    arr.push({name: "──────────", disabled: true})
+    arr = arr.concat(l.map((item) => ({name: item.spec.name, href: "docs/" + item.href})));
+    return arr.map((item, key) => (
+      <option value={item.href} key={key} disabled={item.disabled}>
+        {item.name}
+      </option>
+    ));
   }
 
   let onSubmit = () => {
@@ -138,7 +179,7 @@ export default function EditHeadersButton(props) {
                     name="name"
                     type="text"
                     onChange={onChangeText}
-                    defaultValue={header?.name}
+                    value={header?.name}
                   />
                   <Label for="name">
                     Nazwa nagłówka
@@ -156,11 +197,11 @@ export default function EditHeadersButton(props) {
                     id="href"
                     name="href"
                     type="select"
-                    defaultValue={header?.href}
+                    value={header?.href}
                     onChange={onChangeText}
                     disabled={header?.isDropdown || statics.length < 1}
                   >
-                    {statics.map((item, key) => (
+                    {joinCollections(statics, headers, links).map((item, key) => (
                       <option value={"static/" + item.id} key={key}>
                         {item.name}
                       </option>
