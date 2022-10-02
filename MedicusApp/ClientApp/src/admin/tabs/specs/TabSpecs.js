@@ -2,7 +2,7 @@ import {
   Button,
   Col, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader,
   Row,
-  TabPane, UncontrolledAccordion
+  TabPane
 } from "reactstrap";
 import {useEffect, useState} from "react";
 import TabSpec from "./TabSpec";
@@ -72,7 +72,7 @@ export default function TabSpecs(props) {
   }
 
   let onDragEnd = (e) => {
-    if(e.droppableId === "specs" && e.draggableId.startsWith("spec")) {
+    if(e.source.droppableId === "specs") {
       let destination = e.destination;
       destination.droppableId = 0;
       fetch("api/Spec/OrderSpec?specId=" + e.draggableId.replace("spec", ""), {
