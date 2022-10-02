@@ -21,7 +21,7 @@ export default function DocsSpecs() {
         <a href={"docs/" + item.link.id} key={index}>
           <div className="d-inline-block spec m-2 p-3 shadow">
             <div className="spec-icon-container">
-              <i className={item.style.className + " spec-icon"}/>
+              <i className={item.style.className + " spec-icon"} style={{"background-color": item.style.color}}/>
             </div>
             <div className="mt-3">
               <div className="h4 flex-row title">{item.name}</div>

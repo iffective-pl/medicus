@@ -99,6 +99,12 @@ namespace MedicusApp.Repositories.Impl
             {
                 Id = s.Id,
                 Name = s.Name,
+                Style = new StyleDto()
+                {
+                    Id = s.Style.Id,
+                    ClassName = s.Style.ClassName,
+                    Color = s.Style.Color
+                },
                 Descriptions = s.Descriptions.Where(d => d.Deleted == null).Select(d => new DescriptionDto()
                 {
                     Id = d.Id,
@@ -129,8 +135,10 @@ namespace MedicusApp.Repositories.Impl
         {
             try
             {
-                var sp = context.Specs.Where(s => s.Id == spec.Id).Single();
+                var sp = context.Specs.Where(s => s.Id == spec.Id).Include(s => s.Style).Single();
                 sp.Name = spec.Name;
+                sp.Style.ClassName = spec.Style.ClassName;
+                sp.Style.Color = spec.Style.Color;
                 context.SaveChanges();
                 return true;
             } catch (Exception)

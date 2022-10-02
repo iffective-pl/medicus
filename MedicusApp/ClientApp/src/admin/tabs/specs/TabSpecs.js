@@ -13,6 +13,7 @@ import list from '../../../data/icons.json';
 export default function TabSpecs(props) {
   let [specs, setSpecs] = useState([]);
   let [icon, setIcon] = useState("")
+  let [color, setColor] = useState("");
 
   let [open, setOpen] = useState(false);
   let [loading, setLoading] = useState(undefined);
@@ -100,6 +101,7 @@ export default function TabSpecs(props) {
                         id="className"
                         name="className"
                         type="select"
+                        defaultValue={icon}
                         onChange={(e) => setIcon(e.target.value)}
                       >
                         <option></option>
@@ -115,18 +117,19 @@ export default function TabSpecs(props) {
                     </FormGroup>
                   </Col>
                   <Col xs="1">
-                    <i className={icon ? "icon " + icon : ""}/>
+                    <i className={icon ? "icon " + icon : ""} style={{"background-color": color}}/>
                   </Col>
                   <Col>
                     <FormGroup floating>
                       <Input
-                        bsSize="lg"
                         id="color"
                         name="color"
-                        type="text"
+                        type="color"
+                        value={color}
+                        onChange={(e) => setColor(e.target.value)}
                       />
                       <Label for="color">
-                        Kolor obrazka (HEX)
+                        Kolor obrazka
                       </Label>
                     </FormGroup>
                   </Col>

@@ -14,17 +14,24 @@ import {
 import Notification from "../../../components/Notification";
 import TabSpecPrices from "./TabSpecPrices";
 import TabSpecDescs from "./TabSpecDescs";
+import list from "../../../data/icons.json";
 
 let sp = {
   id: undefined,
   name: "",
+  style: {
+    className: "",
+    color: ""
+  },
   descriptions: []
 }
 
 export default function TabSpec(props) {
   let [spec, setSpec] = useState(sp)
-  let [open, setOpen] = useState(false);
+  let [icon, setIcon] = useState()
+  let [color, setColor] = useState()
 
+  let [open, setOpen] = useState(false);
   let toggle = () => setOpen(!open)
 
   let [loading, setLoading] = useState(undefined);
@@ -38,7 +45,11 @@ export default function TabSpec(props) {
       }
     })
       .then(r => r.json())
-      .then(j => setSpec(j))
+      .then(j => {
+        setSpec(j)
+        setIcon(j.style.className)
+        setColor(j.style.color)
+      })
   }
 
   useEffect(() => load(), [props.token])
@@ -62,7 +73,11 @@ export default function TabSpec(props) {
       },
       body: JSON.stringify({
         id: spec.id,
-        name: spec.name
+        name: spec.name,
+        style: {
+          className: icon,
+          color: color
+        }
       })
     })
       .then(r => r.text())
@@ -122,6 +137,46 @@ export default function TabSpec(props) {
                 />
                 <Label for="name">
                   Nazwa specjalizacji
+                </Label>
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs="5">
+              <FormGroup floating>
+                <Input
+                  id="className"
+                  name="className"
+                  type="select"
+                  value={icon}
+                  onChange={(e) => setIcon(e.target.value)}
+                >
+                  <option></option>
+                  {list.map((item, key) => (
+                    <option value={item} key={key}>
+                      {item}
+                    </option>
+                  ))}
+                </Input>
+                <Label for="className">
+                  Wybierz obrazek specjalizacji
+                </Label>
+              </FormGroup>
+            </Col>
+            <Col xs="1">
+              <i className={icon ? "icon " + icon : ""} style={{"background-color": color}}/>
+            </Col>
+            <Col>
+              <FormGroup floating>
+                <Input
+                  id="color"
+                  name="color"
+                  type="color"
+                  value={color}
+                  onChange={(e) => setColor(e.target.value)}
+                />
+                <Label for="color">
+                  Kolor obrazka specjalizacji
                 </Label>
               </FormGroup>
             </Col>
