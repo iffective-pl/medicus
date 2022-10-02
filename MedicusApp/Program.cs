@@ -55,6 +55,8 @@ builder.Services.AddTransient<IMPService, MPService>();
 
 builder.Services.AddTransient<IEmailService, EmailService>();
 
+builder.Services.AddTransient<IEmailService, EmailService>();
+
 builder.Services.AddSingleton<Seeder>();
 builder.Services.AddSingleton<MinioService>();
 
