@@ -31,6 +31,7 @@ export default function HomeCarousel(props) {
       next={next}
       previous={previous}
       activeIndex={activeIndex}
+      className="description-img"
     >
       <CarouselIndicators
         items={props.carousels}

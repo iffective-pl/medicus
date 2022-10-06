@@ -9,7 +9,7 @@ export default function HomeServices(props) {
     <Container fluid className="p-5 mt-3">
       <span className="h2 text-center d-block title">Nasze usługi</span>
       <Line center />
-      <div className="text-center pb-4">
+      <div className="text-center pm-4 cont-services">
         {props.services.map((item, index) => (
           <a href={item.href} className="text-reset">
             <Card key={index} className="services shadow m-2 d-inline-block">

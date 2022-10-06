@@ -1,3 +1,7 @@
+.cont-services {
+    height: 35vh;
+}
+
 .card.services {
     height: 35vh;
     aspect-ratio: 1 / 1;

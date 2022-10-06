@@ -236,18 +236,22 @@ namespace MedicusApp.Repositories.Impl
                 var s = new Spec()
                 {
                     Name = spec.Name,
+                    DoctorsOrder = new List<int>(),
                     Style = new Style()
                     {
                         ClassName = spec.Style.ClassName,
                         Color = spec.Style.Color,
                     },
-                    Link = new Link()
-                    {
-                        Href = spec.Link.Href,
-                        Order = order
-                    }
+                    Order = order
                 };
                 context.Specs.Add(s);
+                context.SaveChanges();
+                Link l = new Link()
+                {
+                    Href = s.Id.ToString(),
+                    Order = order
+                };
+                s.Link = l;
                 context.SaveChanges();
                 return true;
             } catch (Exception)
